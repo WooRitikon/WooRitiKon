@@ -13,7 +13,7 @@ Coded by www.creative-tim.com
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="utf-8" />
@@ -51,58 +51,58 @@ Coded by www.creative-tim.com
           </div> -->
         </a>
       </div>
-           <div class="sidebar-wrapper">
+            <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="active ">
-            <a href="./index.html">
+            <a th:href="@{./index}">
               <i class="nc-icon nc-chart-bar-32"></i>
               <p>Dashboard</p>
             </a>
           </li>
           <li>
-            <a href="./customer.html">
+            <a th:href="@{./customer}">
               <i class="nc-icon nc-single-02"></i>
               <p>Customer</p>
             </a>
           </li>
           <li>
-            <a href="./sales.html">
+            <a th:href="@{./sales}">
               <i class="nc-icon nc-money-coins"></i>
               <p>Sales</p>
             </a>
           </li>
           <li>
-            <a href="./product.html">
+            <a th:href="@{./product}">
               <i class="nc-icon nc-app"></i>
               <p>Product</p>
             </a>
           </li>
           <li>
-            <a href="./banner.html">
+            <a th:href="@{./banner}">
               <i class="nc-icon nc-layout-11"></i>
               <p>Banner</p>
             </a>
           </li>
           <li>
-            <a href="./category.html">
+            <a th:href="@{./category}">
               <i class="nc-icon nc-tile-56"></i>
               <p>Category</p>
             </a>
           </li>
           <li>
-            <a href="./qna.html">
+            <a th:href="@{./getQnaList}">
               <i class="nc-icon nc-chat-33"></i>
               <p>QnA</p>
             </a>
           </li>
           <li>
-            <a href="./notice.html">
+            <a th:href="@{./getNoticeList}">
               <i class="nc-icon nc-paper"></i>
               <p>Notice</p>
             </a>
           </li>
           <li class="active-pro">
-            <a href="./upgrade.html">
+            <a th:href="@{./upgrade}">
               <i class="nc-icon nc-spaceship"></i>
               <p>Upgrade to PRO</p>
             </a>
@@ -122,7 +122,7 @@ Coded by www.creative-tim.com
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="javascript:;">Paper Dashboard 2</a>
+            <a class="navbar-brand" href="javascript:;">답글달기</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -175,75 +175,47 @@ Coded by www.creative-tim.com
         </div>
       </nav>
       <!-- End Navbar -->
-      <div class="content">
-        <div class="row">
-          <div class="col-md-8 ml-auto mr-auto">
-            <div class="card card-upgrade">
-              <div class="card-header text-center">
-                <h4 class="card-title">Paper Dashboard PRO</h3>
-                  <p class="card-category">Are you looking for more components? Please check our Premium Version of Paper Dashboard PRO.</p>
+      <div class="content" >
+          <div class="col-md-8">
+            <div class="card card-user">
+              <div class="card-header">
+                <h5 class="card-title">답글</h5>
               </div>
               <div class="card-body">
-                <div class="table-responsive table-upgrade">
-                  <table class="table">
-                    <thead>
-                      <th></th>
-                      <th class="text-center">Free</th>
-                      <th class="text-center">PRO</th>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Components</td>
-                        <td class="text-center">16</td>
-                        <td class="text-center">160</td>
-                      </tr>
-                      <tr>
-                        <td>Plugins</td>
-                        <td class="text-center">4</td>
-                        <td class="text-center">13</td>
-                      </tr>
-                      <tr>
-                        <td>Example Pages</td>
-                        <td class="text-center">7</td>
-                        <td class="text-center">27</td>
-                      </tr>
-                      <tr>
-                        <td>Login, Register, Pricing, Lock Pages</td>
-                        <td class="text-center"><i class="nc-icon nc-simple-remove text-danger"></i></td>
-                        <td class="text-center"><i class="nc-icon nc-check-2 text-success"></i></td>
-                      </tr>
-                      <tr>
-                        <td>DataTables, VectorMap, SweetAlert, Wizard, jQueryValidation, FullCalendar etc...</td>
-                        <td class="text-center"><i class="nc-icon nc-simple-remove text-danger"></i></td>
-                        <td class="text-center"><i class="nc-icon nc-check-2 text-success"></i></td>
-                      </tr>
-                      <tr>
-                        <td>Mini Sidebar</td>
-                        <td class="text-center"><i class="nc-icon nc-simple-remove text-danger"></i></td>
-                        <td class="text-center"><i class="nc-icon nc-check-2 text-success"></i></td>
-                      </tr>
-                      <tr>
-                        <td>Premium Support</td>
-                        <td class="text-center"><i class="nc-icon nc-simple-remove text-danger"></i></td>
-                        <td class="text-center"><i class="nc-icon nc-check-2 text-success"></i></td>
-                      </tr>
-                      <tr>
-                        <td></td>
-                        <td class="text-center">Free</td>
-                        <td class="text-center">Just $39</td>
-                      </tr>
-                      <tr>
-                        <td class="text-center"></td>
-                        <td class="text-center">
-                          <a href="#" class="btn btn-round btn-default disabled">Current Version</a>
-                        </td>
-                        <td class="text-center">
-                          <a target="_blank" href="https://www.creative-tim.com/product/paper-dashboard-2-pro?ref=pd-free-upgrade-live" class="btn btn-round btn-primary">Upgrade to PRO</a>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+                <form th:action="insertReply" method="post">
+                  <div class="row">
+                    <div class="col-md-5 pr-1">
+                      <div class="form-group">
+                        <label>Writer</label>
+                        <input type="text" class="form-control" disabled="" placeholder="Company" value="우리티콘 관리자">
+                        <input th:type="hidden" th:name="qcode" th:value="${Qna.qcode}" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Content</label>
+                        <input class="form-control" disabled="" th:value="${Qna.ncontent}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row" style="height:150px">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Content</label>
+                        <textarea  class="form-control textarea"  placeholder="내용을 입력해주세요" th:name="ccontent"></textarea>
+                      </div>
+                    </div>
+					</div>
+                  <div class="row">
+                    <div class="update ml-auto mr-auto">
+                      <button th:type="submit" class="btn btn-primary btn-round">Write</button>
+                      <a href="./notice" type="button" style="background-color:red;" class="btn btn-primary btn-round">Cancel</a>
+                    </div>
+                  </div>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
@@ -270,7 +242,6 @@ Coded by www.creative-tim.com
         </div>
       </footer>
     </div>
-  </div>
   <!--   Core JS Files   -->
   <script src="../assets/js/core/jquery.min.js"></script>
   <script src="../assets/js/core/popper.min.js"></script>

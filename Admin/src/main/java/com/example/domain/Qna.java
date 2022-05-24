@@ -1,0 +1,31 @@
+package com.example.domain;
+
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import lombok.Data;
+
+
+@Data
+@Entity
+public class Qna {
+
+		@Id
+		@GeneratedValue(strategy = GenerationType.IDENTITY)
+		private Integer qcode;
+		private String nid;
+		private String ntitle;
+		private String ncontent;
+		
+		@Column(insertable = false, updatable = false, columnDefinition = "date default sysdate()")
+		@Temporal(TemporalType.DATE)
+		private Date ndate;
+		
+}

@@ -36,7 +36,7 @@ Coded by www.creative-tim.com
 <!-- CSS Files -->
 <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
 <link href="../assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
-<link href="../assets/css/paper-customer.css?v=2.0.1" rel="stylesheet" />
+<link href="../assets/css/paper-seller.css?v=2.0.1" rel="stylesheet" />
 <!-- CSS Just for demo purpose, don't include it in your project -->
 <link href="../assets/demo/demo.css" rel="stylesheet" />
 </head>
@@ -124,9 +124,10 @@ Coded by www.creative-tim.com
 							<div class="input-group no-border">
 								<select class="selectbox">
 									<option>선택하세요.</option>
-									<option>사업자id</option>
-									<option>사용자이름</option>
-									<option>가입일자</option>
+									<option>판매자id</option>
+									<option>판매자이름</option>
+									<option>업체명</option>
+									<option>사업자번호</option>
 								</select> <input type="text" value="" class="form-control"
 									placeholder="Search...">
 								<div class="input-group-append">
@@ -174,27 +175,30 @@ Coded by www.creative-tim.com
 					<div class="col-md-12">
 						<div class="card demo-icons">
 							<div class="card-header">
-								<h5 class="card-title">고객관리</h5>
+								<h5 class="card-title">판매자관리</h5>
 							</div>
 							<hr/>
 							<div class="card-body">
 								<table class="table table-hover">
 									<thead style="background-color: #F6F6F6;">
 										<tr>
-											<th>사용자ID</th>
-											<th>사용자이름</th>
+											<th>판매자ID</th>
+											<th>판매자이름</th>
 											<th>생년월일</th>
 											<th>가입일자</th>
+											<th>사업자번호</th>
 											<th>상세보기</th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr th:each="noid: ${normalId}">
-											<td th:text="${noid.nid}"></td>
-											<td th:text="${noid.nname}"></td>
-											<td th:text="${noid.nbirth}"></td>
-											<td th:text="${noid.nsubscribe}"></td>
-											<td><a type="button" th:href="@{/customerdetail(nid=${noid.nid})}"
+										<tr th:each="qna: ${qnaList}">
+											<td th:text="${qna.qcode}"></td>
+											<td th:text="${qna.ntitle}"></td>
+											<td th:text="${qna.ncontent}"></td>
+											<td th:text="${qna.nid}"></td>
+											<td th:text="${qna.nid}"></td>
+											<td><a type="button"
+												th:href="@{/qnareply(qcode=${qna.qcode})}"
 												style="position: right;" class="btn btn-primary"
 												th:text="상세보기"></a></td>
 										</tr>
