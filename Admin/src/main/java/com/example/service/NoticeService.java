@@ -14,7 +14,7 @@ public interface NoticeService {
 	
 	// 공지사항 상세조회
 	Notice getNotice(Notice vo);
-	
+	   
 	// 공지사항 수정
 	void updateNotice(Notice vo);
 }
