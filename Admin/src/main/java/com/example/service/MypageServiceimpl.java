@@ -25,7 +25,7 @@ public class MypageServiceimpl implements MypageService{
 	
 	
 	//<마이페이지 메인>
-	//이름가져오기
+	//이름가져오기 
 	@Override
 	public Normalid getname(Normalid no) {
 		logger.info("getnid service");
