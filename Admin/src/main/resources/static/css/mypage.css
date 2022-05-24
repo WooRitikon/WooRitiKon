@@ -1,0 +1,21 @@
+.mypagePText{
+	 font-weight: bold;
+	 font-size: x-large;
+	 color: #B50000;
+}
+
+#nnameText{
+	font-weight: bold;
+	font-size: x-large;
+}
+
+#productText{
+	font-weight: bold;
+	font-size: large;
+	color: black;
+}
+
+#mypageSearchbtn {
+	width: 23px;
+	height: auto;
+}
