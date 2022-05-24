@@ -256,3 +256,4 @@ target/m2e-wtp/web-resources/META-INF/maven/com.javassem/basic/pom.properties
 # 나뭇잎 안들어감
 src/main/resources/application.properties
 WooRitiKon/src/main/resources/application.properties
+*.properties
