@@ -1,0 +1,37 @@
+table th {
+  background-color: antiquewhite;
+}
+
+.card-body {
+	text-align: center; 
+}
+
+
+.customer-table1 {
+  width:100%
+}
+
+.card-title {
+  font-weight: bold;
+  margin : 20px 0px 20px 50px;
+}
+
+.main-panel {
+  height: 100%;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+}
+
+.insert-banner, button {
+	border: 0;
+	outline-color: 0;
+	margin : 20px;
+	background-color: antiquewhite;
+}
+
+.card {
+	height: 700px;
+}

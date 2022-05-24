@@ -1,3 +1,4 @@
+
 <!--
 =========================================================
 * Paper Dashboard 2 - v2.0.1
@@ -18,11 +19,10 @@ Coded by www.creative-tim.com
 <head>
 <meta charset="utf-8" />
 <link rel="apple-touch-icon" sizes="76x76"
-	href="../assets/img/apple-icon.png" />
-<link rel="icon" type="image/png"
-	href="../static/assets/img/favicon.png" />
+	href="../assets/img/apple-icon.png">
+<link rel="icon" type="image/png" href="../assets/img/favicon.png">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<title>Wooriticon</title>
+<title>Paper Dashboard 2 by Creative Tim</title>
 <meta
 	content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
 	name='viewport' />
@@ -32,11 +32,12 @@ Coded by www.creative-tim.com
 	rel="stylesheet" />
 <link
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"
-	rel="stylesheet" />
+	rel="stylesheet">
 <!-- CSS Files -->
 <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
 <link href="../assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
-<link href="../assets/css/paper-customer.css?v=2.0.1" rel="stylesheet" />
+<link href="../assets/css/paper-sellerdetail.css?v=2.0.1"
+	rel="stylesheet" />
 <!-- CSS Just for demo purpose, don't include it in your project -->
 <link href="../assets/demo/demo.css" rel="stylesheet" />
 </head>
@@ -61,7 +62,7 @@ Coded by www.creative-tim.com
 							class="nc-icon nc-chart-bar-32"></i>
 							<p>Dashboard</p>
 					</a></li>
-					<li><a th:href="@{./customer}"> <i
+					<li><a href="./customer.html"> <i
 							class="nc-icon nc-single-02"></i>
 							<p>Customer</p>
 					</a></li>
@@ -80,12 +81,10 @@ Coded by www.creative-tim.com
 							class="nc-icon nc-tile-56"></i>
 							<p>Category</p>
 					</a></li>
-					<li><a th:href="@{./getQnaList}"> <i
-							class="nc-icon nc-chat-33"></i>
+					<li><a th:href="@{./getQnaList}"> <i class="nc-icon nc-chat-33"></i>
 							<p>QnA</p>
 					</a></li>
-					<li><a th:href="@{./getNoticeList}"> <i
-							class="nc-icon nc-paper"></i>
+					<li><a th:href="@{./getNoticeList}"> <i class="nc-icon nc-paper"></i>
 							<p>Notice</p>
 					</a></li>
 					<li class="active-pro"><a href="./upgrade.html"> <i
@@ -108,8 +107,7 @@ Coded by www.creative-tim.com
 									class="navbar-toggler-bar bar3"></span>
 							</button>
 						</div>
-						<a class="navbar-brand" th:href="@{./customer}">CUSTOMER</a> <a
-							class="navbar-brand" href="./seller.html">SELLER</a>
+						<a class="navbar-brand" href="javascript:;">SELLER DETAIL</a>
 					</div>
 					<button class="navbar-toggler" type="button" data-toggle="collapse"
 						data-target="#navigation" aria-controls="navigation-index"
@@ -122,12 +120,7 @@ Coded by www.creative-tim.com
 						id="navigation">
 						<form>
 							<div class="input-group no-border">
-								<select class="selectbox">
-									<option>선택하세요.</option>
-									<option>사업자id</option>
-									<option>사용자이름</option>
-									<option>가입일자</option>
-								</select> <input type="text" value="" class="form-control"
+								<input type="text" value="" class="form-control"
 									placeholder="Search...">
 								<div class="input-group-append">
 									<div class="input-group-text">
@@ -172,34 +165,75 @@ Coded by www.creative-tim.com
 			<div class="content">
 				<div class="row">
 					<div class="col-md-12">
-						<div class="card demo-icons">
+						<div class="card">
 							<div class="card-header">
-								<h5 class="card-title">고객관리</h5>
+								<h5 class="card-title">판매자 상세보기</h5>
+								<button class="delete-button"><a href="./seller.html">돌아가기</a></button>
+							</div>
+							<hr />
+							<div class="flex-container">
+								<div class="item">
+									<div>로그인ID :</div>
+									<div>이름 :</div>
+									<div>전화번호 :</div>
+									<div>판매자주소 :</div>
+									<div>이메일 :</div>
+								</div>
+								<div class="item">
+									<div>id 테스트</div>
+									<div>이름 테스트</div>
+									<div>전화번호 테스트</div>
+									<div>판매자주소 테스트</div>
+									<div>이메일 테스트</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-header">
+								<h5 class="card-title">업체 정보</h5>
+							</div>
+							<hr/>
+							<div class="flex-container">
+								<div class="item">
+									<div>사업자 번호 :</div>
+									<div>업체명 :</div>
+									<div>업체 주소 :</div>
+								</div>
+								<div class="item">
+									<div>사업자번호 테스트</div>
+									<div>업체명 테스트</div>
+									<div>업체주소 테스트</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-header">
+								<h5 class="card-title">판매물건 정보</h5>
 							</div>
 							<hr/>
 							<div class="card-body">
-								<table class="table table-hover">
-									<thead style="background-color: #F6F6F6;">
-										<tr>
-											<th>사용자ID</th>
-											<th>사용자이름</th>
-											<th>생년월일</th>
-											<th>가입일자</th>
-											<th>상세보기</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr th:each="noid: ${normalId}">
-											<td th:text="${noid.nid}"></td>
-											<td th:text="${noid.nname}"></td>
-											<td th:text="${noid.nbirth}"></td>
-											<td th:text="${noid.nsubscribe}"></td>
-											<td><a type="button" th:href="@{/customerdetail(nid=${noid.nid})}"
-												style="position: right;" class="btn btn-primary"
-												th:text="상세보기"></a></td>
-										</tr>
-									</tbody>
-								</table>
+								<div class="table-responsive">
+									<table class="table">
+										<thead class=" text-primary">
+											<th>상품명</th>
+											<th>상품가격</th>
+											<th>상품기한</th>
+											<th>상품 카테고리</th>
+										</thead>
+										<tbody>
+											<tr>
+												<td>상품명 테스트</td>
+												<td>상품가격 테스트</td>
+												<td>상품기한 테스트</td>
+												<td>카테고리 테스트</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -246,54 +280,6 @@ Coded by www.creative-tim.com
 		type="text/javascript"></script>
 	<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
 	<script src="../assets/demo/demo.js"></script>
-	<script>
-		function SelectText(element) {
-			var doc = document, text = element, range, selection;
-			if (doc.body.createTextRange) {
-				range = document.body.createTextRange();
-				range.moveToElementText(text);
-				range.select();
-			} else if (window.getSelection) {
-				selection = window.getSelection();
-				range = document.createRange();
-				range.selectNodeContents(text);
-				selection.removeAllRanges();
-				selection.addRange(range);
-			}
-		}
-		window.onload = function() {
-			var iconsWrapper = document.getElementById('icons-wrapper'), listItems = iconsWrapper
-					.getElementsByTagName('li');
-			for (var i = 0; i < listItems.length; i++) {
-				listItems[i].onclick = function fun(event) {
-					var selectedTagName = event.target.tagName.toLowerCase();
-					if (selectedTagName == 'p' || selectedTagName == 'em') {
-						SelectText(event.target);
-					} else if (selectedTagName == 'input') {
-						event.target.setSelectionRange(0,
-								event.target.value.length);
-					}
-				}
-
-				var beforeContentChar = window.getComputedStyle(
-						listItems[i].getElementsByTagName('i')[0], '::before')
-						.getPropertyValue('content').replace(/'/g, "").replace(
-								/"/g, ""), beforeContent = beforeContentChar
-						.charCodeAt(0).toString(16);
-				var beforeContentElement = document.createElement("em");
-				beforeContentElement.textContent = "\\" + beforeContent;
-				listItems[i].appendChild(beforeContentElement);
-
-				//create input element to copy/paste chart
-				var charCharac = document.createElement('input');
-				charCharac.setAttribute('type', 'text');
-				charCharac.setAttribute('maxlength', '1');
-				charCharac.setAttribute('readonly', 'true');
-				charCharac.setAttribute('value', beforeContentChar);
-				listItems[i].appendChild(charCharac);
-			}
-		}
-	</script>
 </body>
 
 </html>

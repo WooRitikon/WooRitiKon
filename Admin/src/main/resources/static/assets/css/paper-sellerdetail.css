@@ -1,0 +1,66 @@
+table th {
+  background-color: antiquewhite;
+  color:black;
+}
+
+.card-body {
+	text-align: center; 
+}
+
+.customer-table1 {
+  width:100%;
+}
+
+.card-title {
+  font-weight: bold;
+  margin : 20px 0px 20px 50px;
+}
+
+.main-panel {
+  height: auto;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+}
+
+
+.card-header {
+	display:flex;
+	justify-content: space-between;
+}
+
+.flex-container{
+	display: flex;
+	width:80%;
+	margin-left: 50px;
+}
+
+.item {
+	margin:20px;
+	font-weight: bold;
+	font-size:	medium;
+}
+
+.item > div {
+	margin-top:10px;
+}
+
+a {
+ color:black;
+}
+
+.delete-button {
+	border: 0;
+	outline-color: 0;
+	margin : 20px;
+	margin-left:50px;
+	background-color : #51cbce;
+	border-radius: 5px;
+	
+}
+
+.card {
+	width: 80%;
+}
