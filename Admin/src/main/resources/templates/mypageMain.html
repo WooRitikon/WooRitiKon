@@ -71,12 +71,12 @@
 							<li class="active"><a href="./index.html">Home</a></li>
 							<li><a href="#">about</a></li>
 							<li><a href="#">shop</a></li>
-							<li><a th:href="@{/mypageMain(nid=1)}">my page</a>
+							<li><a th:href="@{/mypageMain(nid=goo123)}">my page</a>
 								<ul class="dropdown">
 									<li><a th:href="@{/mypageShoppingList}">my 주문조회</a></li>
-									<li><a href="./shop-cart.html">my 위시리스트</a></li>
-									<li><a href="./checkout.html">my 선물함</a></li>
-									<li><a href="./blog-details.html">my 정보</a></li>
+									<li><a th:href="@{/mypageBasketList}">my 위시리스트</a></li>
+									<li><a th:href="@{/mypageGetGift}">my 선물함</a></li>
+									<li><a th:href="@{/mypageInfo}">my 정보</a></li>
 									<li><a href="./blog-details.html">my Q&A</a></li>
 								</ul></li>
 							<li><a href="#">my shop</a>
@@ -147,9 +147,9 @@
 											data-parent="#accordionExample">
 											<div class="card-body">
 												<ul>
-													<li><a th:href="@{/mypageShoppingList}">my 기프티콘 조회</a></li>
-													<li><a href="#">my 포인트 조회</a></li>
-													<li><a href="#">my 구매 내역</a></li>
+													<li><a th:href="@{/mypageShoppingList(nid=1)}">my 기프티콘 조회</a></li>
+													<li><a th:href="@{/mypagePointSet}">my 포인트 조회</a></li>
+													<li><a th:href="@{/mypageShoppingAllList}">my 구매 내역</a></li>
 													<li><a href="#">기프티콘 구매취소</a></li>
 												</ul>
 											</div>
@@ -164,38 +164,36 @@
 											data-parent="#accordionExample">
 											<div class="card-body">
 												<ul>
-													<li><a href="#">my 장바구니</a></li>
-													<li><a href="#">my 찜한가게</a></li>
+													<li><a th:href="@{/mypageBasketList}">my 장바구니</a></li>
+													<li><a th:href="@{/mypageHeartList}">my 찜한가게</a></li>
 												</ul>
 											</div>
 										</div>
 									</div>
 									<div class="card">
 										<div class="card-heading">
-											<a data-toggle="collapse" data-target="#collapseThree">my
-												선물함</a>
+											<a data-toggle="collapse" data-target="#collapseThree">my 선물함</a>
 										</div>
 										<div id="collapseThree" class="collapse"
 											data-parent="#accordionExample">
 											<div class="card-body">
 												<ul>
-													<li><a href="#">받은 선물함</a></li>
-													<li><a href="#">보낸 선물함</a></li>
+													<li><a th:href="@{/mypageGetGift}">받은 선물함</a></li>
+													<li><a th:href="@{/mypageSendGift}">보낸 선물함</a></li>
 												</ul>
 											</div>
 										</div>
 									</div>
 									<div class="card">
 										<div class="card-heading">
-											<a data-toggle="collapse" data-target="#collapseFour">my
-												정보</a>
+											<a data-toggle="collapse" data-target="#collapseFour">my 정보</a>
 										</div>
 										<div id="collapseFour" class="collapse"
 											data-parent="#accordionExample">
 											<div class="card-body">
 												<ul>
-													<li><a href="#">my 정보 조회</a></li>
-													<li><a href="#">회원탈퇴</a></li>
+													<li><a th:href="@{/mypageInfo}">my 정보 조회</a></li>
+													<li><a th:href="@{/mypageInfoCancel}">회원탈퇴</a></li>
 												</ul>
 											</div>
 										</div>
@@ -225,7 +223,7 @@
 								<div class="categories__text">
 									<h4>보유 기프티콘</h4>
 									<p class="mypagePText">6개</p>
-									<a href="#">내 기프티콘 보러가기</a>
+									<a th:href="@{/mypageShoppingList}">내 기프티콘 보러가기</a>
 								</div>
 							</div>
 						</div>
@@ -236,7 +234,7 @@
 									<h4>보유 포인트</h4>
 									<p class="mypagePText">
 									<label th:text="${normalid.ncharge}" class="mypagePText"/>원</p>
-									<a href="#">내 포인트 보러가기</a>
+									<a th:href="@{/mypagePointSet}">내 포인트 보러가기</a>
 								</div>
 							</div>
 						</div>
