@@ -10,11 +10,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.domain.Normalid;
+import com.example.domain.Product;
 import com.example.domain.Qna;
 import com.example.domain.Qnacomment;
+import com.example.domain.Sellerid;
 import com.example.service.CustomerService;
+import com.example.service.ProductService;
 import com.example.service.QnaService;
 import com.example.service.QnacommentService;
+import com.example.service.SellerService;
 
 @Controller
 //@RequestMapping("/admin")
@@ -28,6 +32,10 @@ public class Admin1Controller {
 	private QnacommentService qnacommentService;
 	@Autowired
 	private CustomerService customerService;
+	@Autowired
+	private SellerService sellerService;
+	@Autowired
+	private ProductService productService;
 	//다음페이지
 //	@RequestMapping("/{step}")
 //	public void viewPage(@PathVariable String step) {
@@ -85,13 +93,41 @@ public class Admin1Controller {
 	}
 	
 	//고객 상세 보기
-	@RequestMapping("customerdetail")
+	@RequestMapping("/customerdetail")
 	public void customerdetail(Normalid id,Model m) {
 		logger.info("고객 상세보기");
-		Normalid id1 = customerService.customerdetail(id);
-		m.addAttribute("cdetail", id1);
+		Normalid nidd = customerService.customerdetail(id);
+		m.addAttribute("cdetail", nidd);
 
 	}
 	
+	//판매자 전체보기 리스트
+	@RequestMapping("/seller")
+	public void getSellerList(Model m) {
+		logger.info("판매자 전체보기");
+		Sellerid sid = new Sellerid();
+		List<Sellerid> list = sellerService.getSellerList(sid);
+		m.addAttribute("sellerList", list);
+		
+	}
+	
+	//판매자 상세보기
+	@RequestMapping("/sellerdetail")
+	public void sellerdetail(Sellerid sid,Model m) {
+		logger.info("판매자 상세보기");
+		Sellerid sidd = sellerService.sellerdetail(sid);
+		m.addAttribute("sdetail", sidd);
+		
+	}
+	
+	//상품 전체 리스트
+	@RequestMapping("/product")
+	public void getProductList(Product pd,Model m) {
+		logger.info("상품 전체보기");
+		List<Product> list = productService.getProductList(pd);
+		m.addAttribute("pdList", list);
+	}
+	
+
 }
 
