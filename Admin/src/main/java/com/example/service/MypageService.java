@@ -14,4 +14,12 @@ public interface MypageService {
 	//<주문조회>
 	//기프티콘 목록 조회
 	List<Product> getProductList(Product pr);
+	
+	//기프티콘 상세보기
+	Product getProductSet(Product pr);
+	
+	
+	//<포인트 조회>
+	//포인트 금액 조회하기
+	//Normalid getPointSet(Normalid no);
 }

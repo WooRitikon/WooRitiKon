@@ -7,7 +7,7 @@
     <meta name="keywords" content="Ashion, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>mypageShoppingList</title>
+    <title>mypageInfoUpload</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
@@ -213,39 +213,76 @@
 				</div>
                       
                 <div class="col-lg-9 col-md-9">
-                 <div>
-                    <h5>사용 가능한 기프티콘 조회</h5><br/><br/>
-                  </div>
-                    <div class="row">
-                        <div class="col-lg-4 col-md-6" th:each="list : ${productList}">
-                            <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="img/shop/shop-1.jpg">
-                                </div>
-                                <div class="product__item__text">
-                                    <h6 id="productText"><label th:text="${list.pname}"></h6>
-                                    <div class="rating">
-                                        <h7>기간<label th:text="${list.pgiftstart}">~<label th:text="${list.pgiftend}"></h7>
-                                    </div>
-                                    <div class="product__price">
-                                     <a th:href="@{/mypageShoppingSet(pcode=${list.pcode})}" type="button" style="background-color: white; border: none;">
-								<img alt="submit" src="img/searchIcon.png" id="mypageSearchbtn">
-								<b style="color: #B50000;">조회</b>
-								</a>
-								</div>
+            <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h6 class="coupon__link"><b Style="font-size:25px;">짱구</b> 님의 회원정보입니다</h6>
+                </div>
+            </div>
+            <form action="#" class="checkout__form">	
+                        <h5>회원정보 &nbsp; 
+                       <a href="#" id="infoBtn" style="margin:none;">수정사항 저장</a>
+                        </h5>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="checkout__form__input">
+                                    <p><b>아이디 <span>*</span></b></p>
+                                	<p>goo123</p>
                                 </div>
                             </div>
-                        </div>
-                     </div>
-                  </div>
-                        <div class="col-lg-12 text-center">
-                            <div class="pagination__option">
-                                <a href="#">1</a>
-                                <a href="#">2</a>
-                                <a href="#">3</a>
-                                <a href="#"><i class="fa fa-angle-right"></i></a>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="checkout__form__input">
+                                    <p><b>비밀번호 <span>*</span></b></p>
+                                    <p>*************&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+                                    <a th:href="@{/mypageInfoPass}" id="infoBtn">비밀번호 변경</a>
+                                    </p>
+                                    <br/>
+                                </div>
                             </div>
-                        </div>
-                   
+                             <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="checkout__form__input">
+                                    <p><b>이름 <span>*</span></b></p>
+                                    <p>신짱구</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="checkout__form__input">
+                                    <p><b>전화번호 <span>*</span></b></p>
+                                    <input type="text" value="010-1111-1111"/>
+                                    <br/>
+                                </div>
+                            </div>
+                               <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="checkout__form__input">
+                                    <p><b>이름 <span>*</span></b></p>
+                                    <p>신짱구</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="checkout__form__input">
+                                    <p><b>성별 <span>*</span></b></p>
+                                    <p>남자</p>
+                                    <br/>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="checkout__form__input">
+                                    <p><b>생년월일<span>*</span></b></p>
+                                    <p>04.06.15</p><br/>
+                                </div>
+                                <div class="checkout__form__input">
+                                    <p><b>주소 <span>*</span></b></p>
+                                  	<input type="text" value="(123-12)인천광역시 부평구 부영로 120 대림아파트 8동 801호"/>
+                                </div>
+                                <div class="checkout__form__input">
+                                    <p><b>가입일자 <span>*</span></b></p>
+                                    <p> 2021.10.19</p> <br/><br/>
+                                </div>
+                            </div>
+                    </div>
+                </form>
+            </div>
+                  </div>
                     </div>
                 </div>
                 

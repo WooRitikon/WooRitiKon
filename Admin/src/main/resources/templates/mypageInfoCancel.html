@@ -7,7 +7,7 @@
     <meta name="keywords" content="Ashion, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>mypageShoppingList</title>
+    <title>mypageInfoCancel</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
@@ -213,39 +213,52 @@
 				</div>
                       
                 <div class="col-lg-9 col-md-9">
-                 <div>
-                    <h5>사용 가능한 기프티콘 조회</h5><br/><br/>
-                  </div>
-                    <div class="row">
-                        <div class="col-lg-4 col-md-6" th:each="list : ${productList}">
-                            <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="img/shop/shop-1.jpg">
-                                </div>
-                                <div class="product__item__text">
-                                    <h6 id="productText"><label th:text="${list.pname}"></h6>
-                                    <div class="rating">
-                                        <h7>기간<label th:text="${list.pgiftstart}">~<label th:text="${list.pgiftend}"></h7>
-                                    </div>
-                                    <div class="product__price">
-                                     <a th:href="@{/mypageShoppingSet(pcode=${list.pcode})}" type="button" style="background-color: white; border: none;">
-								<img alt="submit" src="img/searchIcon.png" id="mypageSearchbtn">
-								<b style="color: #B50000;">조회</b>
-								</a>
-								</div>
+            <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h6 class="coupon__link"><b Style="font-size:25px;">짱구</b> 님의 회원탈퇴입니다</h6>
+                </div>
+            </div>
+            <form action="#" class="checkout__form">	
+                        <h5>회원탈퇴</h5>
+                            <div class="col-lg-12">
+                                <div class="checkout__form__input">
+                                    <p><br/>
+                                    <b>회원탈퇴를 위해 비밀번호를 입력해주세요<span>*</span></b>
+                                    </p>
+                                    <p>
+                                   	<input type="text" style="width: 280px;"/>&nbsp;&nbsp;
+                                   	<a th:href="@{/mypageInfoPassCommit}" id="infoBtn" style="margin:none;">회원탈퇴</a>
+                               		</p>
+                               		<br/>
+                               		<h6><b>회원 탈퇴 규정</b></h6><br/>
+                               		<p><b>개인정보 보호법</b><br/>
+                               		 제39조의5(개인정보의 보호조치에 대한 특례)<br/>
+                               		  정보통신서비스 제공자 등은 이용자의 개인정보를 처리하는 자를 최소한으로 제한하여야 한다. [본조 신설 2020. 2. 4.]<br/>
+                               		 <br/> 
+                               		 제39조의6(개인정보의 파기에 대한 특례)<br/>
+                               		  ① 정보통신서비스 제공자등은 정보통신서비스를 1년의 기간 동안 이용하지 아니하는 이용자의 개인정보를 보호하기 위하여 대통령령으로 정하는 바에 따라 개인정보의 파기 등 필요한 조치를 취하여야 한다. 다만, 그 기간에 대하여 다른 법령 또는 이용자의 요청에 따라 달리 정한 경우에는 그에 따른다.<br/>
+                               		 ② 정보통신서비스 제공자등은 제1항의 기간 만료 30일 전까지 개인정보가 파기되는 사실, 기간 만료일 및 파기되는 개인정보의 항목 등 대통령령으로 정하는 사항을 전자우편 등 대통령령으로 정하는 방법으로 이용자에게 알려야 한다. [본조 신설 2020. 2. 4.] 
+                               		 <br/>
+                               		 제39조의7(이용자의 권리 등에 대한 특례) <br/>
+                               		 ① 이용자는 정보통신서비스 제공자 등에 대하여 언제든지 개인정보 수집ㆍ이용ㆍ제공 등의 동의를 철회할 수 있다.<br/>
+                               		 ② 정보통신서비스 제공자등은 제1항에 따른 동의의 철회, 제35조에 따른 개인정보의 열람, 제36조에 따른 정정을 요구하는 방법을 개인정보의 수집 방법보다 쉽게 하여야 한다.<br/>
+                               		 ③ 정보통신서비스 제공자등은 제1항에 따라 동의를 철회하면 지체 없이 수집된 개인정보를 복구ㆍ재생할 수 없도록 파기하는 등 필요한 조치를 하여야 한다. [본조 신설 2020. 2. 4.]<br/>
+                               		 <br/>
+                               		 제36조(개인정보의 정정ㆍ삭제)<br/>
+                               		  ① 제35조에 따라 자신의 개인정보를 열람한 정보주체는 개인정보처리자에게 그 개인정보의 정정 또는 삭제를 요구할 수 있다. 다만, 다른 법령에서 그 개인정보가 수집 대상으로 명시되어 있는 경우에는 그 삭제를 요구할 수 없다.<br/>
+                               		  ② 개인정보처리자는 제1항에 따른 정보주체의 요구를 받았을 때에는 개인정보의 정정 또는 삭제에 관하여 다른 법령에 특별한 절차가 규정되어 있는 경우를 제외하고는 지체 없이 그 개인정보를 조사하여 정보주체의 요구에 따라 정정ㆍ삭제 등 필요한 조치를 한 후 그 결과를 정보주체에게 알려야 한다. 
+                               		 <br/>
+                               		 ③ 개인정보처리자가 제2항에 따라 개인정보를 삭제할 때에는 복구 또는 재생되지 아니하도록 조치하여야 한다. <br/>
+                               		 ④ 개인정보처리자는 정보주체의 요구가 제1항 단서에 해당될 때에는 지체 없이 그 내용을 정보주체에게 알려야 한다. <br/>
+                               		 ⑤ 개인정보처리자는 제2항에 따른 조사를 할 때 필요하면 해당 정보주체에게 정정ㆍ삭제 요구사항의 확인에 필요한 증거자료를 제출하게 할 수 있다. <br/>
+                               		 ⑥ 제1항ㆍ제2항 및 제4항에 따른 정정 또는 삭제 요구, 통지 방법 및 절차 등에 필요한 사항은 대통령령으로 정한다.
+									</p>
                                 </div>
                             </div>
-                        </div>
-                     </div>
+                </form>
+            </div>
                   </div>
-                        <div class="col-lg-12 text-center">
-                            <div class="pagination__option">
-                                <a href="#">1</a>
-                                <a href="#">2</a>
-                                <a href="#">3</a>
-                                <a href="#"><i class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                   
                     </div>
                 </div>
                 

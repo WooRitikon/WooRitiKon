@@ -19,3 +19,22 @@
 	width: 23px;
 	height: auto;
 }
+
+
+#discount__text {
+    background: #f4f4f4;
+    height: 282px;
+    padding: 75px 90px 50px;
+    text-align: center;
+}
+
+#infoBtn{
+display: inline-block;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 10px 15px 10px;
+    color: #ffffff;
+    background: #BC1717;
+    border-radius: 10px;
+}
