@@ -134,13 +134,11 @@ public class Admin1Controller {
 			hm.put("pprice", (Integer)obj[2]);
 			hm.put("sellerid",(String)obj[3]);
 			hm.put("pgiftstart",(String)obj[4]);
-			logger.info("실행실행");
 			list.add(hm);
 		}
 		
 		m.addAttribute("pdlist",list);
 		
-
 	}
 	
 	
