@@ -8,6 +8,6 @@ import com.example.domain.Sellerid;
 public interface ProductService {
 
 	//상품 전체보기 리스트
-	List<Product> getProductList(Product pd);
+	List<Object[]> getProduct(Product pd);
 
 }

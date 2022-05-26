@@ -27,6 +27,6 @@ public class Product {
 	
 	@ManyToOne
 	@JoinColumn(name="bcode")
-	private Sellerid sel;
+	private Sellerid sellerid;
 
 }

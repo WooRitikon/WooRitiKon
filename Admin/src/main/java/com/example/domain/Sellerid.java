@@ -15,7 +15,6 @@ import lombok.Data;
 public class Sellerid {
 
 	@Id
-	@Column(name="bcode")
 	private String bcode;
 	private Integer ccode;
 	private String sid;

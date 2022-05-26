@@ -191,14 +191,13 @@ Coded by www.creative-tim.com
 										</tr>
 									</thead>
 									<tbody>
-										<tr th:each="pdlist: ${pdList}">
+										<tr th:each="pd: ${pdlist}">
 											<td><input type="checkbox" /></td>
-											<td th:text="${pdlist.pcategory}">카테고리 테스트</td>
-											<td th:text="${pdlist.pname}">상품명 테스트</td>
-											<td th:text="${pdlist.pprice}">상품가격 테스트</td>
-											<td th:text="${pdlist.sid]">판매자id 테스트</td>
-											<td>사용기한 테스트</td>
-											<td th:text="${pdlist.pgiftstart}">등록일자 테스트</td>
+											<td th:text="${pd.pcategory}">카테고리 테스트</td>
+											<td th:text="${pd.pname}">상품명 테스트</td>
+											<td th:text="${pd.pprice}">상품가격 테스트</td>
+											<td th:text="${pd.sellerid}">판매자id 테스트</td>
+											<td th:text="${pd.pgiftstart}">등록일자 테스트</td>
 										</tr>
 									</tbody>
 								</table>
