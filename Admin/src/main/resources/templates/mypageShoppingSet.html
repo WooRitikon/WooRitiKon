@@ -7,7 +7,7 @@
     <meta name="keywords" content="Ashion, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>mypageShoppingList</title>
+    <title>mypageShoppingSet</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
@@ -157,8 +157,7 @@
 									</div>
 									<div class="card">
 										<div class="card-heading">
-											<a data-toggle="collapse" data-target="#collapseTwo">my
-												위시리스트</a>
+											<a data-toggle="collapse" data-target="#collapseTwo">my 위시리스트</a>
 										</div>
 										<div id="collapseTwo" class="collapse"
 											data-parent="#accordionExample">
@@ -213,43 +212,41 @@
 				</div>
                       
                 <div class="col-lg-9 col-md-9">
-                 <div>
-                    <h5>사용 가능한 기프티콘 조회</h5><br/><br/>
-                  </div>
-                    <div class="row">
-                        <div class="col-lg-4 col-md-6" th:each="list : ${productList}">
-                            <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="img/shop/shop-1.jpg">
-                                </div>
-                                <div class="product__item__text">
-                                    <h6 id="productText"><label th:text="${list.pname}"></h6>
-                                    <div class="rating">
-                                        <h7>기간<label th:text="${list.pgiftstart}">~<label th:text="${list.pgiftend}"></h7>
-                                    </div>
-                                    <div class="product__price">
-                                     <a th:href="@{/mypageShoppingSet(pcode=${list.pcode})}" type="button" style="background-color: white; border: none;">
-								<img alt="submit" src="img/searchIcon.png" id="mypageSearchbtn">
-								<b style="color: #B50000;">조회</b>
-								</a>
-								</div>
-                                </div>
+          <div class="container">
+          			<a th:href="@{/mypageShoppingList}">
+					<b style="font-size:25px; color:#890900;">← 뒤로 가기</b>
+					</a>
+						<br/><br/>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="product__details__pic">
+                        <div class="product__details__slider__content">
+                            <div class="product__details__pic__slider owl-carousel">
+                                <img data-hash="product-1" class="product__big__img" src="img/product/details/product-1.jpg" alt="">
                             </div>
                         </div>
-                     </div>
-                  </div>
-                        <div class="col-lg-12 text-center">
-                            <div class="pagination__option">
-                                <a href="#">1</a>
-                                <a href="#">2</a>
-                                <a href="#">3</a>
-                                <a href="#"><i class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                   
                     </div>
                 </div>
-                
-           	
+                <div class="col-lg-6">
+                      <div class="product__details__widget">
+                        <h4><label th:text="${product.pname}"/>
+                        <p><label th:text="${product.pgiftstart}"/>~<label th:text="${product.pgiftend}"/></p>
+                        </h4>
+                        <span>구매 금액 : <label th:text="${product.pprice}"/> 원</span><br/>
+                        <div class="product__details__price">잔여 개수 : 13개</div>
+                        <div class="product__details__widget">
+                        <p><label th:text="${product.pcontent}"/></p>
+                        </div>
+                        <div class="product__details__button">
+                          <a href="#" class="cart-btn"><span class="icon_bag_alt"></span>바코드</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>  
+                  </div>
+                 </div>
+                </div>
     </section>
     <!-- Shop Section End -->
 

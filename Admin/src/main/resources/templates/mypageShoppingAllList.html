@@ -7,7 +7,7 @@
     <meta name="keywords" content="Ashion, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>mypageShoppingList</title>
+    <title>mypageShoppingAllList</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
@@ -214,7 +214,7 @@
                       
                 <div class="col-lg-9 col-md-9">
                  <div>
-                    <h5>사용 가능한 기프티콘 조회</h5><br/><br/>
+                    <h5>전체 구매한 기프티콘 조회</h5><br/><br/>
                   </div>
                     <div class="row">
                         <div class="col-lg-4 col-md-6" th:each="list : ${productList}">
@@ -229,7 +229,7 @@
                                     <div class="product__price">
                                      <a th:href="@{/mypageShoppingSet(pcode=${list.pcode})}" type="button" style="background-color: white; border: none;">
 								<img alt="submit" src="img/searchIcon.png" id="mypageSearchbtn">
-								<b style="color: #B50000;">조회</b>
+								<b style="color: #B50000;">가가게보러가기→</b>
 								</a>
 								</div>
                                 </div>

@@ -25,7 +25,7 @@ public class MypageServiceimpl implements MypageService{
 	
 	
 	//<마이페이지 메인>
-	//이름가져오기
+	//이름가져오기 
 	@Override
 	public Normalid getname(Normalid no) {
 		logger.info("getnid service");
@@ -39,5 +39,17 @@ public class MypageServiceimpl implements MypageService{
 		return (List<Product>)mypageProductRepo.findAll();
 	}
 	
+	//기프티콘 상세조회
+	@Override
+	public Product getProductSet(Product pr) {
+		return mypageProductRepo.findById(pr.getPcode()).get();
+	}
 	
+	
+	//<포인트 조회>
+	//포인트 금액 조회
+	//@Override
+	//public Normalid getPointSet(Normalid no) {
+		//return mypageMainRepo.findById(no.getNid()).get();
+	//}
 }
