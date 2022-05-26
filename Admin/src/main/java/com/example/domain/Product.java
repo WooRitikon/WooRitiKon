@@ -4,6 +4,8 @@ import java.sql.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -13,7 +15,6 @@ public class Product {
 	
 	@Id
 	private Integer pcode;
-	private String bcode;
 	private Integer pprice;
 	private String pname;
 	private String pcategory;
@@ -23,5 +24,9 @@ public class Product {
 	private String senderid;
 	private String giftstate;
 	private String pcontent;
+	
+	@ManyToOne
+	@JoinColumn(name="bcode")
+	private Sellerid sellerid;
 
 }
