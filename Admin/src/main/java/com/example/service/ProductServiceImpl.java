@@ -20,4 +20,9 @@ public class ProductServiceImpl implements ProductService {
 		return (List<Object[]>)proRepo.getProductList();
 	}
 	
+	@Override
+	public void deleteProduct(Product pd) {
+		proRepo.delete(pd);
+	}
+	
 }

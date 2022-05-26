@@ -1,7 +1,6 @@
 package com.example.controller;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -13,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.domain.Normalid;
+import com.example.domain.Product;
 import com.example.domain.Qna;
 import com.example.domain.Qnacomment;
 import com.example.domain.Sellerid;
@@ -55,7 +55,7 @@ public class Admin1Controller {
 	//질문응답 삭제버튼 삭제
 	@RequestMapping("/deleteQna")
 	public String deleteQna(Qna q) {
-		logger.info("삭제");
+		logger.info("qna 삭제");
 		qnaService.deleteQna(q);
 		
 		return "redirect:/getQnaList";
@@ -139,6 +139,14 @@ public class Admin1Controller {
 		
 		m.addAttribute("pdlist",list);
 		
+	}
+	
+	@RequestMapping("/deleteProduct")
+	public String deleteProduct(Product pd) {
+		logger.info("상품 삭제");
+		productService.deleteProduct(pd);
+		
+		return "/product";
 	}
 	
 	

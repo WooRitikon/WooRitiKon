@@ -204,7 +204,7 @@ Coded by www.creative-tim.com
 							</div>
 							</div>
 							<div>
-								<button class="delete-button">삭제하기</button>
+								<a th:type="button" th:href="@{/deleteProduct(pcode=${pcode})}" style="position:right;" class="btn btn-primary" th:text="삭제" />
 							</div>
 						</div>
 					</div>

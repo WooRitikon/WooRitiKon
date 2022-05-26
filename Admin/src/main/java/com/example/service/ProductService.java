@@ -9,5 +9,8 @@ public interface ProductService {
 
 	//상품 전체보기 리스트
 	List<Object[]> getProduct(Product pd);
+	
+	//상품 삭제
+	void deleteProduct(Product pd);
 
 }
