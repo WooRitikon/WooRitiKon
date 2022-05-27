@@ -120,25 +120,32 @@ public class Admin1Controller {
 		
 	}
 	
-	//상품 전체 리스트
+//	//상품 전체 리스트
+//	@RequestMapping("/product")
+//	public void getProduct(Model m) {
+//		logger.info("상품 전체보기");
+//		List<HashMap> list = new ArrayList<HashMap>();
+//		List<Object[]> list1 = proRepo.getProductList();
+//		
+//		for(Object[] obj : list1) {
+//			HashMap hm = new HashMap();
+//			hm.put("pcategory", String.valueOf(obj[0]));
+//			hm.put("pname", (String)obj[1]);
+//			hm.put("pprice", (Integer)obj[2]);
+//			hm.put("sellerid",(String)obj[3]);
+//			hm.put("pcode", (int)obj[5]);
+//			list.add(hm);
+//		}
+//		
+//		m.addAttribute("pdlist",list);
+//		
+//	}
+	
 	@RequestMapping("/product")
-	public void getProduct(Model m) {
-		logger.info("상품 전체보기");
-		List<HashMap> list = new ArrayList<HashMap>();
-		List<Object[]> list1 = proRepo.getProductList();
-		
-		for(Object[] obj : list1) {
-			HashMap hm = new HashMap();
-			hm.put("pcategory", String.valueOf(obj[0]));
-			hm.put("pname", (String)obj[1]);
-			hm.put("pprice", (Integer)obj[2]);
-			hm.put("sellerid",(String)obj[3]);
-			hm.put("pgiftstart",(String)obj[4]);
-			list.add(hm);
-		}
-		
-		m.addAttribute("pdlist",list);
-		
+	public void getProductList(Product pd,Model m) {
+		logger.info("전체상품 가져오기");
+		List<Product> list = productService.getProductList(pd);
+		m.addAttribute("pdList",list);
 	}
 	
 	@RequestMapping("/deleteProduct")
@@ -146,7 +153,8 @@ public class Admin1Controller {
 		logger.info("상품 삭제");
 		productService.deleteProduct(pd);
 		
-		return "/product";
+		return "redirect:product";
+		
 	}
 	
 	

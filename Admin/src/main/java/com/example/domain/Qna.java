@@ -1,5 +1,6 @@
 package com.example.domain;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -9,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import lombok.Data;
 
@@ -24,8 +27,10 @@ public class Qna {
 		private String ntitle;
 		private String ncontent;
 		
-		@Column(insertable = false, updatable = false, columnDefinition = "date default sysdate()")
-		@Temporal(TemporalType.DATE)
-		private Date ndate;
+//		@Column(insertable = false, updatable = false, columnDefinition = "date default sysdate()")
+//		@Temporal(TemporalType.DATE)
+		@CreationTimestamp
+		private LocalDate ndate;
 		
 }
+	

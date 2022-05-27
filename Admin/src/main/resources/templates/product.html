@@ -186,25 +186,22 @@ Coded by www.creative-tim.com
 											<th>상품명</th>
 											<th>상품가격</th>
 											<th>판매자id</th>
-											<th>사용기한</th>
-											<th>등록일자</th>
+											<th>삭제</th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr th:each="pd: ${pdlist}">
+										<tr th:each="pd: ${pdList}">
 											<td><input type="checkbox" /></td>
 											<td th:text="${pd.pcategory}">카테고리 테스트</td>
 											<td th:text="${pd.pname}">상품명 테스트</td>
 											<td th:text="${pd.pprice}">상품가격 테스트</td>
-											<td th:text="${pd.sellerid}">판매자id 테스트</td>
-											<td th:text="${pd.pgiftstart}">등록일자 테스트</td>
+											<td th:text="${pd.sellerid.sid}">판매자id 테스트</td>
+											<!-- <td th:text="${pd.pgiftstart}">등록일자 테스트</td> -->
+											<td><a th:type="button" th:href="@{/deleteProduct(pcode=${pd.pcode})}" style="position:right;" class="btn btn-primary" th:text="삭제" /></td>
 										</tr>
 									</tbody>
 								</table>
 							</div>
-							</div>
-							<div>
-								<a th:type="button" th:href="@{/deleteProduct(pcode=${pcode})}" style="position:right;" class="btn btn-primary" th:text="삭제" />
 							</div>
 						</div>
 					</div>
