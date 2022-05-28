@@ -15,9 +15,16 @@ public class ProductServiceImpl implements ProductService {
 	@Autowired
 	ProductRepository proRepo;
 	
+	//상품 전체 리스트
 	@Override
-	public List<Object[]> getProduct(Product pd) {
-		return (List<Object[]>)proRepo.getProductList();
+	public List<Product> getProductList(Product pd) {
+		return (List<Product>)proRepo.findAll();
+	}
+	
+	//상품 삭제
+	@Override
+	public void deleteProduct(Product pd) {
+		proRepo.delete(pd);
 	}
 	
 }

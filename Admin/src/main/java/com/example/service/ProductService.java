@@ -8,6 +8,9 @@ import com.example.domain.Sellerid;
 public interface ProductService {
 
 	//상품 전체보기 리스트
-	List<Object[]> getProduct(Product pd);
+	List<Product> getProductList(Product pd);
+	
+	//상품 삭제
+	void deleteProduct(Product pd);
 
 }
