@@ -33,5 +33,11 @@ public class SellerServiceImpl implements SellerService{
 		return sellerRepo.findById(sid.getBcode()).get();
 	}
 
+	//판매자 가게 정보보기 (민지)
+	@Override
+	public Sellerid selectshopInfo(Sellerid sid) {
+		logger.info("판매자가게 정보보기");
+		return sellerRepo.findById(sid.getBcode()).get();
+	}
 
 }

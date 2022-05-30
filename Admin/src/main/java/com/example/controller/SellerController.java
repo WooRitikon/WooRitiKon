@@ -27,9 +27,9 @@ public class SellerController {
 	}
 	
 	@RequestMapping("/shopInfoMod")
-	public void getshopInfoMod(Sellerid vo, Model m) {
+	public void getshopInfoMod(Sellerid sid, Model m) {
 		logger.info("게시물 상세보기");
-		Sellerid vo1 = sellerService.selectshopInfo(vo);
+		Sellerid vo1 = sellerService.selectshopInfo(sid);
 		m.addAttribute("Seller",vo1);
 	}
 	
