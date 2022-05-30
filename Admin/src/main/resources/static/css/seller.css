@@ -1,0 +1,76 @@
+/* shopInfo */
+.shopmodify{
+	text-align:center;
+}
+#shopmodifyBtn{
+	background-color:#CD0000;
+	color: white;
+	margin-top: 10px;
+	border-radius: 12px;
+	width: 100px;
+	height: 40px;
+	border: none;
+	font-family: "Montserrat", sans-serif;
+}
+
+/* shopInfoMod */
+.shopmodComplete{
+	text-align:center;
+}
+#shopmodCompleteBtn {
+	background-color:#CD0000;
+	color: white;
+	margin-top: 10px;
+	margin-right:280px;
+	border-radius: 12px;
+	width: 100px;
+	height: 40px;
+	border: none;
+	font-family: "Montserrat", sans-serif;
+}
+
+/* shopReview */
+.reviewtable{
+	width: 100%;
+	border-top: 1px solid #444444;
+    border-collapse: collapse;
+}
+
+td{
+    border-bottom: 1px solid #444444;
+    padding: 10px;
+  }
+ 
+ .col-lg-9 col-md-9{
+ 	overflow: auto;
+ }
+ .col-lg-9 col-md-9::-webkit-scrollbar {
+    width: 10px;
+  }
+  .col-lg-9 col-md-9::-webkit-scrollbar-thumb {
+    background-color: #2f3542;
+    border-radius: 10px;
+    background-clip: padding-box;
+    border: 2px solid transparent;
+  }
+  .col-lg-9 col-md-9::-webkit-scrollbar-track {
+    background-color: grey;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+  }
+  
+  
+  /* shopProReg*/
+  .shopProReg {
+ 	text-align:center;
+  }
+  #shopProRegBtn {
+  	background-color:#CD0000;
+	color: white;
+	margin-top: 10px;
+	border-radius: 12px;
+	width: 100px;
+	height: 40px;
+	border: none;
+	font-family: "Montserrat", sans-serif;
+  }

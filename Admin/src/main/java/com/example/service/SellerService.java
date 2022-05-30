@@ -2,6 +2,8 @@ package com.example.service;
 
 import java.util.List;
 
+import com.example.domain.Product;
+import com.example.domain.Review;
 import com.example.domain.Sellerid;
 
 public interface SellerService {
@@ -14,7 +16,14 @@ public interface SellerService {
 
 	//판매자 가게 정보보기
 	Sellerid selectshopInfo(Sellerid sid);
-	
 
+	//가게 상품 조회하기
+	List<Product> getProList(Product pr);
+	
+	//가게 상품 등록하기
+	void insertPro(Product pr);
+	
+	//가게 리뷰 조회하기
+	List<Review> getReviewList(Review re);
 
 }
