@@ -49,9 +49,10 @@
 			<a href="./index.html"><img src="img/logo.png" alt=""></a>
 		</div>
 		<div id="mobile-menu-wrap"></div>
-		<div class="offcanvas__auth">
-			<a href="#">Login</a> <a href="#">Register</a>
-		</div>
+		
+		<!-- <div class="offcanvas__auth">
+			<a th:text="${id.nid}"></a>
+		</div>-->
 	</div>
 	<!-- Offcanvas Menu End -->
 
@@ -75,7 +76,7 @@
 									<li><a th:href="@{/mypageShoppingList}">my 주문조회</a></li>
 									<li><a th:href="@{/mypageBasketList}">my 위시리스트</a></li>
 									<li><a th:href="@{/mypageGetGift}">my 선물함</a></li>
-									<li><a th:href="@{/mypageInfo(nid=goo123)}">my 정보</a></li>
+									<li><a th:href="@{/mypageInfo}">my 정보</a></li>
 									<li><a href="./blog-details.html">my Q&A</a></li>
 								</ul></li>
 							<li><a href="#">my shop</a>

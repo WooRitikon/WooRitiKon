@@ -21,9 +21,9 @@ public class MypageController {
 	@Autowired
 	private MypageService mypageService;
 	
-	@RequestMapping("/test")
-	public void test() {
-	}
+//	@RequestMapping("/test")
+//	public void test() {
+//	}
 	//<마이페이지 메인>
 		//이름 가져오기
 		@RequestMapping("/mypageMain")
