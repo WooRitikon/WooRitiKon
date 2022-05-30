@@ -1,8 +1,7 @@
 package com.example.service;
 
-import org.springframework.transaction.annotation.Transactional;
-
 import com.example.domain.Normalid;
+import com.example.domain.Sellerid;
 
 public interface GifticonService {
 	
@@ -13,6 +12,8 @@ public interface GifticonService {
 	
 	
 	public Normalid nloginCheck(Normalid vo);
+	
+	public Sellerid sloginCheck(Sellerid vo);
 	
 
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.domain.Normalid;
+import com.example.domain.Sellerid;
 import com.example.service.GifticonService;
 
 @Controller
@@ -29,7 +30,13 @@ public class GifticonController {
 	
 	@RequestMapping("/login")
 	public void login() {
-		logger.info("로그인");
+		logger.info("일반 로그인");
+		
+	} 
+	
+	@RequestMapping("/sellerlogin")
+	public void sellerlogin() {
+		logger.info("판매자 로그인");
 		
 	} 
 	
@@ -90,7 +97,7 @@ public class GifticonController {
 	//로그인
 	@RequestMapping("/loginCheck")
 	public String loginCheck(HttpSession session, Normalid vo) {
-		logger.info("로그인 확인");
+		logger.info("일반 로그인 확인");
 		
 		Normalid result = gifticonService.nloginCheck(vo);
 		
@@ -102,6 +109,24 @@ public class GifticonController {
 		logger.info(result.getNid());
 		
 		session.setAttribute("nid", result.getNid());
+		return "redirect:test";
+		
+
+	}
+	
+	@RequestMapping("/sellerCheck")
+	public String sellerCheck(HttpSession session, Sellerid vo) {
+		logger.info("판매자 로그인 확인");
+		
+		Sellerid result = gifticonService.sloginCheck(vo);
+		
+		if (result == null) {
+		
+			return "redirect:sellerlogin";
+		}
+		
+		
+		session.setAttribute("nid", result.getSid());
 		return "redirect:test";
 		
 

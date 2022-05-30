@@ -1,7 +1,12 @@
 package com.example.domain;
 
+import java.util.Date;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import lombok.Data;
 
@@ -21,6 +26,9 @@ public class Normalid {
 	private String ngender;
 	private String nbirth;
 	private Integer ncharge;
-	private String nsubscribe;
+	
+	@Column(insertable = false, updatable = false, columnDefinition = "date default sysdate()")
+	@Temporal(TemporalType.DATE)
+	private Date nsubscribe;
 	private String nauthority;
 }
