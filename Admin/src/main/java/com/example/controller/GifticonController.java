@@ -100,7 +100,7 @@ public class GifticonController {
 		
 		gifticonService.savenormalId(vo);
 		
-		return "select";
+		return "login";
 	} 
 	
 	@RequestMapping("/sellerId")
