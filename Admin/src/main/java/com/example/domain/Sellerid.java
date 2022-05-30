@@ -28,6 +28,7 @@ public class Sellerid {
 	private String sdaddress;
 	private String sbirth;
 	private String bname;
+	
 	@Column(insertable = false, updatable = false, columnDefinition = "date default sysdate()")
 	@Temporal(TemporalType.DATE)
 	private Date ssubscribe;
