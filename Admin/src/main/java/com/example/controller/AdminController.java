@@ -22,7 +22,7 @@ public class AdminController {
 	
 	@RequestMapping("/{step}")
 	public void viewPage(@PathVariable String step) {
-		//return "/board/" + step;
+		//return "/board/" + step; 
 	}	
 	
 	//공지사항 리스트 전체 조회
