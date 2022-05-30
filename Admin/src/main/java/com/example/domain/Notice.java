@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -16,11 +17,14 @@ public class Notice {
 	@Id
 	@GeneratedValue
 	private Integer noticecode;
-	private Integer mcode;
 	private String ntitle;
 	private String ncategory;
 	private String ncontent;
 	
 	@CreationTimestamp
 	private LocalDate ndate;
+	
+	
+	@JoinColumn(name="mcode")
+	private Integer mcode;
 }

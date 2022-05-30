@@ -91,13 +91,13 @@ Coded by www.creative-tim.com
             </a>
           </li>
           <li>
-            <a th:href="@{./getQnaList}">
+            <a href="./qna.html">
               <i class="nc-icon nc-chat-33"></i>
               <p>QnA</p>
             </a>
           </li>
           <li>
-            <a th:href="@{./getNoticeList}">
+            <a href="./notice.html">
               <i class="nc-icon nc-paper"></i>
               <p>Notice</p>
             </a>
@@ -196,9 +196,9 @@ Coded by www.creative-tim.com
 								<tbody>
 									<tr th:each="notice: ${noticeList}">
 										<td th:text="${notice.noticecode}"></td>
-										<td th:text="${notice.ncategory}"></td>
 										<td th:text="${notice.mcode}"></td>
-										<td> <a th:href="@{noticeRead(noticecode=${1027})}" th:text="${notice.ntitle}"/> </td>
+										<td th:text="${notice.ncategory}"></td>
+										<td> <a th:href="@{noticeRead(noticecode=${notice.noticecode})}" th:text="${notice.ntitle}"/> </td>
 										<td th:text="${notice.ndate}"></td>
 									</tr>
 								</tbody>
