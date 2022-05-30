@@ -11,6 +11,9 @@ public interface SellerService {
 	
 	//판매자 상세보기
 	Sellerid sellerdetail(Sellerid sid);
+
+	//판매자 가게 정보보기
+	Sellerid selectshopInfo(Sellerid sid);
 	
 
 
