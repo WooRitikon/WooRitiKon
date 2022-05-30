@@ -185,7 +185,7 @@ Coded by www.creative-tim.com
 							<div class="card-body">
 							<form th:action="updateNotice" method="post">
 								<!-- ## 각각의 값을 지정 ## -->
-								<input name="noticecode" type="hidden" th:value="${notice.noticecode}"/>
+								<input name="noticecode" type="text" th:value="${notice.noticecode}"/>
 								<table class="table table-sm">
 									<tr>
 										<td>제목</td>
@@ -206,21 +206,18 @@ Coded by www.creative-tim.com
 										<td align="left" name="ncategory" th:text="${notice.ncategory}"></td>
 									</tr>
 								</table>
-								</form>
-							</div>
-						</div>
 						<div class="row">
                     <div class="update ml-auto mr-auto">
                       <a th:href="@{./getNoticeList}" type="button" style="background-color:red;" class="btn btn-primary btn-round">목록으로</a>
                       <button type="submit" value="수정" class="btn btn-primary btn-round">수정</button>
                     </div>
                   </div>
-                </form>
+                  </form>
+                  </div>
+                  </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
       <footer class="footer footer-black  footer-white ">
         <div class="container-fluid">
           <div class="row">
