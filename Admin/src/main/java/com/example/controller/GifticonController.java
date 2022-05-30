@@ -1,5 +1,8 @@
 package com.example.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +15,6 @@ import com.example.domain.Normalid;
 import com.example.service.GifticonService;
 
 @Controller
-//@RequestMapping("/Main")
 public class GifticonController {
 	static final Logger logger = LoggerFactory.getLogger(GifticonController.class);
 	
@@ -39,12 +41,23 @@ public class GifticonController {
 	} 
 	
 	@RequestMapping("/test")
-	public void test() {
+	public void test(HttpServletRequest request, Model m) {
+		HttpSession session = request.getSession();
+		String nid = (String) session.getAttribute("nid");
+		
+		//session.setAttribute("nid", nid);
+		
+		m.addAttribute("nid",nid);
 	}
 	
-	@RequestMapping("/loginsu")
-	public void loginsu(Model m) {
+	@RequestMapping("/logout")
+	public String logout(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		session.invalidate();
+		
+		return "redirect:test";
 	}
+	
 	
 	
 	@RequestMapping(value = "/idCheck", produces = "application/text;charset=utf-8")
@@ -76,19 +89,20 @@ public class GifticonController {
 	
 	//로그인
 	@RequestMapping("/loginCheck")
-	public String loginCheck(Normalid vo, Model m) {
+	public String loginCheck(HttpSession session, Normalid vo) {
 		logger.info("로그인 확인");
 		
 		Normalid result = gifticonService.nloginCheck(vo);
 		
 		if (result == null) {
 		
-			return "login";
+			return "redirect:login";
 		}
 		
+		logger.info(result.getNid());
 		
-		m.addAttribute("id", result);
-		return "test";
+		session.setAttribute("nid", result.getNid());
+		return "redirect:test";
 		
 
 	}
