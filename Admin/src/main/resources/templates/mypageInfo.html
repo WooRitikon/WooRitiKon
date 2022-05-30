@@ -71,12 +71,12 @@
 							<li class="active"><a href="./index.html">Home</a></li>
 							<li><a href="#">about</a></li>
 							<li><a href="#">shop</a></li>
-							<li><a th:href="@{/mypageMain(nid=1)}">my page</a>
+							<li><a th:href="@{/mypageMain(nid=goo123)}">my page</a>
 								<ul class="dropdown">
-									<li><a th:href="@{/mypageShoppingList}">my 주문조회</a></li>
+									<li><a th:href="@{/mypageShoppingList(nid=goo123)}">my 주문조회</a></li>
 									<li><a th:href="@{/mypageBasketList}">my 위시리스트</a></li>
 									<li><a th:href="@{/mypageGetGift}">my 선물함</a></li>
-									<li><a th:href="@{/mypageInfo}">my 정보</a></li>
+									<li><a th:href="@{/mypageInfo(nid=goo123)}">my 정보</a></li>
 									<li><a href="./blog-details.html">my Q&A</a></li>
 								</ul></li>
 							<li><a href="#">my shop</a>
@@ -147,9 +147,9 @@
 											data-parent="#accordionExample">
 											<div class="card-body">
 												<ul>
-													<li><a th:href="@{/mypageShoppingList}">my 기프티콘 조회</a></li>
-													<li><a th:href="@{/mypagePointSet}">my 포인트 조회</a></li>
-													<li><a th:href="@{/mypageShoppingAllList}">my 구매 내역</a></li>
+													<li><a th:href="@{/mypageShoppingList(nid=goo123)}">my 기프티콘 조회</a></li>
+													<li><a th:href="@{/mypagePointSet(nid=goo123)}">my 포인트 조회</a></li>
+													<li><a th:href="@{/mypageShoppingAllList(nid=goo123)}">my 구매 내역</a></li>
 													<li><a href="#">기프티콘 구매취소</a></li>
 												</ul>
 											</div>
@@ -194,7 +194,7 @@
 											data-parent="#accordionExample">
 											<div class="card-body">
 												<ul>
-													<li><a th:href="@{/mypageInfo}">my 정보 조회</a></li>
+													<li><a th:href="@{/mypageInfo(nid=goo123)}">my 정보 조회</a></li>
 													<li><a th:href="@{/mypageInfoCancel}">회원탈퇴</a></li>
 												</ul>
 											</div>
@@ -216,18 +216,18 @@
             <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h6 class="coupon__link"><b Style="font-size:25px;">짱구</b> 님의 회원정보입니다</h6>
+                    <h6 class="coupon__link"><b Style="font-size:25px;"><label th:text="${normalid.nname}"/></b> 님의 회원정보입니다</h6>
                 </div>
             </div>
             <form action="#" class="checkout__form">	
                         <h5>회원정보 &nbsp; 
-                       <a th:href="@{/mypageInfoUpload}" id="infoBtn" style="margin:none;">회원정보 수정</a>
+                       <a th:href="@{/mypageInfoUpload(nid=${normalid.nid})}" id="infoBtn" style="margin:none;">회원정보 수정</a>
                         </h5>
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="checkout__form__input">
                                     <p><b>아이디 <span>*</span></b></p>
-                                    <p>goo123</p>
+                                    <p><label th:text="${normalid.nid}"/></p>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
@@ -242,41 +242,44 @@
                              <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="checkout__form__input">
                                     <p><b>이름 <span>*</span></b></p>
-                                    <p>신짱구</p>
+                                    <p><label th:text="${normalid.nname}"/></p>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="checkout__form__input">
                                     <p><b>전화번호 <span>*</span></b></p>
-                                    <p>010-1111-1111</p>
+                                    <p><label th:text="${normalid.ntel}"/></p>
                                     <br/>
                                 </div>
                             </div>
                                <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="checkout__form__input">
-                                    <p><b>이름 <span>*</span></b></p>
-                                    <p>신짱구</p>
+                                    <p><b>생년월일 <span>*</span></b></p>
+                                    <p><label th:text="${normalid.nbirth}"/></p>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="checkout__form__input">
                                     <p><b>성별 <span>*</span></b></p>
-                                    <p>남자</p>
+                                    <p><label th:text="${normalid.ngender}"/></p>
                                     <br/>
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="checkout__form__input">
-                                    <p><b>생년월일<span>*</span></b></p>
-                                    <p>04.06.15</p><br/>
+                                    <p><b>이메일<span>*</span></b></p>
+                                    <p><label th:text="${normalid.nemail}"/></p><br/>
                                 </div>
                                 <div class="checkout__form__input">
                                     <p><b>주소 <span>*</span></b></p>
-                                    <p>(123-12)인천광역시 부평구 부영로 120 대림아파트 8동 801호</p><br/>
+                                    <p>(<label th:text="${normalid.npostcode}"/>)
+                                    <label th:text="${normalid.naddress}"/>
+                                    <label th:text="${normalid.ndaddress}"/>
+                                    </p><br/>
                                 </div>
                                 <div class="checkout__form__input">
                                     <p><b>가입일자 <span>*</span></b></p>
-                                    <p> 2021.10.19</p> <br/><br/>
+                                    <p><label th:text="${normalid.nsubscribe}"/></p> <br/><br/>
                                 </div>
                             </div>
                     </div>

@@ -71,12 +71,12 @@
 							<li class="active"><a href="./index.html">Home</a></li>
 							<li><a href="#">about</a></li>
 							<li><a href="#">shop</a></li>
-							<li><a th:href="@{/mypageMain(nid=1)}">my page</a>
+							<li><a th:href="@{/mypageMain(nid=goo123)}">my page</a>
 								<ul class="dropdown">
-									<li><a th:href="@{/mypageShoppingList}">my 주문조회</a></li>
+									<li><a th:href="@{/mypageShoppingList(nid=goo123)}">my 주문조회</a></li>
 									<li><a th:href="@{/mypageBasketList}">my 위시리스트</a></li>
 									<li><a href="./checkout.html">my 선물함</a></li>
-									<li><a th:href="@{/mypageInfo}">my 정보</a></li>
+									<li><a th:href="@{/mypageInfo(nid=goo123}">my 정보</a></li>
 									<li><a href="./blog-details.html">my Q&A</a></li>
 								</ul></li>
 							<li><a href="#">my shop</a>
@@ -147,9 +147,9 @@
 											data-parent="#accordionExample">
 											<div class="card-body">
 												<ul>
-													<li><a th:href="@{/mypageShoppingList}">my 기프티콘 조회</a></li>
-													<li><a th:href="@{/mypagePointSet}">my 포인트 조회</a></li>
-													<li><a th:href="@{/mypageShoppingAllList}">my 구매 내역</a></li>
+													<li><a th:href="@{/mypageShoppingList(nid=goo123)}">my 기프티콘 조회</a></li>
+													<li><a th:href="@{/mypagePointSet(nid=goo123)}">my 포인트 조회</a></li>
+													<li><a th:href="@{/mypageShoppingAllList(nid=goo123)}">my 구매 내역</a></li>
 													<li><a href="#">기프티콘 구매취소</a></li>
 												</ul>
 											</div>
@@ -193,7 +193,7 @@
 											data-parent="#accordionExample">
 											<div class="card-body">
 												<ul>
-													<li><a th:href="@{/mypageInfo}">my 정보 조회</a></li>
+													<li><a th:href="@{/mypageInfo(nid=goo123)}">my 정보 조회</a></li>
 													<li><a th:href="@{/mypageInfoCancel}">회원탈퇴</a></li>
 												</ul>
 											</div>

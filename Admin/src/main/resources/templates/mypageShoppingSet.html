@@ -71,12 +71,12 @@
 							<li class="active"><a href="./index.html">Home</a></li>
 							<li><a href="#">about</a></li>
 							<li><a href="#">shop</a></li>
-							<li><a th:href="@{/mypageMain(nid=1)}">my page</a>
+							<li><a th:href="@{/mypageMain(nid=goo123)}">my page</a>
 								<ul class="dropdown">
-									<li><a th:href="@{/mypageShoppingList}">my 주문조회</a></li>
+									<li><a th:href="@{/mypageShoppingList(nid=goo123)}">my 주문조회</a></li>
 									<li><a th:href="@{/mypageBasketList}">my 위시리스트</a></li>
 									<li><a th:href="@{/mypageGetGift}">my 선물함</a></li>
-									<li><a th:href="@{/mypageInfo}">my 정보</a></li>
+									<li><a th:href="@{/mypageInfo(nid=goo123}">my 정보</a></li>
 									<li><a href="./blog-details.html">my Q&A</a></li>
 								</ul></li>
 							<li><a href="#">my shop</a>
@@ -147,9 +147,9 @@
 											data-parent="#accordionExample">
 											<div class="card-body">
 												<ul>
-													<li><a th:href="@{/mypageShoppingList}">my 기프티콘 조회</a></li>
-													<li><a th:href="@{/mypagePointSet}">my 포인트 조회</a></li>
-													<li><a th:href="@{/mypageShoppingAllList}">my 구매 내역</a></li>
+													<li><a th:href="@{/mypageShoppingList(nid=goo123)}">my 기프티콘 조회</a></li>
+													<li><a th:href="@{/mypagePointSet(nid=goo123)}">my 포인트 조회</a></li>
+													<li><a th:href="@{/mypageShoppingAllList(nid=goo123)}">my 구매 내역</a></li>
 													<li><a href="#">기프티콘 구매취소</a></li>
 												</ul>
 											</div>
@@ -193,7 +193,7 @@
 											data-parent="#accordionExample">
 											<div class="card-body">
 												<ul>
-													<li><a th:href="@{/mypageInfo}">my 정보 조회</a></li>
+													<li><a th:href="@{/mypageInfo(nid=goo123}">my 정보 조회</a></li>
 													<li><a th:href="@{/mypageInfoCancel}">회원탈퇴</a></li>
 												</ul>
 											</div>
@@ -209,11 +209,11 @@
 							</div>
 						</div>
 					</div>
-				</div>
-                      
+				</div>   
+                     
                 <div class="col-lg-9 col-md-9">
           <div class="container">
-          			<a th:href="@{/mypageShoppingList}">
+          			<a th:href="@{/mypageShoppingList(nid=${normalid.nid})}">
 					<b style="font-size:25px; color:#890900;">← 뒤로 가기</b>
 					</a>
 						<br/><br/>
@@ -229,13 +229,17 @@
                 </div>
                 <div class="col-lg-6">
                       <div class="product__details__widget">
-                        <h4><label th:text="${product.pname}"/>
-                        <p><label th:text="${product.pgiftstart}"/>~<label th:text="${product.pgiftend}"/></p>
+                        <h4><label th:text="${product.pname}"></label>
+                        <p>
+                        <label th:text="${giftikon.startdate}"></label>
+                        ~
+                        <label th:text="${giftikon.finaldate}"></label>
+                        </p>
                         </h4>
-                        <span>구매 금액 : <label th:text="${product.pprice}"/> 원</span><br/>
+                        <span>구매 금액 : <label th:text="${product.pprice}"></label> 원</span><br/>
                         <div class="product__details__price">잔여 개수 : 13개</div>
                         <div class="product__details__widget">
-                        <p><label th:text="${product.pcontent}"/></p>
+                        <p><label th:text="${product.pcontent}"></label></p>
                         </div>
                         <div class="product__details__button">
                           <a href="#" class="cart-btn"><span class="icon_bag_alt"></span>바코드</a>
@@ -245,6 +249,7 @@
             </div>
         </div>  
                   </div>
+                 
                  </div>
                 </div>
     </section>
