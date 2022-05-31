@@ -70,8 +70,7 @@ public class GifticonController {
 		Sellerid result = gifticonService.detectsid(vo);
 		
 		if (result == null) {
-			
-			//return "redirect:login";
+			return "redirect:failsearch";
 		}
 		
 		logger.info(result.getSid());
@@ -88,7 +87,7 @@ public class GifticonController {
 		
 		if (result == null) {
 			
-			//return "redirect:login";
+			return "redirect:failsearch";
 		}
 		
 		logger.info(result.getSid());
@@ -197,7 +196,7 @@ public class GifticonController {
 		
 		if (result == null) {
 			
-			//return "redirect:login";
+			return "redirect:failsearch";
 		}
 		
 		logger.info(result.getNid());
@@ -215,7 +214,7 @@ public class GifticonController {
 		
 		if (result == null) {
 			
-			//return "redirect:login";
+			return "redirect:failsearch";
 		}
 		
 		logger.info(result.getNid());
@@ -272,5 +271,11 @@ public class GifticonController {
 	@RequestMapping("/sellerId")
 	public void sellerId() {
 		logger.info("판매회원가입");
+	} 
+	
+	//판매자 회원가입 페이지
+	@RequestMapping("/failsearch")
+	public void failsearch() {
+		logger.info("찾기 인증 실패 페이지");
 	} 
 }
