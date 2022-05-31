@@ -83,7 +83,7 @@ Coded by www.creative-tim.com
 										<div class="textcenter">
 												<div class="col-md-5" style="text-align : center;">		
 													<div class="form-group" style="text-align : center;">
-														<input type="text" class="form-control" th:name="nid" placeholder="아이디"
+														<input type="text" class="form-control" th:name="nid" placeholder="일반회원 아이디"
 															required>
 													</div>
 												</div>
@@ -95,8 +95,8 @@ Coded by www.creative-tim.com
 											<div class="col-md-5">
 												<div class="form-group">
 													<input type="password" class="form-control" th:name="npassword"
-														placeholder="비밀번호" required>
-															<button type="submit" id="login" class="btn btn-primary btn-block">로그인</button>
+														placeholder="일반회원 비밀번호" required>
+															<button type="submit" id="login" class="btn btn-primary btn-block">일반회원 로그인</button>
 														<a th:href='@{/selectpage}'><button type=button class="btn btn-primary btn-block">회원가입</button></a>
 												</div>
 											</div>
@@ -108,8 +108,8 @@ Coded by www.creative-tim.com
 									</form>
 									<!-- end of card-body -->
 									<div class="col-md-12" style="text-align: center;">
-										<label>아이디 찾기 </label>&nbsp; <label> | </label> &nbsp; <label>
-											비밀번호 찾기</label>
+										<label><a th:href="@{searchnid}">일반회원 아이디 찾기</a></label>&nbsp; <label> | </label> &nbsp; <label>
+										<a th:href="@{searchnpass}">일반회원 비밀번호 찾기</a></label>
 									</div>
 									<!-- end of 아이디찾기 -->
 
