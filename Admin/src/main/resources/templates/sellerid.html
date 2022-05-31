@@ -40,6 +40,51 @@ Coded by www.creative-tim.com
 
 </head>
 
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+        function check_pw(){
+ 
+            var pw = document.getElementById('pw').value;
+            var SC = ["!","@","#","$","%"];
+            var check_SC = 0;
+ 
+            if(pw.length < 6 || pw.length>16){
+                window.alert('비밀번호는 6글자 이상, 16글자 이하만 이용 가능합니다.');
+                document.getElementById('pw').value='';
+            }
+            for(var i=0;i<SC.length;i++){
+                if(pw.indexOf(SC[i]) != -1){
+                    check_SC = 1;
+                }
+            }
+            if(check_SC == 0){
+                window.alert('!,@,#,$,% 의 특수문자가 들어가 있지 않습니다.')
+                document.getElementById('pw').value='';
+            }
+            if(document.getElementById('pw').value !='' && document.getElementById('pw2').value!=''){
+                if(document.getElementById('pw').value==document.getElementById('pw2').value){
+                    document.getElementById('check').innerHTML='비밀번호가 일치합니다.';
+                    document.getElementById('check').style.color="#4ABA99";
+                }
+                else{
+                    document.getElementById('check').innerHTML='비밀번호가 일치하지 않습니다.';
+                    document.getElementById('check').style.color="#ED7A64";
+                }
+            }
+        }
+        
+        function check_birth(){
+        	 
+            var birth = document.getElementById('sbirth').value;
+        
+            if(birth.length != 6){
+                window.alert('생년월일 6자리를 정확하게 입력해주세요.');
+                document.getElementById('sbirth').value='';
+            }
+
+        }
+</script>
+
 <style>
 .container {
 	display: flex;
@@ -92,21 +137,22 @@ Coded by www.creative-tim.com
 									</div>
 						
 									<div class="card-body">
-										<form th:action="normalId" method="post">
+										<form th:action="savesellerId" method="post">
 											<div class="row">
 
 												<div class="container">
 													<div class="col-md-8 px-1">
 														<div class="form-group">
 															<label>아이디</label> <input type="text"
-																class="form-control" placeholder="아이디" required>
+																class="form-control" name="sid" id="sid" placeholder="아이디" required>
+																<label for="scheck"><span class="error_box"></span></label>
 														</div>
 													</div>
 
 													<div class="col-md-2 px-1">
 														<div class="update ml-auto mr-auto">
 															<div class="form-group">
-																<button type="submit" class="btn btn-primary btn-round" style="margin-top: 25px;margin-bottom: 0px;">중복확인</button>
+																<button type="button" class="btn btn-primary btn-round" id="sidck" style="margin-top: 25px;margin-bottom: 0px;">중복확인</button>
 															</div>
 														</div>
 													</div>
@@ -117,47 +163,48 @@ Coded by www.creative-tim.com
 
 											<div class="col-md-10 pl-1">
 												<div class="form-group">
-													<label for="exampleInputEmail1">비밀번호</label> <input
-														type="password" class="form-control" placeholder="비밀번호"
+													<label for="exampleInputEmail1">(*)비밀번호 ( !,@,#,$,% 의 특수문자 필수, 6글자 이상 16글자 이하 입력 )</label> <input
+														type="password" id="pw" name="spassword" class="form-control" placeholder="비밀번호" onchange="check_pw()"
 														required>
 												</div>
 											</div>
 
 											<div class="col-md-10 pl-1">
 												<div class="form-group">
-													<label for="exampleInputEmail1">비밀번호 확인</label> <input
-														type="password" class="form-control" placeholder="비밀번호 확인"
+													<label for="exampleInputEmail1">(*)비밀번호 확인</label> <input
+														type="password" id="pw2" class="form-control" placeholder="비밀번호 확인" onchange="check_pw()"
 														required>
+														&nbsp;<span id="check"></span>
 												</div>
 											</div>
 
 											<div class="col-md-10 pl-1">
 												<div class="form-group">
-													<label for="exampleInputEmail1">이름</label> <input
-														type="text" class="form-control" placeholder="이름" required>
+													<label for="exampleInputEmail1">(*)이름</label> <input
+														type="text" name="sname" class="form-control" placeholder="이름" required>
 												</div>
 											</div>
 
 											<div class="col-md-10 pl-1">
 												<div class="form-group">
-													<label for="exampleInputEmail1">개인 전화번호</label> <input
-														type="text" class="form-control" placeholder="개인 전화번호"
+													<label for="exampleInputEmail1">(*)개인 전화번호('-'를 제외 후 숫자만 입력)</label> <input
+														type="text" pattern="[0-9]+" name="stel" class="form-control" placeholder="개인 전화번호"
 														required>
 												</div>
 											</div>
 											
 											<div class="col-md-10 pl-1">
 												<div class="form-group">
-													<label for="exampleInputEmail1">가게 전화번호</label> <input
-														type="text" class="form-control" placeholder="가게 전화번호"
+													<label for="exampleInputEmail1">(*)가게 전화번호('-'를 제외 후 숫자만 입력)</label> <input
+														type="text" pattern="[0-9]+" name="btel" class="form-control" placeholder="가게 전화번호"
 														required>
 												</div>
 											</div>
 
 											<div class="col-md-10 pl-1">
 												<div class="form-group">
-													<label for="exampleInputEmail1">이메일</label> <input
-														type="email" class="form-control" placeholder="e-mail"
+													<label for="exampleInputEmail1">(*)이메일</label> <input
+														type="email" name="semail" class="form-control" placeholder="e-mail"
 														required>
 												</div>
 											</div>
@@ -165,8 +212,8 @@ Coded by www.creative-tim.com
 											
 											<div class="col-md-10 pl-1">
 												<div class="form-group">
-													<label for="exampleInputEmail1">생년월일</label> <input
-														type="text" pattern="[0-9]+"  class="form-control" placeholder="ex) 990120"
+													<label for="exampleInputEmail1">(*)생년월일</label> <input
+														type="test" pattern="[0-9]+" id="sbirth" name="sbirth"  class="form-control" placeholder="ex) 990120" onchange="check_birth()"
 														required>
 												</div>
 											</div>
@@ -176,7 +223,7 @@ Coded by www.creative-tim.com
 												<div class="container">
 													<div class="col-md-4 pl-1">
 														<div class="form-group">
-															<label>주소</label> <input type="text" class="form-control"
+															<label>(*)주소</label> <input type="text" id="spostcode" name="spostcode" class="form-control"
 																placeholder="우편번호" readonly>
 
 														</div>
@@ -185,7 +232,7 @@ Coded by www.creative-tim.com
 													<div class="col-md-2 px-1">
 														<div class="update ml-auto mr-auto">
 															<div class="form-group" style="margin-bottom: 0px;margin-top: 15px;">
-																<button type="submit" class="btn btn-primary btn-round">주소검색</button>
+																<button type="button" id="address_kakao" class="btn btn-primary btn-round">주소검색</button>
 															</div>
 														</div>
 													</div>
@@ -196,22 +243,22 @@ Coded by www.creative-tim.com
 
 											<div class="col-md-10 pl-1">
 												<div class="form-group">
-													<input type="text" class="form-control"
-														placeholder="Home Address" value="주소" readonly>
+													<input type="text" class="form-control" id="saddress" name="saddress"
+														placeholder="주소" readonly>
 												</div>
 											</div>
 
 											<div class="col-md-10 pl-1">
 												<div class="form-group">
 													<input type="text" class="form-control"
-														placeholder="Home Address" value="상세주소">
+														placeholder="상세주소" id="sdaddress" name="sdaddress" >
 												</div>
 											</div>
 											
 											<div class="col-md-10 pl-1">
 												<div class="form-group">
-													<label for="exampleInputEmail1">상호(가게)명</label> <input
-														type="text" class="form-control" placeholder="상호명"
+													<label for="exampleInputEmail1">(*)상호(가게)명</label> <input
+														type="text" name="bname" class="form-control" placeholder="상호명"
 														required>
 												</div>
 											</div>
@@ -221,8 +268,8 @@ Coded by www.creative-tim.com
 												<div class="container">
 													<div class="col-md-8 px-1">
 														<div class="form-group">
-															<label>사업자등록번호</label> <input type="text"
-																class="form-control" placeholder="사업자등록번호" required>
+															<label>(*)사업자등록번호</label> <input type="text"
+																class="form-control" name="bcode" placeholder="사업자등록번호" required>
 														</div>
 													</div>
 
@@ -240,7 +287,7 @@ Coded by www.creative-tim.com
 											
 											<div class="row">
 											<div class=" pl-1">
-												<button type="button" class="btn btn-primary btn-round"> 이전 </button>
+												<a th:href="@{/selectpage}"><button type="button" class="btn btn-primary btn-round"> 이전 </button></a>
 											</div>
 											
 											<div class="update ml-auto mr-auto"></div>
@@ -255,12 +302,6 @@ Coded by www.creative-tim.com
 													
 											</div>
 										</form>
-										
-										
-										
-										
-									
-									
 										
 									</div> 
 									<!-- end of card-body -->
@@ -326,6 +367,23 @@ Coded by www.creative-tim.com
 	<script src="./assets/js/plugins/bootstrap-notify.js"></script>
 	<!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
 	 <script src="./assets/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script>
+	 <script src="./assets/js/checksellerid.js"></script>
 </body>
+
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+window.onload = function(){
+    document.getElementById("address_kakao").addEventListener("click", function(){ //주소입력칸을 클릭하면
+        //카카오 지도 발생
+        new daum.Postcode({
+            oncomplete: function(data) { //선택시 입력값 세팅
+            	document.getElementById("spostcode").value = data.zonecode; // 주소 넣기
+                document.getElementById("saddress").value = data.address; // 주소 넣기
+                document.querySelector("input[name=sdaddress]").focus(); //상세입력 포커싱
+            }
+        }).open();
+    });
+}
+</script>
 
 </html>
