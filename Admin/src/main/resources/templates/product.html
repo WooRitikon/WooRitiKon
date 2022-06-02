@@ -181,7 +181,7 @@ Coded by www.creative-tim.com
 								<table class="table table-hover">
 									<thead style="background-color: #F6F6F6;">
 										<tr>
-											<th><input type="checkbox"/></th>
+											<th><input type="checkbox" /></th>
 											<th>카테고리</th>
 											<th>상품명</th>
 											<th>상품가격</th>
@@ -191,13 +191,13 @@ Coded by www.creative-tim.com
 									</thead>
 									<tbody>
 										<tr th:each="pd: ${pdList}">
-											<td><input type="checkbox" /></td>
+											<td><input type="checkbox" name="chk_list"/></td>
 											<td th:text="${pd.pcategory}">카테고리 테스트</td>
 											<td th:text="${pd.pname}">상품명 테스트</td>
 											<td th:text="${pd.pprice}">상품가격 테스트</td>
 											<td th:text="${pd.sellerid.sid}">판매자id 테스트</td>
 											<!-- <td th:text="${pd.pgiftstart}">등록일자 테스트</td> -->
-											<td><a th:type="button" th:href="@{/deleteProduct(pcode=${pd.pcode})}" style="position:right;" class="btn btn-primary" th:text="삭제" /></td>
+											<td><a th:type="button" th:href="@{/deleteProduct(pcode=${pd.pcode})}" style="position:right;" class="btn btn-primary" th:text="삭제" th:id="delbtn"/></td>
 										</tr>
 									</tbody>
 								</table>

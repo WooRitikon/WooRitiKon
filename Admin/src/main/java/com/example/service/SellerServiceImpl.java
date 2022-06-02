@@ -27,7 +27,7 @@ public class SellerServiceImpl implements SellerService{
 	ReviewRepository reviewRepo;
 	
 	@Autowired
-	private ProductRepository productRepo;
+	ProductRepository productRepo;
 	
 	//판매자 전체 리스트
 	@Override
@@ -45,15 +45,22 @@ public class SellerServiceImpl implements SellerService{
 
 	//판매자 가게 정보보기 (민지)
 	@Override
-	public Sellerid selectshopInfo(Sellerid sid) {
+	public Sellerid getshopInfo(Sellerid sid) {
 		logger.info("판매자가게 정보보기");
 		return sellerRepo.findById(sid.getBcode()).get();
 	}
 	
-	//판매가 가게 리뷰보기
+	//판매자 가게 리스트 조회하기
 	@Override
 	public List<Product> getProList(Product pr) {
 		return (List<Product>)productRepo.findAll();
+	}
+	
+	//판매자 상품 조회하기
+	@Override
+	public Product getshopProDetails(Product pr) {
+		logger.info("판매자상품 정보보기");
+		return productRepo.findById(pr.getPcode()).get();
 	}
 		
 	//판매자 상품 등록하기
