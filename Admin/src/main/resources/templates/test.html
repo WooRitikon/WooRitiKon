@@ -91,11 +91,13 @@
 				</div>
 				<div class="col-lg-3">
 					<div class="header__right">
-						<div class="header__right__auth">
-							<a href="#">Login</a> <a href="#">Register</a>
+						<div th:if="${nid == null}" class="header__right__auth">
+							<a th:href="@{/login}">일반</a><a th:href="@{/sellerlogin}">판매자</a> <a th:href="@{/selectpage}">회원가입</a>
+						</div>
+						<div th:if="${nid != null}" class="header__right__auth">
+							<a th:text="${nid}" th:href="@{/mypageMain}"></a> <a th:href="@{/logout}">로그아웃</a>
 						</div>
 						<ul class="header__right__widget">
-							<li><span class="icon_search search-switch"></span></li>
 							<li><a href="#"><span class="icon_heart_alt"></span>
 									<div class="tip">2</div> </a></li>
 							<li><a href="#"><span class="icon_bag_alt"></span>

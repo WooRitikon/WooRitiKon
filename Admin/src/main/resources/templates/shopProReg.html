@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/seller.css" type="text/css">
 </head>
 
 <body>
@@ -167,7 +168,7 @@
                                         <div id="collapseThree" class="collapse" data-parent="#accordionExample">
                                             <div class="card-body">
                                                 <ul>
-                                                    <li><a href="#">조회</a></li>
+                                                    <li><a href="shopReview">조회</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -192,55 +193,51 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-9 col-md-9">
-                    <div class="container">
-            <form action="#" class="checkout__form">
-                <div class="row">
-                    <div class="col-lg-8">
-                        <h5>상품 등록</h5>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="checkout__form__input">
-                                    <p>상품명 <span>*</span></p>
-                                    <input type="text">
-                                </div>
-                                <div class="checkout__form__input">
-                                    <p>가격 <span>*</span></p>
-                                    <input type="text">
-                                </div>
-                                <div class="checkout__form__input">
-                                    <p>상품 소개 <span>*</span></p>
-                                    <input type="text">
-                                </div>
-                                <div class="checkout__form__input">
-                                    <p>구독일수 선택 <span>*</span></p>
-                                    <input type="text">
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="checkout__form__checkbox">
-                                    <label for="acc">
-                                        Create an acount?
-                                        <input type="checkbox" id="acc">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <p>Create am acount by entering the information below. If you are a returing
-                                        customer login at the <br />top of the page</p>
-                                    </div>
-                                    <div class="checkout__form__input">
-                                        <p>Oder notes <span>*</span></p>
-                                        <input type="text"
-                                        placeholder="Note about your order, e.g, special noe for delivery">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>	
-                </div>
-            </div>
-        </div>
+               <div class="col-lg-9 col-md-9">
+                  <h3>Product Registration</h3><hr/>
+			           <div class="container">
+				            <form th:action="savePro" class="checkout__form" method="post">
+				                <div class="row">
+				                    <div class="col-lg-8">
+			                            <div class="col-lg-12">
+			                                <div class="checkout__form__input">
+			                                    <p>상품명 <span>*</span></p>
+			                                    <input type="text" name="pname">
+			                                </div>
+			                                <div class="checkout__form__input">
+			                                    <p>가격 <span>*</span></p>
+			                                    <input type="text" name="pprice">
+			                                </div>
+			                                <div class="checkout__form__input">
+			                                    <p>상품 소개 <span>*</span></p>
+			                                    <input type="text" name="pcontent">
+			                                </div>
+			                                <div class="checkout__form__input">
+			                                    <p>구독일수 선택 <span>*</span></p>
+			                                    <input type="text">
+			                                </div>
+			                            </div>
+		                            <div class="col-lg-12">
+		                                <div class="checkout__form__checkbox">
+		                                    <label for="acc">
+		                                        Create an acount?
+		                                        <input type="checkbox" id="acc">
+		                                        <span class="checkmark"></span>
+		                                    </label>
+		                                    <p>Create am acount by entering the information below. If you are a returing
+		                                        customer login at the <br />top of the page</p>
+		                                    </div>
+		                                </div>
+		                                 <div class="shopProReg">
+								       		 <input type="submit" value="등록" id="shopProRegBtn"/>
+								        </div>
+		                            </div>
+		                        </div>
+							</form>
+	                	</div>
+          		  </div>
+          	</div>
+       </div>
     </section>
     <!-- Shop Section End -->
 
