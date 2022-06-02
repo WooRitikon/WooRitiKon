@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-	<link rel="stylesheet" href="css/mypage.css" type="text/css"/>
+	<link rel="stylesheet" href="css/mypage.css" type="text/css"/>  
 </head>
 
 <body>
@@ -71,12 +71,12 @@
 							<li class="active"><a href="./index.html">Home</a></li>
 							<li><a href="#">about</a></li>
 							<li><a href="#">shop</a></li>
-							<li><a th:href="@{/mypageMain(nid=goo123)}">my page</a>
+							<li><a th:href="@{/mypageMain}">my page</a>
 								<ul class="dropdown">
-									<li><a th:href="@{/mypageShoppingList(nid=goo123)}">my 주문조회</a></li>
+									<li><a th:href="@{/mypageShoppingList}">my 주문조회</a></li>
 									<li><a th:href="@{/mypageBasketList}">my 위시리스트</a></li>
 									<li><a th:href="@{/mypageGetGift}">my 선물함</a></li>
-									<li><a th:href="@{/mypageInfo(nid=goo123)}">my 정보</a></li>
+									<li><a th:href="@{/mypageInfo}">my 정보</a></li>
 									<li><a href="./blog-details.html">my Q&A</a></li>
 								</ul></li>
 							<li><a href="#">my shop</a>
@@ -147,9 +147,9 @@
 											data-parent="#accordionExample">
 											<div class="card-body">
 												<ul>
-													<li><a th:href="@{/mypageShoppingList(nid=goo123)}">my 기프티콘 조회</a></li>
-													<li><a th:href="@{/mypagePointSet(nid=goo123)}">my 포인트 조회</a></li>
-													<li><a th:href="@{/mypageShoppingAllList(nid=goo123)}">my 구매 내역</a></li>
+													<li><a th:href="@{/mypageShoppingList}">my 기프티콘 조회</a></li>
+													<li><a th:href="@{/mypagePointSet}">my 포인트 조회</a></li>
+													<li><a th:href="@{/mypageShoppingAllList}">my 구매 내역</a></li>
 													<li><a href="#">기프티콘 구매취소</a></li>
 												</ul>
 											</div>
@@ -194,7 +194,7 @@
 											data-parent="#accordionExample">
 											<div class="card-body">
 												<ul>
-													<li><a th:href="@{/mypageInfo(nid=goo123)}">my 정보 조회</a></li>
+													<li><a th:href="@{/mypageInfo}">my 정보 조회</a></li>
 													<li><a th:href="@{/mypageInfoCancel}">회원탈퇴</a></li>
 												</ul>
 											</div>
@@ -216,10 +216,10 @@
             <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h6 class="coupon__link"><b Style="font-size:25px;">짱구</b> 님의 비밀번호 변경입니다</h6>
+                    <h6 class="coupon__link"><b Style="font-size:25px;"><label th:text="${result.nname}"></label></b> 님의 비밀번호 변경입니다</h6>
                 </div>
             </div>
-            <form action="#" class="checkout__form">	
+            <form th:action="mypageInfoPassCheck" class="checkout__form">	
                         <h5>현재 비밀번호 확인</h5>
                             <div class="col-lg-12">
                                 <div class="checkout__form__input">
@@ -227,8 +227,9 @@
                                     <b>현재 비밀번호를 입력해주세요.<span>*</span></b>
                                     </p>
                                     <p>
-                                   	<input type="text" style="width: 280px;"/>
-                                   	<a th:href="@{/mypageInfoPassCommit}" id="infoBtn" style="margin:none;">비밀번호 확인</a>
+                                    
+                                   	<input type="password" th:name="npassword" placeholder="현재 비밀번호를 입력하세요" required style="width: 280px;"/>
+                                   	<button type="submit" th:id="infoBtn" style="margin:none;">비밀번호 확인</button>
                                		</p>
                                 </div>
                              

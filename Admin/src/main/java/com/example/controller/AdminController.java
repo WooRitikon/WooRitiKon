@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.domain.Manager;
 import com.example.domain.Notice;
 import com.example.service.NoticeService;
 
@@ -37,9 +38,10 @@ public class AdminController {
 	//공지사항 작성
 	@RequestMapping("noticeWrite")
 	public String insertBoard(Notice vo) {
+		Manager mg = new Manager();
 		notiservice.writeNotice(vo);
+		vo.setMcode(mg.getMcode());
 		return "redirect:getNoticeList";
-		
 	}
 	
 	//공지사항 상세조회
@@ -51,9 +53,25 @@ public class AdminController {
 	}
 	
 	//공지사항 수정
+	/*
 	@RequestMapping("updateNotice")
-	public String updateNotice(Notice vo) {
+	public void updateNotice(Notice vo, Model m) {
+		logger.info("게시물 수정 페이지");
+		Notice vvo = notiservice.getNotice(vo);
+		m.addAttribute("notice",vvo);
+	}
+	
+	@RequestMapping("modifyNotice")
+	public String modifyNotice(Notice vo, Model m) {
 		notiservice.updateNotice(vo);
+		return "redirect:getNoticeList";
+	}*/
+	
+	
+	@RequestMapping("deleteNotice")
+	public String deleteNotice(Notice vo) {
+		notiservice.deleteNotice(vo);
+		logger.info("Controller delete:"+vo.getNtitle());
 		return "redirect:getNoticeList";
 	}
 }

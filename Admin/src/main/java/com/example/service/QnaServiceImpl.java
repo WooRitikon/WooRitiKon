@@ -33,12 +33,10 @@ public class QnaServiceImpl implements QnaService {
 		QnaRepo.delete(q);
 	}
 	
-	//qna 제목 가져오기
+	//qna 내용 가져오기
 	@Override
 	public Qna replyList(Qna q) {
-		logger.info("리스트");
-		//Qna result = QnaRepo.findById(q.getQcode()).get();
-		logger.info("가져오기 :" + q.getNcontent());
+		logger.info("qna 내용 가져오기");
 		return QnaRepo.findById(q.getQcode()).get();
 		
 	}

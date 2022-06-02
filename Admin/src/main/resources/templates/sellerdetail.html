@@ -168,7 +168,7 @@ Coded by www.creative-tim.com
 						<div class="card">
 							<div class="card-header">
 								<h5 class="card-title">판매자 상세보기</h5>
-								<button class="delete-button"><a href="./seller.html">돌아가기</a></button>
+								<button class="delete-button"><a th:href="@{./seller}">돌아가기</a></button>
 							</div>
 							<hr />
 							<div class="flex-container">
@@ -180,11 +180,11 @@ Coded by www.creative-tim.com
 									<div>이메일 :</div>
 								</div>
 								<div class="item">
-									<div>id 테스트</div>
-									<div>이름 테스트</div>
-									<div>전화번호 테스트</div>
-									<div>판매자주소 테스트</div>
-									<div>이메일 테스트</div>
+									<div th:text="${sdetail.sid}">id 테스트</div>
+									<div th:text="${sdetail.sname}">이름 테스트</div>
+									<div th:text="${sdetail.stel}">전화번호 테스트</div>
+									<div th:text="${sdetail.saddress}">판매자주소 테스트</div>
+									<div th:text="${sdetail.semail}">이메일 테스트</div>
 								</div>
 							</div>
 						</div>
@@ -202,9 +202,9 @@ Coded by www.creative-tim.com
 									<div>업체 주소 :</div>
 								</div>
 								<div class="item">
-									<div>사업자번호 테스트</div>
-									<div>업체명 테스트</div>
-									<div>업체주소 테스트</div>
+									<div th:text="${sdetail.bcode}">사업자번호 테스트</div>
+									<div th:text="${sdetail.bname}">업체명 테스트</div>
+									<div th:text="${sdetail.sdaddress}">업체주소 테스트</div>
 								</div>
 							</div>
 						</div>
@@ -216,24 +216,24 @@ Coded by www.creative-tim.com
 							</div>
 							<hr/>
 							<div class="card-body">
-								<div class="table-responsive">
-									<table class="table">
-										<thead class=" text-primary">
+								<table class="table table-hover">
+									<thead style="background-color: #F6F6F6;">
+										<tr>
+											<th>상품카테고리</th>
 											<th>상품명</th>
 											<th>상품가격</th>
 											<th>상품기한</th>
-											<th>상품 카테고리</th>
-										</thead>
-										<tbody>
-											<tr>
-												<td>상품명 테스트</td>
-												<td>상품가격 테스트</td>
-												<td>상품기한 테스트</td>
-												<td>카테고리 테스트</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>테스트</td>
+											<td>테스트</td>
+											<td>테스트</td>
+											<td>테스트</td>
+										</tr>
+									</tbody>
+								</table>
 							</div>
 						</div>
 					</div>

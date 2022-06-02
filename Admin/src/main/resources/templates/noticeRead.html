@@ -183,7 +183,7 @@ Coded by www.creative-tim.com
               </div>
 						<div class="card">
 							<div class="card-body">
-							<form th:action="updateNotice" method="post">
+							<form method="post">
 								<!-- ## 각각의 값을 지정 ## -->
 								<input name="noticecode" type="hidden" th:value="${notice.noticecode}"/>
 								<table class="table table-sm">
@@ -212,8 +212,9 @@ Coded by www.creative-tim.com
 						<div class="row">
                   </div>
                                     <div class="update ml-auto mr-auto">
-                      <a th:href="@{./getNoticeList}" type="button" style="background-color:red;" class="btn btn-primary btn-round">목록으로</a>
-                      <a th:href="@{./noticeUpdate}"type="button" style="background-color:red;" class="btn btn-primary btn-round">수정하기</a>
+                      <a th:href="@{./getNoticeList}" type="button" style="background-color:rgb(85, 170, 255);" class="btn btn-primary btn-round">목록으로</a>
+                      <!--  <a th:href="@{./noticeUpdate(noticecode=${notice.noticecode})}"type="button" style="background-color:rgb(147, 209, 135);" class="btn btn-primary btn-round">수정하기</a>-->
+                      <a th:href="@{deleteNotice(noticecode=${notice.noticecode})}" type="button" style="background-color:red;" class="btn btn-primary btn-round">삭제하기</a>
                     </div>
               </div>
             </div>
