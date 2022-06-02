@@ -15,6 +15,7 @@ public interface GifticonService {
 	
 	//일반회원 로그인 유효성 검사
 	public Normalid nloginCheck(Normalid vo);
+
 	
 	//판매자회원 로그인 유효성 검사
 	public Sellerid sloginCheck(Sellerid vo);
