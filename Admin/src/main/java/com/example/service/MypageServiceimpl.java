@@ -37,6 +37,7 @@ public class MypageServiceimpl implements MypageService{
 	@Override
 	public List<Product> getProductList(Product pr){
 		return (List<Product>)mypageProductRepo.findAll();
+				
 	}
 	
 	//기프티콘 상세조회

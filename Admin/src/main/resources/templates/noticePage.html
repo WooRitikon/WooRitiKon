@@ -81,17 +81,12 @@
 								</ul></li>
 							<li><a href="#">my shop</a>
 								<ul class="dropdown">
-									<li><a href="./product-details.html">information</a></li>
+									<li><a href="./product-details.html">informatin</a></li>
 									<li><a href="./shop-cart.html">product</a></li>
 									<li><a href="./checkout.html">review</a></li>
 									<li><a href="./blog-details.html">sales</a></li>
 								</ul></li>
-														<li><a href="#">customer center</a>
-								<ul class="dropdown">
-									<li><a th:href="@{./noticePage}">Notice</a></li>
-									<li><a href="#">FnQ</a></li>
-									<li><a href="#">Qna</a></li>
-								</ul></li>
+							<li><a href="./noticePage">notice</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -123,8 +118,7 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="breadcrumb__links">
-						<a href="./index.html"><i class="fa fa-home"></i> Home</a> <span>my
-							page</span>
+						<a href="./index.html"><i class="fa fa-home"></i> Home</a> <span>Notice</span>
 					</div>
 				</div>
 			</div>
@@ -136,136 +130,36 @@
 	<section class="shop spad">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-3 col-md-3">
-					<div class="shop__sidebar">
-						<div class="sidebar__categories">
-							<div class="section-title">
-								<h4>My page</h4>
-							</div>
-							<div class="categories__accordion">
-								<div class="accordion" id="accordionExample">
-									<div class="card">
-										<div class="card-heading active">
-											<a data-toggle="collapse" data-target="#collapseOne">my 주문주회</a> 
-										</div>
-										<div id="collapseOne" class="collapse show"
-											data-parent="#accordionExample">
-											<div class="card-body">
-												<ul>
-													<li><a th:href="@{/mypageShoppingList(nid=1)}">my 기프티콘 조회</a></li>
-													<li><a th:href="@{/mypagePointSet}">my 포인트 조회</a></li>
-													<li><a th:href="@{/mypageShoppingAllList}">my 구매 내역</a></li>
-													<li><a href="#">기프티콘 구매취소</a></li>
-												</ul>
-											</div>
-										</div>
-									</div>
-									<div class="card">
-										<div class="card-heading">
-											<a data-toggle="collapse" data-target="#collapseTwo">my
-												위시리스트</a>
-										</div>
-										<div id="collapseTwo" class="collapse"
-											data-parent="#accordionExample">
-											<div class="card-body">
-												<ul>
-													<li><a th:href="@{/mypageBasketList}">my 장바구니</a></li>
-													<li><a th:href="@{/mypageHeartList}">my 찜한가게</a></li>
-												</ul>
-											</div>
-										</div>
-									</div>
-									<div class="card">
-										<div class="card-heading">
-											<a data-toggle="collapse" data-target="#collapseThree">my 선물함</a>
-										</div>
-										<div id="collapseThree" class="collapse"
-											data-parent="#accordionExample">
-											<div class="card-body">
-												<ul>
-													<li><a th:href="@{/mypageGetGift}">받은 선물함</a></li>
-													<li><a th:href="@{/mypageSendGift}">보낸 선물함</a></li>
-												</ul>
-											</div>
-										</div>
-									</div>
-									<div class="card">
-										<div class="card-heading">
-											<a data-toggle="collapse" data-target="#collapseFour">my 정보</a>
-										</div>
-										<div id="collapseFour" class="collapse"
-											data-parent="#accordionExample">
-											<div class="card-body">
-												<ul>
-													<li><a th:href="@{/mypageInfo}">my 정보 조회</a></li>
-													<li><a th:href="@{/mypageInfoCancel}">회원탈퇴</a></li>
-												</ul>
-											</div>
-										</div>
-									</div>
-									<div class="card">
-										<div class="card-heading">
-											<a data-toggle="collapse" data-target="#collapseFive">my
-												Q&A</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
 				
-			<div class="col-lg-9 col-md-9">
-				<div>
-					<h5><label th:text="${normalid.nname}" id="nnameText"/>님의 우리티콘 마이페이지입니다.</h5><br/><br/>
-					</div>
-					<div class="row">
+			<div class="col-12">
+			
 					<!-- 마이페이지 메인 -->
-					
-					<div class="col-lg-6 col-md-6 col-sm-6 p-0">
-							<div class="categories__item set-bg"
-								data-setbg="img/categories/gifticon.jpg">
-								<div class="categories__text">
-									<h4>보유 기프티콘</h4>
-									<p class="mypagePText">6개</p>
-									<a th:href="@{/mypageShoppingList}">내 기프티콘 보러가기</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-6 p-0">
-							<div class="categories__item set-bg"
-								data-setbg="img/categories/coin.jpg">
-								<div class="categories__text">
-									<h4>보유 포인트</h4>
-									<p class="mypagePText">
-									<label th:text="${normalid.ncharge}" class="mypagePText"/>원</p>
-									<a th:href="@{/mypagePointSet}">내 포인트 보러가기</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-6 p-0">
-							<div class="categories__item set-bg"
-								data-setbg="img/categories/shopPicture.jpg">
-								<div class="categories__text">
-									<h4>찜한 가게</h4>
-									<p class="mypagePText">2개</p>
-									<a href="#">내 찜한가게 보러가기</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-6 p-0">
-							<div class="categories__item set-bg"
-								data-setbg="img/categories/shoppingBag.jpg">
-								<div class="categories__text">
-									<h4>장바구니</h4>
-									<p class="mypagePText">3개</p>
-									<a href="#">내 장바구니 보러가기</a>
-								</div>
-							</div>
+					<div class="col-auto">
+							<table class="table table-hover">
+								<thead style="background-color: #F6F6F6;">
+									<tr>
+										<th></th>
+										<th>작성자</th>
+										<th>카테고리</th>
+										<th>제목</th>
+										<th>날짜</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="notice: ${noticeList}">
+										<td th:text="${notice.noticecode}"></td>
+										<td th:text="${notice.mcode}"></td>
+										<td th:text="${notice.ncategory}"></td>
+										<td> <a th:href="@{noticePageDetail(noticecode=${notice.noticecode})}" th:text="${notice.ntitle}"/> </td>
+										<td th:text="${notice.ndate}"></td>
+									</tr>
+								</tbody>
+							</table>
+
 						</div>
 					
 					
-					</div>
+					
 				</div>
 			</div>
 		</div>
@@ -273,60 +167,7 @@
 	<!-- Shop Section End -->
 
 	<!-- Instagram Begin -->
-	<div class="instagram">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-lg-2 col-md-4 col-sm-4 p-0">
-					<div class="instagram__item set-bg"
-						data-setbg="img/instagram/insta-1.jpg">
-						<div class="instagram__text">
-							<i class="fa fa-instagram"></i> <a href="#">@ ashion_shop</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-2 col-md-4 col-sm-4 p-0">
-					<div class="instagram__item set-bg"
-						data-setbg="img/instagram/insta-2.jpg">
-						<div class="instagram__text">
-							<i class="fa fa-instagram"></i> <a href="#">@ ashion_shop</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-2 col-md-4 col-sm-4 p-0">
-					<div class="instagram__item set-bg"
-						data-setbg="img/instagram/insta-3.jpg">
-						<div class="instagram__text">
-							<i class="fa fa-instagram"></i> <a href="#">@ ashion_shop</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-2 col-md-4 col-sm-4 p-0">
-					<div class="instagram__item set-bg"
-						data-setbg="img/instagram/insta-4.jpg">
-						<div class="instagram__text">
-							<i class="fa fa-instagram"></i> <a href="#">@ ashion_shop</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-2 col-md-4 col-sm-4 p-0">
-					<div class="instagram__item set-bg"
-						data-setbg="img/instagram/insta-5.jpg">
-						<div class="instagram__text">
-							<i class="fa fa-instagram"></i> <a href="#">@ ashion_shop</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-2 col-md-4 col-sm-4 p-0">
-					<div class="instagram__item set-bg"
-						data-setbg="img/instagram/insta-6.jpg">
-						<div class="instagram__text">
-							<i class="fa fa-instagram"></i> <a href="#">@ ashion_shop</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	
 	<!-- Instagram End -->
 
 	<!-- Footer Section Begin -->

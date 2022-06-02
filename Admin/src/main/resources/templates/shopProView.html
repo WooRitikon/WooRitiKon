@@ -79,7 +79,12 @@
                                     <li><a href="./blog-details.html">sales</a></li>
                                 </ul>
                             </li>
-                            <li><a href="./blog.html">notice</a></li>
+                            							<li><a href="#">customer center</a>
+								<ul class="dropdown">
+									<li><a th:href="@{./noticePage}">Notice</a></li>
+									<li><a href="#">FnQ</a></li>
+									<li><a href="#">Qna</a></li>
+								</ul></li>
                         </ul>
                     </nav>
                 </div>
@@ -194,7 +199,6 @@
                 </div>
                 <div class="col-lg-9 col-md-9">
                   	<h3>Preview</h3><hr/>
-	                  <form th:action="selectPro" class="checkout__form" method="post">
 		                    <div class="row">
 		                        <div class="col-lg-4 col-md-6" th:each="product : ${proList}">
 		                            <div class="product__item">
@@ -207,7 +211,7 @@
 		                                    </ul>
 		                                </div>
 		                                <div class="product__item__text">
-		                                    <h6><a href="#" th:text="${product.pname}"></a></h6>
+		                                    <h6><a th:href="@{/shopProDetails(pcode=${product.pcode})}" th:text="${product.pname}"></a></h6>
 		                                    <div class="rating">
 		                                        <i class="fa fa-star"></i>
 		                                        <i class="fa fa-star"></i>
@@ -228,7 +232,6 @@
 		                            </div>
 		                        </div>
 		                    </div>
-	                  </form>  
                  </div>
              </div>
           </div>

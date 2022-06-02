@@ -7,7 +7,7 @@
     <meta name="keywords" content="Ashion, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>mypageShoppingSet</title>
+    <title>Ashion | Template</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
@@ -23,7 +23,10 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-	<link rel="stylesheet" href="css/mypage.css" type="text/css"/>
+    <link rel="stylesheet" href="css/contact.css" type="text/css">
+    <link rel="stylesheet" href="css/map.css" type="text/css">
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e69b28c8c2198e8dc8b70d274c129599&libraries=services"></script>
+    
 </head>
 
 <body>
@@ -57,64 +60,61 @@
     <!-- Offcanvas Menu End -->
 
     <!-- Header Section Begin -->
-   <header class="header">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-xl-3 col-lg-2">
-					<div class="header__logo">
-						<a href="./index.html"><img src="img/mainlogo.png" alt=""></a>
-					</div>
-				</div>
-				<div class="col-xl-6 col-lg-7">
-					<nav class="header__menu">
-						<ul>
-							<li class="active"><a href="./index.html">Home</a></li>
-							<li><a href="#">about</a></li>
-							<li><a href="#">shop</a></li>
-							<li><a th:href="@{/mypageMain(nid=1)}">my page</a>
-								<ul class="dropdown">
-									<li><a th:href="@{/mypageShoppingList}">my 주문조회</a></li>
-									<li><a th:href="@{/mypageBasketList}">my 위시리스트</a></li>
-									<li><a th:href="@{/mypageGetGift}">my 선물함</a></li>
-									<li><a th:href="@{/mypageInfo}">my 정보</a></li>
-									<li><a href="./blog-details.html">my Q&A</a></li>
-								</ul></li>
-							<li><a href="#">my shop</a>
-								<ul class="dropdown">
-									<li><a href="./product-details.html">information</a></li>
-									<li><a href="./shop-cart.html">product</a></li>
-									<li><a href="./checkout.html">review</a></li>
-									<li><a href="./blog-details.html">sales</a></li>
-								</ul></li>
-														<li><a href="#">customer center</a>
+    <header class="header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-3 col-lg-2">
+                    <div class="header__logo">
+                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-7">
+                    <nav class="header__menu">
+                        <ul>
+                            <li class="active"><a href="./index.html">Home</a></li>
+                            <li><a href="#">about</a></li>
+                            <li><a href="#">shop</a></li>
+                            <li><a href="./shop.html">my page</a></li>
+                            <li><a href="#">my shop</a>
+                                <ul class="dropdown">
+                                    <li><a href="shopInfo">information</a></li>
+                                    <li><a href="shopView">product</a></li>
+                                    <li><a href="#">review</a></li>
+                                    <li><a href="./blog-details.html">sales</a></li>
+                                </ul>
+                            </li>
+                            							<li><a href="#">customer center</a>
 								<ul class="dropdown">
 									<li><a th:href="@{./noticePage}">Notice</a></li>
 									<li><a href="#">FnQ</a></li>
 									<li><a href="#">Qna</a></li>
 								</ul></li>
-						</ul>
-					</nav>
-				</div>
-				<div class="col-lg-3">
-					<div class="header__right">
-						<div class="header__right__auth">
-							<a href="#">Login</a> <a href="#">Register</a>
-						</div>
-						<ul class="header__right__widget">
-							<li><span class="icon_search search-switch"></span></li>
-							<li><a href="#"><span class="icon_heart_alt"></span>
-									<div class="tip">2</div> </a></li>
-							<li><a href="#"><span class="icon_bag_alt"></span>
-									<div class="tip">2</div> </a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<div class="canvas__open">
-				<i class="fa fa-bars"></i>
-			</div>
-		</div>
-	</header>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-3">
+                    <div class="header__right">
+                        <div class="header__right__auth">
+                            <a href="#">Login</a>
+                            <a href="#">Register</a>
+                        </div>
+                        <ul class="header__right__widget">
+                            <li><span class="icon_search search-switch"></span></li>
+                            <li><a href="#"><span class="icon_heart_alt"></span>
+                                <div class="tip">2</div>
+                            </a></li>
+                            <li><a href="#"><span class="icon_bag_alt"></span>
+                                <div class="tip">2</div>
+                            </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="canvas__open">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+    </header>
     <!-- Header Section End -->
 
     <!-- Breadcrumb Begin -->
@@ -124,7 +124,7 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb__links">
                         <a href="./index.html"><i class="fa fa-home"></i> Home</a>
-                        <span>my page</span>
+                        <span>Shop</span>
                     </div>
                 </div>
             </div>
@@ -136,122 +136,107 @@
     <section class="shop spad">
         <div class="container">
             <div class="row">
-              <div class="col-lg-3 col-md-3">
-					<div class="shop__sidebar">
-						<div class="sidebar__categories">
-							<div class="section-title">
-								<h4>My page</h4>
-							</div>
-							<div class="categories__accordion">
-								<div class="accordion" id="accordionExample">
-									<div class="card">
-										<div class="card-heading active">
-											<a data-toggle="collapse" data-target="#collapseOne">my 주문주회</a> 
-										</div>
-										<div id="collapseOne" class="collapse show"
-											data-parent="#accordionExample">
-											<div class="card-body">
-												<ul>
-													<li><a th:href="@{/mypageShoppingList}">my 기프티콘 조회</a></li>
-													<li><a th:href="@{/mypagePointSet}">my 포인트 조회</a></li>
-													<li><a th:href="@{/mypageShoppingAllList}">my 구매 내역</a></li>
-													<li><a href="#">기프티콘 구매취소</a></li>
-												</ul>
-											</div>
-										</div>
-									</div>
-									<div class="card">
-										<div class="card-heading">
-											<a data-toggle="collapse" data-target="#collapseTwo">my 위시리스트</a>
-										</div>
-										<div id="collapseTwo" class="collapse"
-											data-parent="#accordionExample">
-											<div class="card-body">
-												<ul>
-													<li><a th:href="@{/mypageBasketList}">my 장바구니</a></li>
-													<li><a th:href="@{/mypageHeartList}">my 찜한가게</a></li>
-												</ul>
-											</div>
-										</div>
-									</div>
-									<div class="card">
-										<div class="card-heading">
-											<a data-toggle="collapse" data-target="#collapseThree">my
-												선물함</a>
-										</div>
-										<div id="collapseThree" class="collapse"
-											data-parent="#accordionExample">
-											<div class="card-body">
-												<ul>
-													<li><a th:href="@{/mypageGetGift}">받은 선물함</a></li>
-													<li><a th:href="@{/mypageSendGift}">보낸 선물함</a></li>
-												</ul>
-											</div>
-										</div>
-									</div>
-									<div class="card">
-										<div class="card-heading">
-											<a data-toggle="collapse" data-target="#collapseFour">my
-												정보</a>
-										</div>
-										<div id="collapseFour" class="collapse"
-											data-parent="#accordionExample">
-											<div class="card-body">
-												<ul>
-													<li><a th:href="@{/mypageInfo}">my 정보 조회</a></li>
-													<li><a th:href="@{/mypageInfoCancel}">회원탈퇴</a></li>
-												</ul>
-											</div>
-										</div>
-									</div>
-									<div class="card">
-										<div class="card-heading">
-											<a data-toggle="collapse" data-target="#collapseFive">my
-												Q&A</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-                      
-                <div class="col-lg-9 col-md-9">
-          <div class="container">
-          			<a th:href="@{/mypageShoppingList}">
-					<b style="font-size:25px; color:#890900;">← 뒤로 가기</b>
-					</a>
-						<br/><br/>
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="product__details__pic">
-                        <div class="product__details__slider__content">
-                            <div class="product__details__pic__slider owl-carousel">
-                                <img data-hash="product-1" class="product__big__img" src="img/product/details/product-1.jpg" alt="">
+                <div class="col-lg-3 col-md-3">
+                    <div class="shop__sidebar">
+                        <div class="sidebar__categories">
+                            <div class="section-title">
+                                <h4>My page</h4>
+                            </div>
+                            <div class="categories__accordion">
+                                <div class="accordion" id="accordionExample">
+                                    <div class="card">
+                                        <div class="card-heading active">
+                                            <a data-toggle="collapse" data-target="#collapseOne">정보</a>
+                                        </div>
+                                        <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li><a href="shopInfo">조회</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-heading">
+                                            <a data-toggle="collapse" data-target="#collapseTwo">상품</a>
+                                        </div>
+                                        <div id="collapseTwo" class="collapse" data-parent="#accordionExample">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li><a href="shopProView">조회</a></li>
+                                                    <li><a href="shopProReg">등록</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-heading">
+                                            <a data-toggle="collapse" data-target="#collapseThree">리뷰</a>
+                                        </div>
+                                        <div id="collapseThree" class="collapse" data-parent="#accordionExample">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li><a href="#">조회</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-heading">
+                                            <a data-toggle="collapse" data-target="#collapseFour">매출</a>
+                                        </div>
+                                        <div id="collapseFour" class="collapse" data-parent="#accordionExample">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li><a href="#">년도별</a></li>
+                                                    <li><a href="#">월별</a></li>
+                                                    <li><a href="#">주간별</a></li>
+                                                    <li><a href="#">일별</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                      <div class="product__details__widget">
-                        <h4><label th:text="${product.pname}"/>
-                        <p><label th:text="${product.pgiftstart}"/>~<label th:text="${product.pgiftend}"/></p>
-                        </h4>
-                        <span>구매 금액 : <label th:text="${product.pprice}"/> 원</span><br/>
-                        <div class="product__details__price">잔여 개수 : 13개</div>
-                        <div class="product__details__widget">
-                        <p><label th:text="${product.pcontent}"/></p>
+                <div class="col-lg-9 col-md-9">
+                    <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8">
+                    <div class="blog__details__content">
+                        <div class="blog__details__item">
+                            <img src="img/blog/details/blog-details.jpg" alt="">
+                            <div class="blog__details__item__title">
+                                <span class="tip">Street style</span>
+                                <h3>MY SHOP PAGES</h3>
+                                <ul>
+                                    <li>by <span>Ema Timahe</span></li>
+                                    <li>Seb 17, 2019</li>
+                                    <li>39 Comments</li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="product__details__button">
-                          <a href="#" class="cart-btn"><span class="icon_bag_alt"></span>바코드</a>
+                        <div class="blog__details__desc">
+                            <p>Afashion season can be defined as much by the people on the catwalk as it can by the
+                                clothes they are wearing. This time around, a key moment came at the end of Marc Jacobs’
+                                New York show, when an almost makeup-free Christy Turlington made a rare return to the
+                                catwalk, aged 50 (she also stars, with the designer himself, in the label’s AW ad
+                            campaign), where the average catwalk model is around 18.</p>
+                        </div>
+                        <div class="blog__details__quote">
+                            <div class="icon"><i class="fa fa-quote-left"></i></div>
+                            <p></p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>  
-                  </div>
-                 </div>
+        </div>
+
                 </div>
+            </div>
+        </div>
     </section>
     <!-- Shop Section End -->
 
@@ -406,6 +391,7 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/jquery.nicescroll.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/map.js"></script>
 </body>
 
 </html>
