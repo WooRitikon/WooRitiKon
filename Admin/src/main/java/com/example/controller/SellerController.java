@@ -22,6 +22,11 @@ public class SellerController {
 	@Autowired
 	private SellerService sellerService;
 	
+	//가게 메인페이지
+	@RequestMapping("/shopMain")
+	public void shopMain(){
+		
+	}
 	
 	//가게 정보 조회하기
 	@RequestMapping("/shopInfo")
