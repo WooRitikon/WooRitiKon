@@ -25,9 +25,6 @@
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <link rel="stylesheet" href="css/contact.css" type="text/css">
     <link rel="stylesheet" href="css/map.css" type="text/css">
-    <link rel="stylesheet" href="css/seller.css" type="text/css">
-    
-    <!-- Script -->
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e69b28c8c2198e8dc8b70d274c129599&libraries=services"></script>
     
 </head>
@@ -201,74 +198,37 @@
                 </div>
                 <div class="col-lg-9 col-md-9">
                     <div class="container">
-			            <div class="row">
-			                <div class="col-lg-6 col-md-6">
-			                    <div class="contact__content">
-			                        <div class="contact__address">
-			                            <h5>Contact info</h5>
-								            <input name="bcode" type="hidden" th:value="${seller.bcode}"/>
-								            <table class="infotable">
-								                  <tbody class="infobody">
-								                  	  <tr>
-								                          <th>상호명</th>
-								                          <td th:text="${seller.bname}"></td>
-								                      </tr>
-								                      <tr>
-								                          <th>이메일</th>
-								                          <td th:text="${seller.semail}"></td>
-								                      </tr>
-								                      <tr>
-								                          <th>전화번호</th>
-								                          <td th:text="${seller.btel}"></td>
-								                      </tr>
-								                      <tr>
-									                       <th>주소</th>
-									                       <td th:text="${seller.saddress}"></td>
-								                      </tr>
-								                      <tr>
-								                        <th>가게 운영시간</th>
-								                        <td>평일(9:00~18:00) 주말(9:00~13:00)</td>
-								                      </tr>
-								                       <tr>
-								                       <th>가게소개</th>
-								                       <td>솨라라라라ㅘㅅ라라라랄~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</td>
-								                	   </tr>
-								                  	   <tr>
-								                       <th>사진</th>
-								                        <td class="shoplogo"><img src="image/alver.png" alt=""></td>
-								                   	   </tr>
-								                  </tbody>
-								              </table>
-					                        </div>
-					                    </div>
-					                </div>
-			                 <div class="col-lg-6 col-md-6">
-								     <div>
-								         <h6><i class="fa fa-headphones"></i> Photo</h6>
-								         <p><img src="img/seller/alver.jpg"  alt=""></p>
-									 </div>
-			                 </div>
-			                <div class="map_wrap">
-								<div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
-									<div id="menu_wrap" class="bg_white">
-										<div class="option">
-											<div>
-												<form onsubmit="searchPlaces(); return false;">
-												키워드 : <input type="text" value="이태원역" id="keyword" size="15"> 
-												<button type="submit">검색하기</button> 
-												</form>
-											</div>
-										</div>
-											<hr>
-											<ul id="placesList"></ul>
-											<div id="pagination"></div>
-									</div>
-							</div>
-				        </div>
-	    			</div>
-			        <div class="shopmodify">
-			       		 <a href="shopInfoMod"><button id="shopmodifyBtn">수정</button></a>
-			        </div>
+            <div class="row">
+                <div class="col-lg-8 col-md-8">
+                    <div class="blog__details__content">
+                        <div class="blog__details__item">
+                            <img src="img/blog/details/blog-details.jpg" alt="">
+                            <div class="blog__details__item__title">
+                                <span class="tip">Street style</span>
+                                <h3>MY SHOP PAGES</h3>
+                                <ul>
+                                    <li>by <span>Ema Timahe</span></li>
+                                    <li>Seb 17, 2019</li>
+                                    <li>39 Comments</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="blog__details__desc">
+                            <p>Afashion season can be defined as much by the people on the catwalk as it can by the
+                                clothes they are wearing. This time around, a key moment came at the end of Marc Jacobs’
+                                New York show, when an almost makeup-free Christy Turlington made a rare return to the
+                                catwalk, aged 50 (she also stars, with the designer himself, in the label’s AW ad
+                            campaign), where the average catwalk model is around 18.</p>
+                        </div>
+                        <div class="blog__details__quote">
+                            <div class="icon"><i class="fa fa-quote-left"></i></div>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
                 </div>
             </div>
         </div>

@@ -25,9 +25,6 @@
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <link rel="stylesheet" href="css/contact.css" type="text/css">
     <link rel="stylesheet" href="css/map.css" type="text/css">
-    <link rel="stylesheet" href="css/seller.css" type="text/css">
-    
-    <!-- Script -->
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e69b28c8c2198e8dc8b70d274c129599&libraries=services"></script>
     
 </head>
@@ -201,74 +198,182 @@
                 </div>
                 <div class="col-lg-9 col-md-9">
                     <div class="container">
+                       <input name="pcode" type="hidden" th:value="${product.pcode}"/>
 			            <div class="row">
-			                <div class="col-lg-6 col-md-6">
-			                    <div class="contact__content">
-			                        <div class="contact__address">
-			                            <h5>Contact info</h5>
-								            <input name="bcode" type="hidden" th:value="${seller.bcode}"/>
-								            <table class="infotable">
-								                  <tbody class="infobody">
-								                  	  <tr>
-								                          <th>상호명</th>
-								                          <td th:text="${seller.bname}"></td>
-								                      </tr>
-								                      <tr>
-								                          <th>이메일</th>
-								                          <td th:text="${seller.semail}"></td>
-								                      </tr>
-								                      <tr>
-								                          <th>전화번호</th>
-								                          <td th:text="${seller.btel}"></td>
-								                      </tr>
-								                      <tr>
-									                       <th>주소</th>
-									                       <td th:text="${seller.saddress}"></td>
-								                      </tr>
-								                      <tr>
-								                        <th>가게 운영시간</th>
-								                        <td>평일(9:00~18:00) 주말(9:00~13:00)</td>
-								                      </tr>
-								                       <tr>
-								                       <th>가게소개</th>
-								                       <td>솨라라라라ㅘㅅ라라라랄~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</td>
-								                	   </tr>
-								                  	   <tr>
-								                       <th>사진</th>
-								                        <td class="shoplogo"><img src="image/alver.png" alt=""></td>
-								                   	   </tr>
-								                  </tbody>
-								              </table>
-					                        </div>
-					                    </div>
-					                </div>
-			                 <div class="col-lg-6 col-md-6">
-								     <div>
-								         <h6><i class="fa fa-headphones"></i> Photo</h6>
-								         <p><img src="img/seller/alver.jpg"  alt=""></p>
-									 </div>
-			                 </div>
-			                <div class="map_wrap">
-								<div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
-									<div id="menu_wrap" class="bg_white">
-										<div class="option">
-											<div>
-												<form onsubmit="searchPlaces(); return false;">
-												키워드 : <input type="text" value="이태원역" id="keyword" size="15"> 
-												<button type="submit">검색하기</button> 
-												</form>
-											</div>
-										</div>
-											<hr>
-											<ul id="placesList"></ul>
-											<div id="pagination"></div>
-									</div>
-							</div>
-				        </div>
-	    			</div>
-			        <div class="shopmodify">
-			       		 <a href="shopInfoMod"><button id="shopmodifyBtn">수정</button></a>
-			        </div>
+			                <div class="col-lg-6">
+			                    <div class="product__details__pic">
+			                        <div class="product__details__slider__content">
+			                            <div class="product__details__pic__slider owl-carousel">
+			                                <img data-hash="product-1" class="product__big__img" src="img/product/details/product-1.jpg" alt="">
+			                            </div>
+			                        </div>
+			                    </div>
+			                </div>
+			                <div class="col-lg-6">
+			                    <div class="product__details__text">
+			                        <h3 th:text="${product.pname}"> <span>가게 이름</span></h3>
+			                        <div class="rating">
+			                            <i class="fa fa-star"></i>
+			                            <i class="fa fa-star"></i>
+			                            <i class="fa fa-star"></i>
+			                            <i class="fa fa-star"></i>
+			                            <i class="fa fa-star"></i>
+			                            <span>( 138 reviews )</span>
+			                        </div>
+			                        <div class="product__details__price" th:text="${product.pprice}"><span>$ 83.0</span></div>
+			                        <p th:text="${product.pcontent}"></p>
+			                        <div class="product__details__button">
+			                            <div class="quantity">
+			                                <span>Quantity:</span>
+			                                <div class="pro-qty">
+			                                    <input type="text" value="1">
+			                                </div>
+			                            </div>
+			                            <a href="#" class="cart-btn"><span class="icon_bag_alt"></span> Add to cart</a>
+			                            <ul>
+			                                <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+			                                <li><a href="#"><span class="icon_adjust-horiz"></span></a></li>
+			                            </ul>
+			                        </div>
+			                        <div class="product__details__widget">
+			                            <ul>
+			                                <li>
+			                                    <span>Available date:</span>
+			                                    <div class="size__btn">
+			                                        <label for="xs-btn" class="active">
+			                                            <input type="radio" id="xs-btn">
+			                                            30일권 40%
+			                                        </label>
+			                                        <label for="s-btn">
+			                                            <input type="radio" id="s-btn">
+			                                            15일권 15%
+			                                        </label>
+			                                        <label for="m-btn">
+			                                            <input type="radio" id="m-btn">
+			                                            7일권 4%
+			                                        </label>
+			                                    </div>
+			                                </li>
+			                            </ul>
+			                        </div>
+			                    </div>
+			                </div>
+			                <div class="col-lg-12">
+			                    <div class="product__details__tab">
+			                        <ul class="nav nav-tabs" role="tablist">
+			                            <li class="nav-item">
+			                                <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">Notice</a>
+			                            </li>
+			                        </ul>
+			                        <div class="tab-content">
+			                            <div class="tab-pane active" id="tabs-1" role="tabpanel">
+			                                <h6>기간</h6>
+			                                <p>30일권, 15일권 사용 가능합니다.</p>
+			                                <p></p>
+			                            </div>
+			                        </div>
+			                    </div>
+			                </div>
+			            </div>
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="related__title">
+                        <h5>RELATED PRODUCTS</h5>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="product__item">
+                        <div class="product__item__pic set-bg" data-setbg="img/product/related/rp-1.jpg">
+                            <div class="label new">New</div>
+                            <ul class="product__hover">
+                                <li><a href="img/product/related/rp-1.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
+                                <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                                <li><a href="#"><span class="icon_bag_alt"></span></a></li>
+                            </ul>
+                        </div>
+                        <div class="product__item__text">
+                            <h6><a href="#">Buttons tweed blazer</a></h6>
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <div class="product__price">$ 59.0</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="product__item">
+                        <div class="product__item__pic set-bg" data-setbg="img/product/related/rp-2.jpg">
+                            <ul class="product__hover">
+                                <li><a href="img/product/related/rp-2.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
+                                <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                                <li><a href="#"><span class="icon_bag_alt"></span></a></li>
+                            </ul>
+                        </div>
+                        <div class="product__item__text">
+                            <h6><a href="#">Flowy striped skirt</a></h6>
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <div class="product__price">$ 49.0</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="product__item">
+                        <div class="product__item__pic set-bg" data-setbg="img/product/related/rp-3.jpg">
+                            <div class="label stockout">out of stock</div>
+                            <ul class="product__hover">
+                                <li><a href="img/product/related/rp-3.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
+                                <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                                <li><a href="#"><span class="icon_bag_alt"></span></a></li>
+                            </ul>
+                        </div>
+                        <div class="product__item__text">
+                            <h6><a href="#">Cotton T-Shirt</a></h6>
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <div class="product__price">$ 59.0</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="product__item">
+                        <div class="product__item__pic set-bg" data-setbg="img/product/related/rp-4.jpg">
+                            <ul class="product__hover">
+                                <li><a href="img/product/related/rp-4.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
+                                <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                                <li><a href="#"><span class="icon_bag_alt"></span></a></li>
+                            </ul>
+                        </div>
+                        <div class="product__item__text">
+                            <h6><a href="#">Slim striped pocket shirt</a></h6>
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <div class="product__price">$ 59.0</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
                 </div>
             </div>
         </div>

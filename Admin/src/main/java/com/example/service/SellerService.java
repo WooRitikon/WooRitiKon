@@ -15,10 +15,13 @@ public interface SellerService {
 	Sellerid sellerdetail(Sellerid sid);
 
 	//판매자 가게 정보보기
-	Sellerid selectshopInfo(Sellerid sid);
+	Sellerid getshopInfo(Sellerid sid);
 
-	//가게 상품 조회하기
+	//가게 상품리스트 조회하기
 	List<Product> getProList(Product pr);
+	
+	//가게 상품 조회하기
+	Product getshopProDetails(Product pr);
 	
 	//가게 상품 등록하기
 	void insertPro(Product pr);
