@@ -38,25 +38,34 @@ Coded by www.creative-tim.com
 <!-- CSS Just for demo purpose, don't include it in your project -->
 <link href="./assets/demo/demo.css" rel="stylesheet" />
 
+
+
 </head>
+
 
 <style>
 .container {
 	display: flex;
-	
+
+	/* display: inline-flex; */
+}
+
+.center {
+	display: flex;
+	justify-content: center;
 	/* display: inline-flex; */
 }
 
 .textcenter {
-   display: flex;
-   justify-content: center;
+	display: flex;
+	justify-content: center;
 }
 </style>
 
 <body class="">
 	<div class="wrapper">
 
-		<div class="main-panel" style="height: 135vh; " >
+		<div class="main-panel" style="height: 180vh;">
 			<!-- Navbar -->
 			<div class="col-md-12">
 				<label> </label>
@@ -73,84 +82,80 @@ Coded by www.creative-tim.com
 								<div class="card card-user">
 									<div class="col-md-12" style="text-align: center;">
 										<h1 class="site-title">
-										<a href="./index.html"><img src="img/mainlogo.png" alt="" style="margin-left: 10px; margin-top: 40px"></a>
-	
+											<img src="img/mainlogo.png"
+												style="margin-left: 10px; margin-top: 40px;">
 										</h1>
 									</div>
 									<!-- end of 이미지(중앙정렬) -->
-								<form th:action="@{/sellerCheck}">
-									<div class="card-body">
-										<div class="textcenter">
-												<div class="col-md-5" style="text-align : center;">		
-													<div class="form-group" style="text-align : center;">
-														<input type="text" class="form-control" th:name="sid" placeholder="판매자 아이디"
-															required>
-													</div>
-												</div>
-										</div>
-										<!-- 아이디 -->
 
-												<!-- style="text-align : center;"은 이미지 가운데정렬!! -->
-										<div class="textcenter">
-											<div class="col-md-5">
-												<div class="form-group">
-													<input type="password" class="form-control" th:name="spassword"
-														placeholder="판매자 비밀번호" required>
-															<button type="submit" id="login" class="btn btn-primary btn-block">판매자 로그인</button>
-														<a th:href='@{/selectpage}'><button type=button class="btn btn-primary btn-block">회원가입</button></a>
+									<div class="card-body">
+										<form th:action="savenormalId" method="post">
+											<div class="row">
+
+
+												<div class="container">
+													<div class="col-md-10 pl-1">
+														<div class="form-group">
+														<a>찾으시는 고객님의 아이디는'</a> <a th:text="${resultsid.sid}"></a><a>'입니다.</a>
+														</div>
+													</div>
+
+
+												</div>
+												<!-- end of container(아이디, 버튼) -->
+
+											</div>
+									
+											<div class="row">
+												
+
+												<div class="update ml-auto mr-auto"></div>
+												<a th:href="@{/sellerlogin}"><button type="button" class="btn btn-primary btn-round">확인</button></a>
+
+												<div class=" pl-1"></div>
+												<!-- 공백용!(pl-1) -->
+
+											</div>
+										</form>
+
+
+
+
+
+
+
+									</div>
+									<!-- end of card-body -->
+
+
+									<a>&nbsp;</a> <a>&nbsp;</a> 
+
+
+
+									<footer class="footer"
+										style="position: absolute; bottom: 0; width: -webkit-fill-available;">
+										<div class="container-fluid">
+											<hr />
+											<div class="row">
+												<nav class="footer-nav">
+													<ul>
+														<li><a href="https://www.creative-tim.com"
+															target="_blank">Creative Tim</a></li>
+														<li><a href="https://www.creative-tim.com/blog"
+															target="_blank">Blog</a></li>
+														<li><a href="https://www.creative-tim.com/license"
+															target="_blank">Licenses</a></li>
+													</ul>
+												</nav>
+												<div class="credits ml-auto">
+													<span class="copyright"> © 2020, made with <i
+														class="fa fa-heart heart"></i> by Creative Tim
+													</span>
 												</div>
 											</div>
 										</div>
-										<!-- 비밀번호 -->
+									</footer>
 
-										
-									</div> 
-									</form>
-									<!-- end of card-body -->
-									<div class="col-md-12" style="text-align: center;">
-										<label><a th:href="@{/searchsid}">판매자회원 아이디 찾기</a></label>&nbsp; <label> | </label> &nbsp; <label>
-											<a th:href="@{/searchspass}">판매자회원 비밀번호 찾기</a></label>
-									</div>
-									<!-- end of 아이디찾기 -->
-
-									<a>&nbsp;</a>
-									<a>&nbsp;</a>
-									<a>&nbsp;</a>
-									<a>&nbsp;</a>
-									<a>&nbsp;</a>
-									<a>&nbsp;</a>
-									<a>&nbsp;</a>
-									<a>&nbsp;</a>
-									<a>&nbsp;</a>
-									<a>&nbsp;</a>
-									<a>&nbsp;</a>
-									
-									
-								
-									<footer class="footer"
-			style="position: absolute; bottom: 0; width: -webkit-fill-available;">
-			<div class="container-fluid">
-				<hr />
-				<div class="row">
-					<nav class="footer-nav">
-						<ul>
-							<li><a href="https://www.creative-tim.com" target="_blank">Creative
-									Tim</a></li>
-							<li><a href="https://www.creative-tim.com/blog"
-								target="_blank">Blog</a></li>
-							<li><a href="https://www.creative-tim.com/license"
-								target="_blank">Licenses</a></li>
-						</ul>
-					</nav>
-					<div class="credits ml-auto">
-						<span class="copyright"> © 2020, made with <i
-							class="fa fa-heart heart"></i> by Creative Tim
-						</span>
-					</div>
-				</div>
-			</div>
-		</footer>
-									
 								</div>
 								<!-- end of cardbody -->
 							</div>
@@ -162,7 +167,7 @@ Coded by www.creative-tim.com
 		</div>
 		<!-- end of content -->
 
-		
+
 	</div>
 	</div>
 	<!-- end of rapper -->
@@ -178,7 +183,11 @@ Coded by www.creative-tim.com
 	<!--  Notifications Plugin    -->
 	<script src="./assets/js/plugins/bootstrap-notify.js"></script>
 	<!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
-	 <script src="./assets/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script>
+	<script src="./assets/paper-dashboard.min.js?v=2.0.1"
+		type="text/javascript"></script>
+	<!-- 중복유효성검사 -->
+	<script src="./assets/js/checkid.js"></script>
 </body>
+ 
 
 </html>
