@@ -71,7 +71,7 @@
 							<li class="active"><a href="./index.html">Home</a></li>
 							<li><a href="#">about</a></li>
 							<li><a href="#">shop</a></li>
-							<li><a th:href="@{/mypageMain(nid=1)}">my page</a>
+							<li><a th:href="@{/mypageMain}">my page</a>
 								<ul class="dropdown">
 									<li><a th:href="@{/mypageShoppingList}">my 주문조회</a></li>
 									<li><a th:href="@{/mypageBasketList}">my 위시리스트</a></li>
@@ -235,122 +235,23 @@
 				</div>
 			</div>
 			<div class="row property__gallery">
-				<div class="col-lg-3 col-md-4 col-sm-6 mix women">
+			<th:block th:each="shop : ${shopHeart}">
+				<div class="col-lg-3 col-md-4 col-sm-6 mix women" >
 					<div class="product__item">
 						<div class="product__item__pic set-bg"
 							data-setbg="img/product/product-1.jpg">
 						</div>
 						<div class="product__item__text">
 							<h6>
-								<a href="#">Buttons tweed blazer</a>
+								<label th:text="${shop.BNAME}"></label>
 							</h6>
+							<P><label th:text="${shop.BTEL}"></label></P>
 							<div class="product__price"><a href="#" style="color:gray;">가게 보러가기</a><br/></div>
-							<button type="submit" style="border:none; background-color: white; color:#890900;"><b>♡ 찜 취소</b></button>
+							<a href="@{/deleteHeart(bcode=${shop.BCODE})}" type="button" style="border:none; background-color: white; color:#890900;"><b>♡ 찜 취소</b></a>
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6 mix men">
-					<div class="product__item">
-						<div class="product__item__pic set-bg"
-							data-setbg="img/product/product-2.jpg">
-							<ul class="product__hover">
-								<li><a href="img/product/product-2.jpg" class="image-popup"><span
-										class="arrow_expand"></span></a></li>
-								<li><a href="#"><span class="icon_heart_alt"></span></a></li>
-								<li><a href="#"><span class="icon_bag_alt"></span></a></li>
-							</ul>
-						</div>
-						<div class="product__item__text">
-							<h6>
-								<a href="#">Flowy striped skirt</a>
-							</h6>
-							
-							<div class="product__price"><a href="#" style="color:gray;">가게 보러가기</a><br/></div>
-							<button type="submit" style="border:none; background-color: white; color:#890900;"><b>♡ 찜 취소</b></button>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6 mix accessories">
-					<div class="product__item">
-						<div class="product__item__pic set-bg"
-							data-setbg="img/product/product-3.jpg">
-							<div class="label stockout">out of stock</div>
-							<ul class="product__hover">
-								<li><a href="img/product/product-3.jpg" class="image-popup"><span
-										class="arrow_expand"></span></a></li>
-								<li><a href="#"><span class="icon_heart_alt"></span></a></li>
-								<li><a href="#"><span class="icon_bag_alt"></span></a></li>
-							</ul>
-						</div>
-						<div class="product__item__text">
-							<h6>
-								<a href="#">Cotton T-Shirt</a>
-							</h6>
-							<div class="product__price"><a href="#" style="color:gray;">가게 보러가기</a><br/></div>
-							<button type="submit" style="border:none; background-color: white; color:#890900;"><b>♡ 찜 취소</b></button>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6 mix cosmetic">
-					<div class="product__item">
-						<div class="product__item__pic set-bg"
-							data-setbg="img/product/product-4.jpg">
-							<ul class="product__hover">
-								<li><a href="img/product/product-4.jpg" class="image-popup"><span
-										class="arrow_expand"></span></a></li>
-								<li><a href="#"><span class="icon_heart_alt"></span></a></li>
-								<li><a href="#"><span class="icon_bag_alt"></span></a></li>
-							</ul>
-						</div>
-						<div class="product__item__text">
-							<h6>
-								<a href="#">Slim striped pocket shirt</a>
-							</h6>
-							<div class="product__price"><a href="#" style="color:gray;">가게 보러가기</a><br/></div>
-							<button type="submit" style="border:none; background-color: white; color:#890900;"><b>♡ 찜 취소</b></button>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6 mix kid">
-					<div class="product__item">
-						<div class="product__item__pic set-bg"
-							data-setbg="img/product/product-5.jpg">
-							<ul class="product__hover">
-								<li><a href="img/product/product-5.jpg" class="image-popup"><span
-										class="arrow_expand"></span></a></li>
-								<li><a href="#"><span class="icon_heart_alt"></span></a></li>
-								<li><a href="#"><span class="icon_bag_alt"></span></a></li>
-							</ul>
-						</div>
-						<div class="product__item__text">
-							<h6>
-								<a href="#">Fit micro corduroy shirt</a>
-							</h6>
-							<div class="product__price"><a href="#" style="color:gray;">가게 보러가기</a><br/></div>
-							<button type="submit" style="border:none; background-color: white; color:#890900;"><b>♡ 찜 취소</b></button>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6 mix kid">
-					<div class="product__item sale">
-						<div class="product__item__pic set-bg"
-							data-setbg="img/product/product-6.jpg">
-							<ul class="product__hover">
-								<li><a href="img/product/product-6.jpg" class="image-popup"><span
-										class="arrow_expand"></span></a></li>
-								<li><a href="#"><span class="icon_heart_alt"></span></a></li>
-								<li><a href="#"><span class="icon_bag_alt"></span></a></li>
-							</ul>
-						</div>
-						<div class="product__item__text">
-							<h6>
-								<a href="#">Tropical Kimono</a>
-							</h6>
-							<div class="product__price"><a href="#" style="color:gray;">가게 보러가기</a><br/></div>
-							<button type="submit" style="border:none; background-color: white; color:#890900;"><b>♡ 찜 취소</b></button>
-							</div>
-						</div>
-					</div>
+				</th:block>
 				</div>
           </div>
        </div>

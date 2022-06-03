@@ -25,6 +25,26 @@
     <link rel="stylesheet" href="css/style.css" type="text/css">
 	<link rel="stylesheet" href="css/mypage.css" type="text/css"/>
 </head>
+<script>
+       function check_pw(){
+ 
+            var pw = document.getElementById('pw').value;
+            var check_SC = 0;
+ 
+            
+            if(document.getElementById('pw').value !='' && document.getElementById('pw2').value!=''){
+                if(document.getElementById('pw').value==document.getElementById('pw2').value){
+                    document.getElementById('check').innerHTML='비밀번호가 일치합니다.';
+                    document.getElementById('check').style.color="#4ABA99";
+                }
+                else{
+                    document.getElementById('check').innerHTML='비밀번호가 일치하지 않습니다.';
+                    document.getElementById('check').style.color="#ED7A64";
+                }
+            }
+        }
+     
+</script>
 
 <body>
     <!-- Page Preloder -->
@@ -71,7 +91,7 @@
 							<li class="active"><a href="./index.html">Home</a></li>
 							<li><a href="#">about</a></li>
 							<li><a href="#">shop</a></li>
-							<li><a th:href="@{/mypageMain(nid=1)}">my page</a>
+							<li><a th:href="@{/mypageMain}">my page</a>
 								<ul class="dropdown">
 									<li><a th:href="@{/mypageShoppingList}">my 주문조회</a></li>
 									<li><a th:href="@{/mypageBasketList}">my 위시리스트</a></li>
@@ -221,24 +241,27 @@
             <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h6 class="coupon__link"><b Style="font-size:25px;">짱구</b> 님의 비밀번호 변경입니다</h6>
+                    <h6 class="coupon__link"><b Style="font-size:25px;"></b> 님의 비밀번호 변경입니다</h6>
                 </div>
             </div>
-            <form action="#" class="checkout__form">	
+            <form th:action="updatePassword" class="checkout__form">	
                         <h5>비밀번호 변경</h5>
                             <div class="col-lg-12">
                                 <div class="checkout__form__input">
                                     <p><br/>
                                     <b>변경 비밀번호<span>*</span></b>
                                     </p>
-                                   <input type="text" style="width: 390px;"/>
+                                   <input type="password" style="width: 390px;" onkeyup="check_pw()" id="pw" th:name="npassword"/>
                                     <p>
                                     <b>변경 비밀번호 확인<span>*</span></b>
+                                    
                                     </p>
                                     <p>
-                                   	<input type="text" style="width: 390px;"/>
+                                   	<input type="password" style="width: 390px;"onkeyup="check_pw()" id="pw2"/>
                                		</p>
-                               		<a th:href="@{/mypageInfoUpload}" id="infoBtn" style="margin:none;">비밀번호 변경</a>
+                   
+                               		<button type="submit" id="infoBtn" style="margin:none;">비밀번호 변경</button>
+                               		&nbsp;<span id="check"></span>
                                 </div>
                             </div>
                 </form>
