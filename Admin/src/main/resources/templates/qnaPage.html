@@ -94,7 +94,7 @@
 				<div class="col-lg-3">
 					<div class="header__right">
 						<div class="header__right__auth">
-							<a href="#">Login</a> <a href="#">Register</a>
+							<a th:text="${nid}"></a>
 						</div>
 						<ul class="header__right__widget">
 							<li><span class="icon_search search-switch"></span></li>
@@ -156,7 +156,7 @@
 									<tr th:each="qlist: ${qList}">
 										<td th:text="${qlist.qcode}"></td>
 										<td><a th:href="@{/qnaPageDetail(qcode=${qlist.qcode})}" th:text="${qlist.ntitle}"></a></td>
-										<td th:text="${qlist.normalid}"></td>
+										<td th:text="${qlist.nid}"></td>
 										<td th:text="${qlist.ndate}"></td>
 										<td th:text="답변확인"></td>
 										<!-- <td><a type="button" th:href="@{/qnareply(qcode=${qna.qcode})}" style="position:right;" class="btn btn-primary" th:text="답글"></a></td>
