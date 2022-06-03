@@ -29,7 +29,7 @@ public class Qna {
 		
 		@ManyToOne
 		@JoinColumn(name="nid")
-		private Normalid normalid;
+		private Normalid nid;
 		private String ntitle;
 		private String ncontent;
 		

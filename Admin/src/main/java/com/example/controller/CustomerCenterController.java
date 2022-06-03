@@ -2,11 +2,15 @@ package com.example.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.domain.Normalid;
 import com.example.domain.Notice;
 import com.example.domain.Qna;
 import com.example.service.NoticeService;
@@ -36,10 +40,14 @@ public class CustomerCenterController {
 	
 	//qna 전체리스트
 	@RequestMapping("qnaPage")
-	public void getQnaList(Qna q,Model m) {
+	public void getQnaList(HttpServletRequest request,Qna q,Model m) {
+		HttpSession session = request.getSession();
+		String nid = (String) session.getAttribute("nid");
+		
+		m.addAttribute("nid", nid);
+		
 		List<Qna> list = qnaservice.getQnaList(q);
 		m.addAttribute("qList", list);
-	
 	}
 	
 	//qna 상세보기
@@ -74,8 +82,17 @@ public class CustomerCenterController {
 	
 	//qna 등록하기
 	@RequestMapping("insertQna")
-	public String insertQna(Qna q) {
+	public String insertQna(HttpServletRequest request, Qna q) {
+		HttpSession session = request.getSession();
+		String nid = (String) session.getAttribute("nid");
+		
+		Normalid vo = new Normalid();
+		vo.setNid(nid);
+		
+		q.setNid(vo);
+		
 		qnaservice.insertQna(q);
+		
 		
 		return "redirect:qnaPage";
 	}
