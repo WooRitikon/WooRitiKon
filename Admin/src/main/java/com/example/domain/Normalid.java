@@ -8,11 +8,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+>>>>>>> upstream/main
 
 import lombok.Data;
 
 @Data
 @Entity
+@Table(name="normalid")
 public class Normalid {
 	
 	@Id

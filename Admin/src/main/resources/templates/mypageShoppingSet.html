@@ -71,7 +71,7 @@
 							<li class="active"><a href="./index.html">Home</a></li>
 							<li><a href="#">about</a></li>
 							<li><a href="#">shop</a></li>
-							<li><a th:href="@{/mypageMain(nid=1)}">my page</a>
+							<li><a th:href="@{/mypageMain}">my page</a>
 								<ul class="dropdown">
 									<li><a th:href="@{/mypageShoppingList}">my 주문조회</a></li>
 									<li><a th:href="@{/mypageBasketList}">my 위시리스트</a></li>
@@ -97,8 +97,11 @@
 				</div>
 				<div class="col-lg-3">
 					<div class="header__right">
-						<div class="header__right__auth">
-							<a href="#">Login</a> <a href="#">Register</a>
+						<div th:if="${normalid.nid == null}" class="header__right__auth">
+							<a th:href="@{/login}">로그인</a> <a th:href="@{/selectpage}">회원가입</a>
+						</div>
+						<div th:if="${normalid.nid != null}" class="header__right__auth">
+							<a th:text="${normalid.nid}" th:href="@{/mypageMain}"></a> <a th:href="@{/logout}">로그아웃</a>
 						</div>
 						<ul class="header__right__widget">
 							<li><span class="icon_search search-switch"></span></li>
@@ -214,11 +217,11 @@
 							</div>
 						</div>
 					</div>
-				</div>
-                      
+				</div>   
+                     
                 <div class="col-lg-9 col-md-9">
           <div class="container">
-          			<a th:href="@{/mypageShoppingList}">
+          			<a th:href="@{/mypageShoppingList(nid=${normalid.nid})}">
 					<b style="font-size:25px; color:#890900;">← 뒤로 가기</b>
 					</a>
 						<br/><br/>
@@ -234,13 +237,17 @@
                 </div>
                 <div class="col-lg-6">
                       <div class="product__details__widget">
-                        <h4><label th:text="${product.pname}"/>
-                        <p><label th:text="${product.pgiftstart}"/>~<label th:text="${product.pgiftend}"/></p>
+                        <h4><label th:text="${product.pname}"></label>
+                        <p>
+                        <label th:text="${giftikon.startdate}"></label>
+                        ~
+                        <label th:text="${giftikon.finaldate}"></label>
+                        </p>
                         </h4>
-                        <span>구매 금액 : <label th:text="${product.pprice}"/> 원</span><br/>
+                        <span>구매 금액 : <label th:text="${product.pprice}"></label> 원</span><br/>
                         <div class="product__details__price">잔여 개수 : 13개</div>
                         <div class="product__details__widget">
-                        <p><label th:text="${product.pcontent}"/></p>
+                        <p><label th:text="${product.pcontent}"></label></p>
                         </div>
                         <div class="product__details__button">
                           <a href="#" class="cart-btn"><span class="icon_bag_alt"></span>바코드</a>
@@ -250,6 +257,7 @@
             </div>
         </div>  
                   </div>
+                 
                  </div>
                 </div>
     </section>
