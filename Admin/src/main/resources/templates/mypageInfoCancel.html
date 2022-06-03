@@ -221,10 +221,10 @@
             <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h6 class="coupon__link"><b Style="font-size:25px;">짱구</b> 님의 회원탈퇴입니다</h6>
+                    <h6 class="coupon__link"><b Style="font-size:25px;"><label th:text="${nid.nname}"></label></b> 님의 회원탈퇴입니다</h6>
                 </div>
             </div>
-            <form action="#" class="checkout__form">	
+            <form action="updateState" class="checkout__form">	
                         <h5>회원탈퇴</h5>
                             <div class="col-lg-12">
                                 <div class="checkout__form__input">
@@ -232,8 +232,8 @@
                                     <b>회원탈퇴를 위해 비밀번호를 입력해주세요<span>*</span></b>
                                     </p>
                                     <p>
-                                   	<input type="text" style="width: 280px;"/>&nbsp;&nbsp;
-                                   	<a th:href="@{/mypageInfoPassCommit}" id="infoBtn" style="margin:none;">회원탈퇴</a>
+                                   	<input type="password" th:name="npassword" placeholder="현재 비밀번호를 입력하세요" required style="width: 280px;" />&nbsp;&nbsp;
+                                   	<button type="submit" id="infoBtn" style="margin:none;">회원탈퇴</button>
                                		</p>
                                		<br/>
                                		<h6><b>회원 탈퇴 규정</b></h6><br/>

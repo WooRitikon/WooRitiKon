@@ -139,10 +139,5 @@ public class GifticonServiceImpl implements GifticonService {
 		
 		return null;
 	}
-<<<<<<< HEAD
-	
-	
 
-=======
->>>>>>> upstream/main
 }
