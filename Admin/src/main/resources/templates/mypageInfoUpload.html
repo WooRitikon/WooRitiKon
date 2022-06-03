@@ -71,7 +71,7 @@
 							<li class="active"><a href="./index.html">Home</a></li>
 							<li><a href="#">about</a></li>
 							<li><a href="#">shop</a></li>
-							<li><a th:href="@{/mypageMain(nid=1)}">my page</a>
+							<li><a th:href="@{/mypageMain}">my page</a>
 								<ul class="dropdown">
 									<li><a th:href="@{/mypageShoppingList}">my 주문조회</a></li>
 									<li><a th:href="@{/mypageBasketList}">my 위시리스트</a></li>
@@ -224,21 +224,22 @@
                     <h6 class="coupon__link"><b Style="font-size:25px;">짱구</b> 님의 회원정보입니다</h6>
                 </div>
             </div>
-            <form action="#" class="checkout__form">	
+            <form th:action="mypageInfoUpdate" method="post" class="checkout__form">	
+                      <input name="nid" type="hidden" th:value='${normalid.nid}'/>
                         <h5>회원정보 &nbsp; 
-                       <a href="#" id="infoBtn" style="margin:none;">수정사항 저장</a>
+                      <input type="submit" id="infoBtn" style="border:none; margin:none;" value="수정사항 저장">
                         </h5>
-                        <div class="row">
+                     <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="checkout__form__input">
                                     <p><b>아이디 <span>*</span></b></p>
-                                	<p>goo123</p>
+                                    <p><label th:text="${normalid.nid}" name="nid"/></p>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="checkout__form__input">
                                     <p><b>비밀번호 <span>*</span></b></p>
-                                    <p>*************&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+                                    <p>*************  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
                                     <a th:href="@{/mypageInfoPass}" id="infoBtn">비밀번호 변경</a>
                                     </p>
                                     <br/>
@@ -247,41 +248,49 @@
                              <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="checkout__form__input">
                                     <p><b>이름 <span>*</span></b></p>
-                                    <p>신짱구</p>
+                                    <p><label th:text="${normalid.nname}"/></p>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="checkout__form__input">
                                     <p><b>전화번호 <span>*</span></b></p>
-                                    <input type="text" value="010-1111-1111"/>
+                                    <p>
+                                    <input type="text" th:value="${normalid.ntel}" name="ntel"/>
+                                    </p>
                                     <br/>
                                 </div>
                             </div>
                                <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="checkout__form__input">
-                                    <p><b>이름 <span>*</span></b></p>
-                                    <p>신짱구</p>
+                                    <p><b>생년월일 <span>*</span></b></p>
+                                    <p><label th:text="${normalid.nbirth}"/></p>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="checkout__form__input">
                                     <p><b>성별 <span>*</span></b></p>
-                                    <p>남자</p>
+                                    <p><label th:text="${normalid.ngender}"/></p>
                                     <br/>
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="checkout__form__input">
-                                    <p><b>생년월일<span>*</span></b></p>
-                                    <p>04.06.15</p><br/>
+                                    <p><b>이메일<span>*</span></b></p>
+                                    <p>
+                                    <input type="text" th:value="${normalid.nemail}" name="nemail"/>
+                                    </p><br/>
                                 </div>
                                 <div class="checkout__form__input">
                                     <p><b>주소 <span>*</span></b></p>
-                                  	<input type="text" value="(123-12)인천광역시 부평구 부영로 120 대림아파트 8동 801호"/>
+                                    <p>
+                                    <input type="text" th:value="${normalid.npostcode}" name="npostcode"/>
+                                    <input type="text" th:value="${normalid.naddress}" name="naddress"/>
+                                    <input type="text" th:value="${normalid.ndaddress}" name="ndaddress"/>
+                                    </p><br/>
                                 </div>
                                 <div class="checkout__form__input">
                                     <p><b>가입일자 <span>*</span></b></p>
-                                    <p> 2021.10.19</p> <br/><br/>
+                                    <p><label th:text="${normalid.nsubscribe}"/></p> <br/><br/>
                                 </div>
                             </div>
                     </div>
