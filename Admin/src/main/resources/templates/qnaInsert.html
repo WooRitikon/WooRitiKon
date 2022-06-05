@@ -95,7 +95,15 @@
 				<div class="col-lg-3">
 					<div class="header__right">
 						<div class="header__right__auth">
-							<a href="#">Login</a> <a href="#">Register</a>
+							<!-- <a href="#">login</a> <a href="#">Register</a> -->
+						<div th:if="${nid == null}" class="header__right__auth">
+							<a th:href="@{/login}">일반</a><a th:href="@{/sellerlogin}">판매자</a>
+							<a th:href="@{/selectpage}">회원가입</a>
+						</div>
+						<div th:if="${nid != null}" class="header__right__auth">
+							<a th:text="${nid}" th:href="@{/mypageMain}"></a> <a
+								th:href="@{/logout}">로그아웃</a>
+						</div>
 						</div>
 						<ul class="header__right__widget">
 							<li><span class="icon_search search-switch"></span></li>
@@ -144,7 +152,7 @@
                     <div class="col-md-5 pr-1">
                       <div class="form-group">
                         <!-- <label>Writer</label> -->
-                        <input type="hidden" class="form-control" th:name="nid">
+                        <input type="hidden" class="form-control" th:name="nid.nid">
                         <!-- <input th:type="hidden" th:name="qcode" th:value="${qnaDetail.qcode}" />  -->
                       </div>
                     </div>
