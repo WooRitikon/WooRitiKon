@@ -5,6 +5,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +24,9 @@ public class CustomerCenterController {
 	private NoticeService notiservice;
 	@Autowired
 	private QnaService qnaservice;
+	
+	static final Logger logger = LoggerFactory.getLogger(MypageController.class);
+
 	
 	//notice 전체리스트
 	@RequestMapping("noticePage")   
@@ -43,24 +48,31 @@ public class CustomerCenterController {
 	public void getQnaList(HttpServletRequest request,Qna q,Model m) {
 		HttpSession session = request.getSession();
 		String nid = (String) session.getAttribute("nid");
+		List<Qna> list = qnaservice.getQnaList(q);
 		
 		m.addAttribute("nid", nid);
-		
-		List<Qna> list = qnaservice.getQnaList(q);
 		m.addAttribute("qList", list);
 	}
 	
 	//qna 상세보기
 	@RequestMapping("qnaPageDetail")
-	public void getQnaDetail(Qna q,Model m) {
+	public void getQnaDetail(HttpServletRequest request,Qna q,Model m) {
+		HttpSession session = request.getSession();
+		String nid = (String) session.getAttribute("nid");
 		Qna qna = qnaservice.getQanDetail(q);
+		
+		m.addAttribute("nid", nid);
 		m.addAttribute("qnaDetail", qna);
 	}
 	
 	//qna 수정값 가져오기
 	@RequestMapping("qnaPageUpdate")
-	public void getQnaUpdate(Qna q,Model m) {
+	public void getQnaUpdate(HttpServletRequest request, Qna q,Model m) {
+		HttpSession session = request.getSession();
+		String nid = (String) session.getAttribute("nid");
 		Qna qna1 = qnaservice.getQnaUpdate(q);
+		
+		m.addAttribute("nid",nid);
 		m.addAttribute("qnaPageUpdate", qna1);
 	}
 	
@@ -78,6 +90,16 @@ public class CustomerCenterController {
 		qnaservice.qnaDelete(q);
 		
 		return "redirect:qnaPage";
+	}
+	
+	//qna insert 로그인 세션
+	@RequestMapping("qnaInsert")
+	public void loginname(HttpServletRequest request, Model m) {
+		logger.info("loginidcheck");
+		HttpSession session=request.getSession();
+		String nid = (String)session.getAttribute("nid");
+		
+		m.addAttribute("nid", nid);
 	}
 	
 	//qna 등록하기
