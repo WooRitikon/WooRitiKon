@@ -44,7 +44,7 @@ public class CustomerCenterController {
 	}
 	
 	//qna 전체리스트
-	@RequestMapping("qnaPage")
+	@RequestMapping("mypageQna")
 	public void getQnaList(HttpServletRequest request,Qna q,Model m) {
 		HttpSession session = request.getSession();
 		String nid = (String) session.getAttribute("nid");
@@ -89,7 +89,7 @@ public class CustomerCenterController {
 	public String qnaDelete(Qna q) {
 		qnaservice.qnaDelete(q);
 		
-		return "redirect:qnaPage";
+		return "redirect:mypageQna";
 	}
 	
 	//qna insert 로그인 세션
@@ -116,6 +116,8 @@ public class CustomerCenterController {
 		qnaservice.insertQna(q);
 		
 		
-		return "redirect:qnaPage";
+		return "redirect:mypageQna";
 	}
+	
+	
 }

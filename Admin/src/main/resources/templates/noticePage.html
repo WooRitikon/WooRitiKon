@@ -26,7 +26,7 @@
 <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
 <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
 <link rel="stylesheet" href="css/style.css" type="text/css">
-<link rel="stylesheet" href="css/mypage.css" type="text/css"/>
+<link rel="stylesheet" href="css/mypage.css" type="text/css" />
 </head>
 
 <body>
@@ -81,12 +81,17 @@
 								</ul></li>
 							<li><a href="#">my shop</a>
 								<ul class="dropdown">
-									<li><a href="./product-details.html">informatin</a></li>
+									<li><a href="./product-details.html">information</a></li>
 									<li><a href="./shop-cart.html">product</a></li>
 									<li><a href="./checkout.html">review</a></li>
 									<li><a href="./blog-details.html">sales</a></li>
 								</ul></li>
-							<li><a href="./noticePage">notice</a></li>
+							<li><a href="#">customer center</a>
+								<ul class="dropdown">
+									<li><a th:href="@{./noticePage}">Notice</a></li>
+									<li><a th:href="@{./fnqPage}">FnQ</a></li>
+									<li><a th:href="@{./qnaPage}">QnA</a></li>
+								</ul></li>
 						</ul>
 					</nav>
 				</div>
@@ -130,36 +135,38 @@
 	<section class="shop spad">
 		<div class="container">
 			<div class="row">
-				
-			<div class="col-12">
-			
+
+				<div class="col-12">
+
 					<!-- 마이페이지 메인 -->
 					<div class="col-auto">
-							<table class="table table-hover">
-								<thead style="background-color: #F6F6F6;">
-									<tr>
-										<th></th>
-										<th>작성자</th>
-										<th>카테고리</th>
-										<th>제목</th>
-										<th>날짜</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr th:each="notice: ${noticeList}">
-										<td th:text="${notice.noticecode}"></td>
-										<td th:text="${notice.mcode}"></td>
-										<td th:text="${notice.ncategory}"></td>
-										<td> <a th:href="@{noticePageDetail(noticecode=${notice.noticecode})}" th:text="${notice.ntitle}"/> </td>
-										<td th:text="${notice.ndate}"></td>
-									</tr>
-								</tbody>
-							</table>
+						<table class="table table-hover">
+							<thead style="background-color: #F6F6F6;">
+								<tr>
+									<th></th>
+									<th>작성자</th>
+									<th>카테고리</th>
+									<th>제목</th>
+									<th>날짜</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="notice: ${noticeList}">
+									<td th:text="${notice.noticecode}"></td>
+									<td th:text="${notice.mcode}"></td>
+									<td th:text="${notice.ncategory}"></td>
+									<td><a
+										th:href="@{noticePageDetail(noticecode=${notice.noticecode})}"
+										th:text="${notice.ntitle}" /></td>
+									<td th:text="${notice.ndate}"></td>
+								</tr>
+							</tbody>
+						</table>
 
-						</div>
-					
-					
-					
+					</div>
+
+
+
 				</div>
 			</div>
 		</div>
@@ -167,7 +174,7 @@
 	<!-- Shop Section End -->
 
 	<!-- Instagram Begin -->
-	
+
 	<!-- Instagram End -->
 
 	<!-- Footer Section Begin -->
@@ -235,7 +242,9 @@
 					<div class="footer__copyright__text">
 						<p>
 							Copyright &copy;
-							<script>document.write(new Date().getFullYear());</script>
+							<script>
+								document.write(new Date().getFullYear());
+							</script>
 							All rights reserved | This template is made with <i
 								class="fa fa-heart" aria-hidden="true"></i> by <a
 								href="https://colorlib.com" target="_blank">Colorlib</a>
