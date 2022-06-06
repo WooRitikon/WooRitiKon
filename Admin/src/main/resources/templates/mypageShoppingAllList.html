@@ -71,7 +71,7 @@
 							<li class="active"><a href="./index.html">Home</a></li>
 							<li><a href="#">about</a></li>
 							<li><a href="#">shop</a></li>
-							<li><a th:href="@{/mypageMain(nid=1)}">my page</a>
+							<li><a th:href="@{/mypageMain}">my page</a>
 								<ul class="dropdown">
 									<li><a th:href="@{/mypageShoppingList}">my 주문조회</a></li>
 									<li><a th:href="@{/mypageBasketList}">my 위시리스트</a></li>
@@ -81,12 +81,17 @@
 								</ul></li>
 							<li><a href="#">my shop</a>
 								<ul class="dropdown">
-									<li><a href="./product-details.html">informatin</a></li>
+									<li><a href="./product-details.html">information</a></li>
 									<li><a href="./shop-cart.html">product</a></li>
 									<li><a href="./checkout.html">review</a></li>
 									<li><a href="./blog-details.html">sales</a></li>
 								</ul></li>
-							<li><a href="./blog.html">notice</a></li>
+														<li><a href="#">customer center</a>
+								<ul class="dropdown">
+									<li><a th:href="@{./noticePage}">Notice</a></li>
+									<li><a href="#">FnQ</a></li>
+									<li><a href="#">Qna</a></li>
+								</ul></li>
 						</ul>
 					</nav>
 				</div>
@@ -217,17 +222,17 @@
                     <h5>전체 구매한 기프티콘 조회</h5><br/><br/>
                   </div>
                     <div class="row">
-                        <div class="col-lg-4 col-md-6" th:each="list : ${productList}">
+                        <div class="col-lg-4 col-md-6" th:each="gift : ${giftikon}">
                             <div class="product__item">
                                 <div class="product__item__pic set-bg" data-setbg="img/shop/shop-1.jpg">
                                 </div>
                                 <div class="product__item__text">
-                                    <h6 id="productText"><label th:text="${list.pname}"></h6>
+                                    <h6 id="productText"><label th:text="${gift.PNAME}"></label></h6>
                                     <div class="rating">
-                                        <h7>기간<label th:text="${list.pgiftstart}">~<label th:text="${list.pgiftend}"></h7>
+                                        <h6>기간<label th:text="${gift.STARTDATE}"></label>~<label th:text="${gift.FINALDATE}"></label></h6>
                                     </div>
                                     <div class="product__price">
-                                     <a th:href="@{/mypageShoppingSet(pcode=${list.pcode})}" type="button" style="background-color: white; border: none;">
+                                     <a th:href="@{/mypageShoppingSet(gcode=${gift.GCODE})}" type="button" style="background-color: white; border: none;">
 								<img alt="submit" src="img/searchIcon.png" id="mypageSearchbtn">
 								<b style="color: #B50000;">가가게보러가기→</b>
 								</a>

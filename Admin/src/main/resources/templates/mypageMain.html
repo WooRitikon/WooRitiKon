@@ -71,7 +71,7 @@
 							<li class="active"><a href="./index.html">Home</a></li>
 							<li><a href="#">about</a></li>
 							<li><a href="#">shop</a></li>
-							<li><a th:href="@{/mypageMain(nid=goo123)}">my page</a>
+							<li><a th:href="@{/mypageMain}">my page</a>
 								<ul class="dropdown">
 									<li><a th:href="@{/mypageShoppingList}">my 주문조회</a></li>
 									<li><a th:href="@{/mypageBasketList}">my 위시리스트</a></li>
@@ -81,19 +81,27 @@
 								</ul></li>
 							<li><a href="#">my shop</a>
 								<ul class="dropdown">
-									<li><a href="./product-details.html">informatin</a></li>
+									<li><a href="./product-details.html">information</a></li>
 									<li><a href="./shop-cart.html">product</a></li>
 									<li><a href="./checkout.html">review</a></li>
 									<li><a href="./blog-details.html">sales</a></li>
 								</ul></li>
-							<li><a href="./blog.html">notice</a></li>
+														<li><a href="#">customer center</a>
+								<ul class="dropdown">
+									<li><a th:href="@{./noticePage}">Notice</a></li>
+									<li><a href="#">FnQ</a></li>
+									<li><a href="#">Qna</a></li>
+								</ul></li>
 						</ul>
 					</nav>
 				</div>
 				<div class="col-lg-3">
 					<div class="header__right">
-						<div class="header__right__auth">
-							<a href="#">Login</a> <a href="#">Register</a>
+							<div th:if="${nid == null}" class="header__right__auth">
+							<a th:href="@{/login}">로그인</a> <a th:href="@{/selectpage}">회원가입</a>
+						</div>
+						<div th:if="${nid != null}" class="header__right__auth">
+							<a th:text="${nid.nid}" th:href="@{/mypageMain}"></a> <a th:href="@{/logout}">로그아웃</a>
 						</div>
 						<ul class="header__right__widget">
 							<li><span class="icon_search search-switch"></span></li>
@@ -147,7 +155,7 @@
 											data-parent="#accordionExample">
 											<div class="card-body">
 												<ul>
-													<li><a th:href="@{/mypageShoppingList(nid=1)}">my 기프티콘 조회</a></li>
+													<li><a th:href="@{/mypageShoppingList}">my 기프티콘 조회</a></li>
 													<li><a th:href="@{/mypagePointSet}">my 포인트 조회</a></li>
 													<li><a th:href="@{/mypageShoppingAllList}">my 구매 내역</a></li>
 													<li><a href="#">기프티콘 구매취소</a></li>
@@ -212,7 +220,7 @@
 				
 			<div class="col-lg-9 col-md-9">
 				<div>
-					<h5><label th:text="${normalid.nname}" id="nnameText"/>님의 우리티콘 마이페이지입니다.</h5><br/><br/>
+					<h5><label th:text="${nid.nname}" id="nnameText"/></label>님의 우리티콘 마이페이지입니다.</h5><br/><br/>
 					</div>
 					<div class="row">
 					<!-- 마이페이지 메인 -->
@@ -233,7 +241,7 @@
 								<div class="categories__text">
 									<h4>보유 포인트</h4>
 									<p class="mypagePText">
-									<label th:text="${normalid.ncharge}" class="mypagePText"/>원</p>
+									<label th:text="${nid.ncharge}" class="mypagePText"/></label>원</p>
 									<a th:href="@{/mypagePointSet}">내 포인트 보러가기</a>
 								</div>
 							</div>
@@ -244,7 +252,7 @@
 								<div class="categories__text">
 									<h4>찜한 가게</h4>
 									<p class="mypagePText">2개</p>
-									<a href="#">내 찜한가게 보러가기</a>
+									<a th:href="@{/mypageHeartList}">내 찜한가게 보러가기</a>
 								</div>
 							</div>
 						</div>
@@ -254,7 +262,7 @@
 								<div class="categories__text">
 									<h4>장바구니</h4>
 									<p class="mypagePText">3개</p>
-									<a href="#">내 장바구니 보러가기</a>
+									<a th:href="@{/mypageBasketList}">내 장바구니 보러가기</a>
 								</div>
 							</div>
 						</div>

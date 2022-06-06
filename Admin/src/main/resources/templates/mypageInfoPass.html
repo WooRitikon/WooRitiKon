@@ -71,7 +71,7 @@
 							<li class="active"><a href="./index.html">Home</a></li>
 							<li><a href="#">about</a></li>
 							<li><a href="#">shop</a></li>
-							<li><a th:href="@{/mypageMain(nid=1)}">my page</a>
+							<li><a th:href="@{/mypageMain}">my page</a>
 								<ul class="dropdown">
 									<li><a th:href="@{/mypageShoppingList}">my 주문조회</a></li>
 									<li><a th:href="@{/mypageBasketList}">my 위시리스트</a></li>
@@ -81,12 +81,17 @@
 								</ul></li>
 							<li><a href="#">my shop</a>
 								<ul class="dropdown">
-									<li><a href="./product-details.html">informatin</a></li>
+									<li><a href="./product-details.html">information</a></li>
 									<li><a href="./shop-cart.html">product</a></li>
 									<li><a href="./checkout.html">review</a></li>
 									<li><a href="./blog-details.html">sales</a></li>
 								</ul></li>
-							<li><a href="./blog.html">notice</a></li>
+														<li><a href="#">customer center</a>
+								<ul class="dropdown">
+									<li><a th:href="@{./noticePage}">Notice</a></li>
+									<li><a href="#">FnQ</a></li>
+									<li><a href="#">Qna</a></li>
+								</ul></li>
 						</ul>
 					</nav>
 				</div>
@@ -216,10 +221,10 @@
             <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h6 class="coupon__link"><b Style="font-size:25px;">짱구</b> 님의 비밀번호 변경입니다</h6>
+                    <h6 class="coupon__link"><b Style="font-size:25px;"><label th:text="${result.nname}"></label></b> 님의 비밀번호 변경입니다</h6>
                 </div>
             </div>
-            <form action="#" class="checkout__form">	
+            <form th:action="mypageInfoPassCheck" class="checkout__form">	
                         <h5>현재 비밀번호 확인</h5>
                             <div class="col-lg-12">
                                 <div class="checkout__form__input">
@@ -227,8 +232,9 @@
                                     <b>현재 비밀번호를 입력해주세요.<span>*</span></b>
                                     </p>
                                     <p>
-                                   	<input type="text" style="width: 280px;"/>
-                                   	<a th:href="@{/mypageInfoPassCommit}" id="infoBtn" style="margin:none;">비밀번호 확인</a>
+                                    
+                                   	<input type="password" th:name="npassword" placeholder="현재 비밀번호를 입력하세요" required style="width: 280px;"/>
+                                   	<button type="submit" th:id="infoBtn" style="margin:none;">비밀번호 확인</button>
                                		</p>
                                 </div>
                              

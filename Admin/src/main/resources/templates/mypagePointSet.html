@@ -71,29 +71,37 @@
 							<li class="active"><a href="./index.html">Home</a></li>
 							<li><a href="#">about</a></li>
 							<li><a href="#">shop</a></li>
-							<li><a th:href="@{/mypageMain(nid=1)}">my page</a>
+							<li><a th:href="@{/mypageMain}">my page</a>
 								<ul class="dropdown">
 									<li><a th:href="@{/mypageShoppingList}">my 주문조회</a></li>
 									<li><a th:href="@{/mypageBasketList}">my 위시리스트</a></li>
 									<li><a th:href="@{/mypageGetGift}">my 선물함</a></li>
-									<li><a th:href="@{/mypageInfo}">my 정보</a></li>
+									<li><a th:href="@{/mypageInfo(nid=goo123)}">my 정보</a></li>
 									<li><a href="./blog-details.html">my Q&A</a></li>
 								</ul></li>
 							<li><a href="#">my shop</a>
 								<ul class="dropdown">
-									<li><a href="./product-details.html">informatin</a></li>
+									<li><a href="./product-details.html">information</a></li>
 									<li><a href="./shop-cart.html">product</a></li>
 									<li><a href="./checkout.html">review</a></li>
 									<li><a href="./blog-details.html">sales</a></li>
 								</ul></li>
-							<li><a href="./blog.html">notice</a></li>
+														<li><a href="#">customer center</a>
+								<ul class="dropdown">
+									<li><a th:href="@{./noticePage}">Notice</a></li>
+									<li><a href="#">FnQ</a></li>
+									<li><a href="#">Qna</a></li>
+								</ul></li>
 						</ul>
 					</nav>
 				</div>
 				<div class="col-lg-3">
 					<div class="header__right">
-						<div class="header__right__auth">
-							<a href="#">Login</a> <a href="#">Register</a>
+						<div th:if="${normalid == null}" class="header__right__auth">
+							<a th:href="@{/login}">로그인</a> <a th:href="@{/selectpage}">회원가입</a>
+						</div>
+						<div th:if="${normalid != null}" class="header__right__auth">
+							<a th:text="${normalid.nid}" th:href="@{/mypageMain}"></a> <a th:href="@{/logout}">로그아웃</a>
 						</div>
 						<ul class="header__right__widget">
 							<li><span class="icon_search search-switch"></span></li>
@@ -221,8 +229,8 @@
 				<div class="col-lg-6 p-0">
 					<div id="discount__text" class="discount__text">
 						<div class="discount__text__title">
-							<span>님의 보유 포인트</span><br/><br/>
-							<h3 style="color:red;"><b>원</b></h3>
+							<span><b style="font-size:20px;"><label th:text="${normalid.nname}"/></b>님의 보유 포인트</span><br/><br/>
+							<h3 style="color:red;"><b><label th:text="${normalid.ncharge}"/>원</b></h3>
 							<span></span>
 						</div>
 						<a href="#">포인트 충전</a>
