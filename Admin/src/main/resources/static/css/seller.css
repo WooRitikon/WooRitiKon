@@ -75,6 +75,7 @@ td{
 	font-family: "Montserrat", sans-serif;
   }
   
+<<<<<<< Updated upstream
   /* shopProView */
   #proModBtn {
   	color:white;
@@ -83,4 +84,12 @@ td{
   	border: none;
   	font-family: "Montserrat", sans-serif;
   	width: 70px;
+=======
+  .proModBtn{
+  background-color:#CD0000;
+  color:white;
+  border: none;
+  border-radius: 12px;
+  font-family: "Montserrat", sans-serif;
+>>>>>>> Stashed changes
   }

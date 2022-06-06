@@ -22,17 +22,28 @@ public class SellerController {
 	@Autowired
 	private SellerService sellerService;
 	
+<<<<<<< Updated upstream
 	//가게 메인페이지
 	@RequestMapping("/shopMain")
 	public void shopMain(){
+=======
+	@RequestMapping("/product-details")
+	public void getproduct() {
+		
+>>>>>>> Stashed changes
 	}
 	
 	//가게 정보 조회하기
 	@RequestMapping("/shopInfo")
+<<<<<<< Updated upstream
 	public void getmyshopInfo(Sellerid sid, Model m) {
 		logger.info("게시물 상세보기");
 		Sellerid vo1 = sellerService.getshopInfo(sid);
 		m.addAttribute("seller",vo1);
+=======
+	public void getmyshopInfo() {
+		
+>>>>>>> Stashed changes
 	}
 	
 	//가게 정보 수정창
