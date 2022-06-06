@@ -26,6 +26,9 @@ public interface SellerService {
 	//가게 상품 등록하기
 	void insertPro(Product pr);
 	
+	//가게 상품 수정하기
+	void updatePro(Product pr);
+	
 	//가게 리뷰 조회하기
 	List<Review> getReviewList(Review re);
 

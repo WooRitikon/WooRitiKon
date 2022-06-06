@@ -74,3 +74,13 @@ td{
 	border: none;
 	font-family: "Montserrat", sans-serif;
   }
+  
+  /* shopProView */
+  #proModBtn {
+  	color:white;
+  	background-color:#CD0000;
+  	border-radius: 10px;
+  	border: none;
+  	font-family: "Montserrat", sans-serif;
+  	width: 70px;
+  }

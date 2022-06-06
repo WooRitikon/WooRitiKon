@@ -50,7 +50,7 @@ public class SellerServiceImpl implements SellerService{
 		return sellerRepo.findById(sid.getBcode()).get();
 	}
 	
-	//판매자 가게 리스트 조회하기
+	//판매자 상품 리스트 조회하기
 	@Override
 	public List<Product> getProList(Product pr) {
 		return (List<Product>)productRepo.findAll();
@@ -67,6 +67,23 @@ public class SellerServiceImpl implements SellerService{
 	@Override
 	public void insertPro(Product pr) {
 		productRepo.save(pr);
+	}
+	
+	//판매자 상품 수정하기
+	@Override
+	public void updatePro(Product pr) {
+		//boardRepo.save(vo); 
+		
+		// 기본키값에 의한 엔티티 검색
+		Product su = productRepo.findById(pr.getPcode()).get();
+		
+		// 검색된 엔티티에 각각의 값을 변경
+		su.setPname(pr.getPname());
+		su.setPprice(pr.getPprice());
+		su.setPcontent(pr.getPcontent());
+		
+		// save(검색된 엔티티)
+		productRepo.save(su);
 	}
 
 	//판매가 가게 리뷰보기

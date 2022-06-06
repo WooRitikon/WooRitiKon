@@ -25,7 +25,6 @@ public class SellerController {
 	//가게 메인페이지
 	@RequestMapping("/shopMain")
 	public void shopMain(){
-		
 	}
 	
 	//가게 정보 조회하기
@@ -60,10 +59,25 @@ public class SellerController {
 		m.addAttribute("proList", list);
 	}
 	
+	//상품 등록 창
+	@RequestMapping("/shopProMod")
+	public String getProMod(Product pr, Model m) {
+		Product pr1 = sellerService.getshopProDetails(pr);
+		m.addAttribute("product",pr1);
+		return "redict:shopProMod";
+	}
+	
 	//상품 등록하기
 	@RequestMapping("/savePro")
 	public String getshopProReg(Product pr) {
 		sellerService.insertPro(pr);
+		return "redirect:shopProView";
+	}
+	
+	//상품 수정하기
+	@RequestMapping("/updatePro")
+	public String updatePro(Product pr) {
+		sellerService.updatePro(pr);
 		return "redirect:shopProView";
 	}
 	

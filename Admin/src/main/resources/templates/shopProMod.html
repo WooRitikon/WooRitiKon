@@ -193,48 +193,52 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-9 col-md-9">
-                  	<h3>Preview</h3><hr/>
-		                    <div class="row">
-		                    <form th:action="shopProMod" class="checkout__form" method="post">
-		                        <div class="col-lg-4 col-md-6" th:each="product : ${proList}">
-		                            <div class="product__item">
-		                                <div class="product__item__pic set-bg" data-setbg="img/shop/shop-1.jpg">
-		                                    <div class="label new">New</div>
-		                                    <ul class="product__hover">
-		                                        <li><a th:href="img/shop/shop-1.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
-		                                        <li><a th:href="#"><span class="icon_heart_alt"></span></a></li>
-		                                        <li><a th:href="#"><span class="icon_bag_alt"></span></a></li>
-		                                    </ul>
-		                                </div>
-		                                <div class="product__item__text">
-		                                    <h6><a th:href="@{/shopProDetails(pcode=${product.pcode})}" th:text="${product.pname}"></a></h6>
-		                                    <div class="rating">
-		                                        <i class="fa fa-star"></i>
-		                                        <i class="fa fa-star"></i>
-		                                        <i class="fa fa-star"></i>
-		                                        <i class="fa fa-star"></i>
-		                                        <i class="fa fa-star"></i>
+               <div class="col-lg-9 col-md-9">
+                  <h3>Product Registration</h3><hr/>
+			           <div class="container">
+				            <form th:action="updatePro" class="checkout__form" method="post">
+				              <input name="pcode" type="hidden" th:value="${product.pcode}"/>
+				                <div class="row">
+				                    <div class="col-lg-8">
+			                            <div class="col-lg-12">
+			                                <div class="checkout__form__input">
+			                                    <p>상품명 <span>*</span></p>
+			                                    <input type="text" name="pname" th:value="${product.pname}">
+			                                </div>
+			                                <div class="checkout__form__input">
+			                                    <p>가격 <span>*</span></p>
+			                                    <input type="text" name="pprice" th:value="${product.pprice}">
+			                                </div>
+			                                <div class="checkout__form__input">
+			                                    <p>상품 소개 <span>*</span></p>
+			                                    <input type="text" name="pcontent" th:value="${product.pcontent}">
+			                                </div>
+			                                <div class="checkout__form__input">
+			                                    <p>구독일수 선택 <span>*</span></p>
+			                                    <input type="text">
+			                                </div>
+			                            </div>
+		                            <div class="col-lg-12">
+		                                <div class="checkout__form__checkbox">
+		                                    <label for="acc">
+		                                        Create an acount?
+		                                        <input type="checkbox" id="acc">
+		                                        <span class="checkmark"></span>
+		                                    </label>
+		                                    <p>Create am acount by entering the information below. If you are a returing
+		                                        customer login at the <br />top of the page</p>
 		                                    </div>
-		                                    <div class="product__price" th:text="${product.pprice}"></div>
-		                                    <button type="submit" id="proModBtn"> Mod</button>
-		                                    <a th:href="#"><button id="proModBtn"> Del</button></a>
 		                                </div>
+		                                 <div class="shopProReg">
+								       		 <input type="submit" value="완료" id="shopProRegBtn"/>
+								        </div>
 		                            </div>
 		                        </div>
-		                </form>
-		                        <div class="col-lg-12 text-center">
-		                            <div class="pagination__option">
-		                                <a href="#">1</a>
-		                                <a href="#">2</a>
-		                                <a href="#">3</a>
-		                                <a href="#"><i class="fa fa-angle-right"></i></a>
-		                            </div>
-		                        </div>
-		                    </div>    
-                 </div>
-             </div>
-          </div>
+							</form>
+	                	</div>
+          		  </div>
+          	</div>
+       </div>
     </section>
     <!-- Shop Section End -->
 
