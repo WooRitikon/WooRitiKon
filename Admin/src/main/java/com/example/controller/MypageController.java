@@ -9,7 +9,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +16,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.domain.Bucket;
 import com.example.domain.Giftikon;
 import com.example.domain.Like;
 import com.example.domain.Normalid;
+import com.example.domain.Product;
+import com.example.domain.Tbucket;
 import com.example.persistence.BucketRepository;
 import com.example.persistence.GiftikonRepository;
 import com.example.persistence.LikeRepository;
 import com.example.persistence.MypageMainRepository;
+import com.example.persistence.OrderlistRepository;
+import com.example.persistence.ProductRepository;
 import com.example.service.GifticonService;
 import com.example.service.MypageService;
 
@@ -52,7 +56,13 @@ public class MypageController {
 	private MypageMainRepository mypageMainRepo;
 	
 	@Autowired
-	private BucketRepository bucketRepo;
+	private OrderlistRepository orderlistRepo;
+	
+	@Autowired
+	private ProductRepository ProRepo;
+	
+	@Autowired
+	private BucketRepository BucketRepo;
 	
 	//이름 가져오기
 	@RequestMapping("/mypageMain")
@@ -144,28 +154,62 @@ public class MypageController {
 	 
 	// <위시리스트>
 	// 장바구니조회
-	
+		
 	  @RequestMapping("/mypageBasketList")
 	  public void createOrder(HttpServletRequest request, Model m){
-	  logger.info("getBasketList controller");
-	  HttpSession session = request.getSession();
-		String nid = (String)session.getAttribute("nid");
-
-		List<HashMap<String, Object>> bucketSelect = new ArrayList<HashMap<String, Object>>();
-		List<Object[]> bucket = bucketRepo.selectBusket(nid);
-		for(Object[] bucketobj : bucket) {
-			HashMap<String, Object> bucket1 = new HashMap<String, Object>();
-			bucket1.put("NID", bucketobj[0]);
-			bucket1.put("PNAME", bucketobj[1]);
-			bucket1.put("PPRICE", bucketobj[2]);
-			bucket1.put("QUANTITY", bucketobj[3]);
+		  logger.info("장바구니 출력");
+		  HttpSession session = request.getSession();
+		  String nid = (String)session.getAttribute("nid");
+		  
+		  List<Product> pr = (List<Product>)ProRepo.findAll();
+		  List<Product> Newpr = new ArrayList<Product>();
+		  
+		  List<Bucket> bu = (List<Bucket>)BucketRepo.findAll();
+		  List<Bucket> Newbu = new ArrayList<Bucket>();
+		 
+		  List<Tbucket> listtb=new ArrayList<Tbucket>();
+		  
+		  int sum=0;
+		  
+		  
+		  for(Bucket b : bu) {
+			  if(b.getNid().equals(nid)) {
+				  Newbu.add(b);
+			  }
+		  }
+		  
+		  for(Bucket b: Newbu) {
+			  for(Product p: pr) {
+				  if(b.getPcode() == p.getPcode()) {
+					  Newpr.add(p);
+					  
+					  Tbucket tb = new Tbucket();
+					  tb.setPname(p.getPname());
+					  tb.setPprice(p.getPprice());
+					  tb.setPcode(p.getPcode());
+					  tb.setQuantity(b.getQuantity());
+					  tb.setTotal(((int)b.getQuantity() *(int)p.getPprice()));
+					  
+					  listtb.add(tb);
+					  
+					  //b.setBtotal(b.getQuantity() *p.getPprice());
+					  
+					  sum += (b.getQuantity() *p.getPprice());
+				  }
+			  }
+		  }
+		  
+		  m.addAttribute("tb", listtb);
+		  m.addAttribute("bucket", Newbu );
+		  m.addAttribute("sum", sum);
+		  m.addAttribute("product",Newpr);
+		  
 	
-			
-			bucketSelect.add(bucket1);
-		}
-		m.addAttribute("bucketSelect", bucketSelect);
+		  
+		  
+		  
 	  }
-	 
+		
 
 	// 찜한가게
 	@RequestMapping("/mypageHeartList")
@@ -307,20 +351,19 @@ public class MypageController {
 	
 	}
 
-	// 비밀번호 변경하기 
-	@RequestMapping("/mypageInfopassCommit")
-	public void infoPassCommit(HttpServletRequest request, Model m) {
-		logger.info("infoPassCommit controller");
-		HttpSession session = request.getSession();
-		String nid = (String)session.getAttribute("nid");
-		
-		
-		Normalid result = mypageService.getNid(nid);
-		
-		
-		m.addAttribute("nid",result);	
-	}
-
+	
+	  // 비밀번호 변경하기
+	 @RequestMapping("/mypageInfoPassCommit")
+	 public void infoPassCommit(HttpServletRequest request, Model m) {
+		 logger.info("infoPassCommit controller"); 
+		 HttpSession session = request.getSession(); 
+		 String nid = (String)session.getAttribute("nid");
+	 
+		 Normalid result = mypageService.getNid(nid);
+	
+		 m.addAttribute("nid",result);
+		 }
+	 
 	 // 비밀번호 변경 업데이트
 	 @RequestMapping("/updatePassword")
 	 public String updatePassword(HttpServletRequest request, Normalid vo, Model m) {
@@ -387,6 +430,8 @@ public class MypageController {
 	 }
 
 	//<바코드구현>
-
-
+	@RequestMapping("/mypageQRCode")
+	public void mypageQRCode() {
+		logger.info("mypageQRCode controller");
+	}
 }

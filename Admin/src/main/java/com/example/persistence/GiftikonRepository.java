@@ -26,7 +26,7 @@ public interface GiftikonRepository extends CrudRepository<Giftikon, Integer>{
 	
 	//전제 구매기프티콘 조회
 	@Query(value="SELECT  "
-			+ "n.nid nid, g.startdate startdate, g.finaldate finaldate, p.pcode pcode, p.pprice pprice, p.pcategory pcategory,p.pname pname, p.pcontent pcontent, g.gcode gcode  "
+			+ " n.nid nid, g.startdate startdate, g.finaldate finaldate, p.pcode pcode, p.pprice pprice, p.pcategory pcategory,p.pname pname, p.pcontent pcontent, g.gcode gcode  "
 			+ " FROM giftikon g INNER JOIN normalid n  "
 			+ " ON n.nid = g.nid  "
 			+ " INNER JOIN product p  "
@@ -38,12 +38,12 @@ public interface GiftikonRepository extends CrudRepository<Giftikon, Integer>{
 	
 	//받은 선물 조회
 	@Query(value="SELECT  "
-			+ "n.nid nid, g.startdate startdate, g.finaldate finaldate, p.pcode pcode, p.pprice pprice, p.pcategory pcategory, p.pname pname, p.pcontent pcontent, g.gcode gcode, p.giftstate giftstate, p.senderid senderid  "
+			+ " n.nid nid, g.startdate startdate, g.finaldate finaldate, p.pcode pcode, p.pprice pprice, p.pcategory pcategory, p.pname pname, p.pcontent pcontent, g.gcode gcode, g.giftstate giftstate, g.senderid senderid  "
 			+ " FROM giftikon g INNER JOIN normalid n  "
 			+ " ON n.nid = g.nid  "
 			+ " INNER JOIN product p  "
 			+ " ON g.pcode = p.pcode  "
-			+ " WHERE p.giftstate =\"Y\" AND n.nid = ?1  "
+			+ " WHERE g.giftstate =\"Y\" AND n.nid = ?1  "
 			+ " ORDER BY g.finaldate asc ",
 			nativeQuery=true)
 	List<Object[]> giftToSelect(String nid);

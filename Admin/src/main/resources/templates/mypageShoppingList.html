@@ -97,11 +97,11 @@
 				</div>
 				<div class="col-lg-3">
 					<div class="header__right">
-						<div th:if="${normalid == null}" class="header__right__auth">
+						<div th:if="${gift == null}" class="header__right__auth">
 							<a th:href="@{/login}">로그인</a> <a th:href="@{/selectpage}">회원가입</a>
 						</div>
-						<div th:if="${normalid != null}" class="header__right__auth">
-							<a th:text="${normalid.nid}" th:href="@{/mypageMain}"></a> <a th:href="@{/logout}">로그아웃</a>
+						<div th:if="${gift != null}" class="header__right__auth">
+							<a th:text="${gift.NID}" th:href="@{/mypageMain}"></a> <a th:href="@{/logout}">로그아웃</a>
 						</div>
 						<ul class="header__right__widget">
 							<li><span class="icon_search search-switch"></span></li>
