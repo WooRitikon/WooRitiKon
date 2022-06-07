@@ -271,7 +271,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr th:each="qlist: ${qList}">
+									<tr th:each="qlist: ${qList}" th:object="${qlist}" th:if="${qlist.nid.nid} == ${nid}">
 										<td th:text="${qlist.qcode}"></td>
 										<td><a th:href="@{/qnaPageDetail(qcode=${qlist.qcode})}"
 											th:text="${qlist.ntitle}"></a></td>
@@ -426,13 +426,16 @@
 	<script>
 		$(function() {
 			$('#Table').DataTable({
-				"paging" : true,
-				"searching" : true,
-				"ordering" : true,
-				"autoWidth" : false,
-				"responsive" : true
-			})
-		})
+				order:[0,"desc"],
+				ordering:true,
+				serverSide:false,
+				paging:true,
+				searching:true,
+				autoWidth:false,
+				responsive:true
+				
+			});
+		});
 	</script>
 </body>
 

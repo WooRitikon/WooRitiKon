@@ -99,7 +99,7 @@
 							<li><a href="#">customer center</a>
 								<ul class="dropdown">
 									<li><a th:href="@{./noticePage}">Notice</a></li>
-									<li><a th:href="@{./fnqPage}">FnQ</a></li>
+									<li><a th:href="@{./faqPage}">FnQ</a></li>
 									<li><a th:href="@{./qnaPage}">QnA</a></li>
 								</ul></li>
 						</ul>
@@ -160,22 +160,19 @@
 					<thead style="background-color: #F6F6F6;">
 						<tr>
 							<th>번호</th>
+							<th>타입</th>
 							<th>제목</th>
-							<th>작성자ID</th>
 							<th>작성일자</th>
-							<th>답변확인</th>
 							<!-- <th>답글</th>
 										<th>삭제</th>  -->
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="qlist: ${qList}">
-							<td th:text="${qlist.qcode}"></td>
-							<td><a th:href="@{/qnaPageDetail(qcode=${qlist.qcode})}"
-								th:text="${qlist.ntitle}"></a></td>
-							<td th:text="${qlist.nid.nid}"></td>
-							<td th:text="${qlist.ndate}"></td>
-							<td th:text="답변확인"></td>
+						<tr th:each="flist: ${faqList}">
+							<td th:text="${flist.fcode}"></td>
+							<td th:text="${flist.ftype}"></td>
+							<td><a th:href="@{/faqPageDetail(fcode=${flist.fcode})}" th:text="${flist.ftitle}"></a></td>
+							<td th:text="${flist.fdate}"></td>
 							<!-- <td><a type="button" th:href="@{/qnareply(qcode=${qna.qcode})}" style="position:right;" class="btn btn-primary" th:text="답글"></a></td>
 										<td><a type="button" th:href="@{/deleteQna(qcode=${qna.qcode})}" style="position:right;" class="btn btn-primary" th:text="삭제"></td>  -->
 						</tr>

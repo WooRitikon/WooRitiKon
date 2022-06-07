@@ -12,9 +12,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.domain.Faq;
 import com.example.domain.Normalid;
 import com.example.domain.Notice;
 import com.example.domain.Qna;
+import com.example.service.FaqService;
 import com.example.service.NoticeService;
 import com.example.service.QnaService;
 
@@ -24,6 +26,8 @@ public class CustomerCenterController {
 	private NoticeService notiservice;
 	@Autowired
 	private QnaService qnaservice;
+	@Autowired
+	private FaqService faqservice;
 	
 	static final Logger logger = LoggerFactory.getLogger(MypageController.class);
 
@@ -47,8 +51,9 @@ public class CustomerCenterController {
 	@RequestMapping("mypageQna")
 	public void getQnaList(HttpServletRequest request,Qna q,Model m) {
 		HttpSession session = request.getSession();
-		String nid = (String) session.getAttribute("nid");
+		String nid = (String) session.getAttribute("nid");		
 		List<Qna> list = qnaservice.getQnaList(q);
+			
 		
 		m.addAttribute("nid", nid);
 		m.addAttribute("qList", list);
@@ -81,7 +86,7 @@ public class CustomerCenterController {
 	public String qnaUpdate(Qna q) {
 		qnaservice.qnaUpdate(q);
 		
-		return "redirect:qnaPage";
+		return "redirect:mypageQna";
 	}
 	
 	//qna 삭제하기
@@ -117,6 +122,29 @@ public class CustomerCenterController {
 		
 		
 		return "redirect:mypageQna";
+	}
+	
+	//faq 전체 리스트 출력
+	@RequestMapping("faqPage")
+	public void FaqPageList(HttpServletRequest request, Faq f,Model m) {
+		HttpSession session=request.getSession();
+		String nid = (String) session.getAttribute("nid");
+		List<Faq> list = faqservice.FaqPageList(f);
+		
+		m.addAttribute("nid", nid);
+		m.addAttribute("faqList", list);
+		
+	}
+	
+	//faq 상세보기
+	@RequestMapping("faqPageDetail")
+	public void FaqPageDetail(HttpServletRequest request, Faq f,Model m) {
+		HttpSession session = request.getSession();
+		String nid = (String) session.getAttribute("nid");
+		Faq faq = faqservice.FaqPageDetail(f);
+		
+		m.addAttribute("nid", nid);
+		m.addAttribute("faqDetail", faq);
 	}
 	
 	

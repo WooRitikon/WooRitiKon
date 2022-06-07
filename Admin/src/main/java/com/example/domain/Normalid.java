@@ -1,5 +1,6 @@
 package com.example.domain;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -8,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import lombok.Data;
 
@@ -30,7 +33,7 @@ public class Normalid {
 	private Integer ncharge;
 	
 	@Column(insertable = false, updatable = false, columnDefinition = "date default sysdate()")
-	@Temporal(TemporalType.DATE)
-	private Date nsubscribe;
+	@CreationTimestamp
+	private LocalDate nsubscribe;
 	private String nauthority;
 }
