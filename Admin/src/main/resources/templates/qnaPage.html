@@ -28,6 +28,12 @@
 <link rel="stylesheet" href="css/style.css" type="text/css">
 <link rel="stylesheet" href="css/mypage.css" type="text/css" />
 <link rel="stylesheet" href="css/qna.css" type="text/css" />
+<!-- 데이터 테이블 -->
+ <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+
+
 </head>
 
 <body>
@@ -82,12 +88,17 @@
 								</ul></li>
 							<li><a href="#">my shop</a>
 								<ul class="dropdown">
-									<li><a href="./product-details.html">informatin</a></li>
+									<li><a href="./product-details.html">information</a></li>
 									<li><a href="./shop-cart.html">product</a></li>
 									<li><a href="./checkout.html">review</a></li>
 									<li><a href="./blog-details.html">sales</a></li>
 								</ul></li>
-							<li><a href="./noticePage">notice</a></li>
+														<li><a href="#">customer center</a>
+								<ul class="dropdown">
+									<li><a th:href="@{./noticePage}">Notice</a></li>
+									<li><a th:href="@{./fnqPage}">FnQ</a></li>
+									<li><a th:href="@{./qnaPage}">QnA</a></li>
+								</ul></li>
 						</ul>
 					</nav>
 				</div>
@@ -133,6 +144,7 @@
 	<!-- Breadcrumb End -->
 	<div>
 		<h3>QNA</h3>
+		<h6>질문응답</h6>
 	</div>
 	<!-- Shop Section Begin -->
 	<section class="shop spad">
@@ -146,31 +158,11 @@
 						</button>
 					</div>
 				</div>
-				<div class="input-group">
-					<span>
-						<select class="selectbox">
-							<option>선택하세요.</option>
-							<option>작성자ID</option>
-							<option>제목</option>
-						</select> 
-					</span>
-					<span>
-						<input type="text" value="" class="form-control"
-							placeholder="Search..."></input>
-					</span>
-					<span>
-						<div class="input-group-append">
-							<div class="input-group-text">
-								<span class="icon_search search-switch"></span>
-							</div>
-						</div>
-					</span>				
-				</div>
 			</div>
 
 			<!-- 마이페이지 메인 -->
 			<div class="card-body">
-				<table class="table table-hover">
+				<table id="Table" class="table table-hover">
 					<thead style="background-color: #F6F6F6;">
 						<tr>
 							<th>번호</th>
@@ -309,6 +301,24 @@
 	<script src="js/owl.carousel.min.js"></script>
 	<script src="js/jquery.nicescroll.min.js"></script>
 	<script src="js/main.js"></script>
+	<!-- 데이터테이블 -->
+	<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+	<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+	<script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+	<script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+	<script src="plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+	<script src="plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+	<script>
+		$(function(){
+			$('#Table').DataTable({
+				"paging" : true,
+				"searching" : true,	
+				"ordering" : false,
+				"autoWidth" : false,
+				"responsive" : true
+			})
+		})
+	</script>
 </body>
 
 </html>

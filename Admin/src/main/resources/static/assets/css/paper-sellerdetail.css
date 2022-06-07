@@ -4,7 +4,7 @@ table th {
 }
 
 .card-body {
-	text-align: center; 
+	text-align: left; 
 }
 
 .customer-table1 {
@@ -63,4 +63,9 @@ a {
 
 .card {
 	width: 80%;
+	height: auto;
+}
+
+tr , td {
+	text-align: center;
 }
