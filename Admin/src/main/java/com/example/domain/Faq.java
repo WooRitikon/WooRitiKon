@@ -8,7 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -16,17 +15,19 @@ import lombok.Data;
 
 @Data
 @Entity
-public class Qnacomment {
+public class Faq {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer ccode;
-	private String ccontent;
+	private Integer fcode;
+	private String ftitle;
+	private String fcontent;
 	@CreationTimestamp
-	private LocalDate cdate;
+	private LocalDate fdate;
+	private String ftype;
 	
 	@ManyToOne
-	@JoinColumn(name="qcode")
-	private Qna qcode;
-	
+	@JoinColumn(name="mcode")
+	private Manager mcode;
+
 }
