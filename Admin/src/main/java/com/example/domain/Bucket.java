@@ -15,7 +15,6 @@ public class Bucket {
 
 	@Id
 	private Integer bucketcode;
-	private Integer bcode;
 	private Integer quantity;
 	
 //	@ManyToOne

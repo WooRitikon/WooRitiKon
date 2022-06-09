@@ -53,18 +53,17 @@ public class MypageServiceimpl implements MypageService{
 		return mypageMainRepo.findById(nid).get();
 	}
 	
+<<<<<<< HEAD
 	//<주문조회>
 
 
+=======
+>>>>>>> upstream/main
 	//기프티콘 상세조회
 	@Override
 	public Giftikon getGiftikonSet(Giftikon gi) {
 		return giftikonRepo.findById(gi.getGcode()).get();
 	}
-	
-	
-
-	
 	
 	//<포인트 조회>
 	//포인트 금액 조회
@@ -120,12 +119,5 @@ public class MypageServiceimpl implements MypageService{
 	 
 		 mypageMainRepo.save(no1);
 	 }
-	 
-	 //회원탈퇴
-	 
-	 
-
-	
-
 	 
 }

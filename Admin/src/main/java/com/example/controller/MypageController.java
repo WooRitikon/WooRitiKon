@@ -223,14 +223,112 @@ public class MypageController {
 		  
 		  
 	  }
+<<<<<<< HEAD
 
 	@RequestMapping(value = "/mypageTotal", produces = "application/text;charset=utf-8")
+=======
+	  
+	//수량 플러스
+	@RequestMapping("plus")
+	public void plus() {
+		
+	}
+	
+	//mypageplus
+	@RequestMapping(value = "/mypagePlus", produces = "application/text;charset=utf-8")
+>>>>>>> upstream/main
 	@ResponseBody
-	public String selleridCheck(String pname) {
-		logger.info("컨트롤러 성공");
+	public String mypagePlus(HttpServletRequest request, String pname) {
+		logger.info("플러스 갯수 변경");
+		HttpSession session = request.getSession();
+		String nid = (String)session.getAttribute("nid");
+		int pprice =0;
+		int pcode =0;
+		int sum=0;
+		
+		List<Product> pr = (List<Product>)ProRepo.findAll();
+		List<Bucket> bu = (List<Bucket>)BucketRepo.findAll();
+		Bucket newbu = new Bucket();
+		
+		
+		for(Product p : pr) {
+			if(p.getPname().equals(pname)) {
+				pprice = p.getPprice();
+				pcode= p.getPcode();
+			}
+		}
+		
+		for(Bucket b : bu) {
+			if((b.getNid().equals(nid)) && (b.getPcode() == pcode)) {
+				newbu.setNid(b.getNid());
+				newbu.setPcode(b.getPcode());
+				newbu.setBucketcode(b.getBucketcode());
+				newbu.setBtotal((b.getBtotal()+pprice));
+				newbu.setQuantity((b.getQuantity()+1));
+				
+				break;
+			}
+		}
+		
+		BucketRepo.save(newbu);
+		
+		//새롭게 정의된 장바구니 리스트 불러오기
+		List<Bucket> total = (List<Bucket>)BucketRepo.findAll();
+				
+		for(Bucket t : total) {
+			sum += t.getBtotal();
+		}
 		
 				
-		return "Y";
+		return String.valueOf(sum);
+	}
+	
+	//mypageminus
+	@RequestMapping(value = "/mypageMinus", produces = "application/text;charset=utf-8")
+	@ResponseBody
+	public String mypageMinus(HttpServletRequest request, String pname) {
+		logger.info(pname);
+		HttpSession session = request.getSession();
+		String nid = (String)session.getAttribute("nid");
+		int pprice =0;
+		int pcode =0;
+		int sum=0;
+		
+		
+		List<Product> pr = (List<Product>)ProRepo.findAll();
+		List<Bucket> bu = (List<Bucket>)BucketRepo.findAll();
+		Bucket newbu = new Bucket();
+		
+		
+		for(Product p : pr) {
+			if(p.getPname().equals(pname)) {
+				pprice = p.getPprice();
+				pcode= p.getPcode();
+			}
+		}
+		
+		for(Bucket b : bu) {
+			if((b.getNid().equals(nid)) && (b.getPcode() == pcode) && (b.getQuantity() > 0)) {
+				newbu.setNid(b.getNid());
+				newbu.setPcode(b.getPcode());
+				newbu.setBucketcode(b.getBucketcode());
+				newbu.setBtotal((b.getBtotal()-pprice));
+				newbu.setQuantity((b.getQuantity()-1));
+				
+				break;
+			}
+		}
+		
+		BucketRepo.save(newbu);
+		
+		//새롭게 정의된 장바구니 리스트 불러오기
+		List<Bucket> total = (List<Bucket>)BucketRepo.findAll();
+		
+		for(Bucket t : total) {
+			sum += t.getBtotal();
+		}
+				
+		return String.valueOf(sum);
 	}
 	
 	  
@@ -383,7 +481,10 @@ public class MypageController {
 			return "redirect:mypageInfoPassCommit";
 		}
 		 
+<<<<<<< HEAD
 	
+=======
+>>>>>>> upstream/main
 	}
 
 	
@@ -431,10 +532,8 @@ public class MypageController {
 
 			HttpSession session = request.getSession();
 			String nid = (String)session.getAttribute("nid");
-			
-			
+		
 			Normalid result = mypageService.getNid(nid);
-			
 			
 			m.addAttribute("nid",result);
 			m.addAttribute("n", nid);
@@ -462,8 +561,6 @@ public class MypageController {
 			 session.invalidate();
 			 return "redirect:login";
 		 }
-
-
 	 }
 
 }
