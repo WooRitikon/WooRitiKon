@@ -223,14 +223,14 @@
 								쇼핑 계속하기</b>
 						</a> <br />
 						<br />
-						
+					
 						<div class="row">
 							<div class="col-lg-12">
 								<div class="row">
 									<div class="col-lg-6 col-md-6 col-sm-6"></div>
 								</div>
 								
-								<div class="shop__cart__table">
+								<div class="shop__cart__table" onchange="init();">
 									<table>
 										<thead>
 											<tr>
@@ -243,26 +243,29 @@
 										</thead>
 										<tbody>
 								
-										<th:block th:each="t :${tb}" item="${tb}">
-											<tr>
+										<th:block th:each="t :${tb}">
+											<tr class="cart_tr">
 												<td th:class="cart__product__item"><img
 													src="img/shop-cart/cp-1.jpg" alt="">
 													<div th:class="cart__product__item__title">
-														<h6 th:text="${t.pname}"></h6>
+														<h6 th:text="${t.pname}" id="pname"></h6>
 													</div></td>
-												<td th:class="cart__price"><span th:text='${t.pprice}' th:class="price"></span></td>
+												<td th:class="cart__price">
+												<span class="p" th:text='${t.pprice}' id="price" th:value='${t.pprice}'>
+												</span>
+												</td>
 												<td th:class="cart__quantity">
-												<form method="get" class="count" id="countForm">
+											
 													<div th:class="pro-qty">
 														<!-- 장바구니에 담긴 상품의 개수 -->
-														<input th:type="text" th:name="cartCount" th:value="${t.quantity}">
+														<input th:type="text" id="cartCount" th:value="${t.quantity}" th:name="quantity">
 													</div>
-												</form>	
+
 												</td>
 												<td th:class="cart__total" >
-												<span th:class="total" th:id="total" th:text="${t.total}" th:value="${t.total}"></span>
+												<span class="total"  th:text="${t.total}" th:value="${t.total}"></span>
 												</td>
-												<td th:class="cart__close"><a th:class="abutton"><span th:class="icon_close"></span></a></td>
+												<td th:class="cart__close"><a class="abutton"><span class="icon_close"></span></a></td>
 											</tr>
 										</th:block>
 										</tbody>
@@ -271,7 +274,7 @@
 								
 							</div>
 						</div>
-					
+
 						<div class="row">
 							<div class="col-lg-6">
 								
@@ -280,7 +283,10 @@
 								<div class="cart__total__procced">
 									<h6>총 결제 금액</h6>
 									<ul>
-										<li id="sum_p_price">Total <span th:text="${sum}" id="cartTotal"></span></li>
+										<li id="sum_p_price">Total 
+										<span th:text="${sum}" th:value="${sum}" class="cartTotal">
+										<input th:name="cartTotal" type="hidden" value="0"/>
+										</span></li>
 										
 									</ul>
 									<a class="primary-btn">결제</a>
@@ -402,35 +408,7 @@
 	<script src="js/jquery.nicescroll.min.js"></script>
 	<script src="js/main.js"></script>
 	<script src="js/jquery.backet.js"></script>
-	<script type="text/javascript">
-	 	$(function() {
-			$('.pro-qty').click(
-					function() {
-
-						var price = $(this).find('.price').text(); // 상품의 가격
-						var count = $(this).find('#cartCount').val(); // 상품의 개수
-						console.log(count);
-						var total = price * count; // 한 상품의 개수*가격
-						var len = 0;
-						var realTotal = 0; // 장바구니 총합 액수
-
-						// 
-						$(this).find('.total').text(total); // 한 상품의 개수*가격
-
-						<c:forEach items="${sum}" var="sum">
-						len += 1;
-						</c:forEach>
-
-						for (var i = 1; i <= len; i++) { // 장바구니 총합 액수(늘어날수록 증가)
-							realTotal += parseInt($('.total[price=' + i + ']')
-									.html());
-						}
-
-						$('#cartTotal').html(realTotal + '원');
-					});
-		}) 
-	</script>
-
+	<script src="js/bucket.js"></script>
 
 
 </body>
