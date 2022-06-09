@@ -248,7 +248,7 @@
 												<td th:class="cart__product__item"><img
 													src="img/shop-cart/cp-1.jpg" alt="">
 													<div th:class="cart__product__item__title">
-														<h6 th:text="${t.pname}" id="pname"></h6>
+														<h6 class="pname" th:text="${t.pname}" id="pname" th:value='${t.pname}'></h6>
 													</div></td>
 												<td th:class="cart__price">
 												<span class="p" th:text='${t.pprice}' id="price" th:value='${t.pprice}'>

@@ -239,26 +239,16 @@ Created: Colorib
 		})
 	
     });*/
-  /*  $('.add').click(function(){
+$('.add').click(function(){
 	$(this).prev().val(Number($(this).prev().val())+1)
 	var price = Number($(this).parent().parent().prev().find('span').attr('value'))
 	$(this).parent().parent().next().find('span').text(Number($(this).prev().val())*price)
 	
-	var money=0;
-	var len = $(this).parent().find('.cart_tr')
-	alert(len.val())
-	alert($(".cartTotal").text())
-		for(var a=0; a<len.length(); a++){
-			var tr = len[i]
-			
-			var price = parseInt(priceTd.textContent)
-		money += price; 
-		alert(priceTd)
-		alert($(".cartTotal").text(money))
-		}	
-	alert($(".cartTotal").text(money))
-})*/
-    $('.minus').click(function(){
+	
+
+})
+
+$('.minus').click(function(){
 	if($(this).next().val()>0){
 	$(this).next().val(Number($(this).next().val())-1)
 	var price = Number($(this).parent().parent().prev().find('span').attr('value'))
@@ -281,18 +271,36 @@ Created: Colorib
 
 })(jQuery);
 
-var idCheck = false;
 $('.add').click(function(){
 	
 	// 아이디 중복 검사 - DB와 비교
  	  $.ajax({
     	type : 'post',
-    	url : 'mypageTotal',
-    	data : { pname : $('#pname').text() },
+    	url : 'mypagePlus',
+    	data : { pname : $(this).parent().parent().parent().find('h6').text() },
     	contentType : 'application/x-www-form-urlencoded;charset=utf-8',
     	success : function(result){
-    		 
-    		alert('성공');
+    		$('.cartTotal').text(result)
+    	},
+    	error : function(err){
+			alert('실패');
+    		console.log(err);
+    	}
+    }); //end of ajax
+    
+    
+}); // end of $('#btn_emailCheck').click
+
+$('.minus').click(function(){
+	
+	// 아이디 중복 검사 - DB와 비교
+ 	  $.ajax({ 
+    	type : 'post',
+    	url : 'mypageMinus',
+    	data : { pname : $(this).parent().parent().parent().find('h6').text() },
+    	contentType : 'application/x-www-form-urlencoded;charset=utf-8',
+    	success : function(result){
+    		$('.cartTotal').text(result)
     	},
     	error : function(err){
 			alert('실패');
