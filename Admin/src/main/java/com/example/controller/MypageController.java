@@ -101,6 +101,7 @@ public class MypageController {
 			giftSelect.add(gift1);
 		}
 		m.addAttribute("giftikon", giftSelect);
+		m.addAttribute("nid", nid);
 	
 	}
 	//기프티콘 상세보기
@@ -109,13 +110,24 @@ public class MypageController {
 		logger.info("getGiftikontSet controller");
 		HttpSession session = request.getSession();
 		String nid = (String)session.getAttribute("nid");
-		
 		Giftikon g = mypageService.getGiftikonSet(gi);
+		System.out.println(g);
+		session.setAttribute("giftikon",g);
 		m.addAttribute("giftikon", g);
 		m.addAttribute("product", g.getProduct());
 		m.addAttribute("normalid", g.getNormalid());
+		
 	}
-
+	
+	//<바코드구현>
+	@RequestMapping("/mypageQRCode")
+	public void mypageQRCode(HttpServletRequest request,Model m) {
+		logger.info("mypageQRCode controller");
+		HttpSession session = request.getSession();
+		Giftikon g =(Giftikon)session.getAttribute("giftikon");
+		m.addAttribute("giftikon", g.getGiftcode());
+	}
+	
 	// 구매내역보기
 	@RequestMapping("/mypageShoppingAllList")
 	public void getGiftAllList(HttpServletRequest request, Model m) {
@@ -140,6 +152,7 @@ public class MypageController {
 			giftSelect.add(gift1);
 		}
 		m.addAttribute("giftikon", giftSelect);
+		m.addAttribute("nid",nid);
 	}
 
 	// <포인트조회>
@@ -204,12 +217,16 @@ public class MypageController {
 		  m.addAttribute("bucket", Newbu );
 		  m.addAttribute("sum", sum);
 		  m.addAttribute("product",Newpr);
-		  
+		  m.addAttribute("nid", nid);
 	
 		  
 		  
 		  
 	  }
+<<<<<<< HEAD
+
+	@RequestMapping(value = "/mypageTotal", produces = "application/text;charset=utf-8")
+=======
 	  
 	//수량 플러스
 	@RequestMapping("plus")
@@ -219,6 +236,7 @@ public class MypageController {
 	
 	//mypageplus
 	@RequestMapping(value = "/mypagePlus", produces = "application/text;charset=utf-8")
+>>>>>>> upstream/main
 	@ResponseBody
 	public String mypagePlus(HttpServletRequest request, String pname) {
 		logger.info("플러스 갯수 변경");
@@ -314,7 +332,11 @@ public class MypageController {
 	}
 	
 	  
-	//수량 마이너스
+	//장바구니 결제 페이지 이동
+	@RequestMapping("/mypageBuy")
+	public void mypageBuy() {
+		logger.info("mypageBuy controller");
+	}
 		
 
 	// 찜한가게
@@ -336,6 +358,7 @@ public class MypageController {
 			shopHeart.add(shop1);
 		}
 		m.addAttribute("shopHeart", shopHeart);
+		m.addAttribute("nid",nid);
 	}
 	
 	//찜한 가게 취소 
@@ -377,6 +400,7 @@ public class MypageController {
 			giftToSelect.add(gift1);
 		}
 		m.addAttribute("giftikon", giftToSelect);
+		m.addAttribute("nid",nid);
 	}
 
 	// 보낸 선물함
@@ -393,6 +417,7 @@ public class MypageController {
 		HttpSession session = request.getSession();
 		String nid = (String)session.getAttribute("nid");
 		
+		m.addAttribute("nid",nid);
 		m.addAttribute("normalid", mypageService.getNid(nid));
 	}
 
@@ -403,19 +428,21 @@ public class MypageController {
 		  logger.info("infoUpload controller");
 		  HttpSession session = request.getSession();
 		  String nid = (String)session.getAttribute("nid");
-		  
+		   
+		  m.addAttribute("nid", nid);
 		  m.addAttribute("normalid",mypageService.getNid(nid)); 
 	}
 
 	
 	  //회원 정보 수정
 	 @RequestMapping("/mypageInfoUpdate")
-	 public String infoUpdate(HttpServletRequest request, Normalid no) {
+	 public String infoUpdate(HttpServletRequest request, Normalid no, Model m) {
 		 logger.info("infoUpdate controller"); 
 		 HttpSession session = request.getSession();
 		 String nid = (String)session.getAttribute("nid");
 		  
 		 mypageService.getNidUpdate(no);
+		 
 		 return "/mypageInfo";
 	 }
 	 
@@ -430,6 +457,7 @@ public class MypageController {
 		Normalid result = mypageService.getNid(nid);
 		
 		m.addAttribute("result",result);
+		m.addAttribute("nid",nid);
 	}
 	
 	// 비밀번호 변경 확인
@@ -439,8 +467,9 @@ public class MypageController {
 		
 		 HttpSession session = request.getSession();
 		 String nid = (String)session.getAttribute("nid");
+
 		 vo.setNid(nid);
-		 
+		
 		 Normalid result = gifticonService.nloginCheck(vo);
 		
 		 
@@ -452,6 +481,10 @@ public class MypageController {
 			return "redirect:mypageInfoPassCommit";
 		}
 		 
+<<<<<<< HEAD
+	
+=======
+>>>>>>> upstream/main
 	}
 
 	
@@ -461,10 +494,11 @@ public class MypageController {
 		 logger.info("infoPassCommit controller"); 
 		 HttpSession session = request.getSession(); 
 		 String nid = (String)session.getAttribute("nid");
-	 
+		 
 		 Normalid result = mypageService.getNid(nid);
-	
+		 m.addAttribute("n",nid);
 		 m.addAttribute("nid",result);
+		
 		 }
 	 
 	 // 비밀번호 변경 업데이트
@@ -502,6 +536,7 @@ public class MypageController {
 			Normalid result = mypageService.getNid(nid);
 			
 			m.addAttribute("nid",result);
+			m.addAttribute("n", nid);
 
 
 	 }
@@ -528,9 +563,4 @@ public class MypageController {
 		 }
 	 }
 
-	//<바코드구현>
-	@RequestMapping("/mypageQRCode")
-	public void mypageQRCode() {
-		logger.info("mypageQRCode controller");
-	}
 }

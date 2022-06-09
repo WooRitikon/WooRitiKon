@@ -53,6 +53,12 @@ public class MypageServiceimpl implements MypageService{
 		return mypageMainRepo.findById(nid).get();
 	}
 	
+<<<<<<< HEAD
+	//<주문조회>
+
+
+=======
+>>>>>>> upstream/main
 	//기프티콘 상세조회
 	@Override
 	public Giftikon getGiftikonSet(Giftikon gi) {
