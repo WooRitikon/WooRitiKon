@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,9 +17,12 @@ import com.example.domain.Faq;
 import com.example.domain.Normalid;
 import com.example.domain.Notice;
 import com.example.domain.Qna;
+import com.example.domain.Qnacomment;
+import com.example.domain.qc;
 import com.example.service.FaqService;
 import com.example.service.NoticeService;
 import com.example.service.QnaService;
+import com.example.service.QnacommentService;
 
 @Controller
 public class CustomerCenterController {
@@ -28,6 +32,9 @@ public class CustomerCenterController {
 	private QnaService qnaservice;
 	@Autowired
 	private FaqService faqservice;
+	@Autowired
+	private QnacommentService qcservice;
+
 	
 	static final Logger logger = LoggerFactory.getLogger(MypageController.class);
 
@@ -49,22 +56,43 @@ public class CustomerCenterController {
 	
 	//qna 전체리스트
 	@RequestMapping("mypageQna")
-	public void getQnaList(HttpServletRequest request,Qna q,Model m) {
+	public void getQnaList(HttpServletRequest request,Qna q, Qnacomment qc,Model m) {
 		HttpSession session = request.getSession();
 		String nid = (String) session.getAttribute("nid");		
 		List<Qna> list = qnaservice.getQnaList(q);
-			
+		List<Qnacomment> list1 = qcservice.getQcList(qc);			
 		
+		List<qc> list2 = new ArrayList<qc>();
+		
+		for(int i=0; i<list.size(); i++) {
+			for(int j=0; j<list1.size(); j++) {
+				if((list.get(i)).getQcode() == (list1.get(j)).getQcode().getQcode()) {
+					qc a = new qc();
+					a.setCcontent(list1.get(j).getCcontent());
+					a.setNcontent(list.get(i).getNcontent());
+					a.setNdate(list.get(i).getNdate());
+					a.setNid(list.get(i).getNid());
+					a.setNtitle(list.get(i).getNtitle());
+					a.setQcode(list.get(i).getQcode());
+					
+					list2.add(a);
+				}
+			}
+		}
+		
+		m.addAttribute("qnalist",list2);
 		m.addAttribute("nid", nid);
 		m.addAttribute("qList", list);
+		m.addAttribute("qnacomment", list1);
 	}
 	
 	//qna 상세보기
 	@RequestMapping("qnaPageDetail")
-	public void getQnaDetail(HttpServletRequest request,Qna q,Model m) {
+	public void getQnaDetail(HttpServletRequest request, Qna q, Model m) {
 		HttpSession session = request.getSession();
 		String nid = (String) session.getAttribute("nid");
 		Qna qna = qnaservice.getQanDetail(q);
+		
 		
 		m.addAttribute("nid", nid);
 		m.addAttribute("qnaDetail", qna);

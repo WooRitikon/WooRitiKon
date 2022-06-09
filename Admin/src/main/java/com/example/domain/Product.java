@@ -19,14 +19,12 @@ public class Product {
 	@GeneratedValue
 	private Integer pcode;
 	private Integer pprice;
+	private String bcode;
 	private String pname;
 	private String pcategory;
-	private String senderid;
-	private String giftstate;
 	private String pcontent;
 	
-	@ManyToOne
-	@JoinColumn(name="bcode")
-	private Sellerid sellerid;
+	private String shotimage;
+	private String originimage;
 
 }

@@ -270,16 +270,25 @@
 										<th>삭제</th>  -->
 									</tr>
 								</thead>
-								<tbody>
-									<tr th:each="qlist: ${qList}" th:object="${qlist}" th:if="${qlist.nid.nid} == ${nid}">
-										<td th:text="${qlist.qcode}"></td>
-										<td><a th:href="@{/qnaPageDetail(qcode=${qlist.qcode})}"
-											th:text="${qlist.ntitle}"></a></td>
-										<td th:text="${qlist.nid.nid}"></td>
-										<td th:text="${qlist.ndate}"></td>
-										<td th:text="답변확인"></td>
+								<tbody th:each="qnalist: ${qnalist}" th:object="${qnalist}" th:if="${qnalist.nid.nid} == ${nid}">
+									<tr>
+										<td th:text="${qnalist.qcode}"></td>
+										<td><a th:href="@{/qnaPageDetail(qcode=${qnalist.qcode})}"
+											th:text="${qnalist.ntitle}"></a></td>
+										<td th:text="${qnalist.nid.nid}"></td>
+										<td th:text="${qnalist.ndate}"></td>
+										<td><a th:href="@{#}" th:text="답변확인" th:class="viewhidden" onclick="return false;" class="button"></a></td>
 										<!-- <td><a type="button" th:href="@{/qnareply(qcode=${qna.qcode})}" style="position:right;" class="btn btn-primary" th:text="답글"></a></td>
 										<td><a type="button" th:href="@{/deleteQna(qcode=${qna.qcode})}" style="position:right;" class="btn btn-primary" th:text="삭제"></td>  -->
+									
+										<tr th:class="hidden" style="display:none;">
+											<td th:colspan="5">
+												<div th:text="${qnalist.ncontent}"></div>
+												<br/>
+												<br/>
+												<div th:text="${qnalist.ccontent}"></div>
+											</td>
+										</tr>
 									</tr>
 								</tbody>
 							</table>
@@ -434,6 +443,21 @@
 				autoWidth:false,
 				responsive:true
 				
+			});
+		});
+		
+		$(function() {
+			$(".viewhidden").click(function(){
+				$(this).parent().parent().next().toggle();	
+				
+				
+				
+// 				status = $(".hidden").css("display");
+// 				if(status == "none") {
+// 					$(".hidden").css("display", "table-row");	
+// 				}else{
+// 					$(".hidden").css("display","none");
+// 				}
 			});
 		});
 	</script>

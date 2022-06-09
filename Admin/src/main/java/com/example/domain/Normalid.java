@@ -11,6 +11,10 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.CreationTimestamp;
+<<<<<<< HEAD
+=======
+import org.springframework.data.annotation.CreatedDate;
+>>>>>>> upstream/main
 
 import lombok.Data;
 
@@ -32,8 +36,13 @@ public class Normalid {
 	private String nbirth;
 	private Integer ncharge;
 	
+<<<<<<< HEAD
 	@Column(insertable = false, updatable = false, columnDefinition = "date default sysdate()")
 	@CreationTimestamp
 	private LocalDate nsubscribe;
 	private String nauthority;
+=======
+	@CreationTimestamp
+	private LocalDate nsubscribe;
+>>>>>>> upstream/main
 }
