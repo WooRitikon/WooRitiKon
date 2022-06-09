@@ -14,14 +14,17 @@ import lombok.Data;
 public class Bucket {
 
 	@Id
+	private Integer bucketcode;
 	private Integer bcode;
 	private Integer quantity;
 	
-	@ManyToOne
-	@JoinColumn(name="nid")
-	private Normalid normalid;
+//	@ManyToOne
+//	@JoinColumn(name="nid")
+	private String nid;
+
 	
-	@ManyToOne
-	@JoinColumn(name="pcode")
-	private Product prouduct;
+//	@ManyToOne
+//	@JoinColumn(name="pcode")
+	private Integer pcode;
+	private Integer btotal;
 }

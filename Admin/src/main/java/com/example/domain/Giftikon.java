@@ -17,6 +17,7 @@ public class Giftikon {
 
 	@Id
 	private Integer gcode;
+	
 	private Integer giftcode;
 	private Date startdate;
 	
@@ -29,5 +30,8 @@ public class Giftikon {
 	private Product product;
 	
 	private Date finaldate;
+	
+	private String giftstate;
+	private String senderid;
 	
 }
