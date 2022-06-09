@@ -26,8 +26,14 @@
 <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
 <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
 <link rel="stylesheet" href="css/style.css" type="text/css">
-<link rel="stylesheet" href="css/mypage.css" type="text/css"/>
-<link rel="stylesheet" href="css/qna.css" type="text/css"/>
+<link rel="stylesheet" href="css/mypage.css" type="text/css" />
+<link rel="stylesheet" href="css/qna.css" type="text/css" />
+<!-- 데이터 테이블 -->
+ <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+
+
 </head>
 
 <body>
@@ -72,7 +78,7 @@
 							<li class="active"><a href="./index.html">Home</a></li>
 							<li><a href="#">about</a></li>
 							<li><a href="#">shop</a></li>
-							<li><a th:href="@{/mypageMain(nid=goo123)}">my page</a>
+							<li><a th:href="@{/mypageMain(noid=goo123)}">my page</a>
 								<ul class="dropdown">
 									<li><a th:href="@{/mypageShoppingList}">my 주문조회</a></li>
 									<li><a th:href="@{/mypageBasketList}">my 위시리스트</a></li>
@@ -82,19 +88,29 @@
 								</ul></li>
 							<li><a href="#">my shop</a>
 								<ul class="dropdown">
-									<li><a href="./product-details.html">informatin</a></li>
+									<li><a href="./product-details.html">information</a></li>
 									<li><a href="./shop-cart.html">product</a></li>
 									<li><a href="./checkout.html">review</a></li>
 									<li><a href="./blog-details.html">sales</a></li>
 								</ul></li>
-							<li><a href="./noticePage">notice</a></li>
+														<li><a href="#">customer center</a>
+								<ul class="dropdown">
+									<li><a th:href="@{./noticePage}">Notice</a></li>
+									<li><a th:href="@{./fnqPage}">FnQ</a></li>
+									<li><a th:href="@{./qnaPage}">QnA</a></li>
+								</ul></li>
 						</ul>
 					</nav>
 				</div>
 				<div class="col-lg-3">
 					<div class="header__right">
-						<div class="header__right__auth">
-							<a th:text="${nid}"></a>
+						<div th:if="${nid == null}" class="header__right__auth">
+							<a th:href="@{/login}">일반</a><a th:href="@{/sellerlogin}">판매자</a>
+							<a th:href="@{/selectpage}">회원가입</a>
+						</div>
+						<div th:if="${nid != null}" class="header__right__auth">
+							<a th:text="${nid}" th:href="@{/mypageMain}"></a> <a
+								th:href="@{/logout}">로그아웃</a>
 						</div>
 						<ul class="header__right__widget">
 							<li><span class="icon_search search-switch"></span></li>
@@ -128,53 +144,59 @@
 	<!-- Breadcrumb End -->
 	<div>
 		<h3>QNA</h3>
+		<h6>질문응답</h6>
 	</div>
 	<!-- Shop Section Begin -->
 	<section class="shop spad">
 		<div class="container">
 			<div class="row">
-				
-			<div class="col-12">
-				<div class="button-container">
-					<button class="delete-button"><a th:href="@{./qnaInsert}" class="a-tag-font" >글쓰기</a></button>
-				</div>
-					<!-- 마이페이지 메인 -->
-					<div class="card-body">
-							<table class="table table-hover">
-								<thead style="background-color: #F6F6F6;">
-									<tr>
-										<th>번호</th>
-										<th>제목</th>
-										<th>작성자ID</th>
-										<th>작성일자</th>
-										<th>답변확인</th>
-										<!-- <th>답글</th>
-										<th>삭제</th>  -->
-									</tr>
-								</thead>
-								<tbody>
-									<tr th:each="qlist: ${qList}">
-										<td th:text="${qlist.qcode}"></td>
-										<td><a th:href="@{/qnaPageDetail(qcode=${qlist.qcode})}" th:text="${qlist.ntitle}"></a></td>
-										<td th:text="${qlist.nid}"></td>
-										<td th:text="${qlist.ndate}"></td>
-										<td th:text="답변확인"></td>
-										<!-- <td><a type="button" th:href="@{/qnareply(qcode=${qna.qcode})}" style="position:right;" class="btn btn-primary" th:text="답글"></a></td>
-										<td><a type="button" th:href="@{/deleteQna(qcode=${qna.qcode})}" style="position:right;" class="btn btn-primary" th:text="삭제"></td>  -->
-									</tr>
-								</tbody>
-							</table>
-						</div>					
-					
-					
+
+				<div class="col-12">
+					<div class="button-container">
+						<button class="delete-button">
+							<a th:href="@{./qnaInsert}" class="a-tag-font">글쓰기</a>
+						</button>
+					</div>
 				</div>
 			</div>
+
+			<!-- 마이페이지 메인 -->
+			<div class="card-body">
+				<table id="Table" class="table table-hover">
+					<thead style="background-color: #F6F6F6;">
+						<tr>
+							<th>번호</th>
+							<th>제목</th>
+							<th>작성자ID</th>
+							<th>작성일자</th>
+							<th>답변확인</th>
+							<!-- <th>답글</th>
+										<th>삭제</th>  -->
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="qlist: ${qList}">
+							<td th:text="${qlist.qcode}"></td>
+							<td><a th:href="@{/qnaPageDetail(qcode=${qlist.qcode})}"
+								th:text="${qlist.ntitle}"></a></td>
+							<td th:text="${qlist.nid.nid}"></td>
+							<td th:text="${qlist.ndate}"></td>
+							<td th:text="답변확인"></td>
+							<!-- <td><a type="button" th:href="@{/qnareply(qcode=${qna.qcode})}" style="position:right;" class="btn btn-primary" th:text="답글"></a></td>
+										<td><a type="button" th:href="@{/deleteQna(qcode=${qna.qcode})}" style="position:right;" class="btn btn-primary" th:text="삭제"></td>  -->
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+
 		</div>
 	</section>
+
 	<!-- Shop Section End -->
 
 	<!-- Instagram Begin -->
-	
+
 	<!-- Instagram End -->
 
 	<!-- Footer Section Begin -->
@@ -242,7 +264,9 @@
 					<div class="footer__copyright__text">
 						<p>
 							Copyright &copy;
-							<script>document.write(new Date().getFullYear());</script>
+							<script>
+								document.write(new Date().getFullYear());
+							</script>
 							All rights reserved | This template is made with <i
 								class="fa fa-heart" aria-hidden="true"></i> by <a
 								href="https://colorlib.com" target="_blank">Colorlib</a>
@@ -277,6 +301,24 @@
 	<script src="js/owl.carousel.min.js"></script>
 	<script src="js/jquery.nicescroll.min.js"></script>
 	<script src="js/main.js"></script>
+	<!-- 데이터테이블 -->
+	<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+	<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+	<script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+	<script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+	<script src="plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+	<script src="plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+	<script>
+		$(function(){
+			$('#Table').DataTable({
+				"paging" : true,
+				"searching" : true,	
+				"ordering" : false,
+				"autoWidth" : false,
+				"responsive" : true
+			})
+		})
+	</script>
 </body>
 
 </html>

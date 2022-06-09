@@ -38,6 +38,11 @@ Coded by www.creative-tim.com
 <link href="../assets/css/paper-getQnaList.css?v=2.0.1" rel="stylesheet" />
 <!-- CSS Just for demo purpose, don't include it in your project -->
 <link href="../assets/demo/demo.css" rel="stylesheet" />
+<!-- 데이터테이블 -->
+ <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  
 </head>
 
 <body class="">
@@ -167,7 +172,7 @@ Coded by www.creative-tim.com
 							<h5 class="card-title">QnA</h5>
 						</div>
 						<div class="card-body">
-							<table class="table table-hover">
+							<table id="Table-date" class="table table-hover">
 								<thead style="background-color: #F6F6F6;">
 									<tr>
 										<th>번호</th>
@@ -185,7 +190,7 @@ Coded by www.creative-tim.com
 										<td th:text="${qna.qcode}"></td>
 										<td th:text="${qna.ntitle}"></td>
 										<td th:text="${qna.ncontent}"></td>
-										<td th:text="${qna.nid}"></td>
+										<td th:text="${qna.nid.nid}"></td>
 										<td th:text="${qna.ndate}"></td>
 										<td th:text="답변확인"></td>
 										<td><a type="button" th:href="@{/qnareply(qcode=${qna.qcode})}" style="position:right;" class="btn btn-primary" th:text="답글"></a></td>
@@ -238,6 +243,25 @@ Coded by www.creative-tim.com
 		type="text/javascript"></script>
 	<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
 	<script src="../assets/demo/demo.js"></script>
+	<!-- 데이터테이블 -->
+	<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+	<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+	<script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+	<script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+	<script src="plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+	<script src="plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+	<script>
+		$(function(){
+			$('#Table-date').DataTable({
+				"paging" : true,
+				"searching" : true,
+				"ordering" : false,
+				"autoWidth" : false,
+				"responsive" : true
+				
+			})
+		})
+	</script>
 </body>
 
 </html>
