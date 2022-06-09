@@ -55,6 +55,10 @@ public class MypageServiceimpl implements MypageService{
 	
 	//<주문조회>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> upstream/main
 	//기프티콘 상세조회
 	@Override
 	public Giftikon getGiftikonSet(Giftikon gi) {

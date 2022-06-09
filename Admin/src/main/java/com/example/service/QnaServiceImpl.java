@@ -40,4 +40,45 @@ public class QnaServiceImpl implements QnaService {
 		return QnaRepo.findById(q.getQcode()).get();
 		
 	}
+	
+	//qna 상세보기
+	@Override
+	public Qna getQanDetail(Qna q) {
+		logger.info("qna 상세보기");
+		return QnaRepo.findById(q.getQcode()).get();
+		
+	}
+	
+	//qna 수정 값 가져오기
+	@Override
+	public Qna getQnaUpdate(Qna q) {
+		logger.info("qna 수정 값 가져오기");
+		return QnaRepo.findById(q.getQcode()).get();
+	}
+	
+	
+	//qna 수정하기
+	@Override
+	public void qnaUpdate(Qna q){
+		logger.info("qna 수정하기");
+		Qna qna1 = QnaRepo.findById(q.getQcode()).get();
+		qna1.setNtitle(q.getNtitle());
+		qna1.setNcontent(q.getNcontent());
+		
+		QnaRepo.save(qna1);
+	}
+	
+	//qna 고객페이지 삭제하기
+	@Override
+	public void qnaDelete(Qna q) {
+		logger.info("qna 삭제하기");
+		QnaRepo.delete(q);
+	}
+	
+	//qna 등록
+	@Override
+	public void insertQna(Qna q) {
+		logger.info("qna 등록하기");
+		QnaRepo.save(q);
+	}
 }

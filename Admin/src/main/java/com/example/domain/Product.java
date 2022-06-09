@@ -20,8 +20,10 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer pcode;
 	private Integer pprice;
+	private String bcode;
 	private String pname;
 	private String pcategory;
+<<<<<<< HEAD
 	
 	private String shortiamge;
 	private String originimage;
@@ -30,5 +32,11 @@ public class Product {
 //	@ManyToOne
 //	@JoinColumn(name="bcode")
 	private Integer bcode;
+=======
+	private String pcontent;
+	
+	private String shotimage;
+	private String originimage;
+>>>>>>> upstream/main
 
 }

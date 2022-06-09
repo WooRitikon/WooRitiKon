@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -26,6 +27,6 @@ public class Qnacomment {
 	
 	@ManyToOne
 	@JoinColumn(name="qcode")
-	private Qnacomment qnacom;
+	private Qna qcode;
 	
 }
