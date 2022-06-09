@@ -1,5 +1,7 @@
 package com.example.service;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,12 @@ public class QnacommentServiceImpl implements QnacommentService {
 	public void insertReply(Qnacomment qc) {
 		logger.info("답글저장");
 		QnacomRepo.save(qc);
+	}
+	
+	@Override
+	public List<Qnacomment> getQcList(Qnacomment qc) {
+		logger.info("답글보기");
+		return (List<Qnacomment>)QnacomRepo.findAll();
 	}
 	
 }

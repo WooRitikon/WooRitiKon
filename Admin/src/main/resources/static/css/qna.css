@@ -93,3 +93,7 @@ div.input-group-text {
 #shop {
 	padding-top:0px;
 }
+
+tr , td {
+	text-align: center;
+}

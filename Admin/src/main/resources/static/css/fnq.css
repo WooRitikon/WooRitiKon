@@ -85,3 +85,7 @@ select.selectbox {
 div.input-group-text {
 	height: 36px;
 }
+
+tr, td {
+	text-align: center;
+}

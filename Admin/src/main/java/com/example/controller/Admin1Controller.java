@@ -1,8 +1,9 @@
 package com.example.controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,13 +12,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.domain.Faq;
+import com.example.domain.Manager;
 import com.example.domain.Normalid;
 import com.example.domain.Product;
 import com.example.domain.Qna;
 import com.example.domain.Qnacomment;
 import com.example.domain.Sellerid;
-import com.example.persistence.ProductRepository;
 import com.example.service.CustomerService;
+import com.example.service.FaqService;
 import com.example.service.ProductService;
 import com.example.service.QnaService;
 import com.example.service.QnacommentService;
@@ -40,7 +43,7 @@ public class Admin1Controller {
 	@Autowired
 	private ProductService productService;
 	@Autowired
-	private ProductRepository proRepo;
+	private FaqService faqService;
 
 	
 	//질문응답 리스트 전체조회
@@ -60,6 +63,24 @@ public class Admin1Controller {
 		
 		return "redirect:/getQnaList";
 		
+	}
+	
+	@RequestMapping("getQnaDetail")
+	public void getQnaDetail(HttpServletRequest request,Qna q,Model m) {
+		HttpSession session = request.getSession();
+		String nid = (String) session.getAttribute("nid");
+		Qna qna = qnaService.getQanDetail(q);
+		
+		m.addAttribute("nid", nid);
+		m.addAttribute("qnaDetail", qna);
+	}
+	
+	//qna 수정하기
+	@RequestMapping("adminqnaUpdate")
+	public String qnaUpdate(Qna q) {
+		qnaService.qnaUpdate(q);
+		
+		return "redirect:getQnaList";
 	}
 	
 	//답글 제목 가져오기
@@ -139,5 +160,54 @@ public class Admin1Controller {
 	
 	}
 	
+	//faq 관리자 리스트 출력 
+	@RequestMapping("getFaqList")
+	public void getFaqList(Faq f, Model m) {
+		List<Faq> list = faqService.getFaqList(f);
+		
+		m.addAttribute("faqList", list);
+		
+	}
+	
+	//faq 등록
+	@RequestMapping("insertFaq")
+	public String insertFaq(HttpServletRequest request, Faq f) {
+		HttpSession session = request.getSession();
+		Integer mcode = (Integer) session.getAttribute("mcode");
+		Manager m = new Manager();
+		m.setMcode(mcode);
+		
+		f.setMcode(m);
+		
+		faqService.insertFaq(f);
+		
+		return "redirect:faqPage";
+	}
+	
+	//faq 삭제
+	@RequestMapping("deleteFaq")
+	public String deleteFaq(Faq f) {
+		logger.info("faq 삭제");
+		faqService.deleteFaq(f);
+		
+		return "redirect:getFaqList";
+		
+		}
+	
+	//faq 상세보기 페이지
+	@RequestMapping("getFaqDetail")
+	public void FaqPageDetail(Faq f,Model m) {
+		Faq faq=faqService.FaqPageDetail(f);
+		
+		m.addAttribute("faqDetail", faq);
+	}
+	
+	//faq 수정하기
+	@RequestMapping("getFapUpdate")
+	public String FaqUpdate(Faq f) {
+		faqService.FaqUpdate(f);
+		
+		return "redirect:getFaqList";
+	}
 }
 

@@ -38,3 +38,8 @@ display: inline-block;
     background: #BC1717;
     border-radius: 10px;
 }
+
+#gcDiv{
+	width: 40px;
+	height: auto;
+}
