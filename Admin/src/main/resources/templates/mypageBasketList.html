@@ -39,13 +39,12 @@
 	<div class="offcanvas-menu-overlay"></div>
 	<div class="offcanvas-menu-wrapper">
 		<div class="offcanvas__close">+</div>
-		<ul class="offcanvas__widget">
-			<li><span class="icon_search search-switch"></span></li>
-			<li><a href="#"><span class="icon_heart_alt"></span>
-					<div class="tip">2</div> </a></li>
-			<li><a href="#"><span class="icon_bag_alt"></span>
-					<div class="tip">2</div> </a></li>
-		</ul>
+	  <ul class="offcanvas__widget">
+            <li><a th:href="@{/mypageHeartList}"><span class="icon_heart_alt"></span>
+            </a></li>
+            <li><a th:href="@{/mypageBasketList}"><span class="icon_bag_alt"></span>
+            </a></li>
+        </ul>
 		<div class="offcanvas__logo">
 			<a href="./index.html"><img src="img/logo.png" alt=""></a>
 		</div>
@@ -75,9 +74,9 @@
 								<ul class="dropdown">
 									<li><a th:href="@{/mypageShoppingList}">my 주문조회</a></li>
 									<li><a th:href="@{/mypageBasketList}">my 위시리스트</a></li>
-									<li><a href="./checkout.html">my 선물함</a></li>
+									<li><a th:href="@{/mypageGetGift}">my 선물함</a></li>
 									<li><a th:href="@{/mypageInfo}">my 정보</a></li>
-									<li><a href="./blog-details.html">my Q&A</a></li>
+									<li><a th:href="@{/mypageQna}">my Q&A</a></li>
 								</ul></li>
 							<li><a href="#">my shop</a>
 								<ul class="dropdown">
@@ -89,23 +88,29 @@
 							<li><a href="#">customer center</a>
 								<ul class="dropdown">
 									<li><a th:href="@{./noticePage}">Notice</a></li>
-									<li><a href="#">FnQ</a></li>
-									<li><a href="#">Qna</a></li>
+									<li><a th:href="@{./fnqPage}">FnQ</a></li>
+									<li><a th:href="@{./qnaPage}">Qna</a></li>
 								</ul></li>
 						</ul>
 					</nav>
 				</div>
 				<div class="col-lg-3">
 					<div class="header__right">
-						<div class="header__right__auth">
-							<a href="#">Login</a> <a href="#">Register</a>
+				
+								<div th:if="${nid == null}" class="header__right__auth">
+							<a th:href="@{/login}">일반</a><a th:href="@{/sellerlogin}">판매자</a>
+							<a th:href="@{/selectpage}">회원가입</a>
 						</div>
+						<div th:if="${nid != null}" class="header__right__auth">
+							<a th:text="${nid}" th:href="@{/mypageMain}"></a> <a
+								th:href="@{/logout}">로그아웃</a>
+						</div>
+					
 						<ul class="header__right__widget">
-							<li><span class="icon_search search-switch"></span></li>
-							<li><a href="#"><span class="icon_heart_alt"></span>
-									<div class="tip">2</div> </a></li>
-							<li><a href="#"><span class="icon_bag_alt"></span>
-									<div class="tip">2</div> </a></li>
+         				   <li><a th:href="@{/mypageHeartList}"><span class="icon_heart_alt"></span>
+           					 </a></li>
+          				  <li><a th:href="@{/mypageBasketList}"><span class="icon_bag_alt"></span>
+            				</a></li>
 						</ul>
 					</div>
 				</div>
@@ -156,7 +161,7 @@
 													<li><a th:href="@{/mypageShoppingList}">my 기프티콘 조회</a></li>
 													<li><a th:href="@{/mypagePointSet}">my 포인트 조회</a></li>
 													<li><a th:href="@{/mypageShoppingAllList}">my 구매내역</a></li>
-													<li><a href="#">기프티콘 구매취소</a></li>
+													<li><a th:href="@{/mypageBuyCancel}">기프티콘 구매취소</a></li>
 												</ul>
 											</div>
 										</div>
@@ -289,7 +294,7 @@
 										</span></li>
 										
 									</ul>
-									<a class="primary-btn">결제</a>
+									<a th:href="@{/mypageBuy}" class="primary-btn">결제</a>
 								</div>
 							</div>
 

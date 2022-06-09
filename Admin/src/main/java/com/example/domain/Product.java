@@ -23,20 +23,10 @@ public class Product {
 	private String bcode;
 	private String pname;
 	private String pcategory;
-<<<<<<< HEAD
-	
-	private String shortiamge;
-	private String originimage;
-	private String pcontent;
-	
-//	@ManyToOne
-//	@JoinColumn(name="bcode")
-	private Integer bcode;
-=======
+
 	private String pcontent;
 	
 	private String shotimage;
 	private String originimage;
->>>>>>> upstream/main
 
 }

@@ -231,9 +231,7 @@ public class GifticonServiceImpl implements GifticonService {
 		
 		return null;
 	}
-<<<<<<< HEAD
 
-=======
 	
 	//판매자 가게 정보 검색
 	@Override
@@ -250,5 +248,5 @@ public class GifticonServiceImpl implements GifticonService {
 		
 		return last;
 	}
->>>>>>> upstream/main
+
 }
