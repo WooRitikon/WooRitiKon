@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 
 import com.example.controller.Admin1Controller;
 import com.example.domain.Qna;
+import com.example.domain.Qnacomment;
 import com.example.persistence.QnaRepository;
+import com.example.persistence.QnacommentRepository;
 
 @Service
 public class QnaServiceImpl implements QnaService {
@@ -18,6 +20,9 @@ public class QnaServiceImpl implements QnaService {
 	
 	@Autowired
 	private QnaRepository QnaRepo;
+	
+	@Autowired
+	private QnacommentRepository qcRepo;
 	
 	//qna 전체리스트
 	@Override
@@ -43,9 +48,9 @@ public class QnaServiceImpl implements QnaService {
 	
 	//qna 상세보기
 	@Override
-	public Qna getQanDetail(Qna q) {
+	public List<Object[]> getQnaDetail(int qcode) {
 		logger.info("qna 상세보기");
-		return QnaRepo.findById(q.getQcode()).get();
+		return qcRepo.findByqcode(qcode);
 		
 	}
 	

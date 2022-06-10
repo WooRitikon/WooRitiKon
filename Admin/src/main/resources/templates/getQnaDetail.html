@@ -175,7 +175,7 @@ Coded by www.creative-tim.com
 				<div class="col-md-8">
 					<div class="card card-user">
 						<div class="card-header">
-							<h5 class="card-title">FaQ</h5>
+							<h5 class="card-title">QnaDetail</h5>
 						</div>
 						<div class="card-body">
 							<div class="card-body">
@@ -206,15 +206,22 @@ Coded by www.creative-tim.com
 												<textarea class="form-control textarea" disabled="" th:name="ncontent"
 													th:text="${qnaDetail.ncontent}"></textarea>
 											</div>
+											
+											 <div class="form-group">
+												<label>Reply</label>
+												<textarea class="form-control textarea" disabled="" th:name="ccontent"
+													th:text="${qnaDetail.ccontent}"></textarea>
+											</div> 
 										</div>
 									</div>
+									
 									<div class="row" id="button-control">
 										<div class="update ml-auto mr-auto">
 											<button th:type="submit" class="btn btn-primary btn-round">수정</button>
 											<a th:href="@{/deleteQna(qcode=${qnaDetail.qcode})}"
 												type="button" style="background-color: red;"
 												class="btn btn-primary btn-round">삭제</a> 
-											<a th:href="@{./getFaqList}" type="button"
+											<a th:href="@{./getQnaList}" type="button"
 												style="background-color: red;"
 												class="btn btn-primary btn-round">돌아가기</a>
 										</div>

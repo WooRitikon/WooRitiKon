@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +20,7 @@ import com.example.domain.Product;
 import com.example.domain.Qna;
 import com.example.domain.Qnacomment;
 import com.example.domain.Sellerid;
+import com.example.domain.qc;
 import com.example.service.CustomerService;
 import com.example.service.FaqService;
 import com.example.service.ProductService;
@@ -61,19 +63,59 @@ public class Admin1Controller {
 		logger.info("qna 삭제");
 		qnaService.deleteQna(q);
 		
+		
 		return "redirect:/getQnaList";
 		
 	}
-	
+	// qna 상세보기
 	@RequestMapping("getQnaDetail")
-	public void getQnaDetail(HttpServletRequest request,Qna q,Model m) {
-		HttpSession session = request.getSession();
-		String nid = (String) session.getAttribute("nid");
+	public void getQnaDetail(Qna q,Qnacomment qc,Model m) {
 		Qna qna = qnaService.getQanDetail(q);
+		Qnacomment qnacom = qnacommentService.getQcDetail(qc);
+		List<qc> list2 = new ArrayList<qc>();
+				qc a = new qc();
+				a.setNcontent(qna.getNcontent());
+				a.setNdate(qna.getNdate());
+				a.setNid(qna.getNid());
+				a.setNtitle(qna.getNtitle());
+				a.setQcode(qna.getQcode());
+				a.setCcontent(a.getCcontent());
+				
+				list2.add(a);
 		
-		m.addAttribute("nid", nid);
-		m.addAttribute("qnaDetail", qna);
+		
+		m.addAttribute("qnaDetail", list2);
+		
 	}
+	
+	//qna 전체리스트
+//	@RequestMapping("getQnaDetail")
+//	public void getQnaDetail(Qna q, Qnacomment qc,Model m) {
+//		List<Qna> list = qnaService.getQnaList(q);
+//		List<Qnacomment> list1 = qnacommentService.getQcList(qc);			
+//		
+//		List<qc> list2 = new ArrayList<qc>();
+//		
+//		for(int i=0; i<list.size(); i++) {
+//			for(int j=0; j<list1.size(); j++) {
+//				if((list.get(i)).getQcode() == (list1.get(j)).getQcode().getQcode()) {
+//					qc a = new qc();
+//					a.setCcontent(list1.get(j).getCcontent());
+//					a.setNcontent(list.get(i).getNcontent());
+//					a.setNdate(list.get(i).getNdate());
+//					a.setNid(list.get(i).getNid());
+//					a.setNtitle(list.get(i).getNtitle());
+//					a.setQcode(list.get(i).getQcode());
+//					
+//					list2.add(a);
+//				}
+//			}
+//		}
+//		
+//		m.addAttribute("qnalist",list2);
+//		m.addAttribute("qList", list);
+//		m.addAttribute("qnacomment", list1);
+//	}
 	
 	//qna 수정하기
 	@RequestMapping("adminqnaUpdate")
