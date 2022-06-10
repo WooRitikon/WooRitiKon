@@ -1,14 +1,14 @@
 package com.example.controller;
 
 
-import java.security.Provider.Service;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
+
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.domain.Giftikon;
 import com.example.domain.Like;
 import com.example.domain.Normalid;
-
+import com.example.persistence.BucketRepository;
 import com.example.persistence.GiftikonRepository;
 import com.example.persistence.LikeRepository;
 import com.example.persistence.MypageMainRepository;
@@ -50,6 +50,9 @@ public class MypageController {
 	
 	@Autowired
 	private MypageMainRepository mypageMainRepo;
+	
+	@Autowired
+	private BucketRepository bucketRepo;
 	
 	//이름 가져오기
 	@RequestMapping("/mypageMain")
@@ -138,21 +141,31 @@ public class MypageController {
 		 
 		 m.addAttribute("normalid", mypageService.getPointSet(nid)); 
 		 }
+	 
 	// <위시리스트>
 	// 장바구니조회
-	/*
-	 * @RequestMapping("/mypageBasketList") public void
-	 * createOrder(HttpServletRequest request, Model m){
-	 * logger.info("getBasketList controller"); HttpSession session =
-	 * request.getSession(); String nid = (String)session.getAttribute("nid");
-	 * 
-	 * if(Orderlist == nid) { Order norder = order.get; List<Orderlist> orderlists =
-	 * mypageService.userOrderView(norder);
-	 * 
-	 * int totalPrice = 0; for }
-	 * 
-	 * }
-	 */
+	
+	  @RequestMapping("/mypageBasketList")
+	  public void createOrder(HttpServletRequest request, Model m){
+	  logger.info("getBasketList controller");
+	  HttpSession session = request.getSession();
+		String nid = (String)session.getAttribute("nid");
+
+		List<HashMap<String, Object>> bucketSelect = new ArrayList<HashMap<String, Object>>();
+		List<Object[]> bucket = bucketRepo.selectBusket(nid);
+		for(Object[] bucketobj : bucket) {
+			HashMap<String, Object> bucket1 = new HashMap<String, Object>();
+			bucket1.put("NID", bucketobj[0]);
+			bucket1.put("PNAME", bucketobj[1]);
+			bucket1.put("PPRICE", bucketobj[2]);
+			bucket1.put("QUANTITY", bucketobj[3]);
+	
+			
+			bucketSelect.add(bucket1);
+		}
+		m.addAttribute("bucketSelect", bucketSelect);
+	  }
+	 
 
 	// 찜한가게
 	@RequestMapping("/mypageHeartList")
@@ -190,8 +203,30 @@ public class MypageController {
 	// <선물함>
 	// 받은 선물함
 	@RequestMapping("/mypageGetGift")
-	public void getGift() {
+	public void getGift(Model m, HttpServletRequest request) {
 		logger.info("getGift controller");
+		HttpSession session = request.getSession();
+		String nid = (String)session.getAttribute("nid");
+		
+		List<HashMap<String, Object>> giftToSelect = new ArrayList<HashMap<String, Object>>();
+		List<Object[]> gift = giftikonRepo.giftToSelect(nid);
+		for(Object[] giftobj : gift) {
+			HashMap<String, Object> gift1 = new HashMap<String, Object>();
+			gift1.put("NID", giftobj[0]);
+			gift1.put("STARTDATE", giftobj[1]);
+			gift1.put("FINALDATE", giftobj[2]);
+			gift1.put("PCODE", giftobj[3]);
+			gift1.put("PPRICE", giftobj[4]);
+			gift1.put("PCATEGORY", giftobj[5]);
+			gift1.put("PNAME", giftobj[6]);
+			gift1.put("PCONTENT", giftobj[7]);
+			gift1.put("GCODE", giftobj[8]);
+			gift1.put("GIFTSTATE", giftobj[9]);
+			gift1.put("SENDERID", giftobj[10]);
+			
+			giftToSelect.add(gift1);
+		}
+		m.addAttribute("giftikon", giftToSelect);
 	}
 
 	// 보낸 선물함
@@ -308,12 +343,52 @@ public class MypageController {
 		 }
 
 
+	 }
+	 
+	 //회원 페이지 넘기기
+	 @RequestMapping("/mypageInfoCancel")
+	 public void mypageInfoCancel(HttpServletRequest request, Normalid vo, Model m) {
+		 logger.info("updatePassword controller");
+
+			HttpSession session = request.getSession();
+			String nid = (String)session.getAttribute("nid");
+			
+			
+			Normalid result = mypageService.getNid(nid);
+			
+			
+			m.addAttribute("nid",result);
 
 
 	 }
 	 
+	 //회원탈퇴
+	 @RequestMapping("/updateState")
+	 public String deleteNormalid(HttpServletRequest request, Normalid vo, Model m) {
+		 logger.info("updatePassword controller");
+
+		 HttpSession session = request.getSession();
+		 String nid = (String)session.getAttribute("nid");
+		
+		 Normalid result = mypageService.getNid(nid);
+		 
+		
+		 if (result == null) {
+			 session.setAttribute("nid", nid);
+			 return "redirect:mypageInfoCancel";
+		 } else {
+			 result.setNpassword(vo.getNpassword());
+			 mypageMainRepo.deleteNormalid(nid);
+			 session.invalidate();
+			 return "redirect:login";
+		 }
+
+
+	 }
 
 	//<바코드구현>
-
-
+	@RequestMapping("/mypageQRCode")
+	public void mypageQRCode() {
+		logger.info("mypageQRCode controller");
+	}
 }

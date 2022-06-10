@@ -24,6 +24,8 @@ public class Product {
 	private String senderid;
 	private String giftstate;
 	private String pcontent;
+	private String pimage;
+	private String prealimage;
 	
 	@ManyToOne
 	@JoinColumn(name="bcode")

@@ -26,6 +26,8 @@
     <link rel="stylesheet" href="css/contact.css" type="text/css">
     <link rel="stylesheet" href="css/map.css" type="text/css">
     <link rel="stylesheet" href="css/seller.css" type="text/css">
+    
+    <!-- Script -->
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e69b28c8c2198e8dc8b70d274c129599&libraries=services"></script>
     
 </head>
@@ -177,7 +179,7 @@
                                         <div id="collapseThree" class="collapse" data-parent="#accordionExample">
                                             <div class="card-body">
                                                 <ul>
-                                                    <li><a href="#">조회</a></li>
+                                                    <li><a href="shopReview">조회</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -203,16 +205,75 @@
                     </div>
                 </div>
                 <div class="col-lg-9 col-md-9">
-              		  <div class="container">
-				         <h3>Review</h3><hr/>
-				             <table class="reviewtable">
-				           		<tr th:each="review : ${reviewList}">
-				           			<td id="reviewOrder" th:text="${review.rcode}" ></td>
-				           			<td id="reviewContent" th:text="${review.rcontent}"></td>
-				           		</tr>
-					         </table>  
-					  </div>
-				</div>
+                    <div class="container">
+			            <div class="row">
+			                <div class="col-lg-6 col-md-6">
+			                    <div class="contact__content">
+			                        <div class="contact__address">
+								            <input name="bcode" type="hidden" th:value="${seller.bcode}"/>
+								            <div class="contact__address">
+						                            <h5>Contact info</h5>
+						                            <ul>
+						                                <li>
+						                                    <h6><i class="fa fa-map-marker"></i> 상호명</h6>
+						                                    <p th:text="${seller.sname}"></p>
+						                                </li>
+						                                <li>
+						                                    <h6><i class="fa fa-phone"></i> 이메일</h6>
+						                                    <p th:text="${seller.semail}"></p>
+						                                </li>
+						                                <li>
+						                                    <h6><i class="fa fa-phone"></i> 전화번호</h6>
+						                                    <p th:text="${seller.stel}"></p>
+						                                </li>
+						                                <li>
+						                                    <h6><i class="fa fa-headphones"></i> 주소</h6>
+						                                    <p th:text="${seller.saddress}"></p>
+						                                    <p th:text="${seller.sdaddress}"></p>
+						                                </li>
+						                                <li>
+						                                    <h6><i class="fa fa-headphones"></i> 운영시간</h6>
+						                                    <p></p>
+						                                </li>
+						                                <li>
+						                                    <h6><i class="fa fa-headphones"></i> 소개</h6>
+						                                    <p th:text="${seller.scontent}"></p>
+						                                </li>
+						                            </ul>
+						                        </div>
+					                        </div>
+					                    </div>
+					                </div>
+			                 <div class="col-lg-6 col-md-6">
+								     <div>
+								     	 <br/><br/>
+								         <p><img src="img/alver.jpg"  alt=""></p>
+									 </div>
+			                 </div>
+			                <div class="map_wrap">
+								<div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+									<div id="menu_wrap" class="bg_white">
+										<div class="option">
+											<div>
+												<form onsubmit="searchPlaces(); return false;">
+												키워드 : <input type="text" th:value="${seller.sdaddress}" id="keyword" size="15"> 
+												<button type="submit">검색하기</button> 
+												</form>
+											</div>
+										</div>
+											<hr>
+											<ul id="placesList"></ul>
+											<div id="pagination"></div>
+									</div>	
+							</div>
+				        </div>
+	    			</div>
+			        <div class="shopmodify">
+			       		 <a th:href="@{/shopInfoMod}"><button id="shopmodifyBtn">수정</button></a>
+			        </div>
+                </div>
+            </div>
+        </div>
     </section>
     <!-- Shop Section End -->
 

@@ -23,11 +23,37 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-    <link rel="stylesheet" href="css/contact.css" type="text/css">
-    <link rel="stylesheet" href="css/map.css" type="text/css">
     <link rel="stylesheet" href="css/seller.css" type="text/css">
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e69b28c8c2198e8dc8b70d274c129599&libraries=services"></script>
     
+    <!-- Script -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawVisualization);
+
+      function drawVisualization() {
+        // Some raw data (not necessarily accurate)
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Sales'],
+          ['2022', 	2000],
+          ['2021',  3100],
+          ['2020',  3200],
+          ['2019',  4800],
+          ['2018',  4700]
+        ]);
+
+        var options = {
+          vAxis: {title: 'Sales'},
+          hAxis: {title: 'date'},
+          seriesType: 'bars',
+          series: {5: {type: 'line'}}
+        };
+
+        var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
 </head>
 
 <body>
@@ -152,7 +178,7 @@
                                         <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
                                             <div class="card-body">
                                                 <ul>
-                                                    <li><a th:href="@{/shopInfo}">조회</a></li>
+                                                    <li><a href="shopInfo">조회</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -164,8 +190,8 @@
                                         <div id="collapseTwo" class="collapse" data-parent="#accordionExample">
                                             <div class="card-body">
                                                 <ul>
-                                                    <li><a th:href="@{/shopProView}">조회</a></li>
-                                                    <li><a th:href="@{/shopProReg}">등록</a></li>
+                                                    <li><a href="shopProView">조회</a></li>
+                                                    <li><a href="shopProReg">등록</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -177,7 +203,7 @@
                                         <div id="collapseThree" class="collapse" data-parent="#accordionExample">
                                             <div class="card-body">
                                                 <ul>
-                                                    <li><a href="#">조회</a></li>
+                                                    <li><a href="shopReview">조회</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -202,17 +228,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-9 col-md-9">
-              		  <div class="container">
-				         <h3>Review</h3><hr/>
-				             <table class="reviewtable">
-				           		<tr th:each="review : ${reviewList}">
-				           			<td id="reviewOrder" th:text="${review.rcode}" ></td>
-				           			<td id="reviewContent" th:text="${review.rcontent}"></td>
-				           		</tr>
-					         </table>  
-					  </div>
-				</div>
+               	<div class="col-lg-9 col-md-9">
+                  <div id="chart_div" style="width: 900px; height: 500px;"></div>
+          		</div>
+          	</div>
+       </div>
     </section>
     <!-- Shop Section End -->
 
@@ -367,7 +387,6 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/jquery.nicescroll.min.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/map.js"></script>
 </body>
 
 </html>

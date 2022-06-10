@@ -205,9 +205,9 @@ Created: Colorib
     /*-------------------
 		Quantity change
 	--------------------- */
-    var proQty = $('.pro-qty');
-	proQty.prepend('<span class="dec qtybtn">-</span>');
-	proQty.append('<span class="inc qtybtn">+</span>');
+   var proQty = $('.pro-qty');
+	proQty.prepend('<span class="dec qtybtn" name="minus">-</span>');
+	proQty.append('<span class="inc qtybtn" name="add">+</span>');
 	proQty.on('click', '.qtybtn', function () {
 		var $button = $(this);
 		var oldValue = $button.parent().find('input').val();
@@ -223,7 +223,7 @@ Created: Colorib
 		}
 		$button.parent().find('input').val(newVal);
     });
-    
+
     /*-------------------
 		Radio Btn
 	--------------------- */

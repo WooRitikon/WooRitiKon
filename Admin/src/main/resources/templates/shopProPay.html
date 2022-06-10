@@ -26,6 +26,8 @@
     <link rel="stylesheet" href="css/contact.css" type="text/css">
     <link rel="stylesheet" href="css/map.css" type="text/css">
     <link rel="stylesheet" href="css/seller.css" type="text/css">
+    
+    <!-- Script -->
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e69b28c8c2198e8dc8b70d274c129599&libraries=services"></script>
     
 </head>
@@ -166,6 +168,7 @@
                                                 <ul>
                                                     <li><a th:href="@{/shopProView}">조회</a></li>
                                                     <li><a th:href="@{/shopProReg}">등록</a></li>
+                                                    <li><a th:href="@{/shopProPay}">결제</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -177,7 +180,7 @@
                                         <div id="collapseThree" class="collapse" data-parent="#accordionExample">
                                             <div class="card-body">
                                                 <ul>
-                                                    <li><a href="#">조회</a></li>
+                                                    <li><a href="shopReview">조회</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -203,16 +206,45 @@
                     </div>
                 </div>
                 <div class="col-lg-9 col-md-9">
-              		  <div class="container">
-				         <h3>Review</h3><hr/>
-				             <table class="reviewtable">
-				           		<tr th:each="review : ${reviewList}">
-				           			<td id="reviewOrder" th:text="${review.rcode}" ></td>
-				           			<td id="reviewContent" th:text="${review.rcontent}"></td>
-				           		</tr>
-					         </table>  
-					  </div>
-				</div>
+                    <div class="container">
+			            <div class="row">
+                <div class="col-lg-12">
+                    <h6 class="coupon__link"><span class="icon_tag_alt"></span> <a href="#">Have a coupon?</a> Click
+                    here to enter your code.</h6>
+                </div>
+            </div>
+            <form action="#" class="checkout__form">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h5>기프티콘 코드 조회</h5>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="checkout__form__input">
+                                    <p>Product code <span>*</span></p>
+                                    <input type="text" placeholder="코드입력">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="checkout__form__input">
+                                	<br/><br/>
+                                    <a th:href="@{/}"><button class="searchgi" id="shopProPayBtn">조회</button></a>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="checkout__order">
+                                <h5>ORDER</h5>
+                                <div class="checkout__order__widget">
+                                    <p></p>
+                                </div>
+                                <button type="submit" class="site-btn">사용하기</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </section>
     <!-- Shop Section End -->
 
@@ -368,6 +400,7 @@
     <script src="js/jquery.nicescroll.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/map.js"></script>
+    <script src="js/search.js"></script>
 </body>
 
 </html>

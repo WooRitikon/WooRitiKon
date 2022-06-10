@@ -30,6 +30,8 @@ public class Sellerid {
 	private String sdaddress;
 	private String sbirth;
 	private String bname;
+	private String scontent;
+	
 	
 	@Column(insertable = false, updatable = false, columnDefinition = "date default sysdate()")
 	@Temporal(TemporalType.DATE)

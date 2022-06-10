@@ -78,36 +78,23 @@
 									<li><a th:href="@{/mypageInfo}">my 정보</a></li>
 									<li><a href="./blog-details.html">my Q&A</a></li>
 								</ul></li>
-<<<<<<< HEAD
 							<li><a th:href="@{/shopMain}">my shop</a></li>
-							<li><a href="./blog.html">notice</a></li>
-=======
-							<li><a href="#">my shop</a>
-								<ul class="dropdown">
-									<li><a href="shopInfo">information</a></li>
-									<li><a href="shopProView">product</a></li>
-									<li><a href="shopReview">review</a></li>
-									<li><a href="./blog-details.html">sales</a></li>
-								</ul></li>
 							<li><a href="#">customer center</a>
 								<ul class="dropdown">
 									<li><a th:href="@{./noticePage}">Notice</a></li>
 									<li><a href="#">FnQ</a></li>
-									<li><a th:href="@{qnaPage}">Qna</a></li>
+									<li><a href="#">Qna</a></li>
 								</ul></li>
->>>>>>> upstream/main
 						</ul>
 					</nav>
 				</div>
 				<div class="col-lg-3">
 					<div class="header__right">
 						<div th:if="${nid == null}" class="header__right__auth">
-							<a th:href="@{/login}">일반</a><a th:href="@{/sellerlogin}">판매자</a>
-							<a th:href="@{/selectpage}">회원가입</a>
+							<a th:href="@{/login}">일반</a><a th:href="@{/sellerlogin}">판매자</a> <a th:href="@{/selectpage}">회원가입</a>
 						</div>
 						<div th:if="${nid != null}" class="header__right__auth">
-							<a th:text="${nid}" th:href="@{/mypageMain}"></a> <a
-								th:href="@{/logout}">로그아웃</a>
+							<a th:text="${nid}" th:href="@{/mypageMain}"></a> <a th:href="@{/logout}">로그아웃</a>
 						</div>
 						<ul class="header__right__widget">
 							<li><a href="#"><span class="icon_heart_alt"></span>
@@ -131,7 +118,7 @@
 			<div class="row">
 				<div class="col-lg-6 p-0">
 					<div class="categories__item categories__large__item set-bg"
-						data-setbg="img/categories/home.jpg">
+						data-setbg="img/categories/category-1.jpg">
 						<div class="categories__text">
 							<a th:href="@{/test}"><h1>HOME</h1></a>
 						</div>
@@ -141,7 +128,7 @@
 					<div class="row">
 						<div class="col-lg-6 col-md-6 col-sm-6 p-0">
 							<div class="categories__item  set-bg"
-								data-setbg="img/categories/box.jpg">
+								data-setbg="img/categories/category-2.jpg">
 								<div class="categories__text">
 									<h4>WOORITIKON?</h4>
 								</div>
@@ -149,7 +136,7 @@
 						</div>
 						<div class="col-lg-6 col-md-6 col-sm-6 p-0">
 							<div class="categories__item set-bg"
-								data-setbg="img/categories/store.jpg">
+								data-setbg="img/categories/category-3.jpg">
 								<div class="categories__text">
 									<h4>SHOP</h4>
 								</div>
@@ -157,7 +144,7 @@
 						</div>
 						<div class="col-lg-6 col-md-6 col-sm-6 p-0">
 							<div class="categories__item set-bg"
-								data-setbg="img/categories/mypage.jpg">
+								data-setbg="img/categories/category-4.jpg">
 								<div class="categories__text">
 									<h4></h4>
 									<a href="#">Shop now</a>
@@ -166,7 +153,7 @@
 						</div>
 						<div class="col-lg-6 col-md-6 col-sm-6 p-0">
 							<div class="categories__item set-bg"
-								data-setbg="img/categories/notice.jpg">
+								data-setbg="img/categories/category-5.jpg">
 								<div class="categories__text">
 									<h4>NOTICE</h4>
 								</div>
@@ -185,97 +172,50 @@
 			<div class="row">
 				<div class="col-lg-4 col-md-4">
 					<div class="section-title">
-						<h4>카테고리</h4>
+						<h4>New product</h4>
 					</div>
 				</div>
-
+				<div class="col-lg-8 col-md-8">
+					<ul class="filter__controls">
+						<li class="active" data-filter="*">All</li>
+						<li data-filter=".women">Women’s</li>
+						<li data-filter=".men">Men’s</li>
+						<li data-filter=".kid">Kid’s</li>
+						<li data-filter=".accessories">Accessories</li>
+						<li data-filter=".cosmetic">Cosmetics</li>
+					</ul>
+				</div>
 			</div>
 			<div class="row property__gallery">
 				<div class="col-lg-3 col-md-4 col-sm-6 mix women">
 					<div class="product__item">
 						<div class="product__item__pic set-bg"
-							data-setbg="img/product/food.jpg">
-							<div class="label stockout">음식</div>
+							data-setbg="img/product/product-1.jpg">
+							<div class="label new">New</div>
+							<ul class="product__hover">
+								<li><a href="img/product/product-1.jpg" class="image-popup"><span
+										class="arrow_expand"></span></a></li>
+								<li><a href="#"><span class="icon_heart_alt"></span></a></li>
+								<li><a href="#"><span class="icon_bag_alt"></span></a></li>
+							</ul>
 						</div>
 						<div class="product__item__text">
 							<h6>
-								<a href="#">음식</a>
+								<a href="#">Buttons tweed blazer</a>
 							</h6>
+							<div class="rating">
+								<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+									class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+									class="fa fa-star"></i>
+							</div>
+							<div class="product__price">$ 59.0</div>
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-4 col-sm-6 mix men">
 					<div class="product__item">
 						<div class="product__item__pic set-bg"
-							data-setbg="img/product/hair.png">
-							<div class="label stockout">미용</div>
-						</div>
-						<div class="product__item__text">
-							<h6>
-								<a href="#">미용</a>
-							</h6>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6 mix accessories">
-					<div class="product__item">
-						<div class="product__item__pic set-bg"
-							data-setbg="img/product/clothes.jpg">
-							<div class="label stockout">의류</div>
-						</div>
-						<div class="product__item__text">
-							<h6>
-								<a href="#">의류</a>
-							</h6>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6 mix cosmetic">
-					<div class="product__item">
-						<div class="product__item__pic set-bg"
-							data-setbg="img/product/cafe.png">
-							<div class="label stockout">카페/베이커리</div>
-						</div>
-						<div class="product__item__text">
-							<h6>
-								<a href="#">카페/베이커리</a>
-							</h6>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6 mix kid">
-					<div class="product__item">
-						<div class="product__item__pic set-bg"
-							data-setbg="img/product/electro.jpg">
-							<div class="label stockout">전자기기</div>
-						</div>
-						<div class="product__item__text">
-							<h6>
-								<a href="#">전자기기</a>
-							</h6>
-						</div>
-					</div>
-				</div>
-				<div
-					class="col-lg-3 col-md-4 col-sm-6 mix women men kid accessories cosmetic">
-					<div class="product__item">
-						<div class="product__item__pic set-bg"
-							data-setbg="img/product/furniture.jpg">
-							<div class="label stockout">가구</div>
-						</div>
-						<div class="product__item__text">
-							<h6>
-								<a href="#">가구</a>
-							</h6>
-						</div>
-					</div>
-				</div>
-				<!-- end of 가구 -->
-				<div class="col-lg-3 col-md-4 col-sm-6 mix men">
-					<div class="product__item">
-						<div class="product__item__pic set-bg"
-							data-setbg="img/product/book.png">
-							<div class="label stockout">문화/예술</div>
+							data-setbg="img/product/product-2.jpg">
 							<ul class="product__hover">
 								<li><a href="img/product/product-2.jpg" class="image-popup"><span
 										class="arrow_expand"></span></a></li>
@@ -285,49 +225,149 @@
 						</div>
 						<div class="product__item__text">
 							<h6>
-								<a href="#">문화/예술</a>
+								<a href="#">Flowy striped skirt</a>
 							</h6>
+							<div class="rating">
+								<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+									class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+									class="fa fa-star"></i>
+							</div>
+							<div class="product__price">$ 49.0</div>
 						</div>
 					</div>
 				</div>
-				<!-- end of 서점 -->
-				
-				<div class="col-lg-3 col-md-4 col-sm-6 mix men">
+				<div class="col-lg-3 col-md-4 col-sm-6 mix accessories">
 					<div class="product__item">
 						<div class="product__item__pic set-bg"
-							data-setbg="img/product/life.jpg">
-							<div class="label stockout">생활용품</div>
+							data-setbg="img/product/product-3.jpg">
+							<div class="label stockout">out of stock</div>
+							<ul class="product__hover">
+								<li><a href="img/product/product-3.jpg" class="image-popup"><span
+										class="arrow_expand"></span></a></li>
+								<li><a href="#"><span class="icon_heart_alt"></span></a></li>
+								<li><a href="#"><span class="icon_bag_alt"></span></a></li>
+							</ul>
 						</div>
 						<div class="product__item__text">
 							<h6>
-								<a href="#">생활용품</a>
+								<a href="#">Cotton T-Shirt</a>
 							</h6>
+							<div class="rating">
+								<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+									class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+									class="fa fa-star"></i>
+							</div>
+							<div class="product__price">$ 59.0</div>
 						</div>
 					</div>
 				</div>
-				<!-- end of 생활용품 -->
-				
+				<div class="col-lg-3 col-md-4 col-sm-6 mix cosmetic">
+					<div class="product__item">
+						<div class="product__item__pic set-bg"
+							data-setbg="img/product/product-4.jpg">
+							<ul class="product__hover">
+								<li><a href="img/product/product-4.jpg" class="image-popup"><span
+										class="arrow_expand"></span></a></li>
+								<li><a href="#"><span class="icon_heart_alt"></span></a></li>
+								<li><a href="#"><span class="icon_bag_alt"></span></a></li>
+							</ul>
+						</div>
+						<div class="product__item__text">
+							<h6>
+								<a href="#">Slim striped pocket shirt</a>
+							</h6>
+							<div class="rating">
+								<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+									class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+									class="fa fa-star"></i>
+							</div>
+							<div class="product__price">$ 59.0</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-4 col-sm-6 mix kid">
+					<div class="product__item">
+						<div class="product__item__pic set-bg"
+							data-setbg="img/product/product-5.jpg">
+							<ul class="product__hover">
+								<li><a href="img/product/product-5.jpg" class="image-popup"><span
+										class="arrow_expand"></span></a></li>
+								<li><a href="#"><span class="icon_heart_alt"></span></a></li>
+								<li><a href="#"><span class="icon_bag_alt"></span></a></li>
+							</ul>
+						</div>
+						<div class="product__item__text">
+							<h6>
+								<a href="#">Fit micro corduroy shirt</a>
+							</h6>
+							<div class="rating">
+								<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+									class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+									class="fa fa-star"></i>
+							</div>
+							<div class="product__price">$ 59.0</div>
+						</div>
+					</div>
+				</div>
+				<div
+					class="col-lg-3 col-md-4 col-sm-6 mix women men kid accessories cosmetic">
+					<div class="product__item sale">
+						<div class="product__item__pic set-bg"
+							data-setbg="img/product/product-6.jpg">
+							<div class="label sale">Sale</div>
+							<ul class="product__hover">
+								<li><a href="img/product/product-6.jpg" class="image-popup"><span
+										class="arrow_expand"></span></a></li>
+								<li><a href="#"><span class="icon_heart_alt"></span></a></li>
+								<li><a href="#"><span class="icon_bag_alt"></span></a></li>
+							</ul>
+						</div>
+						<div class="product__item__text">
+							<h6>
+								<a href="#">Tropical Kimono</a>
+							</h6>
+							<div class="rating">
+								<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+									class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+									class="fa fa-star"></i>
+							</div>
+							<div class="product__price">
+								$ 49.0 <span>$ 59.0</span>
+							</div>
+						</div>
+					</div>
+				</div>
 				<div
 					class="col-lg-3 col-md-4 col-sm-6 mix women men kid accessories cosmetic">
 					<div class="product__item">
 						<div class="product__item__pic set-bg"
-							data-setbg="img/product/health.jpg">
-							<div class="label stockout">체육</div>
+							data-setbg="img/product/product-7.jpg">
+							<ul class="product__hover">
+								<li><a href="img/product/product-7.jpg" class="image-popup"><span
+										class="arrow_expand"></span></a></li>
+								<li><a href="#"><span class="icon_heart_alt"></span></a></li>
+								<li><a href="#"><span class="icon_bag_alt"></span></a></li>
+							</ul>
 						</div>
 						<div class="product__item__text">
 							<h6>
-								<a href="#">체육</a>
+								<a href="#">Contrasting sunglasses</a>
 							</h6>
+							<div class="rating">
+								<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+									class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+									class="fa fa-star"></i>
+							</div>
+							<div class="product__price">$ 59.0</div>
 						</div>
 					</div>
 				</div>
-				<!-- end of 체육 -->
 				<div
 					class="col-lg-3 col-md-4 col-sm-6 mix women men kid accessories cosmetic">
-					<div class="product__item">
+					<div class="product__item sale">
 						<div class="product__item__pic set-bg"
-							data-setbg="img/product/job.jpg">
-							<div class="label stockout">기타</div>
+							data-setbg="img/product/product-8.jpg">
+							<div class="label">Sale</div>
 							<ul class="product__hover">
 								<li><a href="img/product/product-8.jpg" class="image-popup"><span
 										class="arrow_expand"></span></a></li>
@@ -337,8 +377,16 @@
 						</div>
 						<div class="product__item__text">
 							<h6>
-								<a href="#">기타</a>
+								<a href="#">Water resistant backpack</a>
 							</h6>
+							<div class="rating">
+								<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+									class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+									class="fa fa-star"></i>
+							</div>
+							<div class="product__price">
+								$ 49.0 <span>$ 59.0</span>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -604,9 +652,7 @@
 					<div class="footer__copyright__text">
 						<p>
 							Copyright &copy;
-							<script>
-								document.write(new Date().getFullYear());
-							</script>
+							<script>document.write(new Date().getFullYear());</script>
 							All rights reserved | This template is made with <i
 								class="fa fa-heart" aria-hidden="true"></i> by <a
 								href="https://colorlib.com" target="_blank">Colorlib</a>

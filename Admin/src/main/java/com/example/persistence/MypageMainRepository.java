@@ -1,6 +1,5 @@
 package com.example.persistence;
 
-import java.util.List;
 
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -12,5 +11,9 @@ import com.example.domain.Normalid;
 @Repository
 public interface MypageMainRepository extends CrudRepository<Normalid, String>{
 	
+	
+	//회원탈퇴
+	@Query(value="UPDATE normalid SET nstate=\"N\" WHERE nid=?1", nativeQuery=true)
+	void deleteNormalid(String nid);
 	
 }
