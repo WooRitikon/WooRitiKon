@@ -53,11 +53,6 @@ public class MypageServiceimpl implements MypageService{
 		return mypageMainRepo.findById(nid).get();
 	}
 	
-	//장바구니 삭제
-	public void deletebucket(Bucket pname) {
-		logger.info("장바구니 삭제");
-		BucketRepo.delete(pname);
-	}
 
 	//기프티콘 상세조회
 	@Override

@@ -27,6 +27,7 @@ public interface GifticonService {
 	
 	//HOT DEAL 3개 가져오기
 	public List<Product> selectHot();
+
 	
 	//판매자회원 로그인 유효성 검사
 	public Sellerid sloginCheck(Sellerid vo);

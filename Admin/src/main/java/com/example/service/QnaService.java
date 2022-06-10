@@ -3,6 +3,7 @@ package com.example.service;
 import java.util.List;
 
 import com.example.domain.Qna;
+import com.example.domain.Qnacomment;
 
 public interface QnaService {
 
@@ -16,7 +17,7 @@ public interface QnaService {
 	Qna replyList(Qna q);
 
 	//Qna 상세보기
-	Qna getQanDetail(Qna q);
+	List<Object[]> getQnaDetail(int qCode);
 	
 	//Qna 수정 값 가져오기
 	Qna getQnaUpdate(Qna q);
@@ -29,5 +30,11 @@ public interface QnaService {
 	
 	//qna 등록
 	void insertQna(Qna q);
+
+	//qna 어드민 상세보기
+	Qna getQnaDetail(Qna q);
+	
+	//qna 어드민 상세보기
+	void selectUpdate(Qna q);
 	
 }

@@ -23,6 +23,7 @@ public class Product {
 	private String pcategory;
 
 	private String pcontent;
+	private String pimage;
 	
 	private String shotimage;
 	private String originimage;
