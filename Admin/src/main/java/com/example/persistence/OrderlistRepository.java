@@ -10,9 +10,9 @@ import com.example.domain.Orderlist;
 
 @Repository
 public interface OrderlistRepository extends CrudRepository<Orderlist, Integer>{
-	@Query(value="INSERT INTO OrderList(onum, odate, oselect, ototal, ostate, nid)  "
-			+ "		VALUES(onum.NEXTVAL, 1, 1, 1, 1, ?1)")
-	void updateBuylistNumber(String nid);
+//	@Query(value="INSERT INTO OrderList(onum, odate, oselect, ototal, ostate, nid)  "
+//			+ "		VALUES(onum.NEXTVAL, 1, 1, 1, 1, ?1)")
+//	void updateBuylistNumber(String nid);
 	
 	@Query(value="SELECT n.nid nid, o.onum onum, o.odate odate, o.oselect oselect, o.ototal ototal, o.ostate ostate, "
 			+ " li.listcode listcode, li.quantity quantity, li.totalprice totalprice, p.pcode pcode, p.pprice pprice, p.pname pname,  "

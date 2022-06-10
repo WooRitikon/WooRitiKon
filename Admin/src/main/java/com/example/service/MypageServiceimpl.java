@@ -42,8 +42,7 @@ public class MypageServiceimpl implements MypageService{
 	@Autowired
 	private BucketRepository BucketRepo;
 	
-	@Autowired
-	private OrderRepository orderRepo;
+	
 	
 	//<마이페이지 메인>
 	//이름가져오기 
@@ -76,6 +75,13 @@ public class MypageServiceimpl implements MypageService{
 		return result;
 	}
 	
+	//장바구니 삭제
+	@Override
+	public void deletebucket(Bucket pname) {
+		BucketRepo.delete(pname);
+	}
+	
+	
 	
 	//찜한 가게 삭제
 	@Override
@@ -83,13 +89,13 @@ public class MypageServiceimpl implements MypageService{
 		likeRepo.delete(li);
 	}
 
-	
-	//<결제>
-	//빈 구매리스트 생성(번호만)
-	@Override
-	public void updateBuylistNumber(String nid) {
-		orderlistRepo.updateBuylistNumber(nid);
-	}
+//	
+//	//<결제>
+//	//빈 구매리스트 생성(번호만)
+//	@Override
+//	public void updateBuylistNumber(String nid) {
+//		orderlistRepo.updateBuylistNumber(nid);
+//	}
 	
 	//<회원정보 관리>
 	//회원정보 조회

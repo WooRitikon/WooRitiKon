@@ -57,8 +57,6 @@ public class MypageController {
 	@Autowired
 	private MypageMainRepository mypageMainRepo;
 	
-	@Autowired
-	private OrderlistRepository orderlistRepo;
 	
 	@Autowired
 	private ProductRepository ProRepo;
