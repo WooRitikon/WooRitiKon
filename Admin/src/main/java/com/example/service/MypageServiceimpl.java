@@ -20,11 +20,13 @@ import com.example.controller.MypageController;
 import com.example.domain.Giftikon;
 import com.example.domain.Like;
 import com.example.domain.Normalid;
+import com.example.domain.Orderlist;
 import com.example.domain.Product;
 import com.example.persistence.GiftikonRepository;
 import com.example.persistence.LikeRepository;
 import com.example.persistence.MypageMainRepository;
 import com.example.persistence.MypageProductRepository;
+import com.example.persistence.OrderlistRepository;
 
 
 @Service
@@ -40,7 +42,8 @@ public class MypageServiceimpl implements MypageService{
 	@Autowired
 	private LikeRepository likeRepo;
 	
-
+	@Autowired
+	private OrderlistRepository orderlistRepo;
 	
 	//<마이페이지 메인>
 	//이름가져오기 
@@ -50,17 +53,20 @@ public class MypageServiceimpl implements MypageService{
 		return mypageMainRepo.findById(nid).get();
 	}
 	
+<<<<<<< HEAD
 	//<주문조회>
 
+<<<<<<< HEAD
+=======
+
+=======
+>>>>>>> upstream/main
+>>>>>>> upstream/main
 	//기프티콘 상세조회
 	@Override
 	public Giftikon getGiftikonSet(Giftikon gi) {
 		return giftikonRepo.findById(gi.getGcode()).get();
 	}
-	
-	
-
-	
 	
 	//<포인트 조회>
 	//포인트 금액 조회
@@ -71,6 +77,13 @@ public class MypageServiceimpl implements MypageService{
 	
 	
 	//<위시리스트>
+	//장바구니 조회
+	@Override
+	public List<Orderlist> orderlistSet(String nid){
+		List<Orderlist> result = (List<Orderlist>)orderlistRepo.findAll();
+		return result;
+	}
+	
 	//찜한 가게 삭제
 	@Override
 	public void deleteHeart(Like li) {
@@ -110,6 +123,7 @@ public class MypageServiceimpl implements MypageService{
 		 mypageMainRepo.save(no1);
 	 }
 	 
+<<<<<<< HEAD
 	 //회원탈퇴
 	 
 	 
@@ -117,4 +131,6 @@ public class MypageServiceimpl implements MypageService{
 	
 
 	 
+=======
+>>>>>>> upstream/main
 }

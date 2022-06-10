@@ -9,6 +9,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>mypageQRCode</title>
 
+<<<<<<< HEAD
+=======
+	    <!-- 내부 CSS 스타일 지정 -->
+    <style>
+	#qrcode {
+ 	 width:160px;
+ 	 height:160px;
+  	margin-top:15px;
+}
+		      				                          
+    </style>
+	
+	
+>>>>>>> upstream/main
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
@@ -24,6 +38,11 @@
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
 	<link rel="stylesheet" href="css/mypage.css" type="text/css"/>
+<<<<<<< HEAD
+=======
+   
+
+>>>>>>> upstream/main
 </head>
 
 
@@ -78,7 +97,11 @@
 									<li><a th:href="@{/mypageBasketList}">my 위시리스트</a></li>
 									<li><a th:href="@{/mypageGetGift}">my 선물함</a></li>
 									<li><a th:href="@{/mypageInfo}">my 정보</a></li>
+<<<<<<< HEAD
 									<li><a href="./blog-details.html">my Q&A</a></li>
+=======
+									<li><a th:href="@{/mypageQna}">my Q&A</a></li>
+>>>>>>> upstream/main
 								</ul></li>
 							<li><a href="#">my shop</a>
 								<ul class="dropdown">
@@ -90,13 +113,19 @@
 														<li><a href="#">customer center</a>
 								<ul class="dropdown">
 									<li><a th:href="@{./noticePage}">Notice</a></li>
+<<<<<<< HEAD
 									<li><a href="#">FnQ</a></li>
 									<li><a href="#">Qna</a></li>
+=======
+									<li><a th:href="@{./fnqPage}">FnQ</a></li>
+									<li><a th:href="@{./qnaPage}">Qna</a></li>
+>>>>>>> upstream/main
 								</ul></li>
 						</ul>
 					</nav>
 				</div>
 				<div class="col-lg-3">
+<<<<<<< HEAD
 					<div class="header__right">
 						
 						
@@ -107,6 +136,22 @@
 									<div class="tip">2</div> </a></li>
 							<li><a href="#"><span class="icon_bag_alt"></span>
 									<div class="tip">2</div> </a></li>
+=======
+						<div class="header__right">
+						<div th:if="${nid == null}" class="header__right__auth">
+							<a th:href="@{/login}">일반</a><a th:href="@{/sellerlogin}">판매자</a>
+							<a th:href="@{/selectpage}">회원가입</a>
+						</div>
+						<div th:if="${nid != null}" class="header__right__auth">
+							<a th:text="${nid}" th:href="@{/mypageMain}"></a> <a
+								th:href="@{/logout}">로그아웃</a>
+						</div>
+						<ul class="header__right__widget">
+         				   <li><a th:href="@{/mypageHeartList}"><span class="icon_heart_alt"></span>
+           					 </a></li>
+          				  <li><a th:href="@{/mypageBasketList}"><span class="icon_bag_alt"></span>
+            				</a></li>
+>>>>>>> upstream/main
 						</ul>
 					</div>
 				</div>
@@ -156,7 +201,11 @@
 													<li><a th:href="@{/mypageShoppingList}">my 기프티콘 조회</a></li>
 													<li><a th:href="@{/mypagePointSet}">my 포인트 조회</a></li>
 													<li><a th:href="@{/mypageShoppingAllList}">my 구매 내역</a></li>
+<<<<<<< HEAD
 													<li><a href="#">기프티콘 구매취소</a></li>
+=======
+													<li><a th:href="@{/mypageBuyCancel}">기프티콘 구매취소</a></li>
+>>>>>>> upstream/main
 												</ul>
 											</div>
 										</div>
@@ -205,11 +254,26 @@
 											</div>
 										</div>
 									</div>
+<<<<<<< HEAD
 									<div class="card">
+=======
+										<div class="card">
+>>>>>>> upstream/main
 										<div class="card-heading">
 											<a data-toggle="collapse" data-target="#collapseFive">my
 												Q&A</a>
 										</div>
+<<<<<<< HEAD
+=======
+										<div id="collapseFive" class="collapse"
+											data-parent="#accordionExample">
+											<div class="card-body">
+												<ul>
+													<li><a th:href="@{/mypageQna}">1:1 문의하기</a></li>
+												</ul>
+											</div>
+										</div>
+>>>>>>> upstream/main
 									</div>
 								</div>
 							</div>
@@ -227,17 +291,29 @@
                 <div class="col-lg-6">
                     <div class="product__details__pic">
                         <div class="product__details__slider__content">
+<<<<<<< HEAD
                             <div class="product__details__pic__slider owl-carousel">
                                <div id="gcDiv"></div>
+=======
+                         
+                              <input id="text" type="text" th:value="${giftikon}" style="width:100%" /><br />
+							<div id="qrcode" style="width:100px; height:100px; margin:auto; margin-top:15px;"></div>
+
+>>>>>>> upstream/main
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+<<<<<<< HEAD
+=======
+            
+>>>>>>> upstream/main
         </div>  
                   </div>
                  
                  </div>
+<<<<<<< HEAD
                 </div>
     </section>
     <!-- Shop Section End -->
@@ -298,6 +374,12 @@
         </div>
     </div>
     <!-- Instagram End -->
+=======
+               
+    </section>
+    <!-- Shop Section End -->
+
+>>>>>>> upstream/main
 
     <!-- Footer Section Begin -->
     <footer class="footer">
@@ -396,6 +478,7 @@
     <script src="https://code.jquery.com/jquery.min.js"></script>
 	<script type="text/javascript" src="js/jquery.qrcode.js"></script>
 	<script type="text/javascript" src="js/qrcode.js"></script>
+<<<<<<< HEAD
 <script>
 	jQuery('#gcDiv').qrcode({
 		render	: "table",
@@ -404,6 +487,11 @@
 		text	: "http://gocoder.tistory.com/"
 	});	
 </script>
+=======
+	  <script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/qrcode.js"></script>
+	<script type="text/javascript" src="js/mypageQR.js"></script>
+>>>>>>> upstream/main
 </body>
 
 </html>

@@ -39,6 +39,7 @@
 	<div class="offcanvas-menu-overlay"></div>
 	<div class="offcanvas-menu-wrapper">
 		<div class="offcanvas__close">+</div>
+<<<<<<< HEAD
 		<ul class="offcanvas__widget">
 			<li><span class="icon_search search-switch"></span></li>
 			<li><a href="#"><span class="icon_heart_alt"></span>
@@ -46,6 +47,14 @@
 			<li><a href="#"><span class="icon_bag_alt"></span>
 					<div class="tip">2</div> </a></li>
 		</ul>
+=======
+	  <ul class="offcanvas__widget">
+            <li><a th:href="@{/mypageHeartList}"><span class="icon_heart_alt"></span>
+            </a></li>
+            <li><a th:href="@{/mypageBasketList}"><span class="icon_bag_alt"></span>
+            </a></li>
+        </ul>
+>>>>>>> upstream/main
 		<div class="offcanvas__logo">
 			<a href="./index.html"><img src="img/logo.png" alt=""></a>
 		</div>
@@ -75,9 +84,9 @@
 								<ul class="dropdown">
 									<li><a th:href="@{/mypageShoppingList}">my 주문조회</a></li>
 									<li><a th:href="@{/mypageBasketList}">my 위시리스트</a></li>
-									<li><a href="./checkout.html">my 선물함</a></li>
+									<li><a th:href="@{/mypageGetGift}">my 선물함</a></li>
 									<li><a th:href="@{/mypageInfo}">my 정보</a></li>
-									<li><a href="./blog-details.html">my Q&A</a></li>
+									<li><a th:href="@{/mypageQna}">my Q&A</a></li>
 								</ul></li>
 							<li><a href="#">my shop</a>
 								<ul class="dropdown">
@@ -89,23 +98,29 @@
 							<li><a href="#">customer center</a>
 								<ul class="dropdown">
 									<li><a th:href="@{./noticePage}">Notice</a></li>
-									<li><a href="#">FnQ</a></li>
-									<li><a href="#">Qna</a></li>
+									<li><a th:href="@{./fnqPage}">FnQ</a></li>
+									<li><a th:href="@{./qnaPage}">Qna</a></li>
 								</ul></li>
 						</ul>
 					</nav>
 				</div>
 				<div class="col-lg-3">
 					<div class="header__right">
-						<div class="header__right__auth">
-							<a href="#">Login</a> <a href="#">Register</a>
+				
+								<div th:if="${nid == null}" class="header__right__auth">
+							<a th:href="@{/login}">일반</a><a th:href="@{/sellerlogin}">판매자</a>
+							<a th:href="@{/selectpage}">회원가입</a>
 						</div>
+						<div th:if="${nid != null}" class="header__right__auth">
+							<a th:text="${nid}" th:href="@{/mypageMain}"></a> <a
+								th:href="@{/logout}">로그아웃</a>
+						</div>
+					
 						<ul class="header__right__widget">
-							<li><span class="icon_search search-switch"></span></li>
-							<li><a href="#"><span class="icon_heart_alt"></span>
-									<div class="tip">2</div> </a></li>
-							<li><a href="#"><span class="icon_bag_alt"></span>
-									<div class="tip">2</div> </a></li>
+         				   <li><a th:href="@{/mypageHeartList}"><span class="icon_heart_alt"></span>
+           					 </a></li>
+          				  <li><a th:href="@{/mypageBasketList}"><span class="icon_bag_alt"></span>
+            				</a></li>
 						</ul>
 					</div>
 				</div>
@@ -156,7 +171,11 @@
 													<li><a th:href="@{/mypageShoppingList}">my 기프티콘 조회</a></li>
 													<li><a th:href="@{/mypagePointSet}">my 포인트 조회</a></li>
 													<li><a th:href="@{/mypageShoppingAllList}">my 구매내역</a></li>
+<<<<<<< HEAD
 													<li><a href="#">기프티콘 구매취소</a></li>
+=======
+													<li><a th:href="@{/mypageBuyCancel}">기프티콘 구매취소</a></li>
+>>>>>>> upstream/main
 												</ul>
 											</div>
 										</div>
@@ -223,14 +242,22 @@
 								쇼핑 계속하기</b>
 						</a> <br />
 						<br />
+<<<<<<< HEAD
 						
+=======
+					
+>>>>>>> upstream/main
 						<div class="row">
 							<div class="col-lg-12">
 								<div class="row">
 									<div class="col-lg-6 col-md-6 col-sm-6"></div>
 								</div>
 								
+<<<<<<< HEAD
 								<div class="shop__cart__table">
+=======
+								<div class="shop__cart__table" onchange="init();">
+>>>>>>> upstream/main
 									<table>
 										<thead>
 											<tr>
@@ -242,6 +269,7 @@
 											</tr>
 										</thead>
 										<tbody>
+<<<<<<< HEAD
 				
 										<th:block th:each="bucket :${bucketSelect}">
 											<tr>
@@ -264,13 +292,45 @@
 											</tr>
 											</th:block>
 										
+=======
+								
+										<th:block th:each="t :${tb}">
+											<tr class="cart_tr">
+												<td th:class="cart__product__item"><img
+													src="img/shop-cart/cp-1.jpg" alt="">
+													<div th:class="cart__product__item__title">
+														<h6 class="pname" th:text="${t.pname}" id="pname" th:value='${t.pname}'></h6>
+													</div></td>
+												<td th:class="cart__price">
+												<span class="p" th:text='${t.pprice}' id="price" th:value='${t.pprice}'>
+												</span>
+												</td>
+												<td th:class="cart__quantity">
+											
+													<div th:class="pro-qty">
+														<!-- 장바구니에 담긴 상품의 개수 -->
+														<input th:type="text" id="cartCount" th:value="${t.quantity}" th:name="quantity">
+													</div>
+
+												</td>
+												<td th:class="cart__total" >
+												<span class="total"  th:text="${t.total}" th:value="${t.total}"></span>
+												</td>
+												<td th:class="cart__close"><a class="abutton"><span class="icon_close"></span></a></td>
+											</tr>
+										</th:block>
+>>>>>>> upstream/main
 										</tbody>
 									</table>
 								</div>
 								
 							</div>
 						</div>
+<<<<<<< HEAD
 					
+=======
+
+>>>>>>> upstream/main
 						<div class="row">
 							<div class="col-lg-6">
 								
@@ -279,6 +339,7 @@
 								<div class="cart__total__procced">
 									<h6>총 결제 금액</h6>
 									<ul>
+<<<<<<< HEAD
 										<li id="sum_p_price">Total <span>$ 750.0</span></li>
 									</ul>
 									<a href="#" class="primary-btn">결제</a>
@@ -352,6 +413,30 @@
 	</div>
 	<!-- Instagram End -->
 
+=======
+										<li id="sum_p_price">Total 
+										<span th:text="${sum}" th:value="${sum}" class="cartTotal">
+										<input th:name="cartTotal" type="hidden" value="0"/>
+										</span></li>
+										
+									</ul>
+									<a th:href="@{/mypageBuy}" class="primary-btn">결제</a>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+			
+			</div>
+		</div>
+	</section>
+	<!-- Shop Section End -->
+
+	
+
+>>>>>>> upstream/main
 	<!-- Footer Section Begin -->
 	<footer class="footer">
 		<div class="container">
@@ -431,6 +516,7 @@
 		</div>
 	</footer>
 	<!-- Footer Section End -->
+<<<<<<< HEAD
 
 	<!-- Search Begin -->
 	<div class="search-model">
@@ -486,6 +572,33 @@
 		})
 	</script>
 
+=======
+
+	<!-- Search Begin -->
+	<div class="search-model">
+		<div class="h-100 d-flex align-items-center justify-content-center">
+			<div class="search-close-switch">+</div>
+			<form class="search-model-form">
+				<input type="text" id="search-input" placeholder="Search here.....">
+			</form>
+		</div>
+	</div>
+	<!-- Search End -->
+
+	<!-- Js Plugins -->
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/jquery-ui.min.js"></script>
+	<script src="js/mixitup.min.js"></script>
+	<script src="js/jquery.countdown.min.js"></script>
+	<script src="js/jquery.slicknav.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/jquery.nicescroll.min.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/jquery.backet.js"></script>
+	<script src="js/bucket.js"></script>
+>>>>>>> upstream/main
 
 
 </body>
