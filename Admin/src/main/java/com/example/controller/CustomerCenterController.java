@@ -91,7 +91,7 @@ public class CustomerCenterController {
 	public void getQnaDetail(HttpServletRequest request, Qna q, Model m) {
 		HttpSession session = request.getSession();
 		String nid = (String) session.getAttribute("nid");
-		Qna qna = qnaservice.getQanDetail(q);
+		Qna qna = qnaservice.getQnaDetail(q);
 		
 		
 		m.addAttribute("nid", nid);
