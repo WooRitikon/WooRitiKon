@@ -8,7 +8,9 @@ public interface QnacommentService {
 	//답글등록
 	void insertReply(Qnacomment qc);
 	
-	//답글보기
+	//관리자 답글 상세보기
+	Qnacomment getQcDetail(Qnacomment qc);
+	
+	//사용자 답글보기
 	List<Qnacomment> getQcList(Qnacomment qc);
-
 }

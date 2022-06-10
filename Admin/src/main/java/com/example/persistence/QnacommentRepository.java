@@ -13,4 +13,5 @@ import com.example.domain.Qnacomment;
 public interface QnacommentRepository extends CrudRepository<Qnacomment, Integer> {
 	 @Query(value="SELECT q.qcode, q.nid, q.ntitle, q.ncontent, q.ndate, a.ccode, a.ccontent, a.cdate FROM qna q inner JOIN qnacomment a ON q.qcode=a.qcode where q.qcode = :code", nativeQuery=true)
 	 List<Object[]> findByqcode(@Param("code") int qCode);
+
 }

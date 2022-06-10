@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +20,7 @@ import com.example.domain.Product;
 import com.example.domain.Qna;
 import com.example.domain.Qnacomment;
 import com.example.domain.Sellerid;
+import com.example.domain.qc;
 import com.example.service.CustomerService;
 import com.example.service.FaqService;
 import com.example.service.ProductService;
@@ -61,10 +63,11 @@ public class Admin1Controller {
 		logger.info("qna 삭제");
 		qnaService.deleteQna(q);
 		
+		
 		return "redirect:/getQnaList";
 		
 	}
-	
+	// qna 상세보기
 	@RequestMapping("getQnaDetail")
 	public void getQnaDetail(HttpServletRequest request,Qna q,Model m) {
 		HttpSession session = request.getSession();

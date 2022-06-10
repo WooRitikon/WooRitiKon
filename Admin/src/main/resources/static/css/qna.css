@@ -97,3 +97,11 @@ div.input-group-text {
 tr , td {
 	text-align: center;
 }
+
+textarea {
+	resize: none;
+}
+
+p {
+	font-size: 1.5rem;
+}
