@@ -72,13 +72,13 @@
 							<li class="active"><a href="./index.html">Home</a></li>
 							<li><a href="#">about</a></li>
 							<li><a href="#">shop</a></li>
-							<li><a th:href="@{/mypageMain(nid=goo123)}">my page</a>
+							<li><a th:href="@{/mypageMain}">my page</a>
 								<ul class="dropdown">
 									<li><a th:href="@{/mypageShoppingList}">my 주문조회</a></li>
 									<li><a th:href="@{/mypageBasketList}">my 위시리스트</a></li>
 									<li><a th:href="@{/mypageGetGift}">my 선물함</a></li>
 									<li><a th:href="@{/mypageInfo}">my 정보</a></li>
-									<li><a href="./blog-details.html">my Q&A</a></li>
+									<li><a th:href="@{/mypageQna}">my Q&A</a></li>
 								</ul></li>
 							<li><a href="#">my shop</a>
 								<ul class="dropdown">
@@ -103,12 +103,11 @@
 									th:href="@{/logout}">로그아웃</a>
 							</div>
 						</div>
-						<ul class="header__right__widget">
-							<li><span class="icon_search search-switch"></span></li>
-							<li><a href="#"><span class="icon_heart_alt"></span>
-									<div class="tip">2</div> </a></li>
-							<li><a href="#"><span class="icon_bag_alt"></span>
-									<div class="tip">2</div> </a></li>
+					<ul class="header__right__widget">
+         				   <li><a th:href="@{/mypageHeartList}"><span class="icon_heart_alt"></span>
+           					 </a></li>
+          				  <li><a th:href="@{/mypageBasketList}"><span class="icon_bag_alt"></span>
+            				</a></li>
 						</ul>
 					</div>
 				</div>

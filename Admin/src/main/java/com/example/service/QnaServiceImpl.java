@@ -73,6 +73,12 @@ public class QnaServiceImpl implements QnaService {
 		QnaRepo.save(qna1);
 	}
 	
+	//qna 어드민 상세보기
+	@Override
+	public void selectUpdate(Qna q) {
+		QnaRepo.save(q);
+	}
+	
 	//qna 고객페이지 삭제하기
 	@Override
 	public void qnaDelete(Qna q) {
@@ -85,5 +91,13 @@ public class QnaServiceImpl implements QnaService {
 	public void insertQna(Qna q) {
 		logger.info("qna 등록하기");
 		QnaRepo.save(q);
+	}
+	
+	//qna 어드민 상세보기
+	@Override
+	public Qna getQnaDetail(Qna q) {
+		logger.info("qna 상세보기");
+		return QnaRepo.findById(q.getQcode()).get();
+		
 	}
 }

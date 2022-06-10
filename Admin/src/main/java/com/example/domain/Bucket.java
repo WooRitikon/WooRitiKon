@@ -2,8 +2,6 @@ package com.example.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -14,14 +12,16 @@ import lombok.Data;
 public class Bucket {
 
 	@Id
-	private Integer bcode;
+	private Integer bucketcode;
 	private Integer quantity;
 	
-	@ManyToOne
-	@JoinColumn(name="nid")
-	private Normalid normalid;
+//	@ManyToOne
+//	@JoinColumn(name="nid")
+	private String nid;
+
 	
-	@ManyToOne
-	@JoinColumn(name="pcode")
-	private Product prouduct;
+//	@ManyToOne
+//	@JoinColumn(name="pcode")
+	private Integer pcode;
+	private Integer btotal;
 }

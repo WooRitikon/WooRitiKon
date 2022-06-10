@@ -115,11 +115,10 @@
 								th:href="@{/logout}">로그아웃</a>
 						</div>
 						<ul class="header__right__widget">
-							<li><span class="icon_search search-switch"></span></li>
-							<li><a href="#"><span class="icon_heart_alt"></span>
-									<div class="tip">2</div> </a></li>
-							<li><a href="#"><span class="icon_bag_alt"></span>
-									<div class="tip">2</div> </a></li>
+         				   <li><a th:href="@{/mypageHeartList}"><span class="icon_heart_alt"></span>
+           					 </a></li>
+          				  <li><a th:href="@{/mypageBasketList}"><span class="icon_bag_alt"></span>
+            				</a></li>
 						</ul>
 					</div>
 				</div>
@@ -171,7 +170,7 @@
 													<li><a th:href="@{/mypagePointSet}">my 포인트 조회</a></li>
 													<li><a th:href="@{/mypageShoppingAllList}">my 구매
 															내역</a></li>
-													<li><a href="#">기프티콘 구매취소</a></li>
+													<li><a th:href="@{/mypageBuyCancel}">기프티콘 구매취소</a></li>
 												</ul>
 											</div>
 										</div>
@@ -276,7 +275,8 @@
 										<td><a th:href="@{./mypageQnaDetail(qcode=${qList.qcode})}" th:text="${qList.ntitle}"></a></td>
 										<td th:text="${qList.nid.nid}"></td>
 										<td th:text="${qList.ndate}"></td>
-										<td th:text="답변확인"></td>
+										<td th:text="${qList.qnastate}"></td>
+
 									</tr>
 										<!-- <td><a type="button" th:href="@{/qnareply(qcode=${qna.qcode})}" style="position:right;" class="btn btn-primary" th:text="답글"></a></td>
 										<td><a type="button" th:href="@{/deleteQna(qcode=${qna.qcode})}" style="position:right;" class="btn btn-primary" th:text="삭제"></td>  -->

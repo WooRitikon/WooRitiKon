@@ -29,6 +29,8 @@ public class Sellerid {
 	private String sdaddress;
 	private String sbirth;
 	private String bname;
+	private String scontent;
+	
 	
 	@CreationTimestamp
 	private LocalDate ssubscribe;

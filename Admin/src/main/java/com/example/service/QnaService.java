@@ -30,5 +30,11 @@ public interface QnaService {
 	
 	//qna 등록
 	void insertQna(Qna q);
+
+	//qna 어드민 상세보기
+	Qna getQnaDetail(Qna q);
+	
+	//qna 어드민 상세보기
+	void selectUpdate(Qna q);
 	
 }
