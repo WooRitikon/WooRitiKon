@@ -310,3 +310,46 @@ $('.minus').click(function(){
     
     
 }); // end of $('#btn_emailCheck').click
+
+
+$(".cart__close").click(function(){
+	
+	// 아이디 중복 검사 - DB와 비교
+ 	  $.ajax({ 
+    	type : 'post',
+    	url : 'bucketDelete',
+    	data : { pname : $(this).parent().find('h6').text() },
+    	contentType : 'application/x-www-form-urlencoded;charset=utf-8',
+    	success : function(result){
+    		
+    		$('.cartTotal').text(result)
+    		
+	
+    	},
+    	error : function(err){
+			alert('실패');
+    		console.log(err);
+    	}
+    }); //end of ajax
+    
+    
+}); // end of $('#btn_emailCheck').click
+
+/*$(".primary-btn").click(function(){
+	//버튼 클릭시 총합 데이터베이스 입력
+	$.ajax({
+		type : 'post',
+		url : 'busketTotal',
+		data : {ototal: $(#cartTotal).text()},
+		dacontentType : 'application/x-www-form-urlencoded;charset=utf-8',
+		success: function(result){
+				alert(성공);
+			},
+		error : function(err){
+			alert('실패');
+    		console.log(err);
+    	}
+	})
+	
+	
+});//end of ajax*/
