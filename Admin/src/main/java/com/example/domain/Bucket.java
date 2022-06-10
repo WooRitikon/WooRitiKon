@@ -20,6 +20,7 @@ public class Bucket {
 	private String nid;
 
 	
+	
 //	@ManyToOne
 //	@JoinColumn(name="pcode")
 	private Integer pcode;

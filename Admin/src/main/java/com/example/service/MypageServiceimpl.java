@@ -1,31 +1,25 @@
 package com.example.service;
 
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import javax.transaction.Transactional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.controller.MypageController;
+import com.example.domain.Bucket;
 import com.example.domain.Giftikon;
 import com.example.domain.Like;
 import com.example.domain.Normalid;
+import com.example.domain.Order;
 import com.example.domain.Orderlist;
-import com.example.domain.Product;
+import com.example.persistence.BucketRepository;
 import com.example.persistence.GiftikonRepository;
 import com.example.persistence.LikeRepository;
 import com.example.persistence.MypageMainRepository;
-import com.example.persistence.MypageProductRepository;
+import com.example.persistence.OrderRepository;
 import com.example.persistence.OrderlistRepository;
 
 
@@ -45,6 +39,11 @@ public class MypageServiceimpl implements MypageService{
 	@Autowired
 	private OrderlistRepository orderlistRepo;
 	
+	@Autowired
+	private BucketRepository BucketRepo;
+	
+	
+	
 	//<마이페이지 메인>
 	//이름가져오기 
 	@Override
@@ -53,6 +52,7 @@ public class MypageServiceimpl implements MypageService{
 		return mypageMainRepo.findById(nid).get();
 	}
 	
+
 	//기프티콘 상세조회
 	@Override
 	public Giftikon getGiftikonSet(Giftikon gi) {
@@ -75,12 +75,27 @@ public class MypageServiceimpl implements MypageService{
 		return result;
 	}
 	
+	//장바구니 삭제
+	@Override
+	public void deletebucket(Bucket pname) {
+		BucketRepo.delete(pname);
+	}
+	
+	
+	
 	//찜한 가게 삭제
 	@Override
 	public void deleteHeart(Like li) {
 		likeRepo.delete(li);
 	}
 
+//	
+//	//<결제>
+//	//빈 구매리스트 생성(번호만)
+//	@Override
+//	public void updateBuylistNumber(String nid) {
+//		orderlistRepo.updateBuylistNumber(nid);
+//	}
 	
 	//<회원정보 관리>
 	//회원정보 조회

@@ -313,6 +313,7 @@ $('.minus').click(function(){
 
 
 $(".cart__close").click(function(){
+
    
    // 아이디 중복 검사 - DB와 비교
       $.ajax({ 
@@ -330,12 +331,14 @@ $(".cart__close").click(function(){
          alert('실패');
           console.log(err);
        }
+
     }); //end of ajax
     
     
 }); // end of $('#btn_emailCheck').click
 
 /*$(".primary-btn").click(function(){
+
    //버튼 클릭시 총합 데이터베이스 입력
    $.ajax({
       type : 'post',
@@ -351,5 +354,5 @@ $(".cart__close").click(function(){
        }
    })
    
-   
+
 });//end of ajax*/
