@@ -233,6 +233,8 @@ public class GifticonServiceImpl implements GifticonService {
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 	
 =======
 >>>>>>> upstream/main
@@ -254,5 +256,6 @@ public class GifticonServiceImpl implements GifticonService {
 <<<<<<< HEAD
 
 =======
+>>>>>>> upstream/main
 >>>>>>> upstream/main
 }

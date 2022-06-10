@@ -8,9 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -26,10 +23,7 @@ public class Qna {
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		private Integer qcode;
-		
-		@ManyToOne
-		@JoinColumn(name="nid")
-		private Normalid nid;
+		private String nid;
 		private String ntitle;
 		private String ncontent;
 		

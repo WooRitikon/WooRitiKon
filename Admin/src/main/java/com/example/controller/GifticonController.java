@@ -200,6 +200,8 @@ public class GifticonController {
 
 	}
 	
+<<<<<<< HEAD
+=======
 
 	//상품리스트 확인
 //	@RequestMapping("/productlist")
@@ -212,6 +214,7 @@ public class GifticonController {
 //
 //	}
 	
+>>>>>>> upstream/main
 	//판매자 로그인 확인
 	@RequestMapping("/sellerCheck")
 	public String sellerCheck(HttpSession session, Sellerid vo) {

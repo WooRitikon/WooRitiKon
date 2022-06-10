@@ -20,6 +20,9 @@ public interface GifticonService {
 	public Normalid nloginCheck(Normalid vo);
 <<<<<<< HEAD
 
+<<<<<<< HEAD
+
+=======
 =======
 	
 >>>>>>> upstream/main
@@ -31,6 +34,7 @@ public interface GifticonService {
 	
 	//HOT DEAL 3개 가져오기
 	public List<Product> selectHot();
+>>>>>>> upstream/main
 	
 	//판매자회원 로그인 유효성 검사
 	public Sellerid sloginCheck(Sellerid vo);

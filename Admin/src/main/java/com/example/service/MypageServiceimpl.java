@@ -56,8 +56,11 @@ public class MypageServiceimpl implements MypageService{
 <<<<<<< HEAD
 	//<주문조회>
 
+<<<<<<< HEAD
+=======
 
 =======
+>>>>>>> upstream/main
 >>>>>>> upstream/main
 	//기프티콘 상세조회
 	@Override
@@ -120,4 +123,14 @@ public class MypageServiceimpl implements MypageService{
 		 mypageMainRepo.save(no1);
 	 }
 	 
+<<<<<<< HEAD
+	 //회원탈퇴
+	 
+	 
+
+	
+
+	 
+=======
+>>>>>>> upstream/main
 }

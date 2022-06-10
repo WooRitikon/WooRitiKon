@@ -28,6 +28,8 @@ public class Product {
 	private String shortiamge;
 >>>>>>> upstream/main
 	private String pcontent;
+	private String pimage;
+	private String prealimage;
 	
 	private String shotimage;
 	private String originimage;

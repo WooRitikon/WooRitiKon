@@ -6,6 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 <<<<<<< HEAD
 
+import javax.persistence.OneToMany;
+=======
+<<<<<<< HEAD
+
 
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -13,7 +17,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+>>>>>>> upstream/main
 import javax.persistence.Table;
+
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 

@@ -206,9 +206,15 @@ Created: Colorib
 		Quantity change
 	--------------------- */
    var proQty = $('.pro-qty');
+<<<<<<< HEAD
+	proQty.prepend('<span class="dec qtybtn" name="minus">-</span>');
+	proQty.append('<span class="inc qtybtn" name="add">+</span>');
+	proQty.on('click', '.qtybtn', function () {
+=======
 	proQty.prepend('<a class="dec qtybtn minus" name="minus" onchange="del();">-</a>');
 	proQty.append('<a class="inc qtybtn add" name="add" onchange="add();">+</a>');
 	/*proQty.on('click', '.qtybtn', function () {
+>>>>>>> upstream/main
 		var $button = $(this);
 		var oldValue = $button.parent().find('input').val();
 		if ($button.hasClass('inc')) {
@@ -224,6 +230,9 @@ Created: Colorib
 		}
 		
 		$button.parent().find('input').val(newVal);
+<<<<<<< HEAD
+    });
+=======
 		
 		var price = $('#price').attr('value'); // 상품의 가격
 		
@@ -260,6 +269,7 @@ $('.minus').click(function(){
 	})
 	
 	
+>>>>>>> upstream/main
 
     /*-------------------
 		Radio Btn
