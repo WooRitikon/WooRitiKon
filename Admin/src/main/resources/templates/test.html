@@ -78,16 +78,17 @@
 									<li><a th:href="@{/mypageInfo}">my 정보</a></li>
 									<li><a th:href="@{/mypageQna}">my Q&A</a></li>	
 								</ul></li>
-							<li><a th:href="@{/shopMain}">my shop</a></li>
+							<li><a href="#">my shop</a>
+								<ul class="dropdown">
+									<li><a href="shopInfo">information</a></li>
+									<li><a href="shopProView">product</a></li>
+									<li><a href="shopReview">review</a></li>
+									<li><a href="./blog-details.html">sales</a></li>
+								</ul></li>
 							<li><a href="#">customer center</a>
 								<ul class="dropdown">
 									<li><a th:href="@{./noticePage}">Notice</a></li>
-<<<<<<< HEAD
-									<li><a href="#">FnQ</a></li>
-									<li><a href="#">Qna</a></li>
-=======
 									<li><a th:href="@{./faqPage}">FnQ</a></li>
->>>>>>> upstream/main
 								</ul></li>
 						</ul>
 					</nav>
@@ -95,10 +96,12 @@
 				<div class="col-lg-3">
 					<div class="header__right">
 						<div th:if="${nid == null}" class="header__right__auth">
-							<a th:href="@{/login}">일반</a><a th:href="@{/sellerlogin}">판매자</a> <a th:href="@{/selectpage}">회원가입</a>
+							<a th:href="@{/login}">일반</a><a th:href="@{/sellerlogin}">판매자</a>
+							<a th:href="@{/selectpage}">회원가입</a>
 						</div>
 						<div th:if="${nid != null}" class="header__right__auth">
-							<a th:text="${nid}" th:href="@{/mypageMain}"></a> <a th:href="@{/logout}">로그아웃</a>
+							<a th:text="${nid}" th:href="@{/mypageMain}"></a> <a
+								th:href="@{/logout}">로그아웃</a>
 						</div>
 						<ul class="header__right__widget">
          				   <li><a th:href="@{/mypageHeartList}"><span class="icon_heart_alt"></span>
@@ -122,7 +125,7 @@
 			<div class="row">
 				<div class="col-lg-6 p-0">
 					<div class="categories__item categories__large__item set-bg"
-						data-setbg="img/categories/category-1.jpg">
+						data-setbg="img/categories/home.jpg">
 						<div class="categories__text">
 							<a th:href="@{/test}"><h1>HOME</h1></a>
 						</div>
@@ -132,7 +135,7 @@
 					<div class="row">
 						<div class="col-lg-6 col-md-6 col-sm-6 p-0">
 							<div class="categories__item  set-bg"
-								data-setbg="img/categories/category-2.jpg">
+								data-setbg="img/categories/box.jpg">
 								<div class="categories__text">
 									<h4>WOORITIKON?</h4>
 								</div>
@@ -140,7 +143,7 @@
 						</div>
 						<div class="col-lg-6 col-md-6 col-sm-6 p-0">
 							<div class="categories__item set-bg"
-								data-setbg="img/categories/category-3.jpg">
+								data-setbg="img/categories/store.jpg">
 								<div class="categories__text">
 									<a th:href="@{/plist(ccode=1)}"><h4>SHOP</h4></a>
 								</div>
@@ -148,7 +151,7 @@
 						</div>
 						<div class="col-lg-6 col-md-6 col-sm-6 p-0">
 							<div class="categories__item set-bg"
-								data-setbg="img/categories/category-4.jpg">
+								data-setbg="img/categories/mypage.jpg">
 								<div class="categories__text">
 									<a th:href="@{/mypageMain}"><h4>MY PAGE</h4></a>
 								</div>
@@ -156,7 +159,7 @@
 						</div>
 						<div class="col-lg-6 col-md-6 col-sm-6 p-0">
 							<div class="categories__item set-bg"
-								data-setbg="img/categories/category-5.jpg">
+								data-setbg="img/categories/notice.jpg">
 								<div class="categories__text">
 									<h4>NOTICE</h4>
 								</div>
@@ -175,38 +178,14 @@
 			<div class="row">
 				<div class="col-lg-4 col-md-4">
 					<div class="section-title">
-						<h4>New product</h4>
+						<h4>카테고리</h4>
 					</div>
 				</div>
-				<div class="col-lg-8 col-md-8">
-					<ul class="filter__controls">
-						<li class="active" data-filter="*">All</li>
-						<li data-filter=".women">Women’s</li>
-						<li data-filter=".men">Men’s</li>
-						<li data-filter=".kid">Kid’s</li>
-						<li data-filter=".accessories">Accessories</li>
-						<li data-filter=".cosmetic">Cosmetics</li>
-					</ul>
-				</div>
+
 			</div>
 			<div class="row property__gallery">
 				<div class="col-lg-3 col-md-4 col-sm-6 mix women">
 					<div class="product__item">
-<<<<<<< HEAD
-						<div class="product__item__pic set-bg"
-							data-setbg="img/product/product-1.jpg">
-							<div class="label new">New</div>
-							<ul class="product__hover">
-								<li><a href="img/product/product-1.jpg" class="image-popup"><span
-										class="arrow_expand"></span></a></li>
-								<li><a href="#"><span class="icon_heart_alt"></span></a></li>
-								<li><a href="#"><span class="icon_bag_alt"></span></a></li>
-							</ul>
-						</div>
-						<div class="product__item__text">
-							<h6>
-								<a href="#">Buttons tweed blazer</a>
-=======
 						<div class="product__item__pic">
 							<a th:href="@{/plist(ccode=1)}"><img src="img/product/food.jpg" alt="" style="height: 210px;"></a>
 							<div class="label stockout">음식</div>
@@ -214,14 +193,7 @@
 							<div class="product__item__text">
 							<h6>
 								<a th:href="@{/plist(ccode=1)}">음식</a>
->>>>>>> upstream/main
 							</h6>
-							<div class="rating">
-								<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star"></i>
-							</div>
-							<div class="product__price">$ 59.0</div>
 						</div>
 						</div>
 						
@@ -229,18 +201,6 @@
 				</div>
 				<div class="col-lg-3 col-md-4 col-sm-6 mix men">
 					<div class="product__item">
-<<<<<<< HEAD
-						<div class="product__item__pic set-bg"
-							data-setbg="img/product/product-2.jpg">
-							<ul class="product__hover">
-								<li><a href="img/product/product-2.jpg" class="image-popup"><span
-										class="arrow_expand"></span></a></li>
-								<li><a href="#"><span class="icon_heart_alt"></span></a></li>
-								<li><a href="#"><span class="icon_bag_alt"></span></a></li>
-							</ul>
-						</div>
-						<div class="product__item__text">
-=======
 						<div class="product__item__pic">
 							<a th:href="@{/plist(ccode=2)}"><img src="img/product/hair.png" alt="" style="height: 210px;"></a>
 							<div class="label stockout">미용</div>
@@ -316,192 +276,50 @@
 							<div class="label stockout">문화/예술</div>
 							
 							<div class="product__item__text">
->>>>>>> upstream/main
 							<h6>
-								<a href="#">Flowy striped skirt</a>
+								<a href="#">문화/예술</a>
 							</h6>
-							<div class="rating">
-								<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star"></i>
-							</div>
-							<div class="product__price">$ 49.0</div>
 						</div>
 							
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6 mix accessories">
+				<!-- end of 서점 -->
+				
+				<div class="col-lg-3 col-md-4 col-sm-6 mix men">
 					<div class="product__item">
-<<<<<<< HEAD
-						<div class="product__item__pic set-bg"
-							data-setbg="img/product/product-3.jpg">
-							<div class="label stockout">out of stock</div>
-							<ul class="product__hover">
-								<li><a href="img/product/product-3.jpg" class="image-popup"><span
-										class="arrow_expand"></span></a></li>
-								<li><a href="#"><span class="icon_heart_alt"></span></a></li>
-								<li><a href="#"><span class="icon_bag_alt"></span></a></li>
-							</ul>
-						</div>
-						<div class="product__item__text">
-=======
 						<div class="product__item__pic">
 							<a th:href="@{/plist(ccode=8)}"><img src="img/product/life.jpg" alt="" style="height: 210px;"></a>
 							<div class="label stockout">생활용품</div>
 							
 							<div class="product__item__text">
->>>>>>> upstream/main
 							<h6>
-								<a href="#">Cotton T-Shirt</a>
+								<a href="#">생활용품</a>
 							</h6>
-							<div class="rating">
-								<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star"></i>
-							</div>
-							<div class="product__price">$ 59.0</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6 mix cosmetic">
-					<div class="product__item">
-						<div class="product__item__pic set-bg"
-							data-setbg="img/product/product-4.jpg">
-							<ul class="product__hover">
-								<li><a href="img/product/product-4.jpg" class="image-popup"><span
-										class="arrow_expand"></span></a></li>
-								<li><a href="#"><span class="icon_heart_alt"></span></a></li>
-								<li><a href="#"><span class="icon_bag_alt"></span></a></li>
-							</ul>
-						</div>
-						<div class="product__item__text">
-							<h6>
-								<a href="#">Slim striped pocket shirt</a>
-							</h6>
-							<div class="rating">
-								<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star"></i>
-							</div>
-							<div class="product__price">$ 59.0</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6 mix kid">
-					<div class="product__item">
-						<div class="product__item__pic set-bg"
-							data-setbg="img/product/product-5.jpg">
-							<ul class="product__hover">
-								<li><a href="img/product/product-5.jpg" class="image-popup"><span
-										class="arrow_expand"></span></a></li>
-								<li><a href="#"><span class="icon_heart_alt"></span></a></li>
-								<li><a href="#"><span class="icon_bag_alt"></span></a></li>
-							</ul>
-						</div>
-						<div class="product__item__text">
-							<h6>
-								<a href="#">Fit micro corduroy shirt</a>
-							</h6>
-							<div class="rating">
-								<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star"></i>
-							</div>
-							<div class="product__price">$ 59.0</div>
-						</div>
-					</div>
-				</div>
-				<div
-					class="col-lg-3 col-md-4 col-sm-6 mix women men kid accessories cosmetic">
-					<div class="product__item sale">
-						<div class="product__item__pic set-bg"
-							data-setbg="img/product/product-6.jpg">
-							<div class="label sale">Sale</div>
-							<ul class="product__hover">
-								<li><a href="img/product/product-6.jpg" class="image-popup"><span
-										class="arrow_expand"></span></a></li>
-								<li><a href="#"><span class="icon_heart_alt"></span></a></li>
-								<li><a href="#"><span class="icon_bag_alt"></span></a></li>
-							</ul>
-						</div>
-						<div class="product__item__text">
-							<h6>
-								<a href="#">Tropical Kimono</a>
-							</h6>
-							<div class="rating">
-								<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star"></i>
-							</div>
-							<div class="product__price">
-								$ 49.0 <span>$ 59.0</span>
-							</div>
 						</div>
 						</div>
 					</div>
 				</div>
+				<!-- end of 생활용품 -->
+				
 				<div
 					class="col-lg-3 col-md-4 col-sm-6 mix women men kid accessories cosmetic">
 					<div class="product__item">
-<<<<<<< HEAD
-						<div class="product__item__pic set-bg"
-							data-setbg="img/product/product-7.jpg">
-							<ul class="product__hover">
-								<li><a href="img/product/product-7.jpg" class="image-popup"><span
-										class="arrow_expand"></span></a></li>
-								<li><a href="#"><span class="icon_heart_alt"></span></a></li>
-								<li><a href="#"><span class="icon_bag_alt"></span></a></li>
-							</ul>
-						</div>
-						<div class="product__item__text">
-=======
 						<div class="product__item__pic">
 							<a th:href="@{/plist(ccode=9)}"><img src="img/product/health.jpg" alt="" style="height: 210px;"></a>
 							<div class="label stockout">체육</div>
 							
 							<div class="product__item__text">
->>>>>>> upstream/main
 							<h6>
-								<a href="#">Contrasting sunglasses</a>
+								<a href="#">체육</a>
 							</h6>
-							<div class="rating">
-								<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star"></i>
-							</div>
-							<div class="product__price">$ 59.0</div>
 						</div>
 						</div>
 					</div>
 				</div>
+				<!-- end of 체육 -->
 				<div
 					class="col-lg-3 col-md-4 col-sm-6 mix women men kid accessories cosmetic">
-<<<<<<< HEAD
-					<div class="product__item sale">
-						<div class="product__item__pic set-bg"
-							data-setbg="img/product/product-8.jpg">
-							<div class="label">Sale</div>
-							<ul class="product__hover">
-								<li><a href="img/product/product-8.jpg" class="image-popup"><span
-										class="arrow_expand"></span></a></li>
-								<li><a href="#"><span class="icon_heart_alt"></span></a></li>
-								<li><a href="#"><span class="icon_bag_alt"></span></a></li>
-							</ul>
-						</div>
-						<div class="product__item__text">
-							<h6>
-								<a href="#">Water resistant backpack</a>
-							</h6>
-							<div class="rating">
-								<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star"></i>
-							</div>
-							<div class="product__price">
-								$ 49.0 <span>$ 59.0</span>
-							</div>
-=======
 					<div class="product__item">
 						<div class="product__item__pic">
 							<a th:href="@{/plist(ccode=10)}"><img src="img/product/job.jpg" alt="" style="height: 210px; width: 210px;"></a>
@@ -513,7 +331,6 @@
 								</h6>
 							</div>
 							
->>>>>>> upstream/main
 						</div>
 					</div>
 				</div>
@@ -703,7 +520,9 @@
 					<div class="footer__copyright__text">
 						<p>
 							Copyright &copy;
-							<script>document.write(new Date().getFullYear());</script>
+							<script>
+								document.write(new Date().getFullYear());
+							</script>
 							All rights reserved | This template is made with <i
 								class="fa fa-heart" aria-hidden="true"></i> by <a
 								href="https://colorlib.com" target="_blank">Colorlib</a>

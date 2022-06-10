@@ -69,7 +69,7 @@ public class Admin1Controller {
 	public void getQnaDetail(HttpServletRequest request,Qna q,Model m) {
 		HttpSession session = request.getSession();
 		String nid = (String) session.getAttribute("nid");
-		Qna qna = qnaService.getQanDetail(q);
+		Qna qna = qnaService.getQnaDetail(q);
 		
 		m.addAttribute("nid", nid);
 		m.addAttribute("qnaDetail", qna);

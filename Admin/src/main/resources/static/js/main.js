@@ -62,8 +62,8 @@ Created: Colorib
     });
 
     /*------------------
-		Navigation
-	--------------------*/
+      Navigation
+   --------------------*/
     $(".header__menu").slicknav({
         prependTo: '#mobile-menu-wrap',
         allowParentLinks: true
@@ -125,7 +125,7 @@ Created: Colorib
 
 
     /*------------------
-		Magnific
+      Magnific
     --------------------*/
     $('.image-popup').magnificPopup({
         type: 'image'
@@ -166,14 +166,14 @@ Created: Colorib
 
     /* var timerdate = "2020/12/30" */
 
-	$("#countdown-time").countdown(timerdate, function(event) {
+   $("#countdown-time").countdown(timerdate, function(event) {
         $(this).html(event.strftime("<div class='countdown__item'><span>%D</span> <p>Day</p> </div>" + "<div class='countdown__item'><span>%H</span> <p>Hour</p> </div>" + "<div class='countdown__item'><span>%M</span> <p>Min</p> </div>" + "<div class='countdown__item'><span>%S</span> <p>Sec</p> </div>"));
     });
 
     /*-------------------
-		Range Slider
-	--------------------- */
-	var rangeSlider = $(".price-range"),
+      Range Slider
+   --------------------- */
+   var rangeSlider = $(".price-range"),
     minamount = $("#minamount"),
     maxamount = $("#maxamount"),
     minPrice = rangeSlider.data('min'),
@@ -192,88 +192,78 @@ Created: Colorib
     maxamount.val('$' + rangeSlider.slider("values", 1));
 
     /*------------------
-		Single Product
-	--------------------*/
-	$('.product__thumb .pt').on('click', function(){
-		var imgurl = $(this).data('imgbigurl');
-		var bigImg = $('.product__big__img').attr('src');
-		if(imgurl != bigImg) {
-			$('.product__big__img').attr({src: imgurl});
-		}
+      Single Product
+   --------------------*/
+   $('.product__thumb .pt').on('click', function(){
+      var imgurl = $(this).data('imgbigurl');
+      var bigImg = $('.product__big__img').attr('src');
+      if(imgurl != bigImg) {
+         $('.product__big__img').attr({src: imgurl});
+      }
     });
     
     /*-------------------
-		Quantity change
-	--------------------- */
+      Quantity change
+   --------------------- */
    var proQty = $('.pro-qty');
-<<<<<<< HEAD
-	proQty.prepend('<span class="dec qtybtn" name="minus">-</span>');
-	proQty.append('<span class="inc qtybtn" name="add">+</span>');
-	proQty.on('click', '.qtybtn', function () {
-=======
-	proQty.prepend('<a class="dec qtybtn minus" name="minus" onchange="del();">-</a>');
-	proQty.append('<a class="inc qtybtn add" name="add" onchange="add();">+</a>');
-	/*proQty.on('click', '.qtybtn', function () {
->>>>>>> upstream/main
-		var $button = $(this);
-		var oldValue = $button.parent().find('input').val();
-		if ($button.hasClass('inc')) {
-			var newVal = parseFloat(oldValue) + 1;
-			
-		} else {
-			// Don't allow decrementing below zero
-			if (oldValue > 0) {
-				var newVal = parseFloat(oldValue) - 1;
-			} else {
-				newVal = 0;
-			}
-		}
-		
-		$button.parent().find('input').val(newVal);
-<<<<<<< HEAD
-    });
-=======
-		
-		var price = $('#price').attr('value'); // 상품의 가격
-		
-		//var count = $('#input').attr('value');// 장바구니 상품 갯수
-		var count=$button.parent().find('input').val();
-		var total = price * count;  // 한 상품의 개수*가격
-		alert(total);
-		$button.parent().parent().find('label').val(price * count);
-		
-		$("#total").change(function(){
-			$(this).val = total;
-			
-		})
-	
+   proQty.prepend('<a class="dec qtybtn minus" name="minus" onchange="del();">-</a>');
+   proQty.append('<a class="inc qtybtn add" name="add" onchange="add();">+</a>');
+   /*proQty.on('click', '.qtybtn', function () {
+      var $button = $(this);
+      var oldValue = $button.parent().find('input').val();
+      if ($button.hasClass('inc')) {
+         var newVal = parseFloat(oldValue) + 1;
+         
+      } else {
+         // Don't allow decrementing below zero
+         if (oldValue > 0) {
+            var newVal = parseFloat(oldValue) - 1;
+         } else {
+            newVal = 0;
+         }
+      }
+      
+      $button.parent().find('input').val(newVal);
+      
+      var price = $('#price').attr('value'); // 상품의 가격
+      
+      //var count = $('#input').attr('value');// 장바구니 상품 갯수
+      var count=$button.parent().find('input').val();
+      var total = price * count;  // 한 상품의 개수*가격
+      alert(total);
+      $button.parent().parent().find('label').val(price * count);
+      
+      $("#total").change(function(){
+         $(this).val = total;
+         
+      })
+   
     });*/
 $('.add').click(function(){
-	$(this).prev().val(Number($(this).prev().val())+1)
-	var price = Number($(this).parent().parent().prev().find('span').attr('value'))
-	$(this).parent().parent().next().find('span').text(Number($(this).prev().val())*price)
-	
-	
+   $(this).prev().val(Number($(this).prev().val())+1)
+   var price = Number($(this).parent().parent().prev().find('span').attr('value'))
+   $(this).parent().parent().next().find('span').text(Number($(this).prev().val())*price)
+   
+   
 
 })
 
 $('.minus').click(function(){
-	if($(this).next().val()>0){
-	$(this).next().val(Number($(this).next().val())-1)
-	var price = Number($(this).parent().parent().prev().find('span').attr('value'))
-	$(this).parent().parent().next().find('span').text(Number($(this).next().val())* price)
-}	
+   if($(this).next().val()>0){
+   $(this).next().val(Number($(this).next().val())-1)
+   var price = Number($(this).parent().parent().prev().find('span').attr('value'))
+   $(this).parent().parent().next().find('span').text(Number($(this).next().val())* price)
+}   
 })
-	$(".cart__close").click(function(){
-		$(this).parents('tr').remove();
-	})
-	
-	
->>>>>>> upstream/main
+   $(".cart__close").click(function(){
+      $(this).parents('tr').remove();
+   })
+   
+   
 
     /*-------------------
-		Radio Btn
-	--------------------- */
+      Radio Btn
+   --------------------- */
     $(".size__btn label").on('click', function () {
         $(".size__btn label").removeClass('active');
         $(this).addClass('active');
@@ -282,41 +272,84 @@ $('.minus').click(function(){
 })(jQuery);
 
 $('.add').click(function(){
-	
-	// 아이디 중복 검사 - DB와 비교
- 	  $.ajax({
-    	type : 'post',
-    	url : 'mypagePlus',
-    	data : { pname : $(this).parent().parent().parent().find('h6').text() },
-    	contentType : 'application/x-www-form-urlencoded;charset=utf-8',
-    	success : function(result){
-    		$('.cartTotal').text(result)
-    	},
-    	error : function(err){
-			alert('실패');
-    		console.log(err);
-    	}
+   
+   // 아이디 중복 검사 - DB와 비교
+      $.ajax({
+       type : 'post',
+       url : 'mypagePlus',
+       data : { pname : $(this).parent().parent().parent().find('h6').text() },
+       contentType : 'application/x-www-form-urlencoded;charset=utf-8',
+       success : function(result){
+          $('.cartTotal').text(result)
+       },
+       error : function(err){
+         alert('실패');
+          console.log(err);
+       }
     }); //end of ajax
     
     
 }); // end of $('#btn_emailCheck').click
 
 $('.minus').click(function(){
-	
-	// 아이디 중복 검사 - DB와 비교
- 	  $.ajax({ 
-    	type : 'post',
-    	url : 'mypageMinus',
-    	data : { pname : $(this).parent().parent().parent().find('h6').text() },
-    	contentType : 'application/x-www-form-urlencoded;charset=utf-8',
-    	success : function(result){
-    		$('.cartTotal').text(result)
-    	},
-    	error : function(err){
-			alert('실패');
-    		console.log(err);
-    	}
+   
+   // 아이디 중복 검사 - DB와 비교
+      $.ajax({ 
+       type : 'post',
+       url : 'mypageMinus',
+       data : { pname : $(this).parent().parent().parent().find('h6').text() },
+       contentType : 'application/x-www-form-urlencoded;charset=utf-8',
+       success : function(result){
+          $('.cartTotal').text(result)
+       },
+       error : function(err){
+         alert('실패');
+          console.log(err);
+       }
     }); //end of ajax
     
     
 }); // end of $('#btn_emailCheck').click
+
+
+$(".cart__close").click(function(){
+   
+   // 아이디 중복 검사 - DB와 비교
+      $.ajax({ 
+       type : 'post',
+       url : 'bucketDelete',
+       data : { pname : $(this).parent().find('h6').text() },
+       contentType : 'application/x-www-form-urlencoded;charset=utf-8',
+       success : function(result){
+          
+          $('.cartTotal').text(result)
+          
+   
+       },
+       error : function(err){
+         alert('실패');
+          console.log(err);
+       }
+    }); //end of ajax
+    
+    
+}); // end of $('#btn_emailCheck').click
+
+/*$(".primary-btn").click(function(){
+   //버튼 클릭시 총합 데이터베이스 입력
+   $.ajax({
+      type : 'post',
+      url : 'busketTotal',
+      data : {ototal: $(#cartTotal).text()},
+      dacontentType : 'application/x-www-form-urlencoded;charset=utf-8',
+      success: function(result){
+            alert(성공);
+         },
+      error : function(err){
+         alert('실패');
+          console.log(err);
+       }
+   })
+   
+   
+});//end of ajax*/
