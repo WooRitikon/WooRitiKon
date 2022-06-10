@@ -231,7 +231,11 @@ public class GifticonServiceImpl implements GifticonService {
 		
 		return null;
 	}
+
+<<<<<<< HEAD
 	
+=======
+>>>>>>> upstream/main
 	//판매자 가게 정보 검색
 	@Override
 	public List<Sellerid> searchseller(Sellerid vo){
@@ -247,4 +251,8 @@ public class GifticonServiceImpl implements GifticonService {
 		
 		return last;
 	}
+<<<<<<< HEAD
+
+=======
+>>>>>>> upstream/main
 }

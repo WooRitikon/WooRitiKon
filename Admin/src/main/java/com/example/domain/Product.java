@@ -3,9 +3,8 @@ package com.example.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -16,15 +15,25 @@ import lombok.Data;
 public class Product {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer pcode;
 	private Integer pprice;
 	private String bcode;
 	private String pname;
 	private String pcategory;
+<<<<<<< HEAD
+
+=======
+	
+	private String shortiamge;
+>>>>>>> upstream/main
 	private String pcontent;
 	
 	private String shotimage;
 	private String originimage;
+<<<<<<< HEAD
+=======
+
+>>>>>>> upstream/main
 
 }
