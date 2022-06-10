@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.controller.Admin1Controller;
 import com.example.domain.Qna;
+import com.example.domain.Qnacomment;
 import com.example.persistence.QnaRepository;
 import com.example.persistence.QnacommentRepository;
 
