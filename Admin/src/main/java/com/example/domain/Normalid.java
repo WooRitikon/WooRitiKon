@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-<<<<<<< HEAD
+
 
 
 import javax.persistence.OneToMany;
@@ -17,10 +17,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-=======
-import javax.persistence.Table;
 
->>>>>>> upstream/main
 import org.hibernate.annotations.CreationTimestamp;
 
 import lombok.Data;
@@ -42,10 +39,7 @@ public class Normalid {
 	private String ngender;
 	private String nbirth;
 	private Integer ncharge;
-<<<<<<< HEAD
-	
-=======
->>>>>>> upstream/main
+
 
 	@CreationTimestamp
 	private LocalDate nsubscribe;
