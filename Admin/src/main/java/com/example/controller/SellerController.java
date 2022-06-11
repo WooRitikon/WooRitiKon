@@ -144,8 +144,31 @@ public class SellerController {
 	
 	//상품 등록하기
 	@RequestMapping("/savePro")
-	public String getshopProReg(Product pr) {
+	public String getshopProReg(HttpServletRequest request, Product pr) {
+		HttpSession session = request.getSession();
+		String nid = (String)session.getAttribute("nid");
+		
+		List<Sellerid> list = sellerService.getSellerList(null);
+		String bcode="0";
+		
+		for(Sellerid li : list) {
+			if(li.getSid().equals(nid)) {
+				bcode = li.getBcode();
+			}
+		}
+		 
 		sellerService.insertPro(pr);
+		
+		List<Product> list1 = sellerService.getProList(null);
+		
+		for(Product li : list1) {
+			if(li.getBcode() == null) {
+				li.setBcode(bcode);
+				sellerService.insertPro(li);
+				
+			}
+		}
+		
 		return "redirect:shopProView";
 	}
 	
@@ -165,11 +188,31 @@ public class SellerController {
 	
 	//가게 리뷰 조회하기
 	@RequestMapping("/shopReview")
-	public void getshopReview(Model m) {
+	public void getshopReview(HttpServletRequest request, Model m) {
 		logger.info("전체 리뷰 검색");
+		HttpSession session = request.getSession();
+		String nid = (String)session.getAttribute("nid");
+		Integer pcode=0;
+		
 		Review re =new Review();
 		List<Review> list = sellerService.getReviewList(re);
-		m.addAttribute("reviewList", list);
+		List<Product> list1 = sellerService.getProList(null);
+		List<Review> list2 = new ArrayList<Review>();
+		
+		for(Product l1 : list1) {
+			if(l1.getPcode().equals(nid)) {
+				pcode = l1.getPcode();
+				break;
+			}
+		}
+		
+		for(Review li : list) {
+			if(li.getPcode().equals(pcode)) {
+				list2.add(li);
+			}
+		}
+		
+		m.addAttribute("reviewList", list2);
 	}
 	
 	//기프티컨 조회

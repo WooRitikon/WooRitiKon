@@ -16,6 +16,9 @@ public interface SellerService {
 	
 	//판매자 상세보기
 	Sellerid sellerdetail(Sellerid sid);
+	
+	//빈 상품 생성
+	void saveproduct();
 
 	//판매자 가게 정보보기
 	Sellerid getshopInfo(String se);

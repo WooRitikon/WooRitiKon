@@ -160,8 +160,9 @@
                                         <div id="collapseTwo" class="collapse" data-parent="#accordionExample">
                                             <div class="card-body">
                                                 <ul>
-                                                    <li><a href="shopProView">조회</a></li>
-                                                    <li><a href="shopProReg">등록</a></li>
+                                                    <li><a th:href="@{/shopProView}">조회</a></li>
+                                                    <li><a th:href="@{/shopProReg}">등록</a></li>
+                                                    <li><a th:href="@{/shopProPay}">결제</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -173,7 +174,7 @@
                                         <div id="collapseThree" class="collapse" data-parent="#accordionExample">
                                             <div class="card-body">
                                                 <ul>
-                                                    <li><a href="shopReview">조회</a></li>
+                                                    <li><a th:href="@{/shopReview}">조회</a></li>
                                                 </ul>
                                             </div>
                                         </div>
