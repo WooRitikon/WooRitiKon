@@ -37,10 +37,13 @@ public interface MypageService {
 	//장바구니 삭제
 	public void deletebucket(Bucket pname);
 
-//	//<결제>
-//	//빈 구매리스트 생성 
-//	void updateBuylistNumber(String nid);
-//	
+	//<결제>
+	//빈 구매리스트 생성 
+	void updateBuylistNumber();
+	
+	//구매리스트 번호 가져오기
+	Orderlist buylistNumber(Orderlist li);
+	
 	//<회원정보 관리>
 	//회원정보 조회
 	Normalid getNid(String no);

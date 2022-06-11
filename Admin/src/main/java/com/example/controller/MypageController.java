@@ -22,6 +22,7 @@ import com.example.domain.Giftikon;
 import com.example.domain.Like;
 import com.example.domain.Normalid;
 import com.example.domain.Order;
+import com.example.domain.Orderlist;
 import com.example.domain.Product;
 import com.example.domain.Tbucket;
 import com.example.persistence.BucketRepository;
@@ -376,7 +377,9 @@ public class MypageController {
 //	
 	//장바구니 결제 페이지 이동
 	@RequestMapping("/mypageBuy")
-	public void mypageBuy(HttpServletRequest request, Model m, Order or) {
+	public void mypageBuy(HttpServletRequest request, Model m, Order or, Orderlist li) {
+		
+
 		logger.info("mypageBuy controller");
 		HttpSession session = request.getSession();
 		String nid = (String)session.getAttribute("nid");
@@ -425,8 +428,12 @@ public class MypageController {
 		  m.addAttribute("product",Newpr);
 		  m.addAttribute("nid", mypageService.getNid(nid));
 		  
-		  
 		  //빈 구매 리스트 번호 생성 
+		  mypageService.updateBuylistNumber();
+		  
+		  //구매리스트 번호 받아 오기
+		  int licode = mypageService.buylistNumber();
+		 System.out.println("licode");
 		  
 		
 	}

@@ -89,13 +89,21 @@ public class MypageServiceimpl implements MypageService{
 		likeRepo.delete(li);
 	}
 
-//	
-//	//<결제>
-//	//빈 구매리스트 생성(번호만)
-//	@Override
-//	public void updateBuylistNumber(String nid) {
-//		orderlistRepo.updateBuylistNumber(nid);
-//	}
+	
+	//<결제>
+	//빈 구매리스트 생성(번호만)
+	@Override
+	public void updateBuylistNumber() {
+	 orderlistRepo.updateBuylistNumber();
+	}
+	
+	//구매리스트 번호 가져오기
+	@Override
+	public Orderlist buylistNumber(Orderlist li) {
+		return orderlistRepo.findById(li.getListcode()).get();
+	}
+	
+	
 	
 	//<회원정보 관리>
 	//회원정보 조회
