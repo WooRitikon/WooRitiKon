@@ -7,7 +7,7 @@
 <meta name="keywords" content="Ashion, unica, creative, html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>mypageBacketList</title>
+<title>mypageGetGift</title>
 
 <!-- Google Font -->
 <link
@@ -27,6 +27,15 @@
 <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
 <link rel="stylesheet" href="css/style.css" type="text/css">
 <link rel="stylesheet" href="css/mypage.css" type="text/css" />
+<link rel="stylesheet" href="css/qna.css" type="text/css" />
+<!-- 데이터 테이블 -->
+<link rel="stylesheet"
+	href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet"
+	href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+<link rel="stylesheet"
+	href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+
 </head>
 
 <body>
@@ -39,12 +48,13 @@
 	<div class="offcanvas-menu-overlay"></div>
 	<div class="offcanvas-menu-wrapper">
 		<div class="offcanvas__close">+</div>
-	  <ul class="offcanvas__widget">
-            <li><a th:href="@{/mypageHeartList}"><span class="icon_heart_alt"></span>
-            </a></li>
-            <li><a th:href="@{/mypageBasketList}"><span class="icon_bag_alt"></span>
-            </a></li>
-        </ul>
+		<ul class="offcanvas__widget">
+			<li><span class="icon_search search-switch"></span></li>
+			<li><a href="#"><span class="icon_heart_alt"></span>
+					<div class="tip">2</div> </a></li>
+			<li><a href="#"><span class="icon_bag_alt"></span>
+					<div class="tip">2</div> </a></li>
+		</ul>
 		<div class="offcanvas__logo">
 			<a href="./index.html"><img src="img/logo.png" alt=""></a>
 		</div>
@@ -76,7 +86,7 @@
 									<li><a th:href="@{/mypageBasketList}">my 위시리스트</a></li>
 									<li><a th:href="@{/mypageGetGift}">my 선물함</a></li>
 									<li><a th:href="@{/mypageInfo}">my 정보</a></li>
-									<li><a th:href="@{/mypageQna}">my Q&A</a></li>
+									<li><a th:href="@{./mypageQna}">my Q&A</a></li>
 								</ul></li>
 							<li><a href="#">my shop</a>
 								<ul class="dropdown">
@@ -96,8 +106,7 @@
 				</div>
 				<div class="col-lg-3">
 					<div class="header__right">
-				
-								<div th:if="${nid == null}" class="header__right__auth">
+						<div th:if="${nid == null}" class="header__right__auth">
 							<a th:href="@{/login}">일반</a><a th:href="@{/sellerlogin}">판매자</a>
 							<a th:href="@{/selectpage}">회원가입</a>
 						</div>
@@ -105,12 +114,12 @@
 							<a th:text="${nid}" th:href="@{/mypageMain}"></a> <a
 								th:href="@{/logout}">로그아웃</a>
 						</div>
-					
 						<ul class="header__right__widget">
-         				   <li><a th:href="@{/mypageHeartList}"><span class="icon_heart_alt"></span>
-           					 </a></li>
-          				  <li><a th:href="@{/mypageBasketList}"><span class="icon_bag_alt"></span>
-            				</a></li>
+							<li><span class="icon_search search-switch"></span></li>
+							<li><a href="#"><span class="icon_heart_alt"></span>
+									<div class="tip">2</div> </a></li>
+							<li><a href="#"><span class="icon_bag_alt"></span>
+									<div class="tip">2</div> </a></li>
 						</ul>
 					</div>
 				</div>
@@ -160,8 +169,9 @@
 												<ul>
 													<li><a th:href="@{/mypageShoppingList}">my 기프티콘 조회</a></li>
 													<li><a th:href="@{/mypagePointSet}">my 포인트 조회</a></li>
-													<li><a th:href="@{/mypageShoppingAllList}">my 구매내역</a></li>
-													<li><a th:href="@{/mypageBuyCancel}">기프티콘 구매취소</a></li>
+													<li><a th:href="@{/mypageShoppingAllList}">my 구매
+															내역</a></li>
+													<li><a href="#">기프티콘 구매취소</a></li>
 												</ul>
 											</div>
 										</div>
@@ -216,99 +226,105 @@
 											<a data-toggle="collapse" data-target="#collapseFive">my
 												Q&A</a>
 										</div>
+										<div id="collapseFive" class="collapse"
+											data-parent="#accordionExample">
+											<div class="card-body">
+												<ul>
+													<li><a th:href="@{/mypageQna}">1:1 문의하기</a></li>
+												</ul>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-9 col-md-9">
+				<section id="shop" class="shop spad">
 					<div class="container">
-						<a href="#"> <b style="font-size: 25px; color: #890900;">←
-								쇼핑 계속하기</b>
-						</a> <br />
-						<br />
-					
 						<div class="row">
-							<div class="col-lg-12">
-								<div class="row">
-									<div class="col-lg-6 col-md-6 col-sm-6"></div>
+							<div class="col-12">
+								<div>
+									<h3>1:1 문의보기</h3>
+									<h6></h6>
 								</div>
-								
-								<div class="shop__cart__table" onchange="init();">
-									<table>
-										<thead>
-											<tr>
-												<th>Product</th>
-												<th>Price</th>
-												<th>Quantity</th>
-												<th>Total</th>
-												<th></th>
-											</tr>
-										</thead>
-										<tbody>
-								
-										<th:block th:each="t :${tb}">
-											<tr class="cart_tr">
-												<td th:class="cart__product__item"><img
-													src="img/shop-cart/cp-1.jpg" alt="">
-													<div th:class="cart__product__item__title">
-														<h6 class="pname" th:text="${t.pname}" id="pname" th:value='${t.pname}'></h6>
-													</div></td>
-												<td th:class="cart__price">
-												<span class="p" th:text='${t.pprice}' id="price" th:value='${t.pprice}'>
-												</span>
-												</td>
-												<td th:class="cart__quantity">
-											
-													<div th:class="pro-qty">
-														<!-- 장바구니에 담긴 상품의 개수 -->
-														<input th:type="text" id="cartCount" th:value="${t.quantity}" th:name="quantity">
-													</div>
-
-												</td>
-												<td th:class="cart__total" >
-												<span class="total"  th:text="${t.total}" th:value="${t.total}"></span>
-												</td>
-												<td th:class="cart__close"><a class="abutton"><span class="icon_close"></span></a></td>
-											</tr>
-										</th:block>
-										</tbody>
-									</table>
-								</div>
-								
 							</div>
 						</div>
 
-						<div class="row">
-							<div class="col-lg-6">
-								
-							</div>
-							<div class="col-lg-4 offset-lg-2">
-								<div class="cart__total__procced">
-									<h6>총 결제 금액</h6>
-									<ul>
-										<li id="sum_p_price">Total 
-										<span th:text="${sum}" th:value="${sum}" class="cartTotal" th:name="totalprice">
-										<input th:name="cartTotal" type="hidden" value="0"/>
-										</span></li>
-										
-									</ul>
-									<a th:href="@{/mypageBuy}" class="primary-btn">결제</a>
+						<!-- 마이페이지 메인 -->
+						<div class="card-body" style="width: 800px;">
+							<div class="row">
+								<div class="col-md-5 pr-1">
+									<div class="form-group">
+										<label>Writer</label> <input th:type="hidden"
+											th:value="${qna[0][0]}" />
+										<p th:text="${qna[0][1]}"></p>
+									</div>
 								</div>
 							</div>
+							<hr />
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label>Title</label>
+										<p th:text="${qna[0][2]}"></p>
+									</div>
+								</div>
+							</div>
+							<hr />
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<h5>question</h5>
+									</div>
+									<div>
+										<p th:text="${qna[0][3]}"></p>
+									</div>
+								</div>
+							</div>
+							<hr />
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<h5>answer</h5>
+										<br />
+										<div>
+											<p th:text="${qna[0][6]}"></p>
+										</div>
 
+									</div>
+								</div>
+							</div>
+							<!-- <div class="row" style="height: 300px">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label>Content</label>
+										<p class="form-control textarea" disabled=""
+											th:text="${qnaDetail.ncontent}"></p>
+									</div>
+								</div>
+							</div> -->
+
+							<div class="row" id="button-control">
+								<div class="update ml-auto mr-auto">
+									<a th:href="@{/qnaDelete(qcode=${qna[0][0]})}" type="button"
+										style="background-color: red;"
+										class="btn btn-primary btn-round">삭제</a> <a
+										th:href="@{./mypageQna}" type="button"
+										style="background-color: red;"
+										class="btn btn-primary btn-round">돌아가기</a>
+								</div>
+							</div>
 						</div>
 					</div>
+				</section>
 
-				</div>
-			
 			</div>
 		</div>
+
+
 	</section>
 	<!-- Shop Section End -->
-
-	
 
 	<!-- Footer Section Begin -->
 	<footer class="footer">
@@ -412,10 +428,42 @@
 	<script src="js/owl.carousel.min.js"></script>
 	<script src="js/jquery.nicescroll.min.js"></script>
 	<script src="js/main.js"></script>
-	<script src="js/jquery.backet.js"></script>
-	<script src="js/bucket.js"></script>
+	<!-- 데이터테이블 -->
+	<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+	<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+	<script
+		src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+	<script
+		src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+	<script src="plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+	<script src="plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+	<script>
+		$(function() {
+			$('#Table').DataTable({
+				order : [ 0, "desc" ],
+				ordering : true,
+				serverSide : false,
+				paging : true,
+				searching : true,
+				autoWidth : false,
+				responsive : true
 
+			});
+		});
 
+		$(function() {
+			$(".viewhidden").click(function() {
+				$(this).parent().parent().next().toggle();
+
+				// 				status = $(".hidden").css("display");
+				// 				if(status == "none") {
+				// 					$(".hidden").css("display", "table-row");	
+				// 				}else{
+				// 					$(".hidden").css("display","none");
+				// 				}
+			});
+		});
+	</script>
 </body>
 
 </html>

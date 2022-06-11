@@ -23,9 +23,9 @@ public class Product {
 
 	private String pcontent;
 	private String pimage;
-	private String prealimage;
 	
 	private String shotimage;
 	private String originimage;
+
 
 }

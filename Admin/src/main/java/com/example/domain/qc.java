@@ -9,7 +9,9 @@ public class qc {
 	private Normalid nid;
 	private LocalDate ndate;
 	private String ncontent;
+	private Integer ccode;
 	private String ccontent;
+	private String qnastate;
 	
 	
 	public Integer getQcode() {
@@ -42,14 +44,23 @@ public class qc {
 	public void setNcontent(String ncontent) {
 		this.ncontent = ncontent;
 	}
+	public Integer getCcode() {
+		return ccode;
+	}
+	public void setCcode(Integer ccode) {
+		this.ccode = ccode;
+	}
 	public String getCcontent() {
 		return ccontent;
 	}
 	public void setCcontent(String ccontent) {
 		this.ccontent = ccontent;
 	}
-	
-	
-	
+	public String getQnastate() {
+		return qnastate;
+	}
+	public void setQnastate(String qnastate) {
+		this.qnastate = qnastate;
+	}
 	
 }

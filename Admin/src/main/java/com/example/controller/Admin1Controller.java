@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +20,7 @@ import com.example.domain.Product;
 import com.example.domain.Qna;
 import com.example.domain.Qnacomment;
 import com.example.domain.Sellerid;
+import com.example.domain.qc;
 import com.example.service.CustomerService;
 import com.example.service.FaqService;
 import com.example.service.ProductService;
@@ -52,6 +54,19 @@ public class Admin1Controller {
 		logger.info("전체 QNA");
 		Qna vo = new Qna();
 		List<Qna> list = qnaService.getQnaList(vo);
+		List<Qnacomment> list1 = qnacommentService.selectQcList();
+		
+		for(Qna q1 : list) {
+			for(Qnacomment qc: list1) {
+				if(q1.getQcode()==qc.getQcode().getQcode()) {
+					
+					q1.setQnastate("답변완료");
+					qnaService.selectUpdate(q1);
+				}
+			}
+		}
+		
+		
 		m.addAttribute("qnaList", list);
 	}
 	
@@ -61,15 +76,16 @@ public class Admin1Controller {
 		logger.info("qna 삭제");
 		qnaService.deleteQna(q);
 		
+		
 		return "redirect:/getQnaList";
 		
 	}
-	
+	// qna 상세보기
 	@RequestMapping("getQnaDetail")
 	public void getQnaDetail(HttpServletRequest request,Qna q,Model m) {
 		HttpSession session = request.getSession();
 		String nid = (String) session.getAttribute("nid");
-		Qna qna = qnaService.getQanDetail(q);
+		Qna qna = qnaService.getQnaDetail(q);
 		
 		m.addAttribute("nid", nid);
 		m.addAttribute("qnaDetail", qna);

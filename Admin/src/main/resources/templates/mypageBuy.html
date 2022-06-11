@@ -149,52 +149,60 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="checkout__form__input">
-                                    <p>아이디<span>*</span></p>
-                                    <input type="text">
+                                    <p><b>아이디 <span>*</span></b></p>
+                                    <p><label th:text="${nid.nname}"/></label></p>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="checkout__form__input">
-                                    <p>이름<span>*</span></p>
-                                    <input type="text">
+                                      <p><b>전화번호 <span>*</span></b></p>
+                                    <p><label th:text="${nid.ntel}"/></label></p><br/>
+                                </div>
+                            </div>
+                               <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="checkout__form__input">
+                                    <p><b>생년월일 <span>*</span></b></p>
+                                    <p><label th:text="${nid.nbirth}"></label></p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="checkout__form__input">
+                                    <p><b>이메일<span>*</span></b></p>
+                                    <p><label th:text="${nid.nemail}"></label></p><br/>
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="checkout__form__input">
-                                    <p>전화번호 <span>*</span></p>
-                                    <input type="text">
-                                </div>
-                                <div class="checkout__form__input">
-                                    <p>받으실 주소 <span>*</span></p>
-                                    <input type="text" placeholder="Street Address">
-                                    <input type="text" placeholder="Apartment. suite, unite ect ( optinal )">
+                                      <p><b>주소 <span>*</span></b></p>
+                                    <p>(<label th:text="${nid.npostcode}"></label>)
+                                    <label th:text="${nid.naddress}"></label>
+                                    <label th:text="${nid.ndaddress}"></label>
+                                    </p><br/>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <div class="checkout__form__input">
-                                    <p>생년월일 <span>*</span></p>
-                                    <input type="text">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <div class="checkout__form__input">
-                                    <p>이메일 <span>*</span></p>
-                                    <input type="text">
-                                </div>
-                            </div>
+                         
                             <div class="col-lg-12">
                                 <div class="checkout__form__checkbox">
                                     <label for="acc">
-                                        회원 정보 수신 동의
+                                        회원 정보 사용 동의
                                         <input type="checkbox" id="acc">
                                         <span class="checkmark"></span>
                                     </label>
-                                    <p>Create am acount by entering the information below. If you are a returing
-                                        customer login at the <br />top of the page</p>
+                                    <p>제 13조 (“서비스” 요금 및 결제)<br/>
+
+1) “회사”는 “서비스”에서 “고객”이 유료 결제로 이용하는 경우, 월간 멤버십은 월 단위로, 연간 멤버십은 연 단위로 저장된 신용카드 정보를 이용해 요금을 청구합니다.
+<br/>
+2) “고객”은 “서비스”에서 이용 중인 유료 서비스의 가격정책에 따라 월간 멤버십은 월 단위로, 연간 멤버십은 연 단위로 요금을 결제해야 합니다.
+<br/>
+3) “고객”은 미납액이 발생하는 경우 납부의 의무가 있으며 미납이 1일 이상 지속될 경우 서비스에 제한이 있을 수 있습니다. 미납액에 대한 포기 및 취소는 가능하지 않으며, 이용료 지불에 대한 납세의 책임 또한 “고객”에게 있습니다.
+<br/>
+4) “서비스”에서 제공하는 청구 및 결제 방식은 “회사”의 정책을 따릅니다.
+<br/>
+5) “고객”이 “서비스” 이용을 취소할 경우 당월 금액은 환불되지 않으며 익월 결제분부터 결제가 되지 않습니다.</p>
                                     </div>
                                     <div class="checkout__form__checkbox">
                                         <label for="note">
-                                            Note about your order, e.g, special noe for delivery
+                                            위 결제 내역을 확인하였습니다.
                                             <input type="checkbox" id="note">
                                             <span class="checkmark"></span>
                                         </label>
@@ -211,26 +219,25 @@
                                             <span class="top__text">상품</span>
                                             <span class="top__text__right">가격</span>
                                         </li>
-                                        <li>01. Chain buck bag <span>$ 300.0</span></li>
-                                        <li>02. Zip-pockets pebbled<br /> tote briefcase <span>$ 170.0</span></li>
-                                        <li>03. Black jean <span>$ 170.0</span></li>
-                                        <li>04. Cotton shirt <span>$ 110.0</span></li>
+                                        <th:block th:each="t : ${tb}">
+                                        <li><label th:text="${t.pname}"></label><span><label th:text="${t.pprice}"></label>원</span></li>
                                     </ul>
+                                      </th:block>
                                 </div>
                                 <div class="checkout__order__total">
                                     <ul>
-                                        <li>총 가격 <span>$ 750.0</span></li>
+                                        <li>총 가격 <span><label th:text="${sum}"></label>원</span></li>
                                     </ul>
                                 </div>
                                 <div class="checkout__order__widget">
                                     <label for="check-payment">
                                         카드 결제
-                                        <input type="checkbox" id="check-payment">
+                                        <input type="radio" id="check-payment" name="pay" checked>
                                         <span class="checkmark"></span>
                                     </label>
                                     <label for="paypal">
                                         포인트 결제
-                                        <input type="checkbox" id="paypal">
+                                        <input type="radio" id="paypal" name="pay">
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>

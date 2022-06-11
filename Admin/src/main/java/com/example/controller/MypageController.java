@@ -21,6 +21,9 @@ import com.example.domain.Bucket;
 import com.example.domain.Giftikon;
 import com.example.domain.Like;
 import com.example.domain.Normalid;
+
+import com.example.domain.Order;
+
 import com.example.domain.Product;
 import com.example.domain.Tbucket;
 import com.example.persistence.BucketRepository;
@@ -56,9 +59,6 @@ public class MypageController {
 	@Autowired
 	private MypageMainRepository mypageMainRepo;
 	
-	@Autowired
-
-	private OrderlistRepository orderlistRepo;
 	
 	@Autowired
 	private ProductRepository ProRepo;
@@ -168,8 +168,9 @@ public class MypageController {
 		 }
 	 
 	// <위시리스트>
+	 
+	 
 	// 장바구니조회
-
 	  @RequestMapping("/mypageBasketList")
 	  public void createOrder(HttpServletRequest request, Model m){
 		  logger.info("장바구니 출력");
@@ -219,18 +220,8 @@ public class MypageController {
 		  m.addAttribute("sum", sum);
 		  m.addAttribute("product",Newpr);
 		  m.addAttribute("nid", nid);
-	
-		  
-		  
-		  
 	  }
 
-	  
-	//수량 플러스
-	@RequestMapping("plus")
-	public void plus() {
-		
-	}
 	
 	//mypageplus
 	@RequestMapping(value = "/mypagePlus", produces = "application/text;charset=utf-8")
@@ -328,7 +319,119 @@ public class MypageController {
 		return String.valueOf(sum);
 	}
 	
-	  
+	//장바구니 목록 삭제
+	@RequestMapping(value = "/bucketDelete", produces = "application/text;charset=utf-8")
+	@ResponseBody
+	public String bucketDelete(HttpServletRequest request, String pname) {
+		logger.info("장바구니 목록 삭제");
+		HttpSession session = request.getSession();
+		String nid = (String)session.getAttribute("nid");
+		int pcode =0;
+		int sum=0;
+		
+		List<Product> pr = (List<Product>)ProRepo.findAll();
+		List<Bucket> bu = (List<Bucket>)BucketRepo.findAll();
+		Bucket newbu = new Bucket();
+		
+		
+		for(Product p : pr) {
+			if(p.getPname().equals(pname)) {
+				pcode= p.getPcode();
+			}
+		}
+		
+		for(Bucket b : bu) {
+			if((b.getNid().equals(nid)) && (b.getPcode() == pcode)) {
+				mypageService.deletebucket(b);
+				
+				break;
+			}
+		}
+		
+		//BucketRepo.delete(newbu);
+		
+		//새롭게 정의된 장바구니 리스트 불러오기
+		List<Bucket> total = (List<Bucket>)BucketRepo.findAll();
+				
+		for(Bucket t : total) {
+			sum += t.getBtotal();
+		}
+		
+				
+		//return String.valueOf(sum);
+		return String.valueOf(sum);
+	}
+	
+//	//결제페이지 총금액 DB 보내기
+//	@RequestMapping(value = "/busketTotal", produces = "application/text;charset=utf-8")
+//	@ResponseBody
+//	public void busketTotal(HttpServletRequest request, String ototal) {
+//		logger.info("플러스 갯수 변경");
+//		HttpSession session = request.getSession();
+//		String nid = (String)session.getAttribute("nid");
+//		
+//		
+//		
+//		BucketRepo.save(newbu);
+//	}
+//	
+	//장바구니 결제 페이지 이동
+	@RequestMapping("/mypageBuy")
+	public void mypageBuy(HttpServletRequest request, Model m, Order or) {
+		logger.info("mypageBuy controller");
+		HttpSession session = request.getSession();
+		String nid = (String)session.getAttribute("nid");
+		
+		  List<Product> pr = (List<Product>)ProRepo.findAll();
+		  List<Product> Newpr = new ArrayList<Product>();
+		  
+		  List<Bucket> bu = (List<Bucket>)BucketRepo.findAll();
+		  List<Bucket> Newbu = new ArrayList<Bucket>();
+		 
+		  List<Tbucket> listtb=new ArrayList<Tbucket>();
+		  
+		  int sum=0;
+		  
+		  
+		  for(Bucket b : bu) {
+			  if(b.getNid().equals(nid)) {
+				  Newbu.add(b);
+			  }
+		  }
+		  
+		  for(Bucket b: Newbu) {
+			  for(Product p: pr) {
+				  if(b.getPcode() == p.getPcode()) {
+					  Newpr.add(p);
+					  
+					  Tbucket tb = new Tbucket();
+					  tb.setPname(p.getPname());
+					  tb.setPprice(p.getPprice());
+					  tb.setPcode(p.getPcode());
+					  tb.setQuantity(b.getQuantity());
+					  tb.setTotal(((int)b.getQuantity() *(int)p.getPprice()));
+					  
+					  listtb.add(tb);
+					  
+					  //b.setBtotal(b.getQuantity() *p.getPprice());
+					  
+					  sum += (b.getQuantity() *p.getPprice());
+				  }
+			  }
+		  }
+		
+		  m.addAttribute("tb", listtb);
+		  m.addAttribute("bucket", Newbu );
+		  m.addAttribute("sum", sum);
+		  m.addAttribute("product",Newpr);
+		  m.addAttribute("nid", mypageService.getNid(nid));
+		  
+		  
+		  //빈 구매 리스트 번호 생성 
+		  
+		
+	}
+		
 
 
 	// 찜한가게
@@ -391,7 +494,9 @@ public class MypageController {
 			
 			giftToSelect.add(gift1);
 		}
+		
 		m.addAttribute("giftikon", giftToSelect);
+		m.addAttribute("nid",nid);
 
 	}
 
@@ -472,7 +577,6 @@ public class MypageController {
 			 m.addAttribute("nid",result);
 			return "redirect:mypageInfoPassCommit";
 		}
-		 
 
 	}
 
@@ -536,7 +640,6 @@ public class MypageController {
 	 public String deleteNormalid(HttpServletRequest request, Normalid vo, Model m) {
 		 logger.info("updatePassword controller");
 
-
 		 HttpSession session = request.getSession();
 		 String nid = (String)session.getAttribute("nid");
 		
@@ -555,14 +658,5 @@ public class MypageController {
 
 
 	 }
-
-	//<바코드구현>
-	@RequestMapping("/mypageQRCode")
-	public void mypageQRCode() {
-		logger.info("mypageQRCode controller");
-	}
-
-
-		
 
 }

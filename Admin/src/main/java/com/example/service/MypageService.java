@@ -1,17 +1,13 @@
 package com.example.service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
+import com.example.domain.Bucket;
 import com.example.domain.Giftikon;
 import com.example.domain.Like;
 import com.example.domain.Normalid;
 import com.example.domain.Order;
 import com.example.domain.Orderlist;
-import com.example.domain.Product;
 
 public interface MypageService {
 
@@ -34,12 +30,17 @@ public interface MypageService {
 	//장바구니 구현
 	List<Orderlist> orderlistSet(String nid);
 	
+
 	//찜한 가게 삭제
 	void deleteHeart(Like li);
 	
+	//장바구니 삭제
+	public void deletebucket(Bucket pname);
 
-	
-	
+//	//<결제>
+//	//빈 구매리스트 생성 
+//	void updateBuylistNumber(String nid);
+//	
 	//<회원정보 관리>
 	//회원정보 조회
 	Normalid getNid(String no);
@@ -51,6 +52,7 @@ public interface MypageService {
 	void getNidUpdate(Normalid no);
 
 
+	
 
 	
 	
