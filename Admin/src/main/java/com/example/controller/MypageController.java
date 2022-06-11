@@ -223,20 +223,7 @@ public class MypageController {
 		  
 		  
 	  }
-<<<<<<< HEAD
 
-	@RequestMapping(value = "/mypageTotal", produces = "application/text;charset=utf-8")
-=======
-	  
-	//수량 플러스
-	@RequestMapping("plus")
-	public void plus() {
-		
-	}
-	
-	//mypageplus
-	@RequestMapping(value = "/mypagePlus", produces = "application/text;charset=utf-8")
->>>>>>> upstream/main
 	@ResponseBody
 	public String mypagePlus(HttpServletRequest request, String pname) {
 		logger.info("플러스 갯수 변경");
@@ -481,10 +468,6 @@ public class MypageController {
 			return "redirect:mypageInfoPassCommit";
 		}
 		 
-<<<<<<< HEAD
-	
-=======
->>>>>>> upstream/main
 	}
 
 	

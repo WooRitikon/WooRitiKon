@@ -50,3 +50,7 @@ h3 {
 textarea.form-control {
 	height: 200px;
 }  
+
+textarea {
+	resize: none;
+}

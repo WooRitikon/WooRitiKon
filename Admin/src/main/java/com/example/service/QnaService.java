@@ -10,6 +10,7 @@ public interface QnaService {
 	//qna 전체 리스트
 	List<Qna> getQnaList(Qna vo);
 	
+	
 	//qna 삭제
 	void deleteQna(Qna q);
 	
@@ -30,5 +31,11 @@ public interface QnaService {
 	
 	//qna 등록
 	void insertQna(Qna q);
+
+	//qna 어드민 상세보기
+	Qna getQanDetail(Qna q);
+	
+	//qna 어드민 상세보기
+	void selectUpdate(Qna q);
 	
 }

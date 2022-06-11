@@ -32,6 +32,7 @@ public class Qna {
 		private Normalid nid;
 		private String ntitle;
 		private String ncontent;
+		private String qnastate;
 		
 //		@Column(insertable = false, updatable = false, columnDefinition = "date default sysdate()")
 //		@Temporal(TemporalType.DATE)

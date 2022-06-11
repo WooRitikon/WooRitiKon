@@ -191,7 +191,7 @@ Coded by www.creative-tim.com
 										<td><a th:href="@{./getQnaDetail(qcode=${qna.qcode})}" th:text="${qna.ntitle}"></a></td>
 										<td th:text="${qna.nid.nid}"></td>
 										<td th:text="${qna.ndate}"></td>
-										<td th:text="답변확인"></td>
+										<td th:text="${qna.qnastate}"></td>
 										<td><a type="button" th:href="@{/qnareply(qcode=${qna.qcode})}" style="position:right;" class="btn btn-primary" th:text="답글"></a></td>
 										<td><a type="button" th:href="@{/deleteQna(qcode=${qna.qcode})}" style="position:right;" class="btn btn-primary" th:text="삭제"></td>
 									</tr>

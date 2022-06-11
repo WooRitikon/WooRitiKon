@@ -54,6 +54,19 @@ public class Admin1Controller {
 		logger.info("전체 QNA");
 		Qna vo = new Qna();
 		List<Qna> list = qnaService.getQnaList(vo);
+		List<Qnacomment> list1 = qnacommentService.selectQcList();
+		
+		for(Qna q1 : list) {
+			for(Qnacomment qc: list1) {
+				if(q1.getQcode()==qc.getQcode().getQcode()) {
+					
+					q1.setQnastate("답변완료");
+					qnaService.selectUpdate(q1);
+				}
+			}
+		}
+		
+		
 		m.addAttribute("qnaList", list);
 	}
 	

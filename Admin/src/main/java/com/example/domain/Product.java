@@ -21,19 +21,10 @@ public class Product {
 	private String bcode;
 	private String pname;
 	private String pcategory;
-<<<<<<< HEAD
 
-=======
-	
-	private String shortiamge;
->>>>>>> upstream/main
 	private String pcontent;
 	
 	private String shotimage;
 	private String originimage;
-<<<<<<< HEAD
-=======
-
->>>>>>> upstream/main
 
 }
