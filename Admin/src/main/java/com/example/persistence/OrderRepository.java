@@ -9,4 +9,5 @@ import com.example.domain.Order;
 @Repository
 public interface OrderRepository extends CrudRepository<Order, Integer>{
 
+	
 }
