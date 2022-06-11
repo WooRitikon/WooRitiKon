@@ -13,11 +13,13 @@ import com.example.domain.Bucket;
 import com.example.domain.Giftikon;
 import com.example.domain.Like;
 import com.example.domain.Normalid;
+import com.example.domain.Buy;
 import com.example.domain.Orderlist;
 import com.example.persistence.BucketRepository;
 import com.example.persistence.GiftikonRepository;
 import com.example.persistence.LikeRepository;
 import com.example.persistence.MypageMainRepository;
+import com.example.persistence.BuyRepository;
 import com.example.persistence.OrderlistRepository;
 
 
@@ -36,6 +38,10 @@ public class MypageServiceimpl implements MypageService{
 	
 	@Autowired
 	private OrderlistRepository orderlistRepo;
+	
+
+	@Autowired
+	private BuyRepository orderRepo;
 	
 	@Autowired
 	private BucketRepository BucketRepo;
@@ -95,12 +101,38 @@ public class MypageServiceimpl implements MypageService{
 	 orderlistRepo.updateBuylistNumber();
 	}
 	
-	//구매리스트 번호 가져오기
+	//구매리스트 가져오기
 	@Override
-	public Orderlist buylistNumber(Orderlist li) {
-		return orderlistRepo.findById(li.getListcode()).get();
+	public List<Orderlist> buylistget() {
+		return (List<Orderlist>)orderlistRepo.findAll();
 	}
 	
+	//주문리스트 저장
+	@Override
+	public void orderlistsave(Orderlist vo){
+		orderlistRepo.save(vo);
+	}
+	
+	//주문 총 결제액 저장
+	public void Ordersave(Buy vo) {
+		orderRepo.save(vo);
+	}
+	
+	//주문정보 생성
+	@Override
+	public void updateOrder(String nid) {
+	orderRepo.updateOrderNumber(nid);
+	}
+	
+	//주문정보 받아오기
+	public List<Buy> Orderget(){
+		return (List<Buy>)orderRepo.findAll();
+	}
+	
+	//주문번호에 맞는 주문정보 가져오기
+	public Buy selectOrderNum(String nid){
+		return orderRepo.selectOrderNum(nid);
+	}
 	
 	
 	//<회원정보 관리>

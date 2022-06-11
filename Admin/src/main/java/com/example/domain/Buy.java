@@ -12,15 +12,15 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="order")
-public class Order {
+@Table(name="buy")
+public class Buy {
 	
 	@Id
 	private Integer onum;
 	
 	private Date odate;
 	private String oselect;
-	private Integer otatal;
+	private Integer ototal;
 	private String ostate;
 	
 	@ManyToOne

@@ -95,12 +95,12 @@
 				<div class="col-lg-3">
 					<div class="header__right">
 				
-								<div th:if="${nid == null}" class="header__right__auth">
+								<div th:if="${n == null}" class="header__right__auth">
 							<a th:href="@{/login}">일반</a><a th:href="@{/sellerlogin}">판매자</a>
 							<a th:href="@{/selectpage}">회원가입</a>
 						</div>
-						<div th:if="${nid != null}" class="header__right__auth">
-							<a th:text="${nid}" th:href="@{/mypageMain}"></a> <a
+						<div th:if="${n != null}" class="header__right__auth">
+							<a th:text="${n}" th:href="@{/mypageMain}"></a> <a
 								th:href="@{/logout}">로그아웃</a>
 						</div>
 			<ul class="header__right__widget">

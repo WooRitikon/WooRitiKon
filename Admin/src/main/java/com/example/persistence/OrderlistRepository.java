@@ -12,17 +12,10 @@ import com.example.domain.Orderlist;
 public interface OrderlistRepository extends CrudRepository<Orderlist, Integer>{
 	
 	//빈 주문리스트 생성
-	@Query(value="INSERT INTO OrderList(listcode, onum, quantity, totalprice, pcode)  "
-			+ "		VALUES(1, 1, 1, 1, 1)",
+	@Query(value="INSERT into orderlist(quantity, totalprice, pcode) VALUES (null,null,null)",
 			nativeQuery = true
 			)
 	void updateBuylistNumber();
-	
-	//주문 번호 가져오기
-	@Query(value="SELECT MAX(listcode) FROM Orderlist",
-			nativeQuery = true
-			)
-	void buylistNumber();
 	
 	@Query(value="SELECT n.nid nid, o.onum onum, o.odate odate, o.oselect oselect, o.ototal ototal, o.ostate ostate, "
 			+ " li.listcode listcode, li.quantity quantity, li.totalprice totalprice, p.pcode pcode, p.pprice pprice, p.pname pname,  "
