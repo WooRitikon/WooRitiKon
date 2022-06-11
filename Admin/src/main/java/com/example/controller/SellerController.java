@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +14,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.example.domain.Normalid;
 import com.example.domain.Product;
 import com.example.domain.Review;
 import com.example.domain.Sellerid;
@@ -33,7 +33,19 @@ public class SellerController {
 		HttpSession session = request.getSession();
 		String nid = (String)session.getAttribute("nid");
 		
-		m.addAttribute("seller", sellerService.getname(nid));
+		List<Sellerid> seller = sellerService.getSellerList(null);
+		List<Sellerid> newsell= new ArrayList<Sellerid>();
+		
+		for(Sellerid s: seller) {
+			if(s.getSid().equals(nid)) {
+				newsell.add(s);
+				break;
+			}
+		}
+		
+		Sellerid a = newsell.get(0);
+		
+		m.addAttribute("seller", a);
 	}
 	
 	//가게 정보 조회하기
