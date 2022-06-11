@@ -151,7 +151,7 @@
                                         <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
                                             <div class="card-body">
                                                 <ul>
-                                                    <li><a href="shopInfo">조회</a></li>
+                                                    <li><a th:href="@{/shopInfo}">조회</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -163,8 +163,8 @@
                                         <div id="collapseTwo" class="collapse" data-parent="#accordionExample">
                                             <div class="card-body">
                                                 <ul>
-                                                    <li><a href="shopProView">조회</a></li>
-                                                    <li><a href="shopProReg">등록</a></li>
+                                                    <li><a th:href="@{/shopProView}">조회</a></li>
+                                                    <li><a th:href="@{/shopProReg}">등록</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -188,10 +188,10 @@
                                         <div id="collapseFour" class="collapse" data-parent="#accordionExample">
                                             <div class="card-body">
                                                 <ul>
-                                                    <li><a href="#">년도별</a></li>
-                                                    <li><a href="#">월별</a></li>
-                                                    <li><a href="#">주간별</a></li>
-                                                    <li><a href="#">일별</a></li>
+                                                    <li><a th:href="@{/shopChartYear}">년도별</a></li>
+                                                    <li><a th:href="@{/shopChartMonth}">월별</a></li>
+                                                    <li><a th:href="@{/shopChartWeek}">주간별</a></li>
+                                                    <li><a th:href="@{/shopChartDay}">일별</a></li>
                                                 </ul>
                                             </div>
                                         </div>

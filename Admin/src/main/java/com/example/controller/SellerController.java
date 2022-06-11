@@ -54,7 +54,19 @@ public class SellerController {
 		HttpSession session = request.getSession();
 		String nid = (String)session.getAttribute("nid");
 		
-		m.addAttribute("seller", sellerService.getshopInfo(nid));
+		List<Sellerid> seller = sellerService.getSellerList(null);
+		List<Sellerid> newsell= new ArrayList<Sellerid>();
+		
+		for(Sellerid s: seller) {
+			if(s.getSid().equals(nid)) {
+				newsell.add(s);
+				break;
+			}
+		}
+		
+		Sellerid a = newsell.get(0);
+		
+		m.addAttribute("seller", a);
 	}
 	
 	//가게 정보 수정창
@@ -98,10 +110,29 @@ public class SellerController {
 	
 	//상품 정보 리스트
 	@RequestMapping("/shopProView")
-	public void getProList(Model m) {
+	public void getProList(HttpServletRequest request, Model m) {
+		HttpSession session = request.getSession();
+		String nid = (String)session.getAttribute("nid");
+		String bcode="0";
+		 
 		Product pr =new Product();
 		List<Product> list = sellerService.getProList(pr);
-		m.addAttribute("proList", list);
+		List<Sellerid> list1 = sellerService.getSellerList(null);
+		List<Product> list2 = new ArrayList<Product>();
+		
+		for(Sellerid l1 : list1) {
+			if(l1.getSid().equals(nid)) {
+				bcode = l1.getBcode();
+				break;
+			}
+		}
+		
+		for(Product li : list) {
+			if(li.getBcode().equals(bcode)) {
+				list2.add(li);
+			}
+		}
+		m.addAttribute("proList", list2);
 	}
 	
 	//상품 수정하기 창
