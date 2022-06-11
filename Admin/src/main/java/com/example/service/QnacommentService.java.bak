@@ -5,7 +5,15 @@ import java.util.List;
 import com.example.domain.Qnacomment;
 
 public interface QnacommentService {
+<<<<<<< HEAD
+   //답글등록
+   void insertReply(Qnacomment qc);
+   
+   //답글보기
+   List<Qnacomment> getQcList(Qnacomment qc);
 
+}
+=======
 	//답글등록
 	void insertReply(Qnacomment qc);
 	
@@ -18,4 +26,4 @@ public interface QnacommentService {
 	//사용자 댓글 전체가져오기
 	List<Qnacomment> selectQcList();
 }
-
+>>>>>>> upstream/main

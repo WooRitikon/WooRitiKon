@@ -18,6 +18,7 @@ import lombok.Data;
 @Entity
 public class Qna {
 
+
       @Id
       @GeneratedValue(strategy = GenerationType.IDENTITY)
       private Integer qcode;

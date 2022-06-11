@@ -159,7 +159,6 @@
 				<table id="Table" class="table table-hover">
 					<thead style="background-color: #F6F6F6;">
 						<tr>
-							<th>번호</th>
 							<th>타입</th>
 							<th>제목</th>
 							<th>작성일자</th>
@@ -169,7 +168,6 @@
 					</thead>
 					<tbody>
 						<tr th:each="flist: ${faqList}">
-							<td th:text="${flist.fcode}"></td>
 							<td th:text="${flist.ftype}"></td>
 							<td><a th:href="@{/faqPageDetail(fcode=${flist.fcode})}" th:text="${flist.ftitle}"></a></td>
 							<td th:text="${flist.fdate}"></td>

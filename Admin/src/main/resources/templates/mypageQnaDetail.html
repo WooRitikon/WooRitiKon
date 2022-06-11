@@ -253,28 +253,26 @@
 
 						<!-- 마이페이지 메인 -->
 						<div class="card-body" style="width: 800px;">
- 							<div class="row">
+							<div class="row">
 								<div class="col-md-5 pr-1">
 									<div class="form-group">
-										<label>Writer</label> 
-											<input
-											th:type="hidden" th:name="qcode"
+										<label>Writer</label> <input th:type="hidden"
 											th:value="${qna[0][0]}" />
-											<p th:text="${qna[0][1]}"></p>
+										<p th:text="${qna[0][1]}"></p>
 									</div>
 								</div>
-							</div> 
-							<hr/>
- 							<div class="row">
+							</div>
+							<hr />
+							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group">
-										<label>Title</label> 
+										<label>Title</label>
 										<p th:text="${qna[0][2]}"></p>
 									</div>
 								</div>
 							</div>
-							<hr/>
-							 <div class="row">
+							<hr />
+							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group">
 										<h5>question</h5>
@@ -283,19 +281,21 @@
 										<p th:text="${qna[0][3]}"></p>
 									</div>
 								</div>
-							</div>	
-								<hr/>
+							</div>
+							<hr />
 							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group">
 										<h5>answer</h5>
-									</div>
-									<div>
-										<p th:text="${qna[0][6]}"></p>
+										<br />
+										<div>
+											<p th:text="${qna[0][6]}"></p>
+										</div>
+
 									</div>
 								</div>
 							</div>
-					<!--		<div class="row" style="height: 300px">
+							<!-- <div class="row" style="height: 300px">
 								<div class="col-md-12">
 									<div class="form-group">
 										<label>Content</label>
@@ -304,58 +304,18 @@
 									</div>
 								</div>
 							</div> -->
-							
+
 							<div class="row" id="button-control">
 								<div class="update ml-auto mr-auto">
-									<!-- <button th:type="submit" class="btn btn-primary btn-round">수정</button>  -->
-									  <a
-										th:href="@{/qnaDelete(qcode=${qna[0][0]})}"
-										type="button" style="background-color: red;"
+									<a th:href="@{/qnaDelete(qcode=${qna[0][0]})}" type="button"
+										style="background-color: red;"
 										class="btn btn-primary btn-round">삭제</a> <a
 										th:href="@{./mypageQna}" type="button"
 										style="background-color: red;"
 										class="btn btn-primary btn-round">돌아가기</a>
 								</div>
 							</div>
-					</div>
-						
-<!-- 						<div class="card-body">
-							<table id="Table" class="table table-hover">
-								<thead style="background-color: #F6F6F6;">
-									<tr>
-										<th>번호</th>
-										<th>제목</th>
-										<th>작성자ID</th>
-										<th>작성일자</th>
-										<th>답변확인</th>
-										<th>답글</th>
-										<th>삭제</th> 
-									</tr>
-								</thead>
-								<tbody>
-									<tr th:each="qnalist: ${qnalist}" th:object="${qnalist}" th:if="${qnalist.nid.nid} == ${nid}">
-										<td th:text="${qnalist.qcode}"></td>
-										<td><a th:href="@{./qnaPageDetail(qcode=${qnalist.qcode})}" th:text="${qnalist.ntitle}"></a></td>
-										<td th:text="${qnalist.nid.nid}"></td>
-										<td th:text="${qnalist.ndate}"></td>
-										<td th:text="답변확인"></td>
-									</tr>
-										<td><a type="button" th:href="@{/qnareply(qcode=${qna.qcode})}" style="position:right;" class="btn btn-primary" th:text="답글"></a></td>
-										<td><a type="button" th:href="@{/deleteQna(qcode=${qna.qcode})}" style="position:right;" class="btn btn-primary" th:text="삭제"></td> 
-									
- 										<tr th:class="hidden" style="display:none; background-color: #F6F6F6;">
-											<td th:colspan="5">
-												<div th:text="${qnalist.ncontent}"></div>
-												<br/>
-												<br/>
-												<div th:text="${qnalist.ccontent}"></div>
-											</td>
-										</tr>
-								</tbody>
-							</table>
-						</div> -->
-
-
+						</div>
 					</div>
 				</section>
 
@@ -480,29 +440,27 @@
 	<script>
 		$(function() {
 			$('#Table').DataTable({
-				order:[0,"desc"],
-				ordering:true,
-				serverSide:false,
-				paging:true,
-				searching:true,
-				autoWidth:false,
-				responsive:true
-				
+				order : [ 0, "desc" ],
+				ordering : true,
+				serverSide : false,
+				paging : true,
+				searching : true,
+				autoWidth : false,
+				responsive : true
+
 			});
 		});
-		
+
 		$(function() {
-			$(".viewhidden").click(function(){
-				$(this).parent().parent().next().toggle();	
-				
-				
-				
-// 				status = $(".hidden").css("display");
-// 				if(status == "none") {
-// 					$(".hidden").css("display", "table-row");	
-// 				}else{
-// 					$(".hidden").css("display","none");
-// 				}
+			$(".viewhidden").click(function() {
+				$(this).parent().parent().next().toggle();
+
+				// 				status = $(".hidden").css("display");
+				// 				if(status == "none") {
+				// 					$(".hidden").css("display", "table-row");	
+				// 				}else{
+				// 					$(".hidden").css("display","none");
+				// 				}
 			});
 		});
 	</script>

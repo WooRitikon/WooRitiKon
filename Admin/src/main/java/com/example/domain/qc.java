@@ -11,6 +11,9 @@ public class qc {
 	private String ncontent;
 	private Integer ccode;
 	private String ccontent;
+	private String qnastate;
+	
+	
 	public Integer getQcode() {
 		return qcode;
 	}
@@ -53,9 +56,11 @@ public class qc {
 	public void setCcontent(String ccontent) {
 		this.ccontent = ccontent;
 	}
-	
-	
-	
-	
+	public String getQnastate() {
+		return qnastate;
+	}
+	public void setQnastate(String qnastate) {
+		this.qnastate = qnastate;
+	}
 	
 }
