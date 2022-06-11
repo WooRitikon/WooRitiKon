@@ -206,7 +206,16 @@ Created: Colorib
       Quantity change
    --------------------- */
    var proQty = $('.pro-qty');
+<<<<<<< HEAD
 
+	proQty.prepend('<span class="dec qtybtn" name="minus">-</span>');
+	proQty.append('<span class="inc qtybtn" name="add">+</span>');
+	proQty.on('click', '.qtybtn', function () {
+
+	proQty.prepend('<a class="dec qtybtn minus" name="minus" onchange="del();">-</a>');
+	proQty.append('<a class="inc qtybtn add" name="add" onchange="add();">+</a>');
+	
+=======
    proQty.prepend('<a class="dec qtybtn minus" name="minus" onchange="del();">-</a>');
    proQty.append('<a class="inc qtybtn add" name="add" onchange="add();">+</a>');
    /*proQty.on('click', '.qtybtn', function () {
@@ -240,7 +249,7 @@ Created: Colorib
       })
    
     });*/
-
+>>>>>>> upstream/main
 $('.add').click(function(){
    $(this).prev().val(Number($(this).prev().val())+1)
    var price = Number($(this).parent().parent().prev().find('span').attr('value'))
@@ -257,12 +266,20 @@ $('.minus').click(function(){
    $(this).parent().parent().next().find('span').text(Number($(this).next().val())* price)
 }   
 })
+<<<<<<< HEAD
+	$(".cart__close").click(function(){
+		$(this).parents('tr').remove();
+	})
+	
+	
 
+=======
    $(".cart__close").click(function(){
       $(this).parents('tr').remove();
    })
    
    
+>>>>>>> upstream/main
 
     /*-------------------
       Radio Btn
@@ -295,7 +312,25 @@ $('.add').click(function(){
 }); // end of $('#btn_emailCheck').click
 
 $('.minus').click(function(){
-
+<<<<<<< HEAD
+	
+	// 아이디 중복 검사 - DB와 비교
+ 	  $.ajax({ 
+    	type : 'post',
+    	url : 'mypageMinus',
+    	data : { pname : $(this).parent().parent().parent().find('h6').text() },
+    	contentType : 'application/x-www-form-urlencoded;charset=utf-8',
+    	success : function(result){
+    		$('.cartTotal').text(result)
+    	},
+    	error : function(err){
+			alert('실패');
+    		console.log(err);
+    	}
+    });
+    }); //end of ajax 
+}); // end of $('#btn_emailCheck').click
+=======
    
    // 아이디 중복 검사 - DB와 비교
       $.ajax({ 
@@ -360,4 +395,4 @@ $(".cart__close").click(function(){
    
 
 });//end of ajax*/
-
+>>>>>>> upstream/main

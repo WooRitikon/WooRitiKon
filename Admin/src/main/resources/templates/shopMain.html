@@ -75,15 +75,8 @@
                             <li><a href="#">about</a></li>
                             <li><a href="#">shop</a></li>
                             <li><a href="./shop.html">my page</a></li>
-                            <li><a href="#">my shop</a>
-                                <ul class="dropdown">
-                                    <li><a href="shopInfo">information</a></li>
-                                    <li><a href="shopView">product</a></li>
-                                    <li><a href="#">review</a></li>
-                                    <li><a href="./blog-details.html">sales</a></li>
-                                </ul>
-                            </li>
-                            							<li><a href="#">customer center</a>
+                            <li><a href="#">my shop</a></li>
+                            <li><a href="#">customer center</a>
 								<ul class="dropdown">
 									<li><a th:href="@{./noticePage}">Notice</a></li>
 									<li><a href="#">FnQ</a></li>
@@ -93,22 +86,18 @@
                     </nav>
                 </div>
                 <div class="col-lg-3">
-                    <div class="header__right">
-                        <div class="header__right__auth">
-                            <a href="#">Login</a>
-                            <a href="#">Register</a>
-                        </div>
-                        <ul class="header__right__widget">
-                            <li><span class="icon_search search-switch"></span></li>
-                            <li><a href="#"><span class="icon_heart_alt"></span>
-                                <div class="tip">2</div>
-                            </a></li>
-                            <li><a href="#"><span class="icon_bag_alt"></span>
-                                <div class="tip">2</div>
-                            </a></li>
-                        </ul>
-                    </div>
-                </div>
+					<div class="header__right">
+						<div th:if="${nid != null}" class="header__right__auth">
+							<a th:text="${nid}" th:href="@{/shopMain}"></a> <a th:href="@{/logout}">로그아웃</a>
+						</div>
+						<ul class="header__right__widget">
+							<li><a href="#"><span class="icon_heart_alt"></span>
+									<div class="tip">2</div> </a></li>
+							<li><a href="#"><span class="icon_bag_alt"></span>
+									<div class="tip">2</div> </a></li>
+						</ul>
+					</div>
+				</div>
             </div>
             <div class="canvas__open">
                 <i class="fa fa-bars"></i>
@@ -151,7 +140,7 @@
                                         <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
                                             <div class="card-body">
                                                 <ul>
-                                                    <li><a href="shopInfo">조회</a></li>
+                                                    <li><a th:href="@{/shopInfo}">조회</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -163,8 +152,8 @@
                                         <div id="collapseTwo" class="collapse" data-parent="#accordionExample">
                                             <div class="card-body">
                                                 <ul>
-                                                    <li><a href="shopProView">조회</a></li>
-                                                    <li><a href="shopProReg">등록</a></li>
+                                                    <li><a th:href="@{/shopProView}">조회</a></li>
+                                                    <li><a th:href="@{/shopProReg}">등록</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -176,7 +165,7 @@
                                         <div id="collapseThree" class="collapse" data-parent="#accordionExample">
                                             <div class="card-body">
                                                 <ul>
-                                                    <li><a href="#">조회</a></li>
+                                                    <li><a th:href="@{shopReview}">조회</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -188,10 +177,10 @@
                                         <div id="collapseFour" class="collapse" data-parent="#accordionExample">
                                             <div class="card-body">
                                                 <ul>
-                                                    <li><a href="#">년도별</a></li>
-                                                    <li><a href="#">월별</a></li>
-                                                    <li><a href="#">주간별</a></li>
-                                                    <li><a href="#">일별</a></li>
+                                                    <li><a th:href="@{/shopChartYear}">년도별</a></li>
+                                                    <li><a th:href="@{/shopChartMonth}">월별</a></li>
+                                                    <li><a th:href="@{/shopChartWeek}">주간별</a></li>
+                                                    <li><a th:href="@{/shopChartDay}">일별</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -211,8 +200,7 @@
                             <div class="blog__details__item__title">
                                 <span class="tip">Street style</span>
                                 <h3>MY SHOP PAGES</h3>
-                                <ul th:text="${seller.bname}">
-                                </ul>
+                                <ul th:text="${seller.sid}"></ul>
                             </div>
                         </div>
                         <div class="blog__details__desc">

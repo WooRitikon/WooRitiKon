@@ -21,9 +21,10 @@ import com.example.domain.Bucket;
 import com.example.domain.Giftikon;
 import com.example.domain.Like;
 import com.example.domain.Normalid;
-
+<<<<<<< HEAD
+=======
 import com.example.domain.Order;
-
+>>>>>>> upstream/main
 import com.example.domain.Product;
 import com.example.domain.Tbucket;
 import com.example.persistence.BucketRepository;
@@ -59,6 +60,12 @@ public class MypageController {
 	@Autowired
 	private MypageMainRepository mypageMainRepo;
 	
+<<<<<<< HEAD
+	@Autowired
+
+	private OrderlistRepository orderlistRepo;
+=======
+>>>>>>> upstream/main
 	
 	@Autowired
 	private ProductRepository ProRepo;
@@ -168,9 +175,14 @@ public class MypageController {
 		 }
 	 
 	// <위시리스트>
+<<<<<<< HEAD
+	// 장바구니조회
+
+=======
 	 
 	 
 	// 장바구니조회
+>>>>>>> upstream/main
 	  @RequestMapping("/mypageBasketList")
 	  public void createOrder(HttpServletRequest request, Model m){
 		  logger.info("장바구니 출력");
@@ -222,6 +234,16 @@ public class MypageController {
 		  m.addAttribute("nid", nid);
 	  }
 
+<<<<<<< HEAD
+	  
+	//수량 플러스
+	@RequestMapping("plus")
+	public void plus() {
+		
+	}
+=======
+
+>>>>>>> upstream/main
 	
 	//mypageplus
 	@RequestMapping(value = "/mypagePlus", produces = "application/text;charset=utf-8")
@@ -319,6 +341,9 @@ public class MypageController {
 		return String.valueOf(sum);
 	}
 	
+<<<<<<< HEAD
+	  
+=======
 	//장바구니 목록 삭제
 	@RequestMapping(value = "/bucketDelete", produces = "application/text;charset=utf-8")
 	@ResponseBody
@@ -432,6 +457,7 @@ public class MypageController {
 		
 	}
 		
+>>>>>>> upstream/main
 
 
 	// 찜한가게
@@ -496,7 +522,10 @@ public class MypageController {
 		}
 		
 		m.addAttribute("giftikon", giftToSelect);
+<<<<<<< HEAD
+=======
 		m.addAttribute("nid",nid);
+>>>>>>> upstream/main
 
 	}
 
@@ -577,6 +606,11 @@ public class MypageController {
 			 m.addAttribute("nid",result);
 			return "redirect:mypageInfoPassCommit";
 		}
+<<<<<<< HEAD
+		 
+=======
+
+>>>>>>> upstream/main
 
 	}
 
@@ -625,9 +659,17 @@ public class MypageController {
 
 			HttpSession session = request.getSession();
 			String nid = (String)session.getAttribute("nid");
+<<<<<<< HEAD
 
 			Normalid result = mypageService.getNid(nid);
 			
+=======
+			
+			
+			Normalid result = mypageService.getNid(nid);
+			
+			
+>>>>>>> upstream/main
 			m.addAttribute("nid",result);
 			m.addAttribute("n", nid);
 
@@ -639,6 +681,10 @@ public class MypageController {
 	 @RequestMapping("/updateState")
 	 public String deleteNormalid(HttpServletRequest request, Normalid vo, Model m) {
 		 logger.info("updatePassword controller");
+<<<<<<< HEAD
+
+=======
+>>>>>>> upstream/main
 
 		 HttpSession session = request.getSession();
 		 String nid = (String)session.getAttribute("nid");
@@ -659,4 +705,16 @@ public class MypageController {
 
 	 }
 
+<<<<<<< HEAD
+	//<바코드구현>
+	@RequestMapping("/mypageQRCode")
+	public void mypageQRCode() {
+		logger.info("mypageQRCode controller");
+	}
+
+
+		
+
+=======
+>>>>>>> upstream/main
 }

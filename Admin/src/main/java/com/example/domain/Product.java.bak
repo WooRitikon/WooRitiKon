@@ -26,6 +26,9 @@ public class Product {
 	
 	private String shotimage;
 	private String originimage;
+<<<<<<< HEAD
+=======
 
+>>>>>>> upstream/main
 
 }

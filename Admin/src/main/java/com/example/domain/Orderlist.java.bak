@@ -23,6 +23,15 @@ public class Orderlist {
 	@JoinColumn(name ="onum")
 	private Order order;
 
+<<<<<<< HEAD
+	@JoinColumn(name="pcode")
+	private Product product;
+
+
+	
+
+	
+=======
 	private Integer quantity;
 	private Integer totalprice;
 	
@@ -30,5 +39,5 @@ public class Orderlist {
 	@JoinColumn(name="pcode")
 	private Product product;
 
-
+>>>>>>> upstream/main
 }
