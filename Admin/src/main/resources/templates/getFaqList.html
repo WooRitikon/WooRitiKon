@@ -176,7 +176,7 @@ Coded by www.creative-tim.com
 							<table id="Table-date" class="table table-hover">
 								<thead style="background-color: #F6F6F6;">
 									<tr>
-										<th>번호</th>
+										<th>타입</th>
 										<th>제목</th>
 										<th>작성일자</th>
 										<th>삭제</th>
@@ -184,7 +184,7 @@ Coded by www.creative-tim.com
 								</thead>
 								<tbody>
 									<tr th:each="faqlist: ${faqList}">
-										<td th:text="${faqlist.fcode}"></td>
+										<td th:text="${faqlist.ftype}"></td>
 										<td><a th:href="@{./getFaqDetail(fcode=${faqlist.fcode})}" th:text="${faqlist.ftitle}"></a></td>
 										<td th:text="${faqlist.fdate}"></td>
 										<td><a type="button" th:href="@{/deleteFaq(fcode=${faqlist.fcode})}" style="position:right;" class="btn btn-primary" th:text="삭제"></a></td>
@@ -248,7 +248,8 @@ Coded by www.creative-tim.com
 			$('#Table-date').DataTable({
 				"paging" : true,
 				"searching" : true,
-				"ordering" : false,
+				"order" : [0, 'desc'],
+				"ordering" : true,
 				"autoWidth" : false,
 				"responsive" : true
 				

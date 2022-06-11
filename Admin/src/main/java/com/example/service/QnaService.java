@@ -10,6 +10,7 @@ public interface QnaService {
 	//qna 전체 리스트
 	List<Qna> getQnaList(Qna vo);
 	
+	
 	//qna 삭제
 	void deleteQna(Qna q);
 	

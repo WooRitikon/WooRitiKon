@@ -13,4 +13,7 @@ public interface QnacommentService {
 	
 	//사용자 답글보기
 	List<Qnacomment> getQcList(Qnacomment qc);
+	
+	//사용자 댓글 전체가져오기
+	List<Qnacomment> selectQcList();
 }

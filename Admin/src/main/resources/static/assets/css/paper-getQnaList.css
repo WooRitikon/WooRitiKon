@@ -8,6 +8,7 @@ table th {
 }
 
 
+
 .customer-table1 {
   width:100%
 }
@@ -47,6 +48,10 @@ a{
 max-width: 90%;
 	
 }
+textarea.form-control{
+	height: 200px;
+	max-height: 200px;
+	}
 
 tr , td {
 	text-align: center;

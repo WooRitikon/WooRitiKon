@@ -6,7 +6,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.hibernate.internal.build.AllowSysOut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,6 @@ import com.example.domain.Normalid;
 import com.example.domain.Notice;
 import com.example.domain.Qna;
 import com.example.domain.Qnacomment;
-import com.example.domain.qc;
 import com.example.service.FaqService;
 import com.example.service.NoticeService;
 import com.example.service.QnaService;
@@ -57,36 +55,28 @@ public class CustomerCenterController {
 	
 	//qna 전체리스트
 	@RequestMapping("mypageQna")
-	public void getQnaList(HttpServletRequest request,Qna q, Qnacomment qc,Model m) {
+	public void getQnaList(HttpServletRequest request,Qna q,Model m) {
 		HttpSession session = request.getSession();
 		String nid = (String) session.getAttribute("nid");		
 		List<Qna> list = qnaservice.getQnaList(q);
-		List<Qnacomment> list1 = qcservice.getQcList(qc);			
+		List<Qnacomment> list1 = qcservice.selectQcList();
 		
-		List<qc> list2 = new ArrayList<qc>();
-		
-		for(int i=0; i<list.size(); i++) {
-			for(int j=0; j<list1.size(); j++) {
-				if((list.get(i)).getQcode() == (list1.get(j)).getQcode().getQcode()) {
-					qc a = new qc();
-					a.setCcontent(list1.get(j).getCcontent());
-					a.setNcontent(list.get(i).getNcontent());
-					a.setNdate(list.get(i).getNdate());
-					a.setNid(list.get(i).getNid());
-					a.setNtitle(list.get(i).getNtitle());
-					a.setQcode(list.get(i).getQcode());
+			
+		for(Qna q1 : list) {
+			for(Qnacomment qc : list1) {
+				if(q1.getQcode() == qc.getQcode().getQcode()) {
 					
-					list2.add(a);
+					q1.setQnastate("답변완료");
+					qnaservice.selectUpdate(q1);
 				}
 			}
-		}
+		}		
 		
-		m.addAttribute("qnalist",list2);
 		m.addAttribute("nid", nid);
 		m.addAttribute("qList", list);
-		m.addAttribute("qnacomment", list1);
 	}
 	
+
 	//qna 상세보기
 /*	@RequestMapping("mypageQnaDetail")
 	public void getQnaDetail(HttpServletRequest request, Qna q, Model m) {
@@ -99,41 +89,97 @@ public class CustomerCenterController {
 		m.addAttribute("qnaDetail", qna);
 	}
 */
+
 	//qna 상세보기
 	@RequestMapping("mypageQnaDetail")
 	public void getQnaDetail(HttpServletRequest request,Qna q, Qnacomment qc,Model m) {
 		HttpSession session = request.getSession();
 		System.out.println(qc.getQcode().getQcode());
-		String nid = (String) session.getAttribute("nid");		
+		String nid = (String) session.getAttribute("nid");
+		
+		
 		List<Object[]> list = qnaservice.getQnaDetail(qc.getQcode().getQcode());
-		
 		m.addAttribute("qna", list);
-		/*List<Qnacomment> list1 = qcservice.getQcList(qc);			
-		
-		List<qc> list2 = new ArrayList<qc>();
-		
-		for(int i=0; i<list.size(); i++) {
-			for(int j=0; j<list1.size(); j++) {
-				if((list.get(i)).getQcode() == (list1.get(j)).getQcode().getQcode()) {
-					qc a = new qc();
-					a.setCcontent(list1.get(j).getCcontent());
-					a.setNcontent(list.get(i).getNcontent());
-					a.setNdate(list.get(i).getNdate());
-					a.setNid(list.get(i).getNid());
-					a.setNtitle(list.get(i).getNtitle());
-					a.setQcode(list.get(i).getQcode());
-					
-					list2.add(a);
-				}
-			}
-		}
-		*/
-		
-		//m.addAttribute("qnalist",list2);
 		m.addAttribute("nid", nid);
-		m.addAttribute("qList", list);
-		//m.addAttribute("qnacomment", list1);
+		
+		
 	}
+	
+//	//qna 상세보기
+//	@RequestMapping("mypageQnaDetail")
+//	public void getQnaDetail(HttpServletRequest request,Qna q, Qnacomment qc,Model m) {
+//		HttpSession session = request.getSession();
+//		System.out.println(qc.getQcode().getQcode());
+//		String nid = (String) session.getAttribute("nid");
+//		
+//		List<Qnacomment> qn = (List<Qnacomment>)qcservice.selectQcList();
+//		boolean ck = false;
+//		
+//		for(Qnacomment a : qn) {
+//			if(qc.getQcode().getQcode() == a.getQcode().getQcode()) {
+//				List<Object[]> list = qnaservice.getQnaDetail(qc.getQcode().getQcode());
+//				m.addAttribute("qna", list);
+//				m.addAttribute("nid", nid);
+//				//m.addAttribute("qList", list);
+//				ck=true;
+//				break;
+//			}
+//			
+//		}
+//		
+//		if(ck==false) {
+//			List<Qna> inqna = new ArrayList<Qna>();
+//			List<Qna> qnack = (List<Qna>)qnaservice.getQnaList(q);
+//			
+//			for(Qna qnac : qnack) {
+//				if(qnac.getQcode() == q.getQcode()) {
+//					inqna.add(qnac);
+//				}
+//			}
+//			
+//			m.addAttribute("qna", inqna);
+//			m.addAttribute("nid", nid);
+//		}
+//		
+//			
+//	}
+	
+//	//qna 상세보기
+//	@RequestMapping("mypageQnaDetail")
+//	public void getQnaDetail(HttpServletRequest request,Qna q, Qnacomment qc,Model m) {
+//		HttpSession session = request.getSession();
+//		System.out.println(qc.getQcode().getQcode());
+//		String nid = (String) session.getAttribute("nid");		
+//		List<Object[]> list = qnaservice.getQnaDetail(qc.getQcode().getQcode());
+//		
+//		m.addAttribute("qna", list);
+//		/*List<Qnacomment> list1 = qcservice.getQcList(qc);			
+//		
+//		List<qc> list2 = new ArrayList<qc>();
+//		
+//		for(int i=0; i<list.size(); i++) {
+//			for(int j=0; j<list1.size(); j++) {
+//				if((list.get(i)).getQcode() == (list1.get(j)).getQcode().getQcode()) {
+//					qc a = new qc();
+//					a.setCcontent(list1.get(j).getCcontent());
+//					a.setNcontent(list.get(i).getNcontent());
+//					a.setNdate(list.get(i).getNdate());
+//					a.setNid(list.get(i).getNid());
+//					a.setNtitle(list.get(i).getNtitle());
+//					a.setQcode(list.get(i).getQcode());
+//					
+//					list2.add(a);
+//				}
+//			}
+//		}
+//		*/
+//		
+//		//m.addAttribute("qnalist",list2);
+//		m.addAttribute("nid", nid);
+//		m.addAttribute("qList", list);
+//		//m.addAttribute("qnacomment", list1);
+//	}
+	
 	
 	
 	//qna 수정값 가져오기

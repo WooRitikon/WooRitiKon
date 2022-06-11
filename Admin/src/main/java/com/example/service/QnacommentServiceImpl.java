@@ -39,5 +39,11 @@ public class QnacommentServiceImpl implements QnacommentService {
 		return QnacomRepo.findById(qc.getCcode()).get();
 	}
 	
-	
+	@Override
+	public List<Qnacomment> selectQcList() {
+		List<Qnacomment> qc = (List<Qnacomment>)QnacomRepo.findAll();
+		
+		return qc;
+		
+	}
 }

@@ -28,6 +28,7 @@ public class Normalid {
 	private String nbirth;
 	private Integer ncharge;
 
+
 	@CreationTimestamp
 	private LocalDate nsubscribe;
 }
