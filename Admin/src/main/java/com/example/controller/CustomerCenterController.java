@@ -76,27 +76,20 @@ public class CustomerCenterController {
 		m.addAttribute("qList", list);
 	}
 	
-//	//qna 상세보기
-//	@RequestMapping("mypageQnaDetail")
-//	public void getQnaDetail(HttpServletRequest request,Qna q, Qnacomment qc,Model m) {
-//		HttpSession session = request.getSession();
-//		System.out.println(qc.getQcode().getQcode());
-//		String nid = (String) session.getAttribute("nid");		
-//		List<Object[]> list = qnaservice.getQnaDetail(qc.getQcode().getQcode());
-//		
-//		for(Object[] Obj : list) {
-//			if(qc.getCcontent() == null) {
-//				Obj.
-//				
-//			}
-//		}
-//			
-//		
-//		m.addAttribute("qna", list);
-//		m.addAttribute("nid", nid);
-//	}
-//	
-	
+
+	//qna 상세보기
+/*	@RequestMapping("mypageQnaDetail")
+	public void getQnaDetail(HttpServletRequest request, Qna q, Model m) {
+		HttpSession session = request.getSession();
+		String nid = (String) session.getAttribute("nid");
+		Qna qna = qnaservice.getQnaDetail(q);
+		
+		
+		m.addAttribute("nid", nid);
+		m.addAttribute("qnaDetail", qna);
+	}
+*/
+
 	//qna 상세보기
 	@RequestMapping("mypageQnaDetail")
 	public void getQnaDetail(HttpServletRequest request,Qna q, Qnacomment qc,Model m) {

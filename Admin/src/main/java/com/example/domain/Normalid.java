@@ -31,6 +31,4 @@ public class Normalid {
 
 	@CreationTimestamp
 	private LocalDate nsubscribe;
-
-
 }

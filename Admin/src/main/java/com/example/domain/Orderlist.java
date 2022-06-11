@@ -22,14 +22,12 @@ public class Orderlist {
 	@ManyToOne
 	@JoinColumn(name ="onum")
 	private Order order;
+
 	private Integer quantity;
 	private Integer totalprice;
 	
 	@ManyToOne
-	@JoinColumn(name ="pcode")
+	@JoinColumn(name="pcode")
 	private Product product;
-	
-	
 
-	
 }

@@ -95,7 +95,8 @@ public class QnaServiceImpl implements QnaService {
 	
 	//qna 어드민 상세보기
 	@Override
-	public Qna getQanDetail(Qna q) {
+
+	public Qna getQnaDetail(Qna q) {
 		logger.info("qna 상세보기");
 		return QnaRepo.findById(q.getQcode()).get();
 		

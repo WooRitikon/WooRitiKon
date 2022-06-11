@@ -9,7 +9,6 @@
 	border-radius: 12px;
 	width: 100px;
 	height: 40px;
-	border: none;
 	font-family: "Montserrat", sans-serif;
 }
 
@@ -25,7 +24,6 @@
 	border-radius: 12px;
 	width: 100px;
 	height: 40px;
-	border: none;
 	font-family: "Montserrat", sans-serif;
 }
 
@@ -36,7 +34,7 @@
     border-collapse: collapse;
 }
 
-td{
+.reviewtable tr td{
     border-bottom: 1px solid #444444;
     padding: 10px;
   }
@@ -74,3 +72,28 @@ td{
 	border: none;
 	font-family: "Montserrat", sans-serif;
   }
+  
+  /* shopProView */
+  #proModBtn {
+  	background-color: #CD0000;
+  	color : white;
+  	border-radius: 12px;
+  	width : 70px;
+  }
+  #proDelBtn {
+  	background-color: #CD0000;
+  	color : white;
+  	border-radius: 12px;
+  	width : 70px;
+  }
+  
+  /* shopProPay */
+  #shopProPayBtn {
+  	background-color: #CD0000;
+  	color : white;
+  	border-radius: 12px;
+  	width : 70px;
+  	height : 40px;
+  	margin-bottom: 100px;
+  }
+ 

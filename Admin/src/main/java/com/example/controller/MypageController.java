@@ -64,7 +64,7 @@ public class MypageController {
 	
 	@Autowired
 	private BucketRepository BucketRepo;
-	
+
 	//이름 가져오기
 	@RequestMapping("/mypageMain")
 	public void getname(HttpServletRequest request, Model m) {
@@ -167,8 +167,9 @@ public class MypageController {
 		 }
 	 
 	// <위시리스트>
+	 
+	 
 	// 장바구니조회
-		
 	  @RequestMapping("/mypageBasketList")
 	  public void createOrder(HttpServletRequest request, Model m){
 		  logger.info("장바구니 출력");
@@ -218,12 +219,12 @@ public class MypageController {
 		  m.addAttribute("sum", sum);
 		  m.addAttribute("product",Newpr);
 		  m.addAttribute("nid", nid);
-	
-		  
-		  
-		  
 	  }
 
+
+	
+	//mypageplus
+	@RequestMapping(value = "/mypagePlus", produces = "application/text;charset=utf-8")
 	@ResponseBody
 	public String mypagePlus(HttpServletRequest request, String pname) {
 		logger.info("플러스 갯수 변경");
@@ -326,6 +327,7 @@ public class MypageController {
 	}
 		
 
+
 	// 찜한가게
 	@RequestMapping("/mypageHeartList")
 	public void getHeartList(HttpServletRequest request, Model m) {
@@ -386,8 +388,10 @@ public class MypageController {
 			
 			giftToSelect.add(gift1);
 		}
+		
 		m.addAttribute("giftikon", giftToSelect);
 		m.addAttribute("nid",nid);
+
 	}
 
 	// 보낸 선물함
@@ -468,6 +472,7 @@ public class MypageController {
 			return "redirect:mypageInfoPassCommit";
 		}
 		 
+
 	}
 
 	
@@ -515,11 +520,14 @@ public class MypageController {
 
 			HttpSession session = request.getSession();
 			String nid = (String)session.getAttribute("nid");
-		
+			
+			
 			Normalid result = mypageService.getNid(nid);
+			
 			
 			m.addAttribute("nid",result);
 			m.addAttribute("n", nid);
+
 
 
 	 }
@@ -544,6 +552,8 @@ public class MypageController {
 			 session.invalidate();
 			 return "redirect:login";
 		 }
+
+
 	 }
 
 }
