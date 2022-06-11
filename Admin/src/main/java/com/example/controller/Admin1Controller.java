@@ -1,6 +1,5 @@
 package com.example.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.domain.Category;
 import com.example.domain.Faq;
 import com.example.domain.Manager;
 import com.example.domain.Normalid;
@@ -20,7 +20,7 @@ import com.example.domain.Product;
 import com.example.domain.Qna;
 import com.example.domain.Qnacomment;
 import com.example.domain.Sellerid;
-import com.example.domain.qc;
+import com.example.service.CategoryService;
 import com.example.service.CustomerService;
 import com.example.service.FaqService;
 import com.example.service.ProductService;
@@ -46,6 +46,8 @@ public class Admin1Controller {
 	private ProductService productService;
 	@Autowired
 	private FaqService faqService;
+	@Autowired
+	private CategoryService cgService;
 
 	
 	//질문응답 리스트 전체조회
@@ -120,7 +122,7 @@ public class Admin1Controller {
 	}
 	
 	//고객 전체 리스트
-	@RequestMapping("/customer")
+	@RequestMapping("/getcustomer")
 	public void customerList(Model m) {
 		logger.info("고객 전체 리스트");
 		Normalid id = new Normalid();
@@ -224,6 +226,28 @@ public class Admin1Controller {
 		faqService.FaqUpdate(f);
 		
 		return "redirect:getFaqList";
+	}
+	
+	//category 리스트
+	@RequestMapping("getcategory")
+	public void getCategory(Category cg,Model m) {
+		List<Category> list = cgService.getCategory(cg);
+		m.addAttribute("Category",list);
+	}
+	
+	//category 등록
+	@RequestMapping("insertcategory")
+	public String insertcg(Category cg) {
+		cgService.insertcg(cg);
+		
+		return "redirect:getcategory";
+	}
+	
+	@RequestMapping("deletecategory")
+	public String deletecg(Category cg) {
+		cgService.deletecg(cg);
+		
+		return "redirect:getcategory";
 	}
 }
 

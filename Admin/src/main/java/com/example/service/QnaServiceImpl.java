@@ -93,6 +93,15 @@ public class QnaServiceImpl implements QnaService {
 		QnaRepo.save(q);
 	}
 	
+//	//qna 어드민 상세보기
+//	@Override
+//
+//	public Qna getQnaDetail(Qna q) {
+//		logger.info("qna 상세보기");
+//		return QnaRepo.findById(q.getQcode()).get();
+//		
+//	}
+	
 	//qna 어드민 상세보기
 	@Override
 

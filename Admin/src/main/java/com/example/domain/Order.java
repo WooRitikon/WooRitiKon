@@ -3,6 +3,7 @@ package com.example.domain;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -20,7 +21,7 @@ public class Order {
 	
 	private Date odate;
 	private String oselect;
-	private Integer otatal;
+	private Integer ototal;
 	private String ostate;
 	
 	@ManyToOne

@@ -16,7 +16,7 @@ Coded by www.creative-tim.com
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8" />
 <link rel="apple-touch-icon" sizes="76x76"
 	href="../assets/img/apple-icon.png">
 <link rel="icon" type="image/png" href="../assets/img/favicon.png">
@@ -35,17 +35,9 @@ Coded by www.creative-tim.com
 <!-- CSS Files -->
 <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
 <link href="../assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
-<link href="../assets/css/paper-getQnaList.css?v=2.0.1" rel="stylesheet" />
+<link href="../assets/css/paper-category.css?v=2.0.1" rel="stylesheet" />
 <!-- CSS Just for demo purpose, don't include it in your project -->
 <link href="../assets/demo/demo.css" rel="stylesheet" />
-<!-- 데이터테이블 -->
-<link rel="stylesheet"
-	href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-<link rel="stylesheet"
-	href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-<link rel="stylesheet"
-	href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-
 </head>
 
 <body class="">
@@ -115,8 +107,7 @@ Coded by www.creative-tim.com
 									class="navbar-toggler-bar bar3"></span>
 							</button>
 						</div>
-						<a class="navbar-brand" th:href="@{./getQnaList}">QNA</a> <a
-							class="navbar-brand" th:href="@{./getFaqList}">FAQ</a>
+						<a class="navbar-brand" href="javascript:;">CATEGORY</a>
 					</div>
 					<button class="navbar-toggler" type="button" data-toggle="collapse"
 						data-target="#navigation" aria-controls="navigation-index"
@@ -172,61 +163,46 @@ Coded by www.creative-tim.com
 			</nav>
 			<!-- End Navbar -->
 			<div class="content">
-				<div class="col-md-8">
-					<div class="card card-user">
-						<div class="card-header">
-							<h5 class="card-title">QnaDetail</h5>
-						</div>
-						<div class="card-body">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-header">
+								<h5 class="title">CATEGORY 관리</h5>
+								<p class="category">CATEGORY 추가 삭제</p>
+							</div>
 							<div class="card-body">
-								<form th:action="adminqnaUpdate" method="post">
-									<div class="row">
-										<div class="col-md-5 pr-1">
-											<div class="form-group">
-												<label>type</label> <input type="text"
-													class="form-control" disabled=""
-													th:value="${qnaDetail.nid.nid}"> <input
-													th:type="hidden" th:name="qcode"
-													th:value="${qnaDetail.qcode}" />
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-md-12">
-											<div class="form-group">
-												<label>Title</label> <input class="form-control" disabled="" th:name="ntitle"
-													th:value="${qnaDetail.ntitle}">
-											</div>
-										</div>
-									</div>
-									<div class="row" style="height: 300px">
-										<div class="col-md-12">
-											<div class="form-group">
-												<label>Content</label>
-												<textarea class="form-control textarea" disabled="" th:name="ncontent"
-													th:text="${qnaDetail.ncontent}"></textarea>
-											</div>
-											
-<!-- 								 		 <div class="form-group">
-												<label>Reply</label>
-												<textarea class="form-control textarea" disabled="" th:name="ccontent"
-													th:text="${qnaDetail.ccontent}"></textarea>
-											</div>
-										</div> -->
-									</div>
-									
-									<div class="row" id="button-control">
-										<div class="update ml-auto mr-auto">
-											<button th:type="submit" class="btn btn-primary btn-round">수정</button>
-											<a th:href="@{/deleteQna(qcode=${qnaDetail.qcode})}"
-												type="button" style="background-color: red;"
-												class="btn btn-primary btn-round">삭제</a> 
-											<a th:href="@{./getQnaList}" type="button"
-												style="background-color: red;"
-												class="btn btn-primary btn-round">돌아가기</a>
-										</div>
-									</div>
-								</form>
+								<div class="cg-container">
+									<p>CATEGORY 추가</p>
+									<form th:action="insertcategory" method="post">
+									<span><input type="text" th:name="ccode" class="category-input" /></span>
+									<span><input type="text" th:name="cname" class="category-input" /></span>
+									<span><button
+											th:type="submit" id="cg-insert"
+											class="btn btn-primary btn-round">추가</button></span>
+									</form>
+								</div>
+								<hr />
+								<div>
+									<span th:each="cate : ${Category}">
+											<input th:type="text" class="btn btn-primary btn-round" th:value="${cate.cname}">
+												<button class="button-delete"><a type="button" th:href="@{/deletecategory(ccode=${cate.ccode})}" th:text="X" ></a></button>
+											</input>
+									</span>
+<!-- 									<table>
+										<tr>
+											<td>
+											1
+											</td>
+											<td>
+											2
+											</td>
+										</tr>
+										<tr th:each="cate : ${Category}">
+											<td th:text="${cate.ccode}"></td>
+											<td th:text="${cate.cname}"></td>
+										</tr>
+									</table> -->
+								</div>
 							</div>
 						</div>
 					</div>
@@ -272,26 +248,8 @@ Coded by www.creative-tim.com
 		type="text/javascript"></script>
 	<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
 	<script src="../assets/demo/demo.js"></script>
-	<!-- 데이터테이블 -->
-	<script src="plugins/datatables/jquery.dataTables.min.js"></script>
-	<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-	<script
-		src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-	<script
-		src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-	<script src="plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-	<script src="plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
 	<script>
-		$(function() {
-			$('#Table-date').DataTable({
-				"paging" : true,
-				"searching" : true,
-				"ordering" : false,
-				"autoWidth" : false,
-				"responsive" : true
-
-			})
-		})
+		
 	</script>
 </body>
 
