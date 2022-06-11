@@ -22,7 +22,11 @@ import com.example.domain.Giftikon;
 import com.example.domain.Like;
 import com.example.domain.Normalid;
 
+import com.example.domain.Buy;
+import com.example.domain.Orderlist;
+
 import com.example.domain.Order;
+
 
 import com.example.domain.Product;
 import com.example.domain.Tbucket;
@@ -167,7 +171,16 @@ public class MypageController {
 		 m.addAttribute("normalid", mypageService.getPointSet(nid)); 
 		 }
 	 
-	// <위시리스트>
+	//포인트 결제 페이지
+	 @RequestMapping("/mypagePointPlus")
+	 public @ResponseBody void mypagePointPlus(HttpServletRequest request,  Model m, Long amount) {
+		 logger.info("mypagePointPlus controller");
+		 HttpSession session = request.getSession();
+		 String nid = (String)session.getAttribute("nid");
+		
+		 System.out.println(amount);
+		 m.addAttribute("nid",nid);
+	 }
 	 
 	 
 	// 장바구니조회
@@ -377,7 +390,9 @@ public class MypageController {
 //	
 	//장바구니 결제 페이지 이동
 	@RequestMapping("/mypageBuy")
-	public void mypageBuy(HttpServletRequest request, Model m, Order or) {
+	public void mypageBuy(HttpServletRequest request, Model m) {
+		
+
 		logger.info("mypageBuy controller");
 		HttpSession session = request.getSession();
 		String nid = (String)session.getAttribute("nid");
@@ -419,17 +434,55 @@ public class MypageController {
 				  }
 			  }
 		  }
-		
+		  
+		  //구매리스트 받아 오기
+		  mypageService.buylistget();  
+		  
+		  //주문정보 생성
+		  mypageService.updateOrder(nid);
+		  
+		  //주문정보 받아 오기
+		  mypageService.Orderget();
+		  
+		//주문번호에 맞는 주문정보 가져오기
+		  Buy on = mypageService.selectOrderNum(nid);
+		  int onum = on.getOnum();
+		  on.setOtotal(sum);
+		  
+		  mypageService.Ordersave(on);
+		  
+		  //장바구니 상품 리스트 가져오기(bu)
+		  
+		  for(Bucket b : Newbu) {
+			  mypageService.updateBuylistNumber();
+		  }
+		  
+		  List<Orderlist> ol = mypageService.buylistget();
+		  
+		  for(Bucket c : Newbu) {
+			 for(Orderlist a : ol) {
+				 if(a.getPcode() == null) {
+					 Orderlist newo=new Orderlist();
+					 newo.setListcode(a.getListcode());
+					 newo.setOnum(onum);
+					 newo.setPcode(c.getPcode());
+					 newo.setQuantity(c.getQuantity());
+					 newo.setTotalprice(c.getBtotal());
+					 
+					 mypageService.orderlistsave(newo);
+					 break;
+				 }
+			 }
+		  }
+		  
+		  
+
 		  m.addAttribute("tb", listtb);
 		  m.addAttribute("bucket", Newbu );
 		  m.addAttribute("sum", sum);
 		  m.addAttribute("product",Newpr);
 		  m.addAttribute("nid", mypageService.getNid(nid));
-		  
-		  
-		  //빈 구매 리스트 번호 생성 
-		  
-		
+		  m.addAttribute("n",nid);
 	}
 		
 

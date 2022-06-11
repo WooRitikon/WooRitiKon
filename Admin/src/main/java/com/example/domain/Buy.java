@@ -13,8 +13,8 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="order")
-public class Order {
+@Table(name="buy")
+public class Buy {
 	
 	@Id
 	private Integer onum;

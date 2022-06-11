@@ -19,16 +19,13 @@ public class Orderlist {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer listcode;
 	
-	@ManyToOne
-	@JoinColumn(name ="onum")
-	private Order order;
+
+	private Integer onum;
 
 	private Integer quantity;
 	private Integer totalprice;
 	
-	@ManyToOne
-	@JoinColumn(name="pcode")
-	private Product product;
+	private Integer pcode;
 
 
 }
