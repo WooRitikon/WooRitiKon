@@ -44,6 +44,11 @@ public class SellerServiceImpl implements SellerService{
 		
 	}
 	
+	//빈 상품 생성
+	public void saveproduct() {
+		productRepo.insertproduct();
+	}
+	
 	//판메자 
 	@Override
 	public Sellerid sellerdetail(Sellerid sid) {
