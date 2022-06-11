@@ -49,3 +49,10 @@ tr , td {
 	margin-left: 50px;
 }
 
+.button-delete , .button-delete > a {
+	background-color: silver;
+	color:white;
+	border: none;
+	border-radius: 50%;
+	
+}
