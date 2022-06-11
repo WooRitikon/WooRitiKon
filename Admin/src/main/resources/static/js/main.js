@@ -206,48 +206,14 @@ Created: Colorib
 		Quantity change
 	--------------------- */
    var proQty = $('.pro-qty');
-<<<<<<< HEAD
+
 	proQty.prepend('<span class="dec qtybtn" name="minus">-</span>');
 	proQty.append('<span class="inc qtybtn" name="add">+</span>');
 	proQty.on('click', '.qtybtn', function () {
-=======
+
 	proQty.prepend('<a class="dec qtybtn minus" name="minus" onchange="del();">-</a>');
 	proQty.append('<a class="inc qtybtn add" name="add" onchange="add();">+</a>');
-	/*proQty.on('click', '.qtybtn', function () {
->>>>>>> upstream/main
-		var $button = $(this);
-		var oldValue = $button.parent().find('input').val();
-		if ($button.hasClass('inc')) {
-			var newVal = parseFloat(oldValue) + 1;
-			
-		} else {
-			// Don't allow decrementing below zero
-			if (oldValue > 0) {
-				var newVal = parseFloat(oldValue) - 1;
-			} else {
-				newVal = 0;
-			}
-		}
-		
-		$button.parent().find('input').val(newVal);
-<<<<<<< HEAD
-    });
-=======
-		
-		var price = $('#price').attr('value'); // 상품의 가격
-		
-		//var count = $('#input').attr('value');// 장바구니 상품 갯수
-		var count=$button.parent().find('input').val();
-		var total = price * count;  // 한 상품의 개수*가격
-		alert(total);
-		$button.parent().parent().find('label').val(price * count);
-		
-		$("#total").change(function(){
-			$(this).val = total;
-			
-		})
 	
-    });*/
 $('.add').click(function(){
 	$(this).prev().val(Number($(this).prev().val())+1)
 	var price = Number($(this).parent().parent().prev().find('span').attr('value'))
@@ -269,7 +235,7 @@ $('.minus').click(function(){
 	})
 	
 	
->>>>>>> upstream/main
+
 
     /*-------------------
 		Radio Btn
@@ -316,7 +282,6 @@ $('.minus').click(function(){
 			alert('실패');
     		console.log(err);
     	}
-    }); //end of ajax
-    
-    
+    });
+    }); //end of ajax 
 }); // end of $('#btn_emailCheck').click
