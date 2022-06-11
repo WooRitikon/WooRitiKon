@@ -63,7 +63,19 @@ public class SellerController {
 		HttpSession session = request.getSession();
 		String nid = (String)session.getAttribute("nid");
 		
-		m.addAttribute("seller", sellerService.getshopInfo(nid));
+		List<Sellerid> seller = sellerService.getSellerList(null);
+		List<Sellerid> newsell= new ArrayList<Sellerid>();
+		
+		for(Sellerid s: seller) {
+			if(s.getSid().equals(nid)) {
+				newsell.add(s);
+				break;
+			}
+		}
+		
+		Sellerid a = newsell.get(0);
+		
+		m.addAttribute("seller", a);
 	}
 	
 	//가게 정보 수정하기
