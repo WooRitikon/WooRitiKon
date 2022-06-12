@@ -32,7 +32,7 @@ public class Giftikon {
 	private Date finaldate;
 	
 	private String giftstate;
-	private String senderid;
+	private int giftcount;
 	
 	
 }

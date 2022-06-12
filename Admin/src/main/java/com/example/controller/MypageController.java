@@ -640,7 +640,7 @@ public class MypageController {
 		 m.addAttribute("n",nid);
 		 m.addAttribute("nid",result);
 		
-		 }
+	 }
 	 
 	 // 비밀번호 변경 업데이트
 	 @RequestMapping("/updatePassword")
