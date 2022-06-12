@@ -63,7 +63,7 @@ Coded by www.creative-tim.com
 			</div>
 			<div class="sidebar-wrapper">
 				<ul class="nav">
-					<li class="active "><a href="./index"> <i
+					<li class="active "><a href="./index.html"> <i
 							class="nc-icon nc-chart-bar-32"></i>
 							<p>Dashboard</p>
 					</a></li>
@@ -71,9 +71,7 @@ Coded by www.creative-tim.com
 							class="nc-icon nc-single-02"></i>
 							<p>Customer</p>
 					</a></li>
-
-					<li><a th:href="@{./getSales}"> <i
-
+					<li><a th:href="@{./sales}"> <i
 							class="nc-icon nc-money-coins"></i>
 							<p>Sales</p>
 					</a></li>
@@ -190,7 +188,6 @@ Coded by www.creative-tim.com
 									<thead style="background-color: #F6F6F6;">
 										<tr>
 											<th><input type="checkbox" /></th>
-											<th>카테고리</th>
 											<th>상품명</th>
 											<th>상품가격</th>
 											<th>업체 사업자번호</th>
@@ -200,7 +197,6 @@ Coded by www.creative-tim.com
 									<tbody>
 										<tr th:each="pd: ${pdList}">
 											<td><input type="checkbox" name="chk_list"/></td>
-											<td th:text="${pd.pcategory}">카테고리 테스트</td>
 											<td th:text="${pd.pname}">상품명 테스트</td>
 											<td th:text="${pd.pprice}">상품가격 테스트</td>
 											<td th:text="${pd.bcode}">판매자id 테스트</td>
