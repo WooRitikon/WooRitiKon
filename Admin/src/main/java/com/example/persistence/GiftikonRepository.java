@@ -49,5 +49,11 @@ public interface GiftikonRepository extends CrudRepository<Giftikon, Integer>{
 			+ " ORDER BY g.finaldate asc ",
 			nativeQuery=true)
 	List<Object[]> giftToSelect(String nid);
+	
+	//기프티콘 생성
+	//빈 주문리스트 생성
+		@Query(value="INSERT INTO giftikon(startdate, nid, finaldate, giftstate, giftcount) VALUES (CURDATE(), ?1, DATE_ADD(CURDATE(), INTERVAL 1 MONTH), \"N\", 30);",
+				nativeQuery = true)
+		void giftSet(String nid);
 
 }

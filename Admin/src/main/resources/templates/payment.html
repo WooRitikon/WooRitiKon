@@ -31,7 +31,7 @@ window.onload = function(){
 	
 	function pay(){		
 		var IMP = window.IMP; // 생략 가능
-		IMP.init("imp60674928"); // 예: imp00000000
+		IMP.init("imp01008206"); // 예: imp00000000
 
 		IMP.request_pay({
 		    pg : 'inicis', // version 1.1.0부터 지원.
@@ -48,14 +48,11 @@ window.onload = function(){
 		}, function(rsp) {
 			
 			if ( rsp.success ) {
-		    	alert("결제가 완료되었습니다. ");
-		        
-		    	$(location).attr('href', 'payment_sucess?orderdata_seq='+$("#orderdata_seq").val());
+		    	
+		    	$(location).attr('href', 'payment_sucess?onum='+$("#orderdata_seq").val());
 		    	
 		    } else {
-		    	
-		    	 alert("결제에 실패하였습니다. 에러 내용: " +  rsp.error_msg);
-		    	 $(location).attr('href', 'payment_fail');
+		    	 $(location).attr('href', 'payment_fail?onum='+$("#orderdata_seq").val());
 		    }
 		});
 		

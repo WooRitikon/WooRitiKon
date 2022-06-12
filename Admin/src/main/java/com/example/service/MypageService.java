@@ -58,6 +58,18 @@ public interface MypageService {
 	//주문번호에 맞는 주문정보 가져오기
 	Buy selectOrderNum(String nid);
 	
+	//주문정보 가져오기
+		public List<Buy> OrdergetList(String nid);
+	
+	//기프티콘생성
+	void giftSet(String nid);
+		
+	//결제완료 시 키프티콘코드 저장
+	public void saveGiftcode(Giftikon gi);
+		
+	//포인트 저장
+	void moneysave(Normalid vo);
+	
 	//<회원정보 관리>
 	//회원정보 조회
 	Normalid getNid(String no);
@@ -68,8 +80,17 @@ public interface MypageService {
 	//회원정보 수정
 	void getNidUpdate(Normalid no);
 
+	//결제 성공시 상태변경
+	void updateOstate(Integer onum);
 	
+	//결제 성공시 장바구니비우기
+	public void deleteOrderlist(Integer onum);
 	
+	//결제 성공시 장바구니 비우기
+	public void deletebucket(String nid);
+
+	//결제 취소시 테이블 삭제
+	void deleteOnum(Integer onum);
 
 	
 	

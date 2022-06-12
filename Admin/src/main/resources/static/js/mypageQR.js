@@ -6,11 +6,11 @@ $(function(){
 				url:'mypageQRcode.html',
 				type:"get",
 				success: function(){
-					alert('연결성공');
+					
 					$('#text').val();
 				},
 				error: function(){
-					alert('연결실패');
+					
 				}
 			})
 	}).on("keydown", function (e) {

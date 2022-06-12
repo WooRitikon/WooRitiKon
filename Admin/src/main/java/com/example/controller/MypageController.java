@@ -2,7 +2,9 @@ package com.example.controller;
 
 
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -81,32 +83,72 @@ public class MypageController {
 		logger.info("payment controller");
 		HttpSession session = request.getSession();
 		String nid = (String)session.getAttribute("nid");
-		
-		m.addAttribute("buy", mypageService.selectOrderNum(nid));
+		Buy b =  mypageService.selectOrderNum(nid);
+		session.setAttribute("buy",b);
+		m.addAttribute("buy", b);
 		m.addAttribute("nid", mypageService.getNid(nid));
 	}
 	
-	//결제정보
+	//결제완료
 		@RequestMapping("/payment_sucess")
 		public void payment_success(Model m, HttpServletRequest request) {
 			logger.info("payment_success controller");
 			HttpSession session = request.getSession();
 			String nid = (String)session.getAttribute("nid");
+			Buy bu = (Buy)session.getAttribute("buy");
+			mypageService.updateOstate(bu.getOnum());
 			
-			m.addAttribute("buy", mypageService.selectOrderNum(nid));
+		
+//			List<Orderlist> li = mypageService.buylistget();
+//			for(Orderlist l : li) {
+//				mypageService.giftSet(nid);
+//				
+//				if(l.getOnum() == bu.getOnum()) {
+//					Giftikon gi = new Giftikon();
+//					
+//				
+//					gi.setGiftcode(nid+bu.getOnum());
+//					
+//					mypageService.saveGiftcode(gi);
+//					break;
+//					
+//				}
+//			
+//			}
+			m.addAttribute("buy", bu);
 			m.addAttribute("nid", mypageService.getNid(nid));
 		}
 	
-		//결제정보
+		//결제후 장바구니비우기
+		@RequestMapping("/payOK")
+		public String payOK(Model m, HttpServletRequest request) {
+			logger.info("payment_success controller");
+			HttpSession session = request.getSession();
+			String nid = (String)session.getAttribute("nid");
+			Buy bu = (Buy)session.getAttribute("buy");
+			
+			mypageService.deleteOrderlist(bu.getOnum());
+			mypageService.deletebucket(nid);
+
+			
+			return "redirect:test";
+		}
+
+	
+		//결제실패
 		@RequestMapping("/payment_fail")
 		public void payment_fail(Model m, HttpServletRequest request) {
 			logger.info("payment_success controller");
 			HttpSession session = request.getSession();
 			String nid = (String)session.getAttribute("nid");
+			Buy bu = (Buy)session.getAttribute("buy");
+			mypageService.deleteOnum(bu.getOnum());
 			
-			m.addAttribute("buy", mypageService.selectOrderNum(nid));
+			m.addAttribute("buy", bu);
 			m.addAttribute("nid", mypageService.getNid(nid));
 		}
+		
+	
 	
 	//<주문조회>
 	//기프티콘리스트출력
@@ -155,11 +197,15 @@ public class MypageController {
 	
 	//<바코드구현>
 	@RequestMapping("/mypageQRCode")
-	public void mypageQRCode(HttpServletRequest request,Model m) {
+	public void mypageQRCode(HttpServletRequest request,Model m,Giftikon gi) {
 		logger.info("mypageQRCode controller");
 		HttpSession session = request.getSession();
+		String nid = (String)session.getAttribute("nid");
 		Giftikon g =(Giftikon)session.getAttribute("giftikon");
+		
+		
 		m.addAttribute("giftikon", g.getGiftcode());
+		m.addAttribute("nid",nid);
 	}
 	
 	// 구매내역보기
@@ -201,17 +247,36 @@ public class MypageController {
 		 }
 	 
 	//포인트 결제 페이지
-	 @RequestMapping("/mypagePointPlus")
-	 public @ResponseBody void mypagePointPlus(HttpServletRequest request,  Model m, Long amount) {
+	 @RequestMapping("/mypagePointSetPlus")
+	 public void mypagePointPlus(HttpServletRequest request,  Model m) {
 		 logger.info("mypagePointPlus controller");
 		 HttpSession session = request.getSession();
 		 String nid = (String)session.getAttribute("nid");
+	
 		
-		 System.out.println(amount);
-		 m.addAttribute("nid",nid);
+		 m.addAttribute("nid", mypageService.getNid(nid));
+		
 	 }
-	 
-	 
+	 //포인트 결제
+	 @RequestMapping("/plusPoint")
+	 public String plusPoint(HttpServletRequest request,  Model m, Integer money) {
+		 logger.info("mypagePointPlus controller");
+		 HttpSession session = request.getSession();
+		 String nid = (String)session.getAttribute("nid");
+		 Buy b =  mypageService.selectOrderNum(nid);
+		 session.setAttribute("buy",b);
+		 
+		 Normalid vo = mypageService.getNid(nid);
+		 int sum = vo.getNcharge();
+		 vo.setNcharge(sum+money);
+		 mypageService.moneysave(vo);
+		 
+		 m.addAttribute("buy", b);
+		 m.addAttribute("nid", mypageService.getNid(nid));
+		 
+		 return "redirect:mypagePointSet";
+		
+	 }
 	// 장바구니조회
 	  @RequestMapping("/mypageBasketList")
 	  public void createOrder(HttpServletRequest request, Model m){
@@ -434,6 +499,7 @@ public class MypageController {
 		 
 		  List<Tbucket> listtb=new ArrayList<Tbucket>();
 		  
+		  
 		  int sum=0;
 		  
 		  
@@ -463,7 +529,7 @@ public class MypageController {
 				  }
 			  }
 		  }
-		  
+		 
 		  //구매리스트 받아 오기
 		  mypageService.buylistget();  
 		  
@@ -504,18 +570,29 @@ public class MypageController {
 			 }
 		  }
 		  
-		  
-
 		  m.addAttribute("tb", listtb);
 		  m.addAttribute("bucket", Newbu );
 		  m.addAttribute("sum", sum);
 		  m.addAttribute("product",Newpr);
 		  m.addAttribute("nid", mypageService.getNid(nid));
 		  m.addAttribute("n",nid);
+		  
+
+		 
 	}
 		
-
-
+	//결제취소
+	@RequestMapping(value = "/mypageBuyCancel")
+	public void mypageBuyCancel(HttpServletRequest request,Model m) {
+		 logger.info("장바구니 출력");
+		  HttpSession session = request.getSession();
+		  String nid = (String)session.getAttribute("nid");
+		 
+	
+		  m.addAttribute("buy", mypageService.OrdergetList(nid));
+		  m.addAttribute("nid", nid);
+	}
+	
 	// 찜한가게
 	@RequestMapping("/mypageHeartList")
 	public void getHeartList(HttpServletRequest request, Model m) {

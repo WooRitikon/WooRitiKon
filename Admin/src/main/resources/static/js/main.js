@@ -341,6 +341,8 @@ $(".cart__close").click(function(){
     
 }); // end of $('#btn_emailCheck').click
 
+
+
 /*$(".primary-btn").click(function(){
 
    //버튼 클릭시 총합 데이터베이스 입력
