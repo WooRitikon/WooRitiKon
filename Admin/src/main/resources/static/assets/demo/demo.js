@@ -22,7 +22,7 @@ demo = {
       type: 'line',
 
       data: {
-        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"],
+        labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
         datasets: [{
             borderColor: "#6bd098",
             backgroundColor: "#6bd098",
@@ -96,29 +96,29 @@ demo = {
 
   initChartsPages: function() {
     chartColor = "#FFFFFF";
-
+    
+    var i= []; 
+    i=document.getElementById("chartfee").innerText; //index에서 정산값 가져오기 => 배열로 저장됨
+    var fee= i.split('\n'); //들여쓰기로 split
+    
+    for(var j=0; j<7; j++){ // TEST용
+		console.log(fee[j],j);
+	}
+	
     ctx = document.getElementById('chartHours').getContext("2d");
 
     myChart = new Chart(ctx, {
       type: 'line',
-
       data: {
-        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"],
-        datasets: [{
-            borderColor: "#6bd098",
-            backgroundColor: "#6bd098",
-            pointRadius: 0,
-            pointHoverRadius: 0,
-            borderWidth: 3,
-            data: [300, 310, 316, 322, 330, 326, 333, 345, 338, 354]
-          },
+        labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"], //x 축
+        datasets: [
           {
             borderColor: "#f17e5d",
             backgroundColor: "#f17e5d",
             pointRadius: 0,
             pointHoverRadius: 0,
             borderWidth: 3,
-            data: [320, 340, 365, 360, 370, 385, 390, 384, 408, 420]
+            data: [fee[0],fee[1],fee[2],fee[3],fee[4],fee[5],fee[6]] //y 축
           },
           {
             borderColor: "#fcc468",
@@ -126,7 +126,7 @@ demo = {
             pointRadius: 0,
             pointHoverRadius: 0,
             borderWidth: 3,
-            data: [370, 394, 415, 409, 425, 445, 460, 450, 478, 484]
+            data: [100,200,300,400,500,600,700],
           }
         ]
       },

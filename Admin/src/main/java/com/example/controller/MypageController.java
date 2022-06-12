@@ -74,6 +74,39 @@ public class MypageController {
 		m.addAttribute("nid", mypageService.getname(nid));
 	}
 	
+	//결제정보
+	@RequestMapping("/payment")
+	public void payment(Model m, HttpServletRequest request) {
+		logger.info("payment controller");
+		HttpSession session = request.getSession();
+		String nid = (String)session.getAttribute("nid");
+		
+		m.addAttribute("buy", mypageService.selectOrderNum(nid));
+		m.addAttribute("nid", mypageService.getNid(nid));
+	}
+	
+	//결제정보
+		@RequestMapping("/payment_sucess")
+		public void payment_success(Model m, HttpServletRequest request) {
+			logger.info("payment_success controller");
+			HttpSession session = request.getSession();
+			String nid = (String)session.getAttribute("nid");
+			
+			m.addAttribute("buy", mypageService.selectOrderNum(nid));
+			m.addAttribute("nid", mypageService.getNid(nid));
+		}
+	
+		//결제정보
+		@RequestMapping("/payment_fail")
+		public void payment_fail(Model m, HttpServletRequest request) {
+			logger.info("payment_success controller");
+			HttpSession session = request.getSession();
+			String nid = (String)session.getAttribute("nid");
+			
+			m.addAttribute("buy", mypageService.selectOrderNum(nid));
+			m.addAttribute("nid", mypageService.getNid(nid));
+		}
+	
 	//<주문조회>
 	//기프티콘리스트출력
 
@@ -103,6 +136,7 @@ public class MypageController {
 		m.addAttribute("nid", nid);
 	
 	}
+	
 	//기프티콘 상세보기
 	@RequestMapping("/mypageShoppingSet")
 	public void getGiftikonSet(HttpServletRequest request, Giftikon gi, Model m) {
@@ -639,7 +673,7 @@ public class MypageController {
 		 m.addAttribute("n",nid);
 		 m.addAttribute("nid",result);
 		
-		 }
+	 }
 	 
 	 // 비밀번호 변경 업데이트
 	 @RequestMapping("/updatePassword")

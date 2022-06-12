@@ -68,7 +68,7 @@ public interface MypageService {
 	//회원정보 수정
 	void getNidUpdate(Normalid no);
 
-
+	
 	
 
 	
