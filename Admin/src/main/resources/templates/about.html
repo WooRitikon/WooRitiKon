@@ -67,7 +67,7 @@
 					<nav class="header__menu">
 						<ul>
 							<li class="active"><a href="./index.html">Home</a></li>
-							<li><a th:href="@{/about}">about</a></li>
+							<li><a th:href="@{about}">about</a></li>
 							<li><a href="#">shop</a></li>
 							<li><a th:href="@{/mypageMain}">my page</a>
 								<ul class="dropdown">
@@ -75,7 +75,7 @@
 									<li><a th:href="@{/mypageBasketList}">my 위시리스트</a></li>
 									<li><a th:href="@{/mypageGetGift}">my 선물함</a></li>
 									<li><a th:href="@{/mypageInfo}">my 정보</a></li>
-									<li><a th:href="@{/mypageQna}">my Q&A</a></li>	
+									<li><a th:href="@{/mypageQna}">my Q&A</a></li>
 								</ul></li>
 							<li><a th:href="@{/shopMain}">my shop</a>
 								<ul class="dropdown">
@@ -103,10 +103,10 @@
 								th:href="@{/logout}">로그아웃</a>
 						</div>
 						<ul class="header__right__widget">
-         				   <li><a th:href="@{/mypageHeartList}"><span class="icon_heart_alt"></span>
-           					 </a></li>
-          				  <li><a th:href="@{/mypageBasketList}"><span class="icon_bag_alt"></span>
-            				</a></li>
+							<li><a th:href="@{/mypageHeartList}"><span
+									class="icon_heart_alt"></span> </a></li>
+							<li><a th:href="@{/mypageBasketList}"><span
+									class="icon_bag_alt"></span> </a></li>
 						</ul>
 					</div>
 				</div>
@@ -118,8 +118,18 @@
 	</header>
 	<!-- Header Section End -->
 
+	<section class="banner set-bg" data-setbg="img/about/비즈콘.jpg" style="height: 800px;">
+		<div class="container">
+			<div class="row">
+				<div class="col-xl-7 col-lg-8 m-auto">
+
+				</div>
+			</div>
+		</div>
+	</section>
+
 	<!-- Categories Section Begin -->
-	<section class="categories">
+	<!-- 	<section class="categories">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-lg-6 p-0">
@@ -168,177 +178,42 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> -->
 	<!-- Categories Section End -->
 
 	<!-- Product Section Begin -->
 	<section class="product spad">
 		<div class="container">
-			<div class="row">
-				<div class="col-lg-4 col-md-4">
-					<div class="section-title">
-						<h4>카테고리</h4>
+			<div class="row" >
+				<div class="col-xl-7 col-lg-8 m-auto">
+					<div class="section-title" style="display: inline;">
+						<h4>우리티콘이란</h4>
+						<br/>
+						<br/>
+						<br/>
+						<p style="font-size: 1.5rem; color: black; font-style: italic;">기업, 개인 누구나 편리하게 이용 가능한 기프티콘 ! 각 상점의 대표 모바일 상품
+							쿠폰 기프티콘의 회원 전용 서비스로 시작하여 각종 이벤트, 프로모션의 경품으로 기프티콘을
+							할인 혜택을 제공하고 원하는 시각에 구독형 사용이 가능한 서비스입니다.</p>
 					</div>
 				</div>
 
 			</div>
-			<div class="row property__gallery">
-				<div class="col-lg-3 col-md-4 col-sm-6 mix women">
-					<div class="product__item">
-						<div class="product__item__pic">
-							<a th:href="@{/plist(ccode=1)}"><img src="img/product/food.jpg" alt="" style="height: 210px;"></a>
-							<div class="label stockout">음식</div>
-							
-							<div class="product__item__text">
-							<h6>
-								<a th:href="@{/plist(ccode=1)}">음식</a>
-							</h6>
-						</div>
-						</div>
-						
+
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-xl-7 col-lg-8 m-auto">
+					<div class="section-title" style="text-align: center;">
+						<img src="img/about/aboutimg.jpg"
+							style="width: 100%; height: auto;">
 					</div>
 				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6 mix men">
-					<div class="product__item">
-						<div class="product__item__pic">
-							<a th:href="@{/plist(ccode=2)}"><img src="img/product/hair.png" alt="" style="height: 210px;"></a>
-							<div class="label stockout">미용</div>
-							<div class="product__item__text">
-							<h6>
-								<a href="#">미용</a>
-							</h6>
-						</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6 mix accessories">
-					<div class="product__item">
-						<div class="product__item__pic">
-							<a th:href="@{/plist(ccode=3)}"><img src="img/product/clothes.jpg" alt="" style=" height: 210px;"></a>
-							<div class="label stockout">의류</div>
-							
-							<div class="product__item__text">
-							<h6>
-								<a href="#">의류</a>
-							</h6>
-						</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6 mix cosmetic">
-					<div class="product__item">
-						<div class="product__item__pic">
-							
-							<a th:href="@{/plist(ccode=4)}"><img src="img/product/cafe.png" alt="" style="height: 210px;"></a>
-							<div class="label stockout">카페/베이커리</div>
-							<div class="product__item__text">
-							<h6>
-								<a href="#">카페/베이커리</a>
-							</h6>
-						</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6 mix kid">
-					<div class="product__item">
-						<div class="product__item__pic">
-							<a th:href="@{/plist(ccode=5)}"><img src="img/product/electro.jpg" alt="" style="height: 210px;"></a>
-							<div class="label stockout">전자기기</div>
-							<div class="product__item__text">
-							<h6>
-								<a href="#">전자기기</a>
-							</h6>
-						</div>
-						</div>
-					</div>
-				</div>
-				<div
-					class="col-lg-3 col-md-4 col-sm-6 mix women men kid accessories cosmetic">
-					<div class="product__item">
-						<div class="product__item__pic">
-							<a th:href="@{/plist(ccode=6)}"><img src="img/product/furniture.jpg" alt="" style="height: 210px;"></a>
-							<div class="label stockout">가구</div>
-							
-							<div class="product__item__text">
-							<h6>
-								<a href="#">가구</a>
-							</h6>
-						</div>
-						</div>
-					</div>
-				</div>
-				<!-- end of 가구 -->
-				<div class="col-lg-3 col-md-4 col-sm-6 mix men">
-					<div class="product__item">
-						<div class="product__item__pic">
-							<a th:href="@{/plist(ccode=7)}"><img src="img/product/book.png" alt="" style="height: 210px; width: 210px;"></a>
-							<div class="label stockout">문화/예술</div>
-							
-							<div class="product__item__text">
-							<h6>
-								<a href="#">문화/예술</a>
-							</h6>
-						</div>
-							
-						</div>
-					</div>
-				</div>
-				<!-- end of 서점 -->
-				
-				<div class="col-lg-3 col-md-4 col-sm-6 mix men">
-					<div class="product__item">
-						<div class="product__item__pic">
-							<a th:href="@{/plist(ccode=8)}"><img src="img/product/life.jpg" alt="" style="height: 210px;"></a>
-							<div class="label stockout">생활용품</div>
-							
-							<div class="product__item__text">
-							<h6>
-								<a href="#">생활용품</a>
-							</h6>
-						</div>
-						</div>
-					</div>
-				</div>
-				<!-- end of 생활용품 -->
-				
-				<div
-					class="col-lg-3 col-md-4 col-sm-6 mix women men kid accessories cosmetic">
-					<div class="product__item">
-						<div class="product__item__pic">
-							<a th:href="@{/plist(ccode=9)}"><img src="img/product/health.jpg" alt="" style="height: 210px;"></a>
-							<div class="label stockout">체육</div>
-							
-							<div class="product__item__text">
-							<h6>
-								<a href="#">체육</a>
-							</h6>
-						</div>
-						</div>
-					</div>
-				</div>
-				<!-- end of 체육 -->
-				<div
-					class="col-lg-3 col-md-4 col-sm-6 mix women men kid accessories cosmetic">
-					<div class="product__item">
-						<div class="product__item__pic">
-							<a th:href="@{/plist(ccode=10)}"><img src="img/product/job.jpg" alt="" style="height: 210px; width: 210px;"></a>
-							<div class="label stockout">기타</div>
-							
-							<div class="product__item__text">
-								<h6>
-									<a href="#">기타</a>
-								</h6>
-							</div>
-							
-						</div>
-					</div>
-				</div>
+
 			</div>
+
 		</div>
 	</section>
 	<!-- Product Section End -->
-
-	<!-- Banner Section Begin -->
 	<section class="banner set-bg" data-setbg="img/banner/banner-1.jpg">
 		<div class="container">
 			<div class="row">
@@ -346,22 +221,19 @@
 					<div class="banner__slider owl-carousel">
 						<div class="banner__item">
 							<div class="banner__text">
-								<span>The Chloe Collection</span>
-								<h1>The Project Jacket</h1>
+								<span>소상공인 경제 활성</span><br />
+								<h3>
+									우리티콘은 개인상점도 <br />기프티콘을 만들수 있습니다.
+								</h3>
 								<a href="#">Shop now</a>
 							</div>
 						</div>
 						<div class="banner__item">
 							<div class="banner__text">
-								<span>The Chloe Collection</span>
-								<h1>The Project Jacket</h1>
-								<a href="#">Shop now</a>
-							</div>
-						</div>
-						<div class="banner__item">
-							<div class="banner__text">
-								<span>The Chloe Collection</span>
-								<h1>The Project Jacket</h1>
+								<span>구독형 서비스</span>
+								<h3>
+									구독형 서비스로 인해 <br />장기적으로 할인을 받으세요!
+								</h3>
 								<a href="#">Shop now</a>
 							</div>
 						</div>
@@ -370,88 +242,11 @@
 			</div>
 		</div>
 	</section>
+	<!-- Banner Section Begin -->
+
 	<!-- Banner Section End -->
 
 	<!-- Trend Section Begin -->
-	<section class="trend spad">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-4 col-md-4 col-sm-6">
-					<div class="trend__content">
-						<div class="section-title">
-							<h4>새로운 상품들</h4>
-						</div>
-						
-					<th:block th:each="pt : ${product}">
-						<div class="trend__item">
-							<div class="trend__item__pic">
-								<img src="img/trend/ht-1.jpg" alt="">
-							</div>
-							<div class="trend__item__text">
-								<h6 th:text="${pt.pname}"></h6>
-								<div class="rating">
-									<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-										class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-										class="fa fa-star"></i>
-								</div>
-								<div class="product__price"><a th:text="${pt.pprice}"></a></div>
-							</div>
-						</div>
-					</th:block>
-						
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-4 col-sm-6">
-					<div class="trend__content">
-						<div class="section-title">
-							<h4>새로운 상점들</h4>
-						</div>
-						<th:block th:each="se : ${seller}">
-						<div class="trend__item">
-							<div class="trend__item__pic">
-								<img src="img/trend/ht-1.jpg" alt="">
-							</div>
-							<div class="trend__item__text">
-								<h6 th:text="${se.bname}"></h6>
-								<div class="rating">
-									<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-										class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-										class="fa fa-star"></i>
-								</div>
-								<div class="product__price"><a th:text="${se.btel}"></a></div>
-							</div>
-						</div>
-					</th:block>
-					
-						
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-4 col-sm-6">
-					<div class="trend__content">
-						<div class="section-title">
-							<h4>HOT DEAL</h4>
-						</div>
-						<th:block th:each="pr : ${pro}">
-						<div class="trend__item">
-							<div class="trend__item__pic">
-								<img src="img/trend/ht-1.jpg" alt="">
-							</div>
-							<div class="trend__item__text">
-								<h6 th:text="${pr.pname}"></h6>
-								<div class="rating">
-									<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-										class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-										class="fa fa-star"></i>
-								</div>
-								<div class="product__price"><a th:text="${pr.pprice}"></a></div>
-							</div>
-						</div>
-					</th:block>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
 	<!-- Trend Section End -->
 
 	<!-- Footer Section Begin -->
