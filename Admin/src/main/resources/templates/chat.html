@@ -31,86 +31,135 @@ Coded by www.creative-tim.com
   <link href="../assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <!-- 합쳐지고 최소화된 최신 CSS -->
+	<style>
+	@font-face {
+    font-family: 'Cafe24Ssurround';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+	}
+		*{
+			margin:0;
+			padding:0;
+		}
+		.container{
+			width: 500px;
+			margin: 0 auto;
+			padding: 25px
+		}
+		.container h1{
+			text-align: left;
+			color: rgb( 251, 250);
+			border-left: 3px solid #FFBB00;
+			margin-bottom: 20px;
+		}
+		.chating{
+			margin: 0px;
+			padding: 0px;
+			height: 500px;
+			overflow: auto;
+		}
+		.me{
+			font-family: 'Cafe24Ssurround';
+			font-size:25px;
+			color: black;
+			text-align: right;
+		}
 
+		.others{
+			font-family: 'Cafe24Ssurround';
+			color: rgb(4, 39, 113);
+			font-size:25px;
+			text-align: left;
+		}
+		input{
+			width: 330px;
+			height: 25px;
+		}
+		#yourMsg{
+			display: none;
+		}
+		.input1{
+		width:300px;
+		height: 60px;
+		background-color: white;
+		border:3px solid black;
+		border-radius:5px;
+		}
+	</style>
 </head>
+<script type="text/javascript">
+	var ws;
 
+	function wsOpen(){
+		//웹소켓 전송시 현재 방의 번호를 넘겨서 보낸다.
+		ws = new WebSocket("ws://" + location.host + "/chating/"+$("#roomNumber").val());//소켓연결
+		wsEvt();
+	}
+		
+	function wsEvt() {
+		ws.onopen = function(data){
+			//소켓이 열리면 동작
+		}
+		
+		ws.onmessage = function(data) {
+			//메시지를 받으면 동작
+			var msg = data.data;
+			if(msg != null && msg.trim() != ''){
+				var d = JSON.parse(msg);
+				if(d.type == "getId"){
+					var si = d.sessionId != null ? d.sessionId : "";
+					if(si != ''){
+						$("#sessionId").val(si); 
+					}
+				}else if(d.type == "message"){
+					if(d.sessionId == $("#sessionId").val()){
+						$("#chating").append("<p class='me'>" + d.msg + "</p>");	
+					}else{
+						$("#chating").append("<p class='others'>" + d.userName + "님 :" + d.msg + "</p>");
+					}
+						
+				}else{
+					console.warn("unknown type!")
+				}
+			}
+		}
+		document.addEventListener("keypress", function(e){
+			if(e.keyCode == 13){ //enter press
+				send();
+			}
+		});
+	}
+
+	function chatName(){
+		var userName = $("#userName").val();
+		if(userName == null || userName.trim() == ""){
+			alert("사용자 이름을 입력해주세요.");
+			$("#userName").focus();
+		}else{
+			wsOpen();
+			$("#yourName").hide();
+			$("#yourMsg").show();
+		}
+	}
+
+	function send() {
+		var option ={
+			type: "message",
+			roomNumber: $("#roomNumber").val(),
+			sessionId : $("#sessionId").val(),
+			userName : $("#userName").val(),
+			msg : $("#chatting").val()
+		}
+		ws.send(JSON.stringify(option))  //메시지발송
+		$('#chatting').val("");
+	}
+</script>
 <body class="">
   <div class="wrapper ">
-    <div class="sidebar" data-color="white" data-active-color="danger">
-      <div class="logo">
-        <a href="https://www.creative-tim.com" class="simple-text logo-mini">
-          <div class="logo-image-small">
-            <img src="../assets/img/logo-small.png">
-          </div>
-          <!-- <p>CT</p> -->
-        </a>
-        <a href="https://www.creative-tim.com" class="simple-text logo-normal">
-          Creative Tim
-          <!-- <div class="logo-image-big">
-            <img src="../assets/img/logo-big.png">
-          </div> -->
-        </a>
-      </div>
-            <div class="sidebar-wrapper">
-        <ul class="nav">
-          <li class="active ">
-            <a href="./index">
-              <i class="nc-icon nc-chart-bar-32"></i>
-              <p>Dashboard</p>
-            </a>
-          </li>
-          <li>
-            <a href="./customer.html">
-              <i class="nc-icon nc-single-02"></i>
-              <p>Customer</p>
-            </a>
-          </li>
-          <li>
-            <a th:href="@{./getSales}">
-              <i class="nc-icon nc-money-coins"></i>
-              <p>Sales</p>
-            </a>
-          </li>
-          <li>
-            <a href="./product.html">
-              <i class="nc-icon nc-app"></i>
-              <p>Product</p>
-            </a>
-          </li>
-          <li>
-            <a href="./banner.html">
-              <i class="nc-icon nc-layout-11"></i>
-              <p>Banner</p>
-            </a>
-          </li>
-          <li>
-            <a href="./category.html">
-              <i class="nc-icon nc-tile-56"></i>
-              <p>Category</p>
-            </a>
-          </li>
-          <li>
-            <a href="./qna.html">
-              <i class="nc-icon nc-chat-33"></i>
-              <p>QnA</p>
-            </a>
-          </li>
-          <li>
-           <a th:href="@{./getNoticeList}">
-              <i class="nc-icon nc-paper"></i>
-              <p>Notice</p>
-            </a>
-          </li>
-          <li class="active-pro">
-            <a href="./upgrade.html">
-              <i class="nc-icon nc-spaceship"></i>
-              <p>Upgrade to PRO</p>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
+
     <div class="main-panel">
       <!-- Navbar -->
       <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
@@ -123,7 +172,7 @@ Coded by www.creative-tim.com
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="javascript:;">Paper Dashboard 2</a>
+            <a class="navbar-brand" href="javascript:;">상담하기</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -131,16 +180,7 @@ Coded by www.creative-tim.com
             <span class="navbar-toggler-bar navbar-kebab"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-end" id="navigation">
-            <form>
-              <div class="input-group no-border">
-                <input type="text" value="" class="form-control" placeholder="Search...">
-                <div class="input-group-append">
-                  <div class="input-group-text">
-                    <i class="nc-icon nc-zoom-split"></i>
-                  </div>
-                </div>
-              </div>
-            </form>
+
             <ul class="navbar-nav">
               <li class="nav-item">
                 <a class="nav-link btn-magnify" href="javascript:;">
@@ -176,71 +216,49 @@ Coded by www.creative-tim.com
         </div>
       </nav>
       <!-- End Navbar -->
-      <div class="content" >
-          <div class="col-md-8">
-            <div class="card card-user">
-              <div class="card-header">
-                <h5 class="card-title">공지사항</h5>
-              </div>
-						<div class="card-body">
-							<table class="table table-hover">
-								<thead style="background-color: #F6F6F6;">
-									<tr>
-										<th></th>
-										<th>작성자</th>
-										<th>카테고리</th>
-										<th>제목</th>
-										<th>날짜</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr th:each="notice: ${noticeList}">
-										<td th:text="${notice.noticecode}"></td>
-										<td th:text="${notice.mcode}"></td>
-										<td th:text="${notice.ncategory}"></td>
-										<td> <a th:href="@{noticeRead(noticecode=${notice.noticecode})}" th:text="${notice.ntitle}"/> </td>
-										<td th:text="${notice.ndate}"></td>
-									</tr>
-								</tbody>
-							</table>
-							<a type="button" th:href="@{./noticeWrite.html}" style="position: right;"
-								class="btn btn-primary ">Write</a>
-
-						</div>
-						<nav>
-							<ul class="pagination">
-								<li><a href="#" aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-								</a></li>
-								<li><a href="#">1</a></li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#">4</a></li>
-								<li><a href="#">5</a></li>
-								<li><a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-								</a></li>
-							</ul>
-						</nav>
-					</div>
-          </div>
-        </div>
+            <div class="content" >
+          <div class="col-md-12">
+            <h5 class="card-title">1:1 상담</h5>
+            <h5 class="card-title" th:text="${roomName}"></h5>
+            <div class="card card-user" style="margin:auto; width:80%;">
+                         
+              <div class="card-header" style=" border-radius:8px; background:rgb(240, 251, 253) ">
+ 
+	<div id="container" class="container">
+		
+		<input type="hidden" id="sessionId" value="">
+		<input type="hidden" id="roomNumber" th:value="${roomNumber}">
+		<div id="chating" class="chating">
+		</div>
+		
+		<div id="yourName">
+			<table class="inputTable">
+				<tr>
+					<th><input type="hidden" name="userName" id="userName" th:value="${roomName}"></th>
+					<th><button class="btn btn-default btn-lg" onclick="chatName()" 
+					style=" background-color:#FFBB00; font-size:50px; font-family:'Cafe24Ssurround';" 
+					id="startBtn">상담 시작하기</button></th>
+				</tr>
+			</table>
+		</div>
+		<div id="yourMsg">
+			<table class="inputTable">
+				<tr>
+					<th><input class="input1" id="chatting" placeholder="보내실 메시지를 입력하세요."></th>
+					<th><button onclick="send()" class="btn btn-default btn-lg" id="sendBtn" style="font-size:20px; padding:auto; font-family:'Cafe24Ssurround';">전송</button></th>
+				</tr>
+			</table>
+		</div>
+	</div>
+      </div>
+      </div>
+      </div>
+      </div>
       </div>
       <footer class="footer footer-black  footer-white ">
         <div class="container-fluid">
           <div class="row">
-            <nav class="footer-nav">
-              <ul>
-                <li><a href="https://www.creative-tim.com" target="_blank">Creative Tim</a></li>
-                <li><a href="https://www.creative-tim.com/blog" target="_blank">Blog</a></li>
-                <li><a href="https://www.creative-tim.com/license" target="_blank">Licenses</a></li>
-              </ul>
-            </nav>
-            <div class="credits ml-auto">
-						<span class="copyright"> © <script>
-							document.write(new Date().getFullYear())
-						</script>, made with <i class="fa fa-heart heart"></i> by
-							Creative Tim
-						</span>
-					</div>
+
           </div>
         </div>
       </footer>
