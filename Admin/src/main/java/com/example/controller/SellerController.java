@@ -173,7 +173,7 @@ public class SellerController {
 	public void getProList(HttpServletRequest request, Model m) {
 		HttpSession session = request.getSession();
 		String nid = (String)session.getAttribute("nid");
-		String bcode="0";
+		String bcode="12345678";
 		 
 		Product pr =new Product();
 		List<Product> list = sellerService.getProList(pr);
