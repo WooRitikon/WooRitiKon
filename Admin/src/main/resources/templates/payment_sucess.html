@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>결제성공 | 우리티콘</title>
+<!-- Bootstrap 3.3.6 -->
+<link rel="stylesheet" href="../resources/dist/css/adminlte.min.css">
+
+<!-- AdminLTE App -->
+<!--<script src="../resources/dist/js/adminlte.min.js"></script> -->
+
+<style type="text/css">
+.card-info {
+	background: #f5f6f7;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	box-sizing: border-box;
+	margin: 0;
+}
+
+.card-header {
+	background: none;
+}
+
+.card-bottom {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.btn-info {
+	padding: 6px 120px;
+	background: #00c2cb;
+	border: #00c2cb;
+}
+</style>
+</head>
+<body>
+
+	<div class="card card-info">
+		<!-- <div class="card-header">
+			<img src='../resources/dist/img/logo.png' width='200' height='200'>
+			<h3 class="card-title">로그인</h3>
+		</div> -->
+		<div>
+			<a href='home.jsp'> <img src='../resources/dist/img/logo.png'
+				width='200'>
+			</a>
+		</div>
+		<!-- /.card-header -->
+		<!-- form start -->
+		<form class="form-horizontal" action="/paymentOrder/payment.do" method='post'>
+		<div class="card card-info">
+						<div class="card-header">
+							<h3 class="card-title">주문결과</h3>
+						</div>
+						<div class="card-body">
+							<label>주문이 완료되었습니다.</label> <br></br> <label>결제정보</label>
+							<hr />
+							<div class="input-group mb-3">
+
+								<label>고객명: <span th:text="${nid.nname}"></span></label>
+							</div>
+							<hr />
+
+							<div class="input-group mb-3">
+								<label>전화번호: <span th:text="${nid.ntel}"></span></label>
+							</div>
+							<hr />
+
+							<div class="input-group mb-3">
+								<label>이메일: <span th:text="${nid.nemail}"></span></label>
+							</div>
+							<hr />
+
+
+							<div class="input-group mb-3">
+								<label>전화번호: <span th:text="${nid.ntel}"></span></label>
+							</div>
+							<hr />
+
+
+							<div class="input-group">
+								<label>주소: <span th:text="${nid.npostcode}"></span>
+								<span th:text="${nid.naddress}"></span>
+								<span th:text="${nid.ndaddress}"></span>
+								</label>
+							</div>
+							<hr />
+
+							<br></br>
+							<hr />
+							<div class="input-group mb-3">
+								<label>총 결제금액: <span th:text="${buy.ototal}"></span>원</label>
+							</div>
+
+							<div class="card-footer">
+
+								<a th:href="@{/test}"><button type="button" class="btn btn-info float-right">완료</button></a>
+							</div>
+
+
+
+							<!-- /.col-lg-6 -->
+
+							<!-- /input-group -->
+						</div>
+
+
+					</div>
+			<!-- /.card-body -->
+		</form>
+	</div>
+	<!-- jQuery -->
+	<script src="../resources/plugins/jquery/jquery.min.js"></script>
+	<!-- Bootstrap 4 -->
+	<script src="../resources/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- AdminLTE App -->
+	<script src="../resources/dist/js/adminlte.min.js"></script>
+
+</body>
+</html>

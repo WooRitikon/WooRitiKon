@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>결제 시스템 | 우리티콘</title>
+
+
+</head>
+<body>
+
+	
+	<input type="hidden" id="orderdata_seq" name="price" th:value="${buy.onum}">
+	<input type="hidden" id="buyer_name" name="price" th:value="${nid.nname}">
+	<input type="hidden" id="buyer_email" name="price" th:value="${nid.nemail}">
+	<input type="hidden" id="buyer_tel" name="price" th:value="${nid.ntel}">
+	<input type="hidden" id="buyer_addr" name="price" th:value="${nid.naddress}">
+	<input type="hidden" id="buyer_daddr" name="price" th:value="${nid.ndaddress}">
+	<input type="hidden" id="buyer_postcode" name="price" th:value="${nid.npostcode}">
+	<input type="hidden" id="buyer_price" name="price" th:value="${buy.ototal}">
+
+</body>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+
+<!-- 결제 시스템 -->
+<script type="text/javascript">
+window.onload = function(){	 
+    pay();
+}
+	
+	function pay(){		
+		var IMP = window.IMP; // 생략 가능
+		IMP.init("imp60674928"); // 예: imp00000000
+
+		IMP.request_pay({
+		    pg : 'inicis', // version 1.1.0부터 지원.
+		    pay_method : 'card',
+		    merchant_uid : 'merchant_' + new Date().getTime(), //결제번호
+		    name : '우리티콘(주)', //상품이름
+		    amount : $("#buyer_price").val(), //판매 가격
+		    buyer_email : $("#buyer_email").val(),
+		    buyer_name : $("#buyer_name").val(),
+		    buyer_tel : $("#buyer_tel").val(),
+		    buyer_addr : $("#buyer_addr").val(),
+		    buyer_daddr : $("#buyer_daddr").val(),
+		    buyer_postcode : $("#buyer_postcode").val()
+		}, function(rsp) {
+			
+			if ( rsp.success ) {
+		    	alert("결제가 완료되었습니다. ");
+		        
+		    	$(location).attr('href', 'payment_sucess?orderdata_seq='+$("#orderdata_seq").val());
+		    	
+		    } else {
+		    	
+		    	 alert("결제에 실패하였습니다. 에러 내용: " +  rsp.error_msg);
+		    	 $(location).attr('href', 'payment_fail');
+		    }
+		});
+		
+	}
+  </script>
+</html>
+
