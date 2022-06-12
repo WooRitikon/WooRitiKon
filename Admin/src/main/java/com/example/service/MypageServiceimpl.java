@@ -105,6 +105,12 @@ public class MypageServiceimpl implements MypageService{
 	public List<Orderlist> buylistget() {
 		return (List<Orderlist>)orderlistRepo.findAll();
 	}
+	//결제완료 시 키프티콘 생성
+	@Override
+	public void saveGiftcode(Giftikon gi) {
+		giftikonRepo.save(gi);
+	}
+	
 	
 	//주문리스트 저장
 	@Override
@@ -124,13 +130,31 @@ public class MypageServiceimpl implements MypageService{
 	}
 	
 	//주문정보 받아오기
+	@Override
 	public List<Buy> Orderget(){
 		return (List<Buy>)orderRepo.findAll();
 	}
 	
 	//주문번호에 맞는 주문정보 가져오기
+	@Override
 	public Buy selectOrderNum(String nid){
 		return orderRepo.selectOrderNum(nid);
+	}
+	//주문정보 가져오기
+	@Override
+	public List<Buy> OrdergetList(String nid){
+		return (List<Buy>)orderRepo.findAll();
+	}
+	
+	//기프티콘 생성
+	@Override
+	public void giftSet(String nid) {
+		giftikonRepo.giftSet(nid);
+	}
+	
+	//포인트 저장
+	public void moneysave(Normalid vo) {
+		mypageMainRepo.save(vo);
 	}
 	
 	
@@ -165,5 +189,27 @@ public class MypageServiceimpl implements MypageService{
 	 
 		 mypageMainRepo.save(no1);
 	 }
+		//결제 성공시 상태변경
+	public void updateOstate(Integer onum) {
+		orderRepo.updateOstate(onum);
+	}
+	
+	//결제 성공시 주문리스트 비우기
+	public void deleteOrderlist(Integer onum) {
+		orderRepo.deleteById(onum);
+	}	
+	
+	//결제 성공시 장바구니 비우기
+	public void deletebucket(String nid) {
+		BucketRepo.deleteAll();
+	}
+	
+	
+	//결제 취소시 테이블 삭제
+	public void deleteOnum(Integer onum) {
+		orderRepo.deleteAll();
+	}
+	
+	
 	 
 }
