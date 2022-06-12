@@ -204,75 +204,26 @@
                     </div>
                 </div>
                 <div class="col-lg-9 col-md-9">
-              		  <div class="container">
-				         <h3>Review</h3><hr/>
-				             <table class="reviewtable">
-				           		<tr th:each="review : ${reviewList}">
-				           			<td id="reviewOrder" th:text="${review.rcode}" ></td>
-				           			<td id="reviewContent" th:text="${review.rcontent}"></td>
-				           		</tr>
-					         </table>  
-					  </div>
+                  	<h3>Review</h3><hr/>
+                  	  <div class="row">
+		                        <div class="col-lg-4 col-md-6" th:each="review : ${reviewList}">
+		                            <div class="product__item">
+		                                
+		                                <div class="product__item__text">
+		                                    <h6><a th:text="${review.rcode}"></a></h6>
+		                                    <div class="rating">
+		                                        <i class="fa fa-star" th:text="${review.star}"></i>
+		                                    </div>
+		                                    <div th:text="${review.writedate}" class="fa fa-clock-o" id="reviewdate"></div>
+		                                    <p th:text="${review.rcontent}"></p>
+		                                </div>
+		                            </div>
+		                        </div>
+		                    </div>
 				</div>
     </section>
     <!-- Shop Section End -->
 
-    <!-- Instagram Begin -->
-    <div class="instagram">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-2 col-md-4 col-sm-4 p-0">
-                    <div class="instagram__item set-bg" data-setbg="img/instagram/insta-1.jpg">
-                        <div class="instagram__text">
-                            <i class="fa fa-instagram"></i>
-                            <a href="#">@ ashion_shop</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-4 p-0">
-                    <div class="instagram__item set-bg" data-setbg="img/instagram/insta-2.jpg">
-                        <div class="instagram__text">
-                            <i class="fa fa-instagram"></i>
-                            <a href="#">@ ashion_shop</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-4 p-0">
-                    <div class="instagram__item set-bg" data-setbg="img/instagram/insta-3.jpg">
-                        <div class="instagram__text">
-                            <i class="fa fa-instagram"></i>
-                            <a href="#">@ ashion_shop</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-4 p-0">
-                    <div class="instagram__item set-bg" data-setbg="img/instagram/insta-4.jpg">
-                        <div class="instagram__text">
-                            <i class="fa fa-instagram"></i>
-                            <a href="#">@ ashion_shop</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-4 p-0">
-                    <div class="instagram__item set-bg" data-setbg="img/instagram/insta-5.jpg">
-                        <div class="instagram__text">
-                            <i class="fa fa-instagram"></i>
-                            <a href="#">@ ashion_shop</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-4 p-0">
-                    <div class="instagram__item set-bg" data-setbg="img/instagram/insta-6.jpg">
-                        <div class="instagram__text">
-                            <i class="fa fa-instagram"></i>
-                            <a href="#">@ ashion_shop</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Instagram End -->
 
     <!-- Footer Section Begin -->
     <footer class="footer">

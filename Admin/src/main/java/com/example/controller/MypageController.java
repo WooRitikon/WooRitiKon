@@ -18,23 +18,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.domain.Bucket;
+import com.example.domain.Buy;
 import com.example.domain.Giftikon;
 import com.example.domain.Like;
 import com.example.domain.Normalid;
-
-import com.example.domain.Buy;
 import com.example.domain.Orderlist;
-
-import com.example.domain.Order;
-
-
 import com.example.domain.Product;
 import com.example.domain.Tbucket;
 import com.example.persistence.BucketRepository;
 import com.example.persistence.GiftikonRepository;
 import com.example.persistence.LikeRepository;
 import com.example.persistence.MypageMainRepository;
-import com.example.persistence.OrderlistRepository;
 import com.example.persistence.ProductRepository;
 import com.example.service.GifticonService;
 import com.example.service.MypageService;

@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.controller.Admin1Controller;
-import com.example.domain.Normalid;
 import com.example.domain.Product;
 import com.example.domain.Review;
 import com.example.domain.Sellerid;
@@ -34,6 +33,12 @@ public class SellerServiceImpl implements SellerService{
 	@Override
 	public Sellerid getname(String sid) {
 		return sellerRepo.findById(sid).get();
+	}
+	
+	//사용자 리뷰 쓰기
+	@Override
+	public void sendReview(Review re) {
+		reviewRepo.sendReview();
 	}
 	
 	//판매자 전체 리스트
