@@ -25,7 +25,6 @@ import com.example.domain.Normalid;
 import com.example.domain.Buy;
 import com.example.domain.Orderlist;
 
-import com.example.domain.Order;
 
 
 import com.example.domain.Product;

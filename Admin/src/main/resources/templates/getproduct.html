@@ -67,22 +67,22 @@ Coded by www.creative-tim.com
 							class="nc-icon nc-chart-bar-32"></i>
 							<p>Dashboard</p>
 					</a></li>
-					<li><a href="./customer.html"> <i
+					<li><a th:href="@{./getcustomer}"> <i
 							class="nc-icon nc-single-02"></i>
 							<p>Customer</p>
 					</a></li>
-					<li><a href="./sales.html"> <i
+					<li><a th:href="@{./sales}"> <i
 							class="nc-icon nc-money-coins"></i>
 							<p>Sales</p>
 					</a></li>
-					<li><a href="./product.html"> <i class="nc-icon nc-app"></i>
+					<li><a th:href="@{./getproduct}"> <i class="nc-icon nc-app"></i>
 							<p>Product</p>
 					</a></li>
-					<li><a href="./banner.html"> <i
+					<li><a th:href="@{./banner}"> <i
 							class="nc-icon nc-layout-11"></i>
 							<p>Banner</p>
 					</a></li>
-					<li><a href="./category.html"> <i
+					<li><a th:href="@{./getcategory}"> <i
 							class="nc-icon nc-tile-56"></i>
 							<p>Category</p>
 					</a></li>
@@ -191,7 +191,7 @@ Coded by www.creative-tim.com
 											<th>카테고리</th>
 											<th>상품명</th>
 											<th>상품가격</th>
-											<th>판매자id</th>
+											<th>업체 사업자번호</th>
 											<th>삭제</th>
 										</tr>
 									</thead>
@@ -201,7 +201,7 @@ Coded by www.creative-tim.com
 											<td th:text="${pd.pcategory}">카테고리 테스트</td>
 											<td th:text="${pd.pname}">상품명 테스트</td>
 											<td th:text="${pd.pprice}">상품가격 테스트</td>
-											<td th:text="${pd.sellerid.sid}">판매자id 테스트</td>
+											<td th:text="${pd.bcode}">판매자id 테스트</td>
 											<!-- <td th:text="${pd.pgiftstart}">등록일자 테스트</td> -->
 											<td><a th:type="button" th:href="@{/deleteProduct(pcode=${pd.pcode})}" style="position:right;" class="btn btn-primary" th:text="삭제" th:id="delbtn"/></td>
 										</tr>

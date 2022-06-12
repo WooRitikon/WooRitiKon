@@ -13,7 +13,7 @@ Coded by www.creative-tim.com
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="utf-8" />
@@ -54,49 +54,49 @@ Coded by www.creative-tim.com
        <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="active ">
-            <a href="./index.html">
+            <a th:href="@{./index}">
               <i class="nc-icon nc-chart-bar-32"></i>
               <p>Dashboard</p>
             </a>
           </li>
           <li>
-            <a href="./customer.html">
+            <a th:href="@{./getcustomer}">
               <i class="nc-icon nc-single-02"></i>
               <p>Customer</p>
             </a>
           </li>
           <li>
-            <a href="./sales.html">
+            <a th:href="@{./sales}">
               <i class="nc-icon nc-money-coins"></i>
               <p>Sales</p>
             </a>
           </li>
           <li>
-            <a href="./product.html">
+            <a th:href="@{./getproduct}">
               <i class="nc-icon nc-app"></i>
               <p>Product</p>
             </a>
           </li>
           <li>
-            <a href="./banner.html">
+            <a th:href="@{./banner}">
               <i class="nc-icon nc-layout-11"></i>
               <p>Banner</p>
             </a>
           </li>
           <li>
-            <a href="./category.html">
+            <a th:href="@{./getcategory}">
               <i class="nc-icon nc-tile-56"></i>
               <p>Category</p>
             </a>
           </li>
           <li>
-            <a href="./qna.html">
+            <a th:href="@{./getQnaList}">
               <i class="nc-icon nc-chat-33"></i>
               <p>QnA</p>
             </a>
           </li>
           <li>
-            <a href="./notice.html">
+            <a th:href="@{./getNoticeList}">
               <i class="nc-icon nc-paper"></i>
               <p>Notice</p>
             </a>
