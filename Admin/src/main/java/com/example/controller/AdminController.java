@@ -1,6 +1,9 @@
 package com.example.controller;
 
+import java.time.Month;
+import java.time.MonthDay;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,16 +20,25 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.chating.vo.Room;
+import com.example.domain.Calculate;
 import com.example.domain.Manager;
 import com.example.domain.Notice;
+import com.example.persistence.SalesRepository;
 import com.example.service.NoticeService;
+import com.example.service.SalesService;
 
 @Controller
 public class AdminController {
 	static final Logger logger = LoggerFactory.getLogger(AdminController.class);
 	
 	@Autowired
+	private SalesRepository  repo;
+	
+	@Autowired
 	private NoticeService notiservice;
+	
+	@Autowired
+	private SalesService salesservice;
 	
 	@RequestMapping("/{step}")
 	public void viewPage(@PathVariable String step) {
@@ -82,7 +94,6 @@ public class AdminController {
 		return "redirect:getNoticeList";
 	}
 	
-	//채팅
 	List<Room> roomList = new ArrayList<Room>();
 	static int roomNumber = 0;
 	
@@ -150,4 +161,22 @@ public class AdminController {
 		}
 		return mv;
 	}
+	
+	//매출 전체 조회
+	@RequestMapping("getSales")   
+	public void getSalesList(Model mm) {
+		logger.info("매출검색");
+		Calculate vo = new Calculate();
+		List<Calculate> list = salesservice.getSalesList(vo);
+		mm.addAttribute("salesList", list);
+	}
+	
+	@RequestMapping("index")
+	public void getSales(Model mm) {
+		logger.info("매출검색");
+		Calculate vo = new Calculate();
+		List<Calculate> list = salesservice.getSales(vo);
+		mm.addAttribute("salesList", list);
+	}
+	
 }
