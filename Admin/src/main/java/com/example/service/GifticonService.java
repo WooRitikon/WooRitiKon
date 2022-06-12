@@ -11,7 +11,6 @@ public interface GifticonService {
 	//일반회원 아이디 저장(회원가입)
 	public void savenormalId(Normalid vo);
 	
-	
 	public Normalid idCheck(Normalid vo);
 	
 	public Sellerid sellerCheck(Sellerid vo);

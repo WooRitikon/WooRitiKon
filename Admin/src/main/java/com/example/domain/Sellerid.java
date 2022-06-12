@@ -15,7 +15,6 @@ import lombok.Data;
 public class Sellerid {
 
 	@Id
-	@GeneratedValue
 	private String bcode;
 	private Integer ccode;
 	private String sid;
