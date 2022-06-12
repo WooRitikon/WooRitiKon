@@ -27,7 +27,6 @@
 <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
 <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
-
 <body>
 	<!-- Page Preloder -->
 	<div id="preloder">
@@ -68,7 +67,7 @@
 					<nav class="header__menu">
 						<ul>
 							<li class="active"><a href="./index.html">Home</a></li>
-							<li><a href="#">about</a></li>
+							<li><a th:href="@{/about}">about</a></li>
 							<li><a href="#">shop</a></li>
 							<li><a th:href="@{/mypageMain}">my page</a>
 								<ul class="dropdown">

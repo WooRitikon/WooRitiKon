@@ -139,7 +139,7 @@ public class Admin1Controller {
 	}
 	
 	//판매자 전체보기 리스트
-	@RequestMapping("/seller")
+	@RequestMapping("/getseller")
 	public void getSellerList(Model m) {
 		logger.info("판매자 전체보기");
 		Sellerid sid = new Sellerid();
@@ -158,7 +158,7 @@ public class Admin1Controller {
 	}
 	
 	//상품 전체리스트
-	@RequestMapping("/product")
+	@RequestMapping("/getproduct")
 	public void getProductList(Product pd,Model m) {
 		logger.info("전체상품 가져오기");
 		List<Product> list = productService.getProductList(pd);
@@ -171,7 +171,7 @@ public class Admin1Controller {
 		logger.info("상품 삭제");
 		productService.deleteProduct(pd);
 		
-		return "redirect:product";
+		return "redirect:getproduct";
 	
 	
 	}
@@ -226,6 +226,29 @@ public class Admin1Controller {
 		return "redirect:getFaqList";
 	}
 	
+
+	//category 리스트
+	@RequestMapping("getcategory")
+	public void getCategory(Category cg,Model m) {
+		List<Category> list = cgService.getCategory(cg);
+		m.addAttribute("Category",list);
+	}
+	
+	//category 등록
+	@RequestMapping("insertcategory")
+	public String insertcg(Category cg) {
+		cgService.insertcg(cg);
+		
+		return "redirect:getcategory";
+	}
+	
+	//category 삭제
+	@RequestMapping("deletecategory")
+	public String deletecg(Category cg) {
+		cgService.deletecg(cg);
+		
+		return "redirect:getcategory";
+	}
 
 }
 

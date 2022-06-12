@@ -48,7 +48,67 @@ public class SellerController {
 		m.addAttribute("seller", a);
 	}
 	
-	//가게 정보 조회하기
+	//가게 정보 조회하기 (사용자)
+	@RequestMapping("/shopInfoUser")
+	public void getshopInfoUser(HttpServletRequest request, Model m, String bcode) {
+		HttpSession session = request.getSession();
+		String nid = (String)session.getAttribute("nid");
+		
+		List<Sellerid> seller = sellerService.getSellerList(null);
+		List<Review> review = sellerService.getReviewList(null);
+		List<Review> newreview = new ArrayList<Review>();
+		List<Sellerid> newsell= new ArrayList<Sellerid>();
+		bcode = "1";
+		
+		for(Sellerid s: seller) {
+			if(s.getBcode().equals(bcode)) {
+				newsell.add(s);
+				break;
+			}
+		}
+		
+		for(Review r: review) {
+			if(r.getBcode().equals(bcode)) {
+				newreview.add(r);
+			}
+		}
+		
+		Sellerid a = newsell.get(0);
+		
+		m.addAttribute("newreview", newreview);
+		m.addAttribute("seller", a);
+	}
+	
+	//리뷰 쓰기 (사용자)
+	@RequestMapping("/sendReview")
+	public String sendReview(HttpServletRequest request, Review re) {
+		HttpSession session = request.getSession();
+		String nid = (String)session.getAttribute("nid");
+		
+		List<Sellerid> list = sellerService.getSellerList(null);
+		String bcode="0";
+		
+		for(Sellerid li : list) {
+			if(li.getSid().equals(nid)) {
+				bcode = li.getBcode();
+				
+			}
+		}
+		
+		List<Review> list1 = sellerService.getReviewList(null);
+		
+		for(Review li : list1) {
+			if(li.getBcode() == null) {
+				li.setBcode(bcode);
+				sellerService.sendReview(li);
+				break;
+			}
+		}
+		
+		return "redirect:shopInfoUser";
+	}
+	
+	//가게 정보 조회하기 (업체)
 	@RequestMapping("/shopInfo")
 	public void getshopInfo(HttpServletRequest request, Model m) {
 		HttpSession session = request.getSession();
@@ -113,7 +173,7 @@ public class SellerController {
 	public void getProList(HttpServletRequest request, Model m) {
 		HttpSession session = request.getSession();
 		String nid = (String)session.getAttribute("nid");
-		String bcode="0";
+		String bcode="12345678";
 		 
 		Product pr =new Product();
 		List<Product> list = sellerService.getProList(pr);
@@ -192,22 +252,22 @@ public class SellerController {
 		logger.info("전체 리뷰 검색");
 		HttpSession session = request.getSession();
 		String nid = (String)session.getAttribute("nid");
-		Integer pcode=0;
+		String bcode="0";
 		
-		Review re =new Review();
+		Review re = new Review();
 		List<Review> list = sellerService.getReviewList(re);
-		List<Product> list1 = sellerService.getProList(null);
+		List<Sellerid> list1 = sellerService.getSellerList(null);
 		List<Review> list2 = new ArrayList<Review>();
 		
-		for(Product l1 : list1) {
-			if(l1.getPcode().equals(nid)) {
-				pcode = l1.getPcode();
+		for(Sellerid l1 : list1) {
+			if(l1.getSid().equals(nid)) {
+				bcode = l1.getBcode();
 				break;
 			}
 		}
 		
 		for(Review li : list) {
-			if(li.getPcode().equals(pcode)) {
+			if(li.getBcode().equals(bcode)) {
 				list2.add(li);
 			}
 		}

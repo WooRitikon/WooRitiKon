@@ -18,8 +18,7 @@ public class Product {
 	private Integer pcode;
 	private Integer pprice;
 	private String bcode;
-	private String pname;
-	private String pcategory;
+	private String pname;	
 
 	private String pcontent;
 	
