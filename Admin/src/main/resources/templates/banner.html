@@ -55,37 +55,40 @@ Coded by www.creative-tim.com
             <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="active ">
-            <a href="./index">
+
+            <a th:href="@{./index}">
+
               <i class="nc-icon nc-chart-bar-32"></i>
               <p>Dashboard</p>
             </a>
           </li>
           <li>
-            <a href="./customer.html">
+            <a th:href="@{./getcustomer}">
               <i class="nc-icon nc-single-02"></i>
               <p>Customer</p>
             </a>
           </li>
           <li>
-            <a th:href="@{./getSales}">
+            <a th:href="@{./sales}">
+
               <i class="nc-icon nc-money-coins"></i>
               <p>Sales</p>
             </a>
           </li>
           <li>
-            <a th:href="@{./product}">
+            <a th:href="@{./getproduct}">
               <i class="nc-icon nc-app"></i>
               <p>Product</p>
             </a>
           </li>
           <li>
-            <a href="./banner.html">
+            <a th:href="@{./banner}">
               <i class="nc-icon nc-layout-11"></i>
               <p>Banner</p>
             </a>
           </li>
           <li>
-            <a href="./category.html">
+            <a th:href="@{./getcategory}">
               <i class="nc-icon nc-tile-56"></i>
               <p>Category</p>
             </a>

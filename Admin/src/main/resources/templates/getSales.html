@@ -14,6 +14,7 @@ Coded by www.creative-tim.com
 -->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
   <meta charset="utf-8" />
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
@@ -53,43 +54,47 @@ Coded by www.creative-tim.com
        <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="active ">
-            <a href="./index">
+
+            <a th:href="@{./index}">
+
               <i class="nc-icon nc-chart-bar-32"></i>
               <p>Dashboard</p>
             </a>
           </li>
           <li>
-            <a href="./customer.html">
+            <a th:href="@{./getcustomer}">
               <i class="nc-icon nc-single-02"></i>
               <p>Customer</p>
             </a>
           </li>
           <li>
+
            <a th:href="@{./getSales}">
+
               <i class="nc-icon nc-money-coins"></i>
               <p>Sales</p>
             </a>
           </li>
           <li>
-            <a href="./product.html">
+            <a th:href="@{./getproduct}">
               <i class="nc-icon nc-app"></i>
               <p>Product</p>
             </a>
           </li>
           <li>
-            <a href="./banner.html">
+            <a th:href="@{./banner}">
               <i class="nc-icon nc-layout-11"></i>
               <p>Banner</p>
             </a>
           </li>
           <li>
-            <a href="./category.html">
+            <a th:href="@{./getcategory}">
               <i class="nc-icon nc-tile-56"></i>
               <p>Category</p>
             </a>
           </li>
           <li>
-            <a href="./qna.html">
+            <a th:href="@{./getQnaList}">
               <i class="nc-icon nc-chat-33"></i>
               <p>QnA</p>
             </a>
