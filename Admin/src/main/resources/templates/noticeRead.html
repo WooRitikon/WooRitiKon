@@ -186,26 +186,36 @@ Coded by www.creative-tim.com
 							<form method="post">
 								<!-- ## 각각의 값을 지정 ## -->
 								<input name="noticecode" type="hidden" th:value="${notice.noticecode}"/>
-								<table class="table table-sm">
-									<tr>
-										<td>제목</td>
-										<td align="left" name="ntitle" type="text" th:text="${notice.ntitle}"></td>
-										<td >작성자</td>
-										<td align="left" name="mcode" th:text="${notice.mcode}"></td>
-										</tr>
-									<tr>
-										<td colspan="1">내용</td>
-										<td colspan="3" align="left" name="ncontent" th:text="${notice.ncontent}"></td>
-									</tr>
-									<tr>
-										<td>등록일</td>
-										<td align="left" name="ndate" th:text="${notice.ndate}"></td>
-									</tr>
-									<tr >
-										<td>파일</td>
-										<td align="left" name="ncategory" th:text="${notice.ncategory}"></td>
-									</tr>
-								</table>
+								  <div class="row">
+                    <div class="col-md-5 pr-1">
+                      <div class="form-group">
+                        <label>Writer</label>
+                        <input class="form-control" name="mcode" th:value="${notice.mcode}">
+                      </div>
+                      <div class="form-group">
+                        <label>Category</label>
+                        <input class="form-control" name="ncategory" th:value="${notice.ncategory}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" name="ntitle" class="form-control" th:value="${notice.ntitle}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+						<div class="mb-3">
+						  <label for="exampleFormControlTextarea1" class="form-label">내용</label>
+						  <textarea class="form-control form-control-lg" th:text="${notice.ncontent}" name="ncontent" id="exampleFormControlTextarea1" rows="3"></textarea>
+						</div>
+                    </div>
+				</div>
+				</div>
 								</form>
 							</div>
 						</div>

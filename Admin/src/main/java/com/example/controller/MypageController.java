@@ -18,14 +18,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.domain.Bucket;
+import com.example.domain.Buy;
 import com.example.domain.Giftikon;
 import com.example.domain.Like;
 import com.example.domain.Normalid;
-
-import com.example.domain.Buy;
 import com.example.domain.Orderlist;
-
-
 
 import com.example.domain.Product;
 import com.example.domain.Tbucket;
@@ -33,7 +30,6 @@ import com.example.persistence.BucketRepository;
 import com.example.persistence.GiftikonRepository;
 import com.example.persistence.LikeRepository;
 import com.example.persistence.MypageMainRepository;
-import com.example.persistence.OrderlistRepository;
 import com.example.persistence.ProductRepository;
 import com.example.service.GifticonService;
 import com.example.service.MypageService;
@@ -79,6 +75,39 @@ public class MypageController {
 		m.addAttribute("nid", mypageService.getname(nid));
 	}
 	
+	//결제정보
+	@RequestMapping("/payment")
+	public void payment(Model m, HttpServletRequest request) {
+		logger.info("payment controller");
+		HttpSession session = request.getSession();
+		String nid = (String)session.getAttribute("nid");
+		
+		m.addAttribute("buy", mypageService.selectOrderNum(nid));
+		m.addAttribute("nid", mypageService.getNid(nid));
+	}
+	
+	//결제정보
+		@RequestMapping("/payment_sucess")
+		public void payment_success(Model m, HttpServletRequest request) {
+			logger.info("payment_success controller");
+			HttpSession session = request.getSession();
+			String nid = (String)session.getAttribute("nid");
+			
+			m.addAttribute("buy", mypageService.selectOrderNum(nid));
+			m.addAttribute("nid", mypageService.getNid(nid));
+		}
+	
+		//결제정보
+		@RequestMapping("/payment_fail")
+		public void payment_fail(Model m, HttpServletRequest request) {
+			logger.info("payment_success controller");
+			HttpSession session = request.getSession();
+			String nid = (String)session.getAttribute("nid");
+			
+			m.addAttribute("buy", mypageService.selectOrderNum(nid));
+			m.addAttribute("nid", mypageService.getNid(nid));
+		}
+	
 	//<주문조회>
 	//기프티콘리스트출력
 
@@ -108,6 +137,7 @@ public class MypageController {
 		m.addAttribute("nid", nid);
 	
 	}
+	
 	//기프티콘 상세보기
 	@RequestMapping("/mypageShoppingSet")
 	public void getGiftikonSet(HttpServletRequest request, Giftikon gi, Model m) {
@@ -644,7 +674,7 @@ public class MypageController {
 		 m.addAttribute("n",nid);
 		 m.addAttribute("nid",result);
 		
-		 }
+	 }
 	 
 	 // 비밀번호 변경 업데이트
 	 @RequestMapping("/updatePassword")

@@ -247,5 +247,4 @@ public class GifticonServiceImpl implements GifticonService {
 		
 		return last;
 	}
-
 }

@@ -8,6 +8,9 @@ import com.example.domain.Sellerid;
 
 public interface SellerService {
 	
+	//사용자 리뷰 쓰기
+	void sendReview(Review re);
+	
 	//판매자 메인 아이디 가져오기
 	Sellerid getname(String sid);
 	
