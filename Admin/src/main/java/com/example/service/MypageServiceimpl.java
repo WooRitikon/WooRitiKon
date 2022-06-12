@@ -1,30 +1,26 @@
 package com.example.service;
 
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import javax.transaction.Transactional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.controller.MypageController;
+import com.example.domain.Bucket;
 import com.example.domain.Giftikon;
 import com.example.domain.Like;
 import com.example.domain.Normalid;
-import com.example.domain.Product;
+import com.example.domain.Buy;
+import com.example.domain.Orderlist;
+import com.example.persistence.BucketRepository;
 import com.example.persistence.GiftikonRepository;
 import com.example.persistence.LikeRepository;
 import com.example.persistence.MypageMainRepository;
-import com.example.persistence.MypageProductRepository;
+import com.example.persistence.BuyRepository;
+import com.example.persistence.OrderlistRepository;
 
 
 @Service
@@ -40,7 +36,17 @@ public class MypageServiceimpl implements MypageService{
 	@Autowired
 	private LikeRepository likeRepo;
 	
+	@Autowired
+	private OrderlistRepository orderlistRepo;
+	
 
+	@Autowired
+	private BuyRepository orderRepo;
+	
+	@Autowired
+	private BucketRepository BucketRepo;
+	
+	
 	
 	//<마이페이지 메인>
 	//이름가져오기 
@@ -56,10 +62,6 @@ public class MypageServiceimpl implements MypageService{
 		return giftikonRepo.findById(gi.getGcode()).get();
 	}
 	
-	
-
-	
-	
 	//<포인트 조회>
 	//포인트 금액 조회
 	@Override
@@ -67,96 +69,70 @@ public class MypageServiceimpl implements MypageService{
 		return mypageMainRepo.findById(nid).get();
 	}
 	
+	
 	//<위시리스트>
+	//장바구니 조회
+	@Override
+	public List<Orderlist> orderlistSet(String nid){
+		List<Orderlist> result = (List<Orderlist>)orderlistRepo.findAll();
+		return result;
+	}
+	
+	//장바구니 삭제
+	@Override
+	public void deletebucket(Bucket pname) {
+		BucketRepo.delete(pname);
+	}
+	
+	
+	
 	//찜한 가게 삭제
 	@Override
 	public void deleteHeart(Like li) {
 		likeRepo.delete(li);
 	}
+
 	
-//	//장바구니 구현
-//	@Override
-//	public void createOrder(Normalid no) {
-//		Order order = Order.createOrder(no);
-//		orderRepo.save(order);
-//		
-//	}
-//	
-//	//장바구니에 product 추가
-//	@Override
-//	@Transactional
-//	public void addCart(Normalid normalid, Product product, Integer quantity) {
-//	
-//		Order order = orderRepo.findByNid(normalid.getNid());
-//		
-//		//order 가 비었다면 생성
-//		if(order == null) {
-//			order = order.createOrder(normalid);
-//			orderRepo.save(order);
-//			
-//		}
-//		
-//		//orderlist 생성
-//		Orderlist orderlist = orderlistRepo.findByOnumAndPcode(order.getOnum(), product.getPcode());
-//		
-//		//orderlist가 비었다면 새로 생성
-//		if(orderlist == null) {
-//			orderlist = Orderlist.createOrderlist(order, product, quantity);
-//			orderlistRepo.save(orderlist);
-//			order.setOcount(order.getOcount()+1);
-//		}else {
-//			orderlist.addQuantity(quantity);
-//		}
-//	}
-//	
-//	//장바구니 조회
-//	@Override
-//	public List<Orderlist> userOrderView(Order order){
-//		
-//		List<Orderlist> orderlists = orderlistRepo.findAll();
-//		List<Orderlist> norderlists = new ArrayList<>();
-//		
-//		for(Orderlist orderlist : orderlists) {
-//			if(orderlist.getOrder().getNormalid() == order.getNormalid()) {
-//				norderlists.add(orderlist);
-//			}
-//		}
-//		
-//		return norderlists;
-//	}
-//	
-//	//장바구니 product 삭제
-//	@Override
-//	public void orderProductDelete(Integer onum) {
-//		orderlistRepo.deleteById(onum);
-//	}
-//	
-//	//장바구니 결제
-//	@Transactional
-//	@Override
-//	public void orderPayment(String nid) {
-//		List<Orderlist> orderlists = orderlistRepo.findAll(); //전제 orderlist 찾기
-//		List<Orderlist> norderlists = new ArrayList<>();
-//		Normalid buyer = mypageMainRepo.findById(nid).get();
-//		
-//		//반복문을 이용하여 접속 유저의 orderlist 만 찾아서 저장
-//		for(Orderlist orderlist: orderlists) {
-//			if(orderlist.getOrder().getNormalid().getNid() == buyer.getNid()) {
-//				norderlists.add(orderlist);
-//			}
-//		}
-//		
-//		//반복문을 이용하여 접속 유저의 orderlist 만 찾아서 삭제
-//		for(Orderlist orderlist : norderlists) {
-//			//금액 처리
-//			Normalid seller = orderlist.getOrder().getNormalid();
-//			int cash = orderlist.getProduct().getPprice();
-//			
-//			buyer.setNcharge(cash * -1);
-//			seller.setNcharge(cash);
-//		}
-// 	}
-//	
+	//<결제>
+	//빈 구매리스트 생성(번호만)
+	@Override
+	public void updateBuylistNumber() {
+	 orderlistRepo.updateBuylistNumber();
+	}
+	
+	//구매리스트 가져오기
+	@Override
+	public List<Orderlist> buylistget() {
+		return (List<Orderlist>)orderlistRepo.findAll();
+	}
+	
+	//주문리스트 저장
+	@Override
+	public void orderlistsave(Orderlist vo){
+		orderlistRepo.save(vo);
+	}
+	
+	//주문 총 결제액 저장
+	public void Ordersave(Buy vo) {
+		orderRepo.save(vo);
+	}
+	
+	//주문정보 생성
+	@Override
+	public void updateOrder(String nid) {
+	orderRepo.updateOrderNumber(nid);
+	}
+	
+	//주문정보 받아오기
+	public List<Buy> Orderget(){
+		return (List<Buy>)orderRepo.findAll();
+	}
+	
+	//주문번호에 맞는 주문정보 가져오기
+	public Buy selectOrderNum(String nid){
+		return orderRepo.selectOrderNum(nid);
+	}
+	
 	
 	//<회원정보 관리>
 	//회원정보 조회
@@ -166,12 +142,12 @@ public class MypageServiceimpl implements MypageService{
 	}
 	
 	
-	  //회원정보 수정하기 페이지 넘기기
-	  
-	  @Override
-	  public Normalid infoUpload(Normalid no) { 
-		  return mypageMainRepo.findById(no.getNid()).get(); 
-	  }
+	//회원정보 수정하기 페이지 넘기기
+
+	@Override
+	public Normalid infoUpload(Normalid no) { 
+		return mypageMainRepo.findById(no.getNid()).get(); 
+	}
 	 
 	
 	 //회원정보 수정
@@ -189,11 +165,5 @@ public class MypageServiceimpl implements MypageService{
 	 
 		 mypageMainRepo.save(no1);
 	 }
-	 
-	 
-	 
-
-	
-
 	 
 }

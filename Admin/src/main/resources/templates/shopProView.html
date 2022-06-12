@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/seller.css" type="text/css">
 </head>
 
 <body>
@@ -159,8 +160,9 @@
                                         <div id="collapseTwo" class="collapse" data-parent="#accordionExample">
                                             <div class="card-body">
                                                 <ul>
-                                                    <li><a href="shopProView">조회</a></li>
-                                                    <li><a href="shopProReg">등록</a></li>
+                                                    <li><a th:href="@{/shopProView}">조회</a></li>
+                                                    <li><a th:href="@{/shopProReg}">등록</a></li>
+                                                    <li><a th:href="@{/shopProPay}">결제</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -172,7 +174,7 @@
                                         <div id="collapseThree" class="collapse" data-parent="#accordionExample">
                                             <div class="card-body">
                                                 <ul>
-                                                    <li><a href="shopReview">조회</a></li>
+                                                    <li><a th:href="@{/shopReview}">조회</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -184,10 +186,10 @@
                                         <div id="collapseFour" class="collapse" data-parent="#accordionExample">
                                             <div class="card-body">
                                                 <ul>
-                                                    <li><a href="#">년도별</a></li>
-                                                    <li><a href="#">월별</a></li>
-                                                    <li><a href="#">주간별</a></li>
-                                                    <li><a href="#">일별</a></li>
+                                                    <li><a th:href="@{/shopChartYear}">년도별</a></li>
+                                                    <li><a th:href="@{/shopChartMonth}">월별</a></li>
+                                                    <li><a th:href="@{/shopChartWeek}">주간별</a></li>
+                                                    <li><a th:href="@{/shopChartDay}">일별</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -202,7 +204,7 @@
 		                    <div class="row">
 		                        <div class="col-lg-4 col-md-6" th:each="product : ${proList}">
 		                            <div class="product__item">
-		                                <div class="product__item__pic set-bg" data-setbg="img/shop/shop-1.jpg">
+		                                <div class="product__item__pic set-bg" style="background-image: url('/src/main/resources/static/img/productImg/${product.pimage}');">
 		                                    <div class="label new">New</div>
 		                                    <ul class="product__hover">
 		                                        <li><a href="img/shop/shop-1.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
@@ -210,6 +212,7 @@
 		                                        <li><a href="#"><span class="icon_bag_alt"></span></a></li>
 		                                    </ul>
 		                                </div>
+		                                
 		                                <div class="product__item__text">
 		                                    <h6><a th:href="@{/shopProDetails(pcode=${product.pcode})}" th:text="${product.pname}"></a></h6>
 		                                    <div class="rating">
@@ -220,22 +223,18 @@
 		                                        <i class="fa fa-star"></i>
 		                                    </div>
 		                                    <div class="product__price" th:text="${product.pprice}"></div>
+		                                  	<div>
+		                                		<a th:href="@{/shopProMod(pcode=${product.pcode})}"><button id="proModBtn">수정</button></a>
+		                                		<a th:href="@{/deletePro(pcode=${product.pcode})}"><button id="proDelBtn" >삭제</button></a>
+		                             	    </div>
 		                                </div>
 		                            </div>
 		                        </div>
-		                        <div class="col-lg-12 text-center">
-		                            <div class="pagination__option">
-		                                <a href="#">1</a>
-		                                <a href="#">2</a>
-		                                <a href="#">3</a>
-		                                <a href="#"><i class="fa fa-angle-right"></i></a>
-		                            </div>
-		                        </div>
 		                    </div>
-                 </div>
-             </div>
-          </div>
-    </section>
+		                 </div>
+		             </div>
+		          </div>
+		    </section>
     <!-- Shop Section End -->
 
     <!-- Instagram Begin -->

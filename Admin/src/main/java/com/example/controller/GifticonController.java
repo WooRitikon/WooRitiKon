@@ -1,5 +1,8 @@
 package com.example.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.domain.Normalid;
+import com.example.domain.Product;
 import com.example.domain.Sellerid;
 import com.example.service.GifticonService;
 
@@ -60,7 +64,23 @@ public class GifticonController {
 	@RequestMapping("/searchspass")
 	public void searchspass() {
 		logger.info("판매자회원 비밀번호 찾기 페이지");
-	} 
+	}
+	
+	//가게 검색 리스트 출력
+	@RequestMapping("/plist")
+	public String plist(HttpServletRequest request,Sellerid vo, Model m) {
+		logger.info("가게 검색리스트");
+		
+		HttpSession session = request.getSession();
+		String nid = (String) session.getAttribute("nid");
+		
+		List<Sellerid> seller = gifticonService.searchseller(vo);
+		
+		m.addAttribute("seller", seller);
+		m.addAttribute("nid",nid);
+		
+		return "productlist";
+	}
 	
 	//판매자회원 아이디 찾기
 	@RequestMapping("/sidresult")
@@ -79,6 +99,7 @@ public class GifticonController {
 		return "sucesssid";
 	} 
 	
+	//판매자 비밀번호 찾기
 	@RequestMapping("/spassresult")
 	public String spassresult(Sellerid vo, Model m) {
 		logger.info("판매자회원 비밀번호 찾기");
@@ -96,13 +117,25 @@ public class GifticonController {
 		return "sucessspass";
 	} 
 	
+	//메인페이지
 	@RequestMapping("/test")
 	public void test(HttpServletRequest request, Model m) {
 		HttpSession session = request.getSession();
 		String nid = (String) session.getAttribute("nid");
 		
-		//session.setAttribute("nid", nid);
+		//상품테이블에서 최신 3개 가져오기
+		List<Product> product =gifticonService.selectproduct();
 		
+		//판매자 테이블에서 최신 3개 가져오기
+		List<Sellerid> seller =gifticonService.selectSeller();
+		
+		//핫딜 상품 3개 만들기
+		List<Product> pro = gifticonService.selectproduct();
+		
+		
+		m.addAttribute("pro", pro);
+		m.addAttribute("seller", seller);
+		m.addAttribute("product", product);
 		m.addAttribute("nid",nid);
 	}
 	
@@ -167,6 +200,7 @@ public class GifticonController {
 
 	}
 	
+
 	//판매자 로그인 확인
 	@RequestMapping("/sellerCheck")
 	public String sellerCheck(HttpSession session, Sellerid vo) {
@@ -204,6 +238,24 @@ public class GifticonController {
 		m.addAttribute("resultnid", result);
 		return "sucessnid";
 	} 
+	
+	//특정 가게 검색
+	@RequestMapping("/searchstore")
+	public String searchstore(String check, Model m){
+		logger.info("가게 검색 하기");
+		List<Sellerid> re = gifticonService.allseller();
+		List<Sellerid> la = new ArrayList<Sellerid>();
+		
+		for(Sellerid ck : re) {
+			if(ck.getBname().equals(check)) {
+				la.add(ck);
+			}
+		}
+		
+		m.addAttribute("seller", la);
+		
+		return "productlist";
+	}
 	
 	//일반회원 비밀번호 찾기
 	@RequestMapping("/npassresult")

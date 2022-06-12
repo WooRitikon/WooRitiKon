@@ -1,8 +1,9 @@
 package com.example.controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,13 +12,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.domain.Category;
+import com.example.domain.Faq;
+import com.example.domain.Manager;
 import com.example.domain.Normalid;
 import com.example.domain.Product;
 import com.example.domain.Qna;
 import com.example.domain.Qnacomment;
 import com.example.domain.Sellerid;
-import com.example.persistence.ProductRepository;
+import com.example.service.CategoryService;
 import com.example.service.CustomerService;
+import com.example.service.FaqService;
 import com.example.service.ProductService;
 import com.example.service.QnaService;
 import com.example.service.QnacommentService;
@@ -40,7 +45,9 @@ public class Admin1Controller {
 	@Autowired
 	private ProductService productService;
 	@Autowired
-	private ProductRepository proRepo;
+	private FaqService faqService;
+	@Autowired
+	private CategoryService cgService;
 
 	
 	//질문응답 리스트 전체조회
@@ -49,6 +56,19 @@ public class Admin1Controller {
 		logger.info("전체 QNA");
 		Qna vo = new Qna();
 		List<Qna> list = qnaService.getQnaList(vo);
+		List<Qnacomment> list1 = qnacommentService.selectQcList();
+		
+		for(Qna q1 : list) {
+			for(Qnacomment qc: list1) {
+				if(q1.getQcode()==qc.getQcode().getQcode()) {
+					
+					q1.setQnastate("답변완료");
+					qnaService.selectUpdate(q1);
+				}
+			}
+		}
+		
+		
 		m.addAttribute("qnaList", list);
 	}
 	
@@ -58,8 +78,27 @@ public class Admin1Controller {
 		logger.info("qna 삭제");
 		qnaService.deleteQna(q);
 		
+		
 		return "redirect:/getQnaList";
 		
+	}
+	// qna 상세보기
+	@RequestMapping("getQnaDetail")
+	public void getQnaDetail(HttpServletRequest request,Qna q,Model m) {
+		HttpSession session = request.getSession();
+		String nid = (String) session.getAttribute("nid");
+		Qna qna = qnaService.getQnaDetail(q);
+		
+		m.addAttribute("nid", nid);
+		m.addAttribute("qnaDetail", qna);
+	}
+	
+	//qna 수정하기
+	@RequestMapping("adminqnaUpdate")
+	public String qnaUpdate(Qna q) {
+		qnaService.qnaUpdate(q);
+		
+		return "redirect:getQnaList";
 	}
 	
 	//답글 제목 가져오기
@@ -83,7 +122,7 @@ public class Admin1Controller {
 	}
 	
 	//고객 전체 리스트
-	@RequestMapping("/customer")
+	@RequestMapping("/getcustomer")
 	public void customerList(Model m) {
 		logger.info("고객 전체 리스트");
 		Normalid id = new Normalid();
@@ -139,5 +178,76 @@ public class Admin1Controller {
 	
 	}
 	
+	//faq 관리자 리스트 출력 
+	@RequestMapping("getFaqList")
+	public void getFaqList(Faq f, Model m) {
+		List<Faq> list = faqService.getFaqList(f);
+		
+		m.addAttribute("faqList", list);
+		
+	}
+	
+	//faq 등록
+	@RequestMapping("insertFaq")
+	public String insertFaq(HttpServletRequest request, Faq f) {
+		HttpSession session = request.getSession();
+		Integer mcode = (Integer) session.getAttribute("mcode");
+		Manager m = new Manager();
+		m.setMcode(mcode);
+		
+		f.setMcode(m);
+		
+		faqService.insertFaq(f);
+		
+		return "redirect:faqPage";
+	}
+	
+	//faq 삭제
+	@RequestMapping("deleteFaq")
+	public String deleteFaq(Faq f) {
+		logger.info("faq 삭제");
+		faqService.deleteFaq(f);
+		
+		return "redirect:getFaqList";
+		
+		}
+	
+	//faq 상세보기 페이지
+	@RequestMapping("getFaqDetail")
+	public void FaqPageDetail(Faq f,Model m) {
+		Faq faq=faqService.FaqPageDetail(f);
+		
+		m.addAttribute("faqDetail", faq);
+	}
+	
+	//faq 수정하기
+	@RequestMapping("getFapUpdate")
+	public String FaqUpdate(Faq f) {
+		faqService.FaqUpdate(f);
+		
+		return "redirect:getFaqList";
+	}
+	
+	//category 리스트
+	@RequestMapping("getcategory")
+	public void getCategory(Category cg,Model m) {
+		List<Category> list = cgService.getCategory(cg);
+		m.addAttribute("Category",list);
+	}
+	
+	//category 등록
+	@RequestMapping("insertcategory")
+	public String insertcg(Category cg) {
+		cgService.insertcg(cg);
+		
+		return "redirect:getcategory";
+	}
+	
+	@RequestMapping("deletecategory")
+	public String deletecg(Category cg) {
+		cgService.deletecg(cg);
+		
+		return "redirect:getcategory";
+	}
 }
 

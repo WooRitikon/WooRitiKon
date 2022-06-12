@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ashion Template">
+    <meta name="keywords" content="Ashion, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>mypagePointSet</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+	<link rel="stylesheet" href="css/mypage.css" type="text/css"/>
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Offcanvas Menu Begin -->
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="offcanvas-menu-wrapper">
+        <div class="offcanvas__close">+</div>
+        <ul class="offcanvas__widget">
+            <li><span class="icon_search search-switch"></span></li>
+            <li><a href="#"><span class="icon_heart_alt"></span>
+                <div class="tip">2</div>
+            </a></li>
+            <li><a href="#"><span class="icon_bag_alt"></span>
+                <div class="tip">2</div>
+            </a></li>
+        </ul>
+        <div class="offcanvas__logo">
+            <a href="./index.html"><img src="img/logo.png" alt=""></a>
+        </div>
+        <div id="mobile-menu-wrap"></div>
+        <div class="offcanvas__auth">
+            <a href="#">Login</a>
+            <a href="#">Register</a>
+        </div>
+    </div>
+    <!-- Offcanvas Menu End -->
+
+    <!-- Header Section Begin -->
+   <header class="header">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xl-3 col-lg-2">
+					<div class="header__logo">
+						<a href="./index.html"><img src="img/mainlogo.png" alt=""></a>
+					</div>
+				</div>
+				<div class="col-xl-6 col-lg-7">
+					<nav class="header__menu">
+						<ul>
+							<li class="active"><a href="./index.html">Home</a></li>
+							<li><a href="#">about</a></li>
+							<li><a href="#">shop</a></li>
+							<li><a th:href="@{/mypageMain}">my page</a>
+								<ul class="dropdown">
+									<li><a th:href="@{/mypageShoppingList}">my 주문조회</a></li>
+									<li><a th:href="@{/mypageBasketList}">my 위시리스트</a></li>
+									<li><a th:href="@{/mypageGetGift}">my 선물함</a></li>
+									<li><a th:href="@{/mypageInfo}">my 정보</a></li>
+									<li><a th:href="@{/mypageQna}">my Q&A</a></li>
+							<li><a href="#">my shop</a>
+								<ul class="dropdown">
+									<li><a href="./product-details.html">information</a></li>
+									<li><a href="./shop-cart.html">product</a></li>
+									<li><a href="./checkout.html">review</a></li>
+									<li><a href="./blog-details.html">sales</a></li>
+								</ul></li>
+														<li><a href="#">customer center</a>
+								<ul class="dropdown">
+									<li><a th:href="@{./noticePage}">Notice</a></li>
+									<li><a th:href="@{./fnqPage}">FnQ</a></li>
+									<li><a th:href="@{./qnaPage}">Qna</a></li>
+								</ul></li>
+						</ul>
+					</nav>
+				</div>
+				<div class="col-lg-3">
+					<div class="header__right">
+						<div th:if="${normalid == null}" class="header__right__auth">
+							<a th:href="@{/login}">로그인</a> <a th:href="@{/selectpage}">회원가입</a>
+						</div>
+						<div th:if="${normalid != null}" class="header__right__auth">
+							<a th:text="${normalid.nid}" th:href="@{/mypageMain}"></a> <a th:href="@{/logout}">로그아웃</a>
+						</div>
+						<ul class="header__right__widget">
+         				   <li><a th:href="@{/mypageHeartList}"><span class="icon_heart_alt"></span>
+           					 </a></li>
+          				  <li><a th:href="@{/mypageBasketList}"><span class="icon_bag_alt"></span>
+            				</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="canvas__open">
+				<i class="fa fa-bars"></i>
+			</div>
+		</div>
+	</header>
+    <!-- Header Section End -->
+
+    <!-- Breadcrumb Begin -->
+    <div class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__links">
+                        <a href="./index.html"><i class="fa fa-home"></i> Home</a>
+                        <span>my page</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+
+    <!-- Shop Section Begin -->
+    <section class="shop spad">
+        <div class="container">
+            <div class="row">
+              <div class="col-lg-3 col-md-3">
+					<div class="shop__sidebar">
+						<div class="sidebar__categories">
+							<div class="section-title">
+								<h4>My page</h4>
+							</div>
+							<div class="categories__accordion">
+								<div class="accordion" id="accordionExample">
+									<div class="card">
+										<div class="card-heading active">
+											<a data-toggle="collapse" data-target="#collapseOne">my 주문주회</a> 
+										</div>
+										<div id="collapseOne" class="collapse show"
+											data-parent="#accordionExample">
+											<div class="card-body">
+												<ul>
+													<li><a th:href="@{/mypageShoppingList}">my 기프티콘 조회</a></li>
+													<li><a th:href="@{/mypagePointSet}">my 포인트 조회</a></li>
+													<li><a th:href="@{/mypageShoppingAllList}">my 구매 내역</a></li>
+													<li><a th:href="@{/mypageBuyCancel}">기프티콘 구매취소</a></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+									<div class="card">
+										<div class="card-heading">
+											<a data-toggle="collapse" data-target="#collapseTwo">my 위시리스트</a>
+										</div>
+										<div id="collapseTwo" class="collapse"
+											data-parent="#accordionExample">
+											<div class="card-body">
+												<ul>
+													<li><a th:href="@{/mypageBasketList}">my 장바구니</a></li>
+													<li><a th:href="@{/mypageHeartList}">my 찜한가게</a></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+									<div class="card">
+										<div class="card-heading">
+											<a data-toggle="collapse" data-target="#collapseThree">my
+												선물함</a>
+										</div>
+										<div id="collapseThree" class="collapse"
+											data-parent="#accordionExample">
+											<div class="card-body">
+												<ul>
+													<li><a th:href="@{/mypageGetGift}">받은 선물함</a></li>
+													<li><a th:href="@{/mypageSendGift}">보낸 선물함</a></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+									<div class="card">
+										<div class="card-heading">
+											<a data-toggle="collapse" data-target="#collapseFour">my
+												정보</a>
+										</div>
+										<div id="collapseFour" class="collapse"
+											data-parent="#accordionExample">
+											<div class="card-body">
+												<ul>
+													<li><a th:href="@{/mypageInfo}">my 정보 조회</a></li>
+													<li><a th:href="@{/mypageInfoCancel}">회원탈퇴</a></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+										<div class="card">
+										<div class="card-heading">
+											<a data-toggle="collapse" data-target="#collapseFive">my
+												Q&A</a>
+										</div>
+										<div id="collapseFive" class="collapse"
+											data-parent="#accordionExample">
+											<div class="card-body">
+												<ul>
+													<li><a th:href="@{/mypageQna}">1:1 문의하기</a></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+                      
+                <div class="col-lg-9 col-md-9">
+          	<div class="container">
+			<div class="row">
+			 <div class="card-body bg-white mt-0 shadow">
+                <p style="font-weight: bold">카카오페이 현재 사용가능</p>
+                <label class="box-radio-input"><input type="radio" name="cp_item" value="5000"><span>5,000원</span></label>
+                <label class="box-radio-input"><input type="radio" name="cp_item" value="10000"><span>10,000원</span></label>
+                <label class="box-radio-input"><input type="radio" name="cp_item" value="15000"><span>15,000원</span></label>
+                <label class="box-radio-input"><input type="radio" name="cp_item" value="20000"><span>20,000원</span></label>
+                <label class="box-radio-input"><input type="radio" name="cp_item" value="25000"><span>25,000원</span></label>
+                <label class="box-radio-input"><input type="radio" name="cp_item" value="30000"><span>30,000원</span></label>
+                <label class="box-radio-input"><input type="radio" name="cp_item" value="35000"><span>35,000원</span></label>
+                <label class="box-radio-input"><input type="radio" name="cp_item" value="40000"><span>40,000원</span></label>
+                <label class="box-radio-input"><input type="radio" name="cp_item" value="50000"><span>50,000원</span></label>
+                <p  style="color: #ac2925; margin-top: 30px">카카오페이의 최소 충전금액은 5,000원이며 <br/>최대 충전금액은 50,000원 입니다.</p>
+                <button type="button" class="btn btn-lg btn-block  btn-custom" id="charge_kakao">충 전 하 기</button>
+ </div>
+			
+			</div>
+		</div>
+		<br/><br/><br/><br/>
+		<h5>포인트 이용 약관</h5>
+			<p>
+			꼭 확인하세요! <br /> 포인트 체크카드 결제 건은 결제일로부터 최대 10일 이내(영업일 기준)
+			적립됩니다. <br />포인트 신용카드 결제 건은 1일 ~ 말일까지 카드사로 매출 접수된 건에 대해 익월에
+		    적립됩니다. (신한카드 : 15일 경, 삼성카드 : 20일 경) <br /> 우리티콘은 우리티콘 포인트 관련
+		    사고에 대비하여 준비금을 적립하고 있습니다.
+			<br /> 상품 포인트 구매: 상품 구매에 대해 사용 가능하며 포인트와 결제는 동시 사용 가능합니다.<br />
+			</p>
+           </div>
+          </div>
+       </div>
+    </section>
+    <!-- Shop Section End -->
+
+    <!-- Footer Section Begin -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-7">
+                    <div class="footer__about">
+                        <div class="footer__logo">
+                            <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                        cilisis.</p>
+                        <div class="footer__payment">
+                            <a href="#"><img src="img/payment/payment-1.png" alt=""></a>
+                            <a href="#"><img src="img/payment/payment-2.png" alt=""></a>
+                            <a href="#"><img src="img/payment/payment-3.png" alt=""></a>
+                            <a href="#"><img src="img/payment/payment-4.png" alt=""></a>
+                            <a href="#"><img src="img/payment/payment-5.png" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-5">
+                    <div class="footer__widget">
+                        <h6>Quick links</h6>
+                        <ul>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Blogs</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">FAQ</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4">
+                    <div class="footer__widget">
+                        <h6>Account</h6>
+                        <ul>
+                            <li><a href="#">My Account</a></li>
+                            <li><a href="#">Orders Tracking</a></li>
+                            <li><a href="#">Checkout</a></li>
+                            <li><a href="#">Wishlist</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-8 col-sm-8">
+                    <div class="footer__newslatter">
+                        <h6>NEWSLETTER</h6>
+                        <form action="#">
+                            <input type="text" placeholder="Email">
+                            <button type="submit" class="site-btn">Subscribe</button>
+                        </form>
+                        <div class="footer__social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-youtube-play"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-pinterest"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    <div class="footer__copyright__text">
+                        <p>Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
+                    </div>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Search Begin -->
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch">+</div>
+            <form class="search-model-form">
+                <input type="text" id="search-input" placeholder="Search here.....">
+            </form>
+        </div>
+    </div>
+    <!-- Search End -->
+
+    <!-- Js Plugins -->
+    <script>
+    $('#charge_kakao').click(function () {
+        // getter
+        var IMP = window.IMP;
+        IMP.init('imp01008206');
+        var money = $('input[name="cp_item"]:checked').val();
+        console.log(money);
+
+        IMP.request_pay({
+            pg: 'kakao',
+            merchant_uid: 'merchant_' + new Date().getTime(),
+
+            name: '주문명 : 주문명 설정',
+            amount: money,
+            buyer_email: 'iamport@siot.do',
+            buyer_name: '구매자이름',
+            buyer_tel: '010-1234-5678',
+            buyer_addr: '인천광역시 부평구',
+            buyer_postcode: '123-456'
+        }, function (rsp) {
+            console.log(rsp);
+            if (rsp.success) {
+                var msg = '결제가 완료되었습니다.';
+                msg += '고유ID : ' + nid;
+                msg += '상점 거래ID : ' + onum;
+                msg += '결제 금액 : ' + ototal;
+                msg += '카드 승인번호 : ' + rsp.apply_num;
+                $.ajax({
+                    type: "GET", 
+                    url: "mypagePointSetPlus", //충전 금액값을 보낼 url 설정
+                    data: {
+                        "amount" : money
+                    },
+                });
+            } else {
+                var msg = '결제에 실패하였습니다.';
+                msg += '에러내용 : ' + rsp.error_msg;
+            }
+            alert(msg);
+            document.location.href="mypagePointSet"; //alert창 확인 후 이동할 url 설정
+        });
+    });
+</script>
+    
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/mixitup.min.js"></script>
+    <script src="js/jquery.countdown.min.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.nicescroll.min.js"></script>
+    <script src="js/main.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+</body>
+
+</html>

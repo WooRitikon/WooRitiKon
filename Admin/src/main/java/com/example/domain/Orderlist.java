@@ -1,29 +1,32 @@
 package com.example.domain;
 
-import java.time.LocalDate;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
-import org.hibernate.annotations.CreationTimestamp;
 
 import lombok.Data;
 
 @Data
 @Entity
+@Table(name="orderlist")
 public class Orderlist {
+
 	@Id
-	@GeneratedValue
-	private Integer noticecode;
-	private String ntitle;
-	private String ncategory;
-	private String ncontent;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer listcode;
 	
-	@CreationTimestamp
-	private LocalDate ndate;
+
+	private Integer onum;
+
+	private Integer quantity;
+	private Integer totalprice;
 	
-	@JoinColumn(name="mcode")
-	private Integer mcode;
+	private Integer pcode;
+
+
 }

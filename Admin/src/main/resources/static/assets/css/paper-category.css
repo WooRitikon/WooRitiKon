@@ -1,0 +1,58 @@
+table th {
+  background-color: antiquewhite;
+  color:black;
+}
+
+.card-body {
+	text-align: left; 
+}
+
+.customer-table1 {
+  width:100%;
+}
+
+.card-title {
+  font-weight: bold;
+  margin : 20px 0px 20px 50px;
+}
+
+.main-panel {
+  height: 100%;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+}
+
+.selectbox {
+	margin-right:10px;
+	background-color: white;
+	border:0;
+	outline: none;
+}
+
+.card{
+	height: 700px;
+	width:90%
+}
+
+tr , td {
+	text-align: center;
+}
+
+.category-input {
+	height: 40px;
+}
+
+.cg-container {
+	margin-left: 50px;
+}
+
+.button-delete , .button-delete > a {
+	background-color: silver;
+	color:white;
+	border: none;
+	border-radius: 50%;
+	
+}

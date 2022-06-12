@@ -1,0 +1,107 @@
+.mypagePText{
+	 font-weight: bold;
+	 font-size: x-large;
+	 color: #B50000;
+}
+
+#nnameText{
+	font-weight: bold;
+	font-size: x-large;
+}
+
+#productText{
+	font-weight: bold;
+	font-size: large;
+	color: black;
+}
+
+#mypageSearchbtn {
+	width: 23px;
+	height: auto;
+}
+
+
+#discount__text {
+    background: #f4f4f4;
+    height: 282px;
+    padding: 75px 90px 50px;
+    text-align: center;
+}
+
+#infoBtn{
+display: inline-block;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 10px 15px 10px;
+    color: #ffffff;
+    background: #BC1717;
+    border-radius: 10px;
+}
+
+h3 , h6 {
+	text-align: center;
+}
+
+h6 {
+	margin-top:10px;
+	color : lightgray;
+}
+
+.button-container {
+	text-align: left;
+	margin-left: 25px;
+}
+
+.delete-button {
+	font-size: 14px;
+    color: #ffffff;
+    background: #ca1515;
+    font-weight: 600;
+    border: none;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 50px;
+}
+
+.a-tag-font {
+	color:white;
+}
+
+.input-group {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    justify-content: end;
+    align-items: center;
+}
+
+select.selectbox {
+	height: 35px;
+}
+
+div.input-group-text {
+	height: 36px;
+}
+
+#Table {
+	width: 800px;
+}
+
+#shop {
+	padding-top:0px;
+}
+
+tr , td {
+	text-align: center;
+}
+
+textarea {
+	resize: none;
+}
+
+p {
+	font-size: 1.5rem;
+}

@@ -17,7 +17,8 @@ public class Giftikon {
 
 	@Id
 	private Integer gcode;
-	private Integer giftcode;
+	
+	private String giftcode;
 	private Date startdate;
 	
 	@ManyToOne
@@ -29,5 +30,9 @@ public class Giftikon {
 	private Product product;
 	
 	private Date finaldate;
+	
+	private String giftstate;
+	private int giftcount;
+	
 	
 }

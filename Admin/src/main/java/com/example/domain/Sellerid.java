@@ -1,13 +1,12 @@
 package com.example.domain;
 
-import java.util.Date;
+import java.time.LocalDate;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import lombok.Data;
 
@@ -30,9 +29,13 @@ public class Sellerid {
 	private String sdaddress;
 	private String sbirth;
 	private String bname;
+	private String scontent;
 	
-	@Column(insertable = false, updatable = false, columnDefinition = "date default sysdate()")
-	@Temporal(TemporalType.DATE)
-	private Date ssubscribe;
+	
+	@CreationTimestamp
+	private LocalDate ssubscribe;
+	
+	private String shotimage;
+	private String originimage;
 	
 }

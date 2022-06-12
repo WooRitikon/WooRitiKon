@@ -8,4 +8,5 @@ import com.example.domain.Qna;
 @Repository
 public interface QnaRepository extends CrudRepository<Qna, Integer> {
 
+	
 }

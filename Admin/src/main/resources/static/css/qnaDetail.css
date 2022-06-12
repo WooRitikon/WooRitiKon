@@ -1,0 +1,56 @@
+.mypagePText{
+	 font-weight: bold;
+	 font-size: x-large;
+	 color: #B50000;
+}
+
+#nnameText{
+	font-weight: bold;
+	font-size: x-large;
+}
+
+#productText{
+	font-weight: bold;
+	font-size: large;
+	color: black;
+}
+
+#mypageSearchbtn {
+	width: 23px;
+	height: auto;
+}
+
+
+#discount__text {
+    background: #f4f4f4;
+    height: 282px;
+    padding: 75px 90px 50px;
+    text-align: center;
+}
+
+#infoBtn{
+display: inline-block;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 10px 15px 10px;
+    color: #ffffff;
+    background: #BC1717;
+    border-radius: 10px;
+}
+
+h3 {
+	text-align: center;
+}
+
+#button-control {
+	height: auto;
+}
+
+textarea.form-control {
+	height: 200px;
+}  
+
+textarea {
+	resize: none;
+}

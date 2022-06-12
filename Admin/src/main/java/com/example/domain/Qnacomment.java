@@ -26,6 +26,6 @@ public class Qnacomment {
 	
 	@ManyToOne
 	@JoinColumn(name="qcode")
-	private Qnacomment qnacom;
+	private Qna qcode;
 	
 }

@@ -154,7 +154,7 @@
                                         <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
                                             <div class="card-body">
                                                 <ul>
-                                                    <li><a href="shopInfo">조회</a></li>
+                                                    <li><a th:href="@{/shopInfo}">조회</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -166,8 +166,9 @@
                                         <div id="collapseTwo" class="collapse" data-parent="#accordionExample">
                                             <div class="card-body">
                                                 <ul>
-                                                    <li><a href="shopProView">조회</a></li>
-                                                    <li><a href="shopProReg">등록</a></li>
+                                                    <li><a th:href="@{/shopProView}">조회</a></li>
+                                                    <li><a th:href="@{/shopProReg}">등록</a></li>
+                                                    <li><a th:href="@{/shopProPay}">결제</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -179,7 +180,7 @@
                                         <div id="collapseThree" class="collapse" data-parent="#accordionExample">
                                             <div class="card-body">
                                                 <ul>
-                                                    <li><a href="#">조회</a></li>
+                                                    <li><a th:href="@{/shopReview}">조회</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -191,10 +192,10 @@
                                         <div id="collapseFour" class="collapse" data-parent="#accordionExample">
                                             <div class="card-body">
                                                 <ul>
-                                                    <li><a href="#">년도별</a></li>
-                                                    <li><a href="#">월별</a></li>
-                                                    <li><a href="#">주간별</a></li>
-                                                    <li><a href="#">일별</a></li>
+                                                    <li><a th:href="@{/shopChartYear}">년도별</a></li>
+                                                    <li><a th:href="@{/shopChartMonth}">월별</a></li>
+                                                    <li><a th:href="@{/shopChartWeek}">주간별</a></li>
+                                                    <li><a th:href="@{/shopChartDay}">일별</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -210,56 +211,53 @@
 			                <div class="col-lg-6 col-md-6">
 			                    <div class="contact__content">
 			                        <div class="contact__address">
-			                            <h5>Contact info</h5>
 								            <input name="bcode" type="hidden" th:value="${seller.bcode}"/>
-								            <table class="infotable">
-								                  <tbody class="infobody">
-								                  	  <tr>
-								                          <th>상호명</th>
-								                          <td th:text="${seller.bname}"></td>
-								                      </tr>
-								                      <tr>
-								                          <th>이메일</th>
-								                          <td th:text="${seller.semail}"></td>
-								                      </tr>
-								                      <tr>
-								                          <th>전화번호</th>
-								                          <td th:text="${seller.btel}"></td>
-								                      </tr>
-								                      <tr>
-									                       <th>주소</th>
-									                       <td th:text="${seller.saddress}"></td>
-								                      </tr>
-								                      <tr>
-								                        <th>가게 운영시간</th>
-								                        <td>평일(9:00~18:00) 주말(9:00~13:00)</td>
-								                      </tr>
-								                       <tr>
-								                       <th>가게소개</th>
-								                       <td>솨라라라라ㅘㅅ라라라랄~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</td>
-								                	   </tr>
-								                  	   <tr>
-								                       <th>사진</th>
-								                        <td class="shoplogo"><img src="image/alver.png" alt=""></td>
-								                   	   </tr>
-								                  </tbody>
-								              </table>
+								            <div class="contact__address">
+						                            <h5>Contact info</h5>
+						                            <ul>
+						                                <li>
+						                                    <h6><i class="fa fa-map-marker"></i> 상호명</h6>
+						                                    <p th:text="${seller.sname}"></p>
+						                                </li>
+						                                <li>
+						                                    <h6><i class="fa fa-phone"></i> 이메일</h6>
+						                                    <p th:text="${seller.semail}"></p>
+						                                </li>
+						                                <li>
+						                                    <h6><i class="fa fa-phone"></i> 전화번호</h6>
+						                                    <p th:text="${seller.stel}"></p>
+						                                </li>
+						                                <li>
+						                                    <h6><i class="fa fa-headphones"></i> 주소</h6>
+						                                    <p th:text="${seller.saddress}"></p>
+						                                    <p th:text="${seller.sdaddress}"></p>
+						                                </li>
+						                                <li>
+						                                    <h6><i class="fa fa-headphones"></i> 운영시간</h6>
+						                                    <p></p>
+						                                </li>
+						                                <li>
+						                                    <h6><i class="fa fa-headphones"></i> 소개</h6>
+						                                    <p th:text="${seller.scontent}"></p>
+						                                </li>
+						                            </ul>
+						                        </div>
 					                        </div>
 					                    </div>
 					                </div>
 			                 <div class="col-lg-6 col-md-6">
 								     <div>
-								         <h6><i class="fa fa-headphones"></i> Photo</h6>
-								         <p><img src="img/seller/alver.jpg"  alt=""></p>
+								     	 <br/><br/>
+								         <p><img src="img/alver.jpg"  alt=""></p>
 									 </div>
 			                 </div>
 			                <div class="map_wrap">
-								<div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+								<div id="map" style="width:70%;height:100%;position:relative;overflow:hidden;"></div>
 									<div id="menu_wrap" class="bg_white">
 										<div class="option">
 											<div>
 												<form onsubmit="searchPlaces(); return false;">
-												키워드 : <input type="text" value="이태원역" id="keyword" size="15"> 
+												키워드 : <input type="text" th:value="${seller.sdaddress}" id="keyword" size="15"> 
 												<button type="submit">검색하기</button> 
 												</form>
 											</div>
@@ -267,12 +265,12 @@
 											<hr>
 											<ul id="placesList"></ul>
 											<div id="pagination"></div>
-									</div>
+									</div>	
 							</div>
 				        </div>
 	    			</div>
 			        <div class="shopmodify">
-			       		 <a href="shopInfoMod"><button id="shopmodifyBtn">수정</button></a>
+			       		 <a th:href="@{/shopInfoMod}"><button id="shopmodifyBtn">수정</button></a>
 			        </div>
                 </div>
             </div>

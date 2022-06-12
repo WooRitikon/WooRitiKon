@@ -38,6 +38,11 @@ Coded by www.creative-tim.com
 <link href="../assets/css/paper-getQnaList.css?v=2.0.1" rel="stylesheet" />
 <!-- CSS Just for demo purpose, don't include it in your project -->
 <link href="../assets/demo/demo.css" rel="stylesheet" />
+<!-- 데이터테이블 -->
+ <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  
 </head>
 
 <body class="">
@@ -105,7 +110,8 @@ Coded by www.creative-tim.com
 									class="navbar-toggler-bar bar3"></span>
 							</button>
 						</div>
-						<a class="navbar-brand" href="javascript:;">QNA</a>
+						<a class="navbar-brand" th:href="@{./getQnaList}">QNA</a>
+						<a class="navbar-brand" th:href="@{./getFaqList}">FAQ</a>
 					</div>
 					<button class="navbar-toggler" type="button" data-toggle="collapse"
 						data-target="#navigation" aria-controls="navigation-index"
@@ -167,12 +173,11 @@ Coded by www.creative-tim.com
 							<h5 class="card-title">QnA</h5>
 						</div>
 						<div class="card-body">
-							<table class="table table-hover">
+							<table id="Table-date" class="table table-hover">
 								<thead style="background-color: #F6F6F6;">
 									<tr>
 										<th>번호</th>
 										<th>제목</th>
-										<th>내용</th>
 										<th>작성자ID</th>
 										<th>작성일자</th>
 										<th>답변확인</th>
@@ -183,11 +188,10 @@ Coded by www.creative-tim.com
 								<tbody>
 									<tr th:each="qna: ${qnaList}">
 										<td th:text="${qna.qcode}"></td>
-										<td th:text="${qna.ntitle}"></td>
-										<td th:text="${qna.ncontent}"></td>
-										<td th:text="${qna.nid}"></td>
+										<td><a th:href="@{./getQnaDetail(qcode=${qna.qcode})}" th:text="${qna.ntitle}"></a></td>
+										<td th:text="${qna.nid.nid}"></td>
 										<td th:text="${qna.ndate}"></td>
-										<td th:text="답변확인"></td>
+										<td th:text="${qna.qnastate}"></td>
 										<td><a type="button" th:href="@{/qnareply(qcode=${qna.qcode})}" style="position:right;" class="btn btn-primary" th:text="답글"></a></td>
 										<td><a type="button" th:href="@{/deleteQna(qcode=${qna.qcode})}" style="position:right;" class="btn btn-primary" th:text="삭제"></td>
 									</tr>
@@ -238,6 +242,25 @@ Coded by www.creative-tim.com
 		type="text/javascript"></script>
 	<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
 	<script src="../assets/demo/demo.js"></script>
+	<!-- 데이터테이블 -->
+	<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+	<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+	<script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+	<script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+	<script src="plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+	<script src="plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+	<script>
+		$(function(){
+			$('#Table-date').DataTable({
+				"paging" : true,
+				"searching" : true,
+				"ordering" : false,
+				"autoWidth" : false,
+				"responsive" : true
+				
+			})
+		})
+	</script>
 </body>
 
 </html>

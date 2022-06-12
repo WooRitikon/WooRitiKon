@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -148,7 +148,7 @@
                                         <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
                                             <div class="card-body">
                                                 <ul>
-                                                    <li><a href="shopInfo">조회</a></li>
+                                                    <li><a th:href="@{/shopInfo}">조회</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -160,8 +160,9 @@
                                         <div id="collapseTwo" class="collapse" data-parent="#accordionExample">
                                             <div class="card-body">
                                                 <ul>
-                                                    <li><a href="#">조회</a></li>
-                                                    <li><a href="#">등록</a></li>
+                                                    <li><a th:href="@{/shopProView}">조회</a></li>
+                                                    <li><a th:href="@{/shopProReg}">등록</a></li>
+                                                    <li><a th:href="@{/shopProPay}">결제</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -173,7 +174,7 @@
                                         <div id="collapseThree" class="collapse" data-parent="#accordionExample">
                                             <div class="card-body">
                                                 <ul>
-                                                    <li><a href="#">조회</a></li>
+                                                    <li><a th:href="@{/shopReview}">조회</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -185,10 +186,10 @@
                                         <div id="collapseFour" class="collapse" data-parent="#accordionExample">
                                             <div class="card-body">
                                                 <ul>
-                                                    <li><a href="#">년도별</a></li>
-                                                    <li><a href="#">월별</a></li>
-                                                    <li><a href="#">주간별</a></li>
-                                                    <li><a href="#">일별</a></li>
+                                                    <li><a th:href="@{/shopChartYear}">년도별</a></li>
+                                                    <li><a th:href="@{/shopChartMonth}">월별</a></li>
+                                                    <li><a th:href="@{/shopChartWeek}">주간별</a></li>
+                                                    <li><a th:href="@{/shopChartDay}">일별</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -200,45 +201,42 @@
                 </div>
                 <div class="col-lg-9 col-md-9">
                     <div class="container">
-            <form action="#" class="checkout__form">
-                <div class="row">
-                    <div class="col-lg-8">
-                        <h5>Billing detail</h5>
-                        <div class="row" id="rowtest">
-                            <div class="col-lg-12">
-                                <div class="checkout__form__input">
-                                    <p>Name <span>*</span></p>
-                                    <input type="text">
-                                </div>
-                                <div class="checkout__form__input">
-                                    <p>Address <span>*</span></p>
-                                    <input type="text" placeholder="Street Address">
-                                    <input type="text" placeholder="Apartment. suite, unite ect ( optinal )">
-                                </div>
-                                <div class="checkout__form__input">
-                                    <p>Tel <span>*</span></p>
-                                    <input type="text">
-                                </div>
-                                <div class="checkout__form__input">
-                                    <p>Email <span>*</span></p>
-                                    <input type="text">
-                                </div>
-                                <div class="checkout__form__input">
-                                    <p>Time <span>*</span></p>
-                                    <input type="text">
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-	                    <div class="col-lg-8">
-	                    	<img alt="" src="img/seller/alver.jpg">
-	                    </div>
-                    </div>
-	                    <div class="shopmodComplete">
-				       		 <a href="shopInfo"><button id="shopmodCompleteBtn">완료</button></a>
-				        </div>
-                </form>
-            </div>	
+			            <form action="updateShopMod" class="checkout__form">
+			                <div class="row">
+			                    <div class="col-lg-8">
+			                      <input name="bcode" type="hidden" th:value="${seller.bcode}"/>
+			                        <h5>Billing detail</h5>
+			                       		 <div class="row" id="rowtest">
+				                            <div class="col-lg-12">
+				                                <div class="checkout__form__input">
+				                                    <p>Name <span>*</span></p>
+				                                    <input type="text" name="sname" th:value="${seller.sname}">
+				                                </div>
+				                                <div class="checkout__form__input">
+				                                    <p>Email <span>*</span></p>
+				                                    <input type="text" name="semail" th:value="${seller.semail}">
+				                                </div>
+				                                <div class="checkout__form__input">
+				                                    <p>Tel <span>*</span></p>
+				                                    <input type="text" name="stel" th:value="${seller.stel}">
+				                                </div>
+				                                <div class="checkout__form__input">
+				                                    <p>Address <span>*</span></p>
+				                                    <input type="text" name="sdaddress" th:value="${seller.saddress}">
+				                                    <input type="text" name="saddress" th:value="${seller.sdaddress}">
+				                                </div>
+				                            </div>
+			                            </div>
+			                        </div>
+				                    <div class="col-lg-8">
+				                    	<img alt="" src="img/alver.jpg">
+				                    </div>
+			                   </div>
+				               <div class="shopmodComplete">
+							       	<input type="submit" value="완료" id="shopmodCompleteBtn"></a>
+							   </div>
+			                </form>
+			          </div>	
                 </div>
             </div>
         </div>
