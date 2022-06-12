@@ -25,7 +25,7 @@ import com.example.domain.Normalid;
 import com.example.domain.Buy;
 import com.example.domain.Orderlist;
 
-import com.example.domain.Order;
+
 
 
 import com.example.domain.Product;
@@ -405,6 +405,7 @@ public class MypageController {
 		 
 		  List<Tbucket> listtb=new ArrayList<Tbucket>();
 		  
+		  
 		  int sum=0;
 		  
 		  
@@ -434,7 +435,7 @@ public class MypageController {
 				  }
 			  }
 		  }
-		  
+		 
 		  //구매리스트 받아 오기
 		  mypageService.buylistget();  
 		  
@@ -475,14 +476,15 @@ public class MypageController {
 			 }
 		  }
 		  
-		  
-
 		  m.addAttribute("tb", listtb);
 		  m.addAttribute("bucket", Newbu );
 		  m.addAttribute("sum", sum);
 		  m.addAttribute("product",Newpr);
 		  m.addAttribute("nid", mypageService.getNid(nid));
 		  m.addAttribute("n",nid);
+		  
+
+		 
 	}
 		
 
