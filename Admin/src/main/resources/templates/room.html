@@ -1,21 +1,9 @@
-<!--
-=========================================================
-* Paper Dashboard 2 - v2.0.1
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/paper-dashboard-2
-* Copyright 2020 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -32,14 +20,8 @@ Coded by www.creative-tim.com
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <!-- 합쳐지고 최소화된 최신 CSS -->
+	<title>Room</title>
 	<style>
-	@font-face {
-    font-family: 'Cafe24Ssurround';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-	}
 		*{
 			margin:0;
 			padding:0;
@@ -51,7 +33,8 @@ Coded by www.creative-tim.com
 		}
 		.container h1{
 			text-align: left;
-			color: rgb( 251, 250);
+			padding: 5px 5px 5px 15px;
+			color: rgb(0, 0, 0);
 			border-left: 3px solid #FFBB00;
 			margin-bottom: 20px;
 		}
@@ -67,13 +50,13 @@ Coded by www.creative-tim.com
 		.roomList th{
 			border: 1px solid #FFBB00;
 			background-color: #fff;
-			color: #FFBB00;
+			color:black;
 		}
 		.roomList td{
 			border: 1px solid #FFBB00;
 			background-color: #fff;
 			text-align: left;
-			color: #FFBB00;
+			color: black;
 		}
 		.roomList .num{
 			width: 75px;
@@ -104,6 +87,7 @@ Coded by www.creative-tim.com
 		}
 	</style>
 </head>
+
 <script type="text/javascript">
 	var ws;
 	window.onload = function(){
@@ -135,7 +119,7 @@ Coded by www.creative-tim.com
 
 	function createChatingRoom(res){
 		if(res != null){
-			var tag = "<tr><th class='num'>순서</th><th class='room'>방 이름</th><th class='go'></th></tr>";
+			var tag = "<tr><th class='num'>순서</th><th class='room'>아이디</th><th class='go'></th></tr>";
 			res.forEach(function(d, idx){
 				var rn = d.roomName.trim();
 				var roomNumber = d.roomNumber;
@@ -165,82 +149,10 @@ Coded by www.creative-tim.com
 		});
 	}
 </script>
+
 <body class="">
   <div class="wrapper ">
-    <div class="sidebar" data-color="white" data-active-color="danger">
-      <div class="logo">
-        <a href="https://www.creative-tim.com" class="simple-text logo-mini">
-          <div class="logo-image-small">
-            <img src="../assets/img/logo-small.png">
-          </div>
-          <!-- <p>CT</p> -->
-        </a>
-        <a href="https://www.creative-tim.com" class="simple-text logo-normal">
-          Creative Tim
-          <!-- <div class="logo-image-big">
-            <img src="../assets/img/logo-big.png">
-          </div> -->
-        </a>
-      </div>
-            <div class="sidebar-wrapper">
-        <ul class="nav">
-          <li class="active ">
-            <a href="./index.html">
-              <i class="nc-icon nc-chart-bar-32"></i>
-              <p>Dashboard</p>
-            </a>
-          </li>
-          <li>
-            <a href="./customer.html">
-              <i class="nc-icon nc-single-02"></i>
-              <p>Customer</p>
-            </a>
-          </li>
-          <li>
-            <a href="./sales.html">
-              <i class="nc-icon nc-money-coins"></i>
-              <p>Sales</p>
-            </a>
-          </li>
-          <li>
-            <a href="./product.html">
-              <i class="nc-icon nc-app"></i>
-              <p>Product</p>
-            </a>
-          </li>
-          <li>
-            <a href="./banner.html">
-              <i class="nc-icon nc-layout-11"></i>
-              <p>Banner</p>
-            </a>
-          </li>
-          <li>
-            <a href="./category.html">
-              <i class="nc-icon nc-tile-56"></i>
-              <p>Category</p>
-            </a>
-          </li>
-          <li>
-            <a href="./qna.html">
-              <i class="nc-icon nc-chat-33"></i>
-              <p>QnA</p>
-            </a>
-          </li>
-          <li>
-            <a href="./notice.html">
-              <i class="nc-icon nc-paper"></i>
-              <p>Notice</p>
-            </a>
-          </li>
-          <li class="active-pro">
-            <a href="./chat.html">
-              <i class="nc-icon nc-satisfied"></i>
-              <p>1:1 CHAT</p>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
+
     <div class="main-panel">
       <!-- Navbar -->
       <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
@@ -253,7 +165,7 @@ Coded by www.creative-tim.com
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="javascript:;">Paper Dashboard 2</a>
+            <a class="navbar-brand" href="javascript:;">상담하기</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -261,16 +173,7 @@ Coded by www.creative-tim.com
             <span class="navbar-toggler-bar navbar-kebab"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-end" id="navigation">
-            <form>
-              <div class="input-group no-border">
-                <input type="text" value="" class="form-control" placeholder="Search...">
-                <div class="input-group-append">
-                  <div class="input-group-text">
-                    <i class="nc-icon nc-zoom-split"></i>
-                  </div>
-                </div>
-              </div>
-            </form>
+
             <ul class="navbar-nav">
               <li class="nav-item">
                 <a class="nav-link btn-magnify" href="javascript:;">
@@ -315,15 +218,15 @@ Coded by www.creative-tim.com
               <div class="card-header" style=" border-radius:8px; background:rgb(240, 251, 253) ">
  
 	<div class="container">
+		<h1>상담리스트</h1>
 		<div id="roomContainer" class="roomContainer">
 			<table id="roomList" class="roomList"></table>
 		</div>
 		<div>
 			<table class="inputTable">
 				<tr>
-					<th>방 제목</th>
 					<th><input type="text" name="roomName" id="roomName"></th>
-					<th><button id="createRoom">방 만들기</button></th>
+					<th><button id="createRoom"></button></th>
 				</tr>
 			</table>
 		</div>
@@ -336,20 +239,7 @@ Coded by www.creative-tim.com
       <footer class="footer footer-black  footer-white ">
         <div class="container-fluid">
           <div class="row">
-            <nav class="footer-nav">
-              <ul>
-                <li><a href="https://www.creative-tim.com" target="_blank">Creative Tim</a></li>
-                <li><a href="https://www.creative-tim.com/blog" target="_blank">Blog</a></li>
-                <li><a href="https://www.creative-tim.com/license" target="_blank">Licenses</a></li>
-              </ul>
-            </nav>
-            <div class="credits ml-auto">
-						<span class="copyright"> © <script>
-							document.write(new Date().getFullYear())
-						</script>, made with <i class="fa fa-heart heart"></i> by
-							Creative Tim
-						</span>
-					</div>
+
           </div>
         </div>
       </footer>

@@ -50,17 +50,6 @@ public class MypageServiceimpl implements MypageService{
 		return mypageMainRepo.findById(nid).get();
 	}
 	
-	//<주문조회>
-<<<<<<< HEAD
-=======
-	//기프티콘 목록 조회
-	@Override
-	public List<Product> getProductList(Product pr){
-		return (List<Product>)mypageProductRepo.findAll();
-				
-	}
-	
->>>>>>> upstream/main
 	//기프티콘 상세조회
 	@Override
 	public Giftikon getGiftikonSet(Giftikon gi) {

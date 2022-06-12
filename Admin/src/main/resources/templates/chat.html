@@ -45,6 +45,7 @@ Coded by www.creative-tim.com
 			padding:0;
 		}
 		.container{
+			width: 500px;
 			margin: 0 auto;
 			padding: 25px
 		}
@@ -109,13 +110,11 @@ Coded by www.creative-tim.com
 			if(msg != null && msg.trim() != ''){
 				var d = JSON.parse(msg);
 				if(d.type == "getId"){
-					console.log(d)
 					var si = d.sessionId != null ? d.sessionId : "";
 					if(si != ''){
 						$("#sessionId").val(si); 
 					}
 				}else if(d.type == "message"){
-					console.log(d)
 					if(d.sessionId == $("#sessionId").val()){
 						$("#chating").append("<p class='me'>" + d.msg + "</p>");	
 					}else{
@@ -160,80 +159,7 @@ Coded by www.creative-tim.com
 </script>
 <body class="">
   <div class="wrapper ">
-    <div class="sidebar" data-color="white" data-active-color="danger">
-      <div class="logo">
-        <a href="https://www.creative-tim.com" class="simple-text logo-mini">
-          <div class="logo-image-small">
-            <img src="../assets/img/logo-small.png">
-          </div>
-          <!-- <p>CT</p> -->
-        </a>
-        <a href="https://www.creative-tim.com" class="simple-text logo-normal">
-          Creative Tim
-          <!-- <div class="logo-image-big">
-            <img src="../assets/img/logo-big.png">
-          </div> -->
-        </a>
-      </div>
-            <div class="sidebar-wrapper">
-        <ul class="nav">
-          <li class="active ">
-            <a href="./index.html">
-              <i class="nc-icon nc-chart-bar-32"></i>
-              <p>Dashboard</p>
-            </a>
-          </li>
-          <li>
-            <a href="./customer.html">
-              <i class="nc-icon nc-single-02"></i>
-              <p>Customer</p>
-            </a>
-          </li>
-          <li>
-            <a href="./sales.html">
-              <i class="nc-icon nc-money-coins"></i>
-              <p>Sales</p>
-            </a>
-          </li>
-          <li>
-            <a href="./product.html">
-              <i class="nc-icon nc-app"></i>
-              <p>Product</p>
-            </a>
-          </li>
-          <li>
-            <a href="./banner.html">
-              <i class="nc-icon nc-layout-11"></i>
-              <p>Banner</p>
-            </a>
-          </li>
-          <li>
-            <a href="./category.html">
-              <i class="nc-icon nc-tile-56"></i>
-              <p>Category</p>
-            </a>
-          </li>
-          <li>
-            <a href="./qna.html">
-              <i class="nc-icon nc-chat-33"></i>
-              <p>QnA</p>
-            </a>
-          </li>
-          <li>
-            <a href="./notice.html">
-              <i class="nc-icon nc-paper"></i>
-              <p>Notice</p>
-            </a>
-          </li>
-          <li class="active-pro">
-            <a href="./chat.html">
-              <i class="nc-icon nc-satisfied"></i>
-              <p>1:1 CHAT</p>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
+
     <div class="main-panel">
       <!-- Navbar -->
       <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
@@ -246,7 +172,7 @@ Coded by www.creative-tim.com
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="javascript:;">Paper Dashboard 2</a>
+            <a class="navbar-brand" href="javascript:;">상담하기</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -254,16 +180,7 @@ Coded by www.creative-tim.com
             <span class="navbar-toggler-bar navbar-kebab"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-end" id="navigation">
-            <form>
-              <div class="input-group no-border">
-                <input type="text" value="" class="form-control" placeholder="Search...">
-                <div class="input-group-append">
-                  <div class="input-group-text">
-                    <i class="nc-icon nc-zoom-split"></i>
-                  </div>
-                </div>
-              </div>
-            </form>
+
             <ul class="navbar-nav">
               <li class="nav-item">
                 <a class="nav-link btn-magnify" href="javascript:;">
@@ -310,7 +227,7 @@ Coded by www.creative-tim.com
 	<div id="container" class="container">
 		
 		<input type="hidden" id="sessionId" value="">
-		<input type="hidden" id="roomNumber" th:value="${normalid.num}">
+		<input type="hidden" id="roomNumber" th:value="${roomNumber}">
 		<div id="chating" class="chating">
 		</div>
 		
@@ -341,20 +258,7 @@ Coded by www.creative-tim.com
       <footer class="footer footer-black  footer-white ">
         <div class="container-fluid">
           <div class="row">
-            <nav class="footer-nav">
-              <ul>
-                <li><a href="https://www.creative-tim.com" target="_blank">Creative Tim</a></li>
-                <li><a href="https://www.creative-tim.com/blog" target="_blank">Blog</a></li>
-                <li><a href="https://www.creative-tim.com/license" target="_blank">Licenses</a></li>
-              </ul>
-            </nav>
-            <div class="credits ml-auto">
-						<span class="copyright"> © <script>
-							document.write(new Date().getFullYear())
-						</script>, made with <i class="fa fa-heart heart"></i> by
-							Creative Tim
-						</span>
-					</div>
+
           </div>
         </div>
       </footer>
