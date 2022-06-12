@@ -1,11 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ page trimDirectiveWhitespaces="true"%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>결제실패 | 머신킹덤</title>
@@ -64,24 +59,24 @@
 			<h3 class="card-title">로그인</h3>
 		</div> -->
 		<div>
-			<a href='home.jsp'> <img src='../resources/dist/img/logo.png'
-				width='200'>
+			<a href='home.jsp'> <img src="img/mainlogo.png" 
+				width='400'>
 			</a>
 		</div>
 		<!-- /.card-header -->
 		<!-- form start -->
 		<form class="form-horizontal" action="savePayment.do" method='post'>
-			<div class="card card-danger">
-						<div class="card-header">
+			<div class="card card-danger" align="center">
+						<div class="card-header" align="center">
 							<h3 class="card-title">결제 실패!</h3>
 						</div>
-						<div class="card-body">
+						<div class="card-body" align="center">
 							<label>결제가 실패하였습니다. 다시 시도해주세요!</label><br />
 						</div>
 
 					</div>
-					<a href="./payment.do"><button type="button"
-							class="btn btn-info float-left" style="margin-left: 40px;">이전</button></a>
+					<a th:href="@{/mypageBasketList}"><button type="button"
+							class="btn btn-info float-left" style="margin-left: 25px;">이전</button></a>
 
 			
 		</form>

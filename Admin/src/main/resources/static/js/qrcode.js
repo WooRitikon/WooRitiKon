@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 //---------------------------------------------------------------------
 // QRCode for JavaScript
 //
@@ -1236,7 +1236,7 @@ QRBitBuffer.prototype = {
 		this.length++;
 	}
 };
-=======
+
 /**
  * @fileoverview
  * - Using the 'QRCode for Javascript library'
@@ -1851,4 +1851,4 @@ var QRCode;
 	 */
 	QRCode.CorrectLevel = QRErrorCorrectLevel;
 })();
->>>>>>> upstream/main
+

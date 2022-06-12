@@ -47,8 +47,8 @@
 			<h3 class="card-title">로그인</h3>
 		</div> -->
 		<div>
-			<a href='home.jsp'> <img src='../resources/dist/img/logo.png'
-				width='200'>
+			<a href='home.jsp'> <img src="img/mainlogo.png" 
+				width='400'>
 			</a>
 		</div>
 		<!-- /.card-header -->
@@ -90,17 +90,16 @@
 								<span th:text="${nid.ndaddress}"></span>
 								</label>
 							</div>
+							
 							<hr />
-
-							<br></br>
-							<hr />
-							<div class="input-group mb-3">
-								<label>총 결제금액: <span th:text="${buy.ototal}"></span>원</label>
+							<br/>
+							<div class="input-group mb-3" align="right">
+								<b><label>총 결제금액: <span th:text="${buy.ototal}"></span>원</label></b>
 							</div>
+							<br/><br/>
+							<div class="card-footer" align="center">
 
-							<div class="card-footer">
-
-								<a th:href="@{/test}"><button type="button" class="btn btn-info float-right">완료</button></a>
+								<a th:href="@{/payOK}"><button type="button" class="btn btn-info float-right">완료</button></a>
 							</div>
 
 

@@ -46,7 +46,7 @@
             </a></li>
         </ul>
 		<div class="offcanvas__logo">
-			<a href="./index.html"><img src="img/logo.png" alt=""></a>
+			<a th:href="@{/test}"><img src="img/logo.png" alt=""></a>
 		</div>
 		<div id="mobile-menu-wrap"></div>
 		<div class="offcanvas__auth">
@@ -61,7 +61,7 @@
 			<div class="row">
 				<div class="col-xl-3 col-lg-2">
 					<div class="header__logo">
-						<a href="./index.html"><img src="img/mainlogo.png" alt=""></a>
+						<a th:href="@{/test}"><img src="img/mainlogo.png" alt=""></a>
 					</div>
 				</div>
 				<div class="col-xl-6 col-lg-7">
@@ -79,12 +79,12 @@
 									<li><a th:href="@{/mypageQna}">my Q&A</a></li>
 								</ul></li>
 							<li><a href="#">my shop</a>
-								<ul class="dropdown">
-									<li><a href="./product-details.html">information</a></li>
-									<li><a href="./shop-cart.html">product</a></li>
-									<li><a href="./checkout.html">review</a></li>
-									<li><a href="./blog-details.html">sales</a></li>
-								</ul></li>
+								 <ul class="dropdown">
+                                    <li><a th:href="shopInfo">information</a></li>
+                                    <li><a th:href="shopView">product</a></li>
+                                    <li><a href="#">review</a></li>
+                                    <li><a href="./blog-details.html">sales</a></li>
+                                </ul></li>
 							<li><a href="#">customer center</a>
 								<ul class="dropdown">
 									<li><a th:href="@{./noticePage}">Notice</a></li>
@@ -128,7 +128,7 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="breadcrumb__links">
-						<a href="./index.html"><i class="fa fa-home"></i> Home</a> <span>my
+						<a th:href="@{/test}"><i class="fa fa-home"></i> Home</a> <span>my
 							page</span>
 					</div>
 				</div>
@@ -181,21 +181,7 @@
 											</div>
 										</div>
 									</div>
-									<div class="card">
-										<div class="card-heading">
-											<a data-toggle="collapse" data-target="#collapseThree">my
-												선물함</a>
-										</div>
-										<div id="collapseThree" class="collapse"
-											data-parent="#accordionExample">
-											<div class="card-body">
-												<ul>
-													<li><a th:href="@{/mypageGetGift}">받은 선물함</a></li>
-													<li><a th:href="@{/mypageSendGift}">보낸 선물함</a></li>
-												</ul>
-											</div>
-										</div>
-									</div>
+									
 									<div class="card">
 										<div class="card-heading">
 											<a data-toggle="collapse" data-target="#collapseFour">my

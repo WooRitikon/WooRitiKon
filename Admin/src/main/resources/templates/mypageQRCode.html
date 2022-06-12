@@ -12,8 +12,8 @@
 	    <!-- 내부 CSS 스타일 지정 -->
     <style>
 	#qrcode {
- 	 width:160px;
- 	 height:160px;
+ 	 width:500px;
+ 	 height:500px;
   	margin-top:15px;
 }
 		      				                          
@@ -60,7 +60,7 @@
             </a></li>
         </ul>
         <div class="offcanvas__logo">
-            <a href="./index.html"><img src="img/logo.png" alt=""></a>
+            <a th:href="@{/test}"><img src="img/logo.png" alt=""></a>
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__auth">
@@ -76,7 +76,7 @@
 			<div class="row">
 				<div class="col-xl-3 col-lg-2">
 					<div class="header__logo">
-						<a href="./index.html"><img src="img/mainlogo.png" alt=""></a>
+						<a th:href="@{/test}"><img src="img/mainlogo.png" alt=""></a>
 					</div>
 				</div>
 				<div class="col-xl-6 col-lg-7">
@@ -141,7 +141,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb__links">
-                        <a href="./index.html"><i class="fa fa-home"></i> Home</a>
+                        <a th:href="@{/test}""><i class="fa fa-home"></i> Home</a>
                         <span>my page</span>
                     </div>
                 </div>
@@ -192,21 +192,7 @@
 											</div>
 										</div>
 									</div>
-									<div class="card">
-										<div class="card-heading">
-											<a data-toggle="collapse" data-target="#collapseThree">my
-												선물함</a>
-										</div>
-										<div id="collapseThree" class="collapse"
-											data-parent="#accordionExample">
-											<div class="card-body">
-												<ul>
-													<li><a th:href="@{/mypageGetGift}">받은 선물함</a></li>
-													<li><a th:href="@{/mypageSendGift}">보낸 선물함</a></li>
-												</ul>
-											</div>
-										</div>
-									</div>
+									
 									<div class="card">
 										<div class="card-heading">
 											<a data-toggle="collapse" data-target="#collapseFour">my
@@ -252,13 +238,18 @@
                 <div class="col-lg-6">
                     <div class="product__details__pic">
                         <div class="product__details__slider__content">
-                         
-                              <input id="text" type="text" th:value="${giftikon}" style="width:100%" /><br />
-							<div id="qrcode" style="width:100px; height:100px; margin:auto; margin-top:15px;"></div>
-
+                         <div id="qrcode" style="width:100px; height:100px; margin:auto; margin-top:15px;"></div>
+                       	<br/>
+						<p> <b style="font-size: large;">QR코드 : </b><input type="text" th:value="${giftikon}" id="text" style="width:100%; border: none; font-weight: bolder; font-size: large;"/>
+                         </p>
                             </div>
                         </div>
                     </div>
+                    <div class="col-lg-6">
+                      <div class="product__details__widget">
+                        
+                    </div>
+                </div>
                 </div>
             </div>
             
