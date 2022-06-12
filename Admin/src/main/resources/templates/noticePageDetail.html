@@ -133,18 +133,43 @@
 				
 			<div class="col-12">
 			
-					<!-- 마이페이지 메인 -->
-					<div class="col-auto">
-					<input name="noticecode" type="hidden" th:value="${notice.noticecode}"/>
-							<table class="table table-hover">
-								<tr>
-									<th>작성자</th>
-									<th>관리자</th>
-									<th>제목</th>
-									<th name="ntitle" type="text" th:text="${notice.ntitle}">
-								</tr>
-								<tr>내용</tr>
-							</table>
+			<div class="card">
+							<div class="card-body">
+							<form method="post">
+								<!-- ## 각각의 값을 지정 ## -->
+								<input name="noticecode" type="hidden" th:value="${notice.noticecode}"/>
+								  <div class="row">
+                    <div class="col-md-5 pr-1">
+                      <div class="form-group">
+                        <label>Writer</label>
+                        <input class="form-control" name="mcode" th:value="${notice.mcode}" readonly>
+                      </div>
+                      <div class="form-group">
+                        <label>Category</label>
+                        <input  class="form-control" name="ncategory" th:value="${notice.ncategory}" readonly>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" name="ntitle" class="form-control" th:value="${notice.ntitle}" readonly>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+						<div class="mb-3">
+						  <label for="exampleFormControlTextarea1" class="form-label">내용</label>
+						  <textarea class="form-control form-control-lg" th:text="${notice.ncontent}" name="ncontent" id="exampleFormControlTextarea1" rows="3" readonly></textarea>
+						</div>
+                    </div>
+				</div>
+				</div>
+								</form>
+							</div>
 						</div>
 				</div>
 			</div>
