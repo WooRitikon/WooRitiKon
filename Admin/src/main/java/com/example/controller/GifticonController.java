@@ -306,7 +306,7 @@ public class GifticonController {
 		
 		gifticonService.savenormalId(vo);
 		
-		return "login";
+		return "redirect:login";
 	} 
 	
 	//판매자회원 회원가입 정보 저장
@@ -316,7 +316,7 @@ public class GifticonController {
 		
 		gifticonService.savesellerId(vo);
 		
-		return "login";
+		return "redirect:sellerlogin";
 	} 
 	
 	//판매자 회원가입 페이지

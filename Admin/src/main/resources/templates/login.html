@@ -1,727 +1,184 @@
-<!DOCTYPE html>
+<!--
+=========================================================
+* Paper Dashboard 2 - v2.0.1
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/paper-dashboard-2
+* Copyright 2020 Creative Tim (https://www.creative-tim.com)
+
+Coded by www.creative-tim.com
+
+ =========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
+<!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<meta charset="UTF-8">
-<meta name="description" content="Ashion Template">
-<meta name="keywords" content="Ashion, unica, creative, html">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Ashion | Template</title>
-
-<!-- Google Font -->
+<meta charset="utf-8" />
+<link rel="apple-touch-icon" sizes="76x76"
+   href="./assets/img/apple-icon.png">
+<link rel="icon" type="image/png" href="./assets/img/favicon.png">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>Paper Dashboard 2 by Creative Tim</title>
+<meta
+   content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+   name='viewport' />
+<!--     Fonts and icons     -->
 <link
-	href="https://fonts.googleapis.com/css2?family=Cookie&display=swap"
-	rel="stylesheet">
+   href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200"
+   rel="stylesheet" />
 <link
-	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
-	rel="stylesheet">
+   href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"
+   rel="stylesheet">
+<!-- CSS Files -->
+<link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
+<link href="./assets/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
+<!-- CSS Just for demo purpose, don't include it in your project -->
+<link href="./assets/demo/demo.css" rel="stylesheet" />
 
-<!-- Css Styles -->
-<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-<link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-<link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-<link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
-<link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
-<link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-<link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-<link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 
-<body>
-	<!-- Page Preloder -->
-	<div id="preloder">
-		<div class="loader"></div>
-	</div>
+<style>
+.container {
+   display: flex;
+   
+   /* display: inline-flex; */
+}
 
-	<!-- Offcanvas Menu Begin -->
-	<div class="offcanvas-menu-overlay"></div>
-	<div class="offcanvas-menu-wrapper">
-		<div class="offcanvas__close">+</div>
-		<ul class="offcanvas__widget">
-			<li><span class="icon_search search-switch"></span></li>
-			<li><a href="#"><span class="icon_heart_alt"></span>
-					<div class="tip">2</div> </a></li>
-			<li><a href="#"><span class="icon_bag_alt"></span>
-					<div class="tip">2</div> </a></li>
-		</ul>
-		<div class="offcanvas__logo">
-			<a href="./index.html"><img src="img/logo.png" alt=""></a>
-		</div>
-		<div id="mobile-menu-wrap"></div>
-		<div class="offcanvas__auth">
-			<a href="#">Login</a> <a href="#">Register</a>
-		</div>
-	</div>
-	<!-- Offcanvas Menu End -->
+.textcenter {
+   display: flex;
+   justify-content: center;
+}
+</style>
 
-	<!-- Header Section Begin -->
-	<header class="header">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-xl-3 col-lg-2">
-					<div class="header__logo">
-						<a th:href="@{/test}"><img src="img/mainlogo.png" alt=""></a>
-					</div>
-				</div>
-				<div class="col-xl-6 col-lg-7">
-					<nav class="header__menu">
-						<ul>
-							<li class="active"><a href="./index.html">Home</a></li>
-							<li><a href="#">about</a></li>
-							<li><a href="#">shop</a></li>
-							<li><a th:href="@{/mypageMain(nid=goo123)}">my page</a>
-								<ul class="dropdown">
-									<li><a th:href="@{/mypageShoppingList}">my 주문조회</a></li>
-									<li><a th:href="@{/mypageBasketList}">my 위시리스트</a></li>
-									<li><a th:href="@{/mypageGetGift}">my 선물함</a></li>
-									<li><a th:href="@{/mypageInfo(nid=goo123)}">my 정보</a></li>
-									<li><a href="./blog-details.html">my Q&A</a></li>
-								</ul></li>
-							<li><a href="#">my shop</a>
-								<ul class="dropdown">
-									<li><a href="shopInfo">information</a></li>
-									<li><a href="shopProView">product</a></li>
-									<li><a href="shopReview">review</a></li>
-									<li><a href="./blog-details.html">sales</a></li>
-								</ul></li>
-							<li><a href="#">customer center</a>
-								<ul class="dropdown">
-									<li><a th:href="@{./noticePage}">Notice</a></li>
-									<li><a href="#">FnQ</a></li>
-									<li><a href="#">Qna</a></li>
-								</ul></li>
-						</ul>
-					</nav>
-				</div>
-				<div class="col-lg-3">
-					<div class="header__right">
-						<div th:if="${nid == null}" class="header__right__auth">
-							<a th:href="@{/login}">일반</a><a th:href="@{/sellerlogin}">판매자</a>
-							<a th:href="@{/selectpage}">회원가입</a>
-						</div>
-						<div th:if="${nid != null}" class="header__right__auth">
-							<a th:text="${nid}" th:href="@{/mypageMain}"></a> <a
-								th:href="@{/logout}">로그아웃</a>
-						</div>
-						<ul class="header__right__widget">
-							<li><a href="#"><span class="icon_heart_alt"></span>
-									<div class="tip">2</div> </a></li>
-							<li><a href="#"><span class="icon_bag_alt"></span>
-									<div class="tip">2</div> </a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<div class="canvas__open">
-				<i class="fa fa-bars"></i>
-			</div>
-		</div>
-	</header>
-	<!-- Header Section End -->
+<body class="">
+   <div class="wrapper">
 
-	<!-- Categories Section Begin -->
-	<section class="categories">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-lg-6 p-0">
-					<div class="categories__item categories__large__item set-bg"
-						data-setbg="img/categories/category-1.jpg">
-						<div class="categories__text">
-							<a th:href="@{/test}"><h1>HOME</h1></a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-6">
-					<div class="row">
-						<div class="col-lg-6 col-md-6 col-sm-6 p-0">
-							<div class="categories__item  set-bg"
-								data-setbg="img/categories/category-2.jpg">
-								<div class="categories__text">
-									<h4>WOORITIKON?</h4>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-6 p-0">
-							<div class="categories__item set-bg"
-								data-setbg="img/categories/category-3.jpg">
-								<div class="categories__text">
-									<h4>SHOP</h4>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-6 p-0">
-							<div class="categories__item set-bg"
-								data-setbg="img/categories/category-4.jpg">
-								<div class="categories__text">
-									<h4></h4>
-									<a href="#">Shop now</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-6 p-0">
-							<div class="categories__item set-bg"
-								data-setbg="img/categories/category-5.jpg">
-								<div class="categories__text">
-									<h4>NOTICE</h4>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- Categories Section End -->
+      <div class="main-panel" style="height: 135vh; " >
+         <!-- Navbar -->
+         <div class="col-md-12">
+            <label> </label>
+         </div>
 
-	<!-- Product Section Begin -->
-	<section class="product spad">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-4 col-md-4">
-					<div class="section-title">
-						<h4>카테고리</h4>
-					</div>
-				</div>
 
-			</div>
-			<div class="row property__gallery">
-				<div class="col-lg-3 col-md-4 col-sm-6 mix women">
-					<div class="product__item">
-						<div class="product__item__pic set-bg"
-							data-setbg="img/product/food.jpg"></div>
-						<div class="product__item__text">
-							<h6>
-								<a href="#">음식점</a>
-							</h6>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6 mix men">
-					<div class="product__item">
-						<div class="product__item__pic set-bg"
-							data-setbg="img/product/hair.png">
-							<ul class="product__hover">
-								<li><a href="img/product/product-2.jpg" class="image-popup"><span
-										class="arrow_expand"></span></a></li>
-								<li><a href="#"><span class="icon_heart_alt"></span></a></li>
-								<li><a href="#"><span class="icon_bag_alt"></span></a></li>
-							</ul>
-						</div>
-						<div class="product__item__text">
-							<h6>
-								<a href="#">Flowy striped skirt</a>
-							</h6>
-							<div class="rating">
-								<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star"></i>
-							</div>
-							<div class="product__price">$ 49.0</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6 mix accessories">
-					<div class="product__item">
-						<div class="product__item__pic set-bg"
-							data-setbg="img/product/clothes.jpg">
-							<div class="label stockout">의류</div>
-							<ul class="product__hover">
-								<li><a href="img/product/product-3.jpg" class="image-popup"><span
-										class="arrow_expand"></span></a></li>
-								<li><a href="#"><span class="icon_heart_alt"></span></a></li>
-								<li><a href="#"><span class="icon_bag_alt"></span></a></li>
-							</ul>
-						</div>
-						<div class="product__item__text">
-							<h6>
-								<a href="#">Cotton T-Shirt</a>
-							</h6>
-							<div class="rating">
-								<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star"></i>
-							</div>
-							<div class="product__price">$ 59.0</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6 mix cosmetic">
-					<div class="product__item">
-						<div class="product__item__pic set-bg"
-							data-setbg="img/product/cafe.png">
-							<ul class="product__hover">
-								<li><a href="img/product/product-4.jpg" class="image-popup"><span
-										class="arrow_expand"></span></a></li>
-								<li><a href="#"><span class="icon_heart_alt"></span></a></li>
-								<li><a href="#"><span class="icon_bag_alt"></span></a></li>
-							</ul>
-						</div>
-						<div class="product__item__text">
-							<h6>
-								<a href="#">Slim striped pocket shirt</a>
-							</h6>
-							<div class="rating">
-								<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star"></i>
-							</div>
-							<div class="product__price">$ 59.0</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6 mix kid">
-					<div class="product__item">
-						<div class="product__item__pic set-bg"
-							data-setbg="img/product/electro.jpg">
-							<ul class="product__hover">
-								<li><a href="img/product/electro.jpg" class="image-popup"><span
-										class="arrow_expand"></span></a></li>
-								<li><a href="#"><span class="icon_heart_alt"></span></a></li>
-								<li><a href="#"><span class="icon_bag_alt"></span></a></li>
-							</ul>
-						</div>
-						<div class="product__item__text">
-							<h6>
-								<a href="#">Fit micro corduroy shirt</a>
-							</h6>
-							<div class="rating">
-								<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star"></i>
-							</div>
-							<div class="product__price">$ 59.0</div>
-						</div>
-					</div>
-				</div>
-				<div
-					class="col-lg-3 col-md-4 col-sm-6 mix women men kid accessories cosmetic">
-					<div class="product__item sale">
-						<div class="product__item__pic set-bg"
-							data-setbg="img/product/furniture.jpg">
-							<div class="label sale">Sale</div>
-							<ul class="product__hover">
-								<li><a href="img/product/product-6.jpg" class="image-popup"><span
-										class="arrow_expand"></span></a></li>
-								<li><a href="#"><span class="icon_heart_alt"></span></a></li>
-								<li><a href="#"><span class="icon_bag_alt"></span></a></li>
-							</ul>
-						</div>
-						<div class="product__item__text">
-							<h6>
-								<a href="#">Tropical Kimono</a>
-							</h6>
-							<div class="rating">
-								<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star"></i>
-							</div>
-							<div class="product__price">
-								$ 49.0 <span>$ 59.0</span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6 mix men">
-					<div class="product__item">
-						<div class="product__item__pic set-bg"
-							data-setbg="img/product/book.png">
-							<ul class="product__hover">
-								<li><a href="img/product/product-2.jpg" class="image-popup"><span
-										class="arrow_expand"></span></a></li>
-								<li><a href="#"><span class="icon_heart_alt"></span></a></li>
-								<li><a href="#"><span class="icon_bag_alt"></span></a></li>
-							</ul>
-						</div>
-						<div class="product__item__text">
-							<h6>
-								<a href="#">Flowy striped skirt</a>
-							</h6>
-							<div class="rating">
-								<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star"></i>
-							</div>
-							<div class="product__price">$ 49.0</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6 mix men">
-					<div class="product__item">
-						<div class="product__item__pic set-bg"
-							data-setbg="img/product/life.jpg">
-							<ul class="product__hover">
-								<li><a href="img/product/life.jpg" class="image-popup"><span
-										class="arrow_expand"></span></a></li>
-								<li><a href="#"><span class="icon_heart_alt"></span></a></li>
-								<li><a href="#"><span class="icon_bag_alt"></span></a></li>
-							</ul>
-						</div>
-						<div class="product__item__text">
-							<h6>
-								<a href="#">Flowy striped skirt</a>
-							</h6>
-							<div class="rating">
-								<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star"></i>
-							</div>
-							<div class="product__price">$ 49.0</div>
-						</div>
-					</div>
-				</div>
-				<div
-					class="col-lg-3 col-md-4 col-sm-6 mix women men kid accessories cosmetic">
-					<div class="product__item">
-						<div class="product__item__pic set-bg"
-							data-setbg="img/product/product-7.jpg">
-							<ul class="product__hover">
-								<li><a href="img/product/product-7.jpg" class="image-popup"><span
-										class="arrow_expand"></span></a></li>
-								<li><a href="#"><span class="icon_heart_alt"></span></a></li>
-								<li><a href="#"><span class="icon_bag_alt"></span></a></li>
-							</ul>
-						</div>
-						<div class="product__item__text">
-							<h6>
-								<a href="#">Contrasting sunglasses</a>
-							</h6>
-							<div class="rating">
-								<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star"></i>
-							</div>
-							<div class="product__price">$ 59.0</div>
-						</div>
-					</div>
-				</div>
-				<div
-					class="col-lg-3 col-md-4 col-sm-6 mix women men kid accessories cosmetic">
-					<div class="product__item sale">
-						<div class="product__item__pic set-bg"
-							data-setbg="img/product/book.png">
-							<div class="label">Sale</div>
-							<ul class="product__hover">
-								<li><a href="img/product/product-8.jpg" class="image-popup"><span
-										class="arrow_expand"></span></a></li>
-								<li><a href="#"><span class="icon_heart_alt"></span></a></li>
-								<li><a href="#"><span class="icon_bag_alt"></span></a></li>
-							</ul>
-						</div>
-						<div class="product__item__text">
-							<h6>
-								<a href="#">Water resistant backpack</a>
-							</h6>
-							<div class="rating">
-								<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star"></i>
-							</div>
-							<div class="product__price">
-								$ 49.0 <span>$ 59.0</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- Product Section End -->
+         <!-- End Navbar -->
+         <div class="content" style="margin-top: 0px;">
+            <div class="row">
+               <div class="col-md-12">
+                  <!-- 기준 -->
+                  <div class="container">
+                     <div class="col-md-12">
+                        <div class="card card-user">
+                           <div class="col-md-12" style="text-align: center;">
+                              <h1 class="site-title">
+                              <a href="./index.html"><img src="img/mainlogo.png" alt="" style="margin-left: 10px; margin-top: 40px"></a>
+   
+                              </h1>
+                           </div>
+                           <!-- end of 이미지(중앙정렬) -->
+                        <form th:action="@{/loginCheck}">
+                           <div class="card-body">
+                              <div class="textcenter">
+                                    <div class="col-md-5" style="text-align : center;">      
+                                       <div class="form-group" style="text-align : center;">
+                                          <input type="text" class="form-control" th:name="nid" placeholder="일반회원 아이디"
+                                             required>
+                                       </div>
+                                    </div>
+                              </div>
+                              <!-- 아이디 -->
 
-	<!-- Banner Section Begin -->
-	<section class="banner set-bg" data-setbg="img/banner/banner-1.jpg">
-		<div class="container">
-			<div class="row">
-				<div class="col-xl-7 col-lg-8 m-auto">
-					<div class="banner__slider owl-carousel">
-						<div class="banner__item">
-							<div class="banner__text">
-								<span>The Chloe Collection</span>
-								<h1>The Project Jacket</h1>
-								<a href="#">Shop now</a>
-							</div>
-						</div>
-						<div class="banner__item">
-							<div class="banner__text">
-								<span>The Chloe Collection</span>
-								<h1>The Project Jacket</h1>
-								<a href="#">Shop now</a>
-							</div>
-						</div>
-						<div class="banner__item">
-							<div class="banner__text">
-								<span>The Chloe Collection</span>
-								<h1>The Project Jacket</h1>
-								<a href="#">Shop now</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- Banner Section End -->
+                                    <!-- style="text-align : center;"은 이미지 가운데정렬!! -->
+                              <div class="textcenter">
+                                 <div class="col-md-5">
+                                    <div class="form-group">
+                                       <input type="password" class="form-control" th:name="npassword"
+                                          placeholder="일반회원 비밀번호" required>
+                                             <button type="submit" id="login" class="btn btn-primary btn-block">일반회원 로그인</button>
+                                          <a th:href='@{/selectpage}'><button type=button class="btn btn-primary btn-block">회원가입</button></a>
+                                    </div>
+                                 </div>
+                              </div>
+                              <!-- 비밀번호 -->
 
-	<!-- Trend Section Begin -->
-	<section class="trend spad">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-4 col-md-4 col-sm-6">
-					<div class="trend__content">
-						<div class="section-title">
-							<h4>새로운 상품들</h4>
-						</div>
-						<div class="trend__item">
-							<div class="trend__item__pic">
-								<img src="img/trend/ht-1.jpg" alt="">
-							</div>
-							<div class="trend__item__text">
-								<h6>New Shop</h6>
-								<div class="rating">
-									<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-										class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-										class="fa fa-star"></i>
-								</div>
-								<div class="product__price">$ 59.0</div>
-							</div>
-						</div>
-						<div class="trend__item">
-							<div class="trend__item__pic">
-								<img src="img/trend/ht-2.jpg" alt="">
-							</div>
-							<div class="trend__item__text">
-								<h6>HOT DEAL</h6>
-								<div class="rating">
-									<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-										class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-										class="fa fa-star"></i>
-								</div>
-								<div class="product__price">$ 59.0</div>
-							</div>
-						</div>
-						<div class="trend__item">
-							<div class="trend__item__pic">
-								<img src="img/trend/ht-3.jpg" alt="">
-							</div>
-							<div class="trend__item__text">
-								<h6>Cotton T-Shirt</h6>
-								<div class="rating">
-									<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-										class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-										class="fa fa-star"></i>
-								</div>
-								<div class="product__price">$ 59.0</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-4 col-sm-6">
-					<div class="trend__content">
-						<div class="section-title">
-							<h4>새로운 상점들</h4>
-						</div>
-						<div class="trend__item">
-							<div class="trend__item__pic">
-								<img src="img/trend/bs-1.jpg" alt="">
-							</div>
-							<div class="trend__item__text">
-								<h6>Cotton T-Shirt</h6>
-								<div class="rating">
-									<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-										class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-										class="fa fa-star"></i>
-								</div>
-								<div class="product__price">$ 59.0</div>
-							</div>
-						</div>
-						<div class="trend__item">
-							<div class="trend__item__pic">
-								<img src="img/trend/bs-2.jpg" alt="">
-							</div>
-							<div class="trend__item__text">
-								<h6>
-									Zip-pockets pebbled tote <br />briefcase
-								</h6>
-								<div class="rating">
-									<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-										class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-										class="fa fa-star"></i>
-								</div>
-								<div class="product__price">$ 59.0</div>
-							</div>
-						</div>
-						<div class="trend__item">
-							<div class="trend__item__pic">
-								<img src="img/trend/bs-3.jpg" alt="">
-							</div>
-							<div class="trend__item__text">
-								<h6>Round leather bag</h6>
-								<div class="rating">
-									<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-										class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-										class="fa fa-star"></i>
-								</div>
-								<div class="product__price">$ 59.0</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-4 col-sm-6">
-					<div class="trend__content">
-						<div class="section-title">
-							<h4>HOT DEAL</h4>
-						</div>
-						<div class="trend__item">
-							<div class="trend__item__pic">
-								<img src="img/trend/f-1.jpg" alt="">
-							</div>
-							<div class="trend__item__text">
-								<h6>Bow wrap skirt</h6>
-								<div class="rating">
-									<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-										class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-										class="fa fa-star"></i>
-								</div>
-								<div class="product__price">$ 59.0</div>
-							</div>
-						</div>
-						<div class="trend__item">
-							<div class="trend__item__pic">
-								<img src="img/trend/f-2.jpg" alt="">
-							</div>
-							<div class="trend__item__text">
-								<h6>Metallic earrings</h6>
-								<div class="rating">
-									<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-										class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-										class="fa fa-star"></i>
-								</div>
-								<div class="product__price">$ 59.0</div>
-							</div>
-						</div>
-						<div class="trend__item">
-							<div class="trend__item__pic">
-								<img src="img/trend/f-3.jpg" alt="">
-							</div>
-							<div class="trend__item__text">
-								<h6>Flap cross-body bag</h6>
-								<div class="rating">
-									<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-										class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-										class="fa fa-star"></i>
-								</div>
-								<div class="product__price">$ 59.0</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- Trend Section End -->
+                              
+                           </div> 
+                           </form>
+                           <!-- end of card-body -->
+                           <div class="col-md-12" style="text-align: center;">
+                              <label><a th:href="@{searchnid}">일반회원 아이디 찾기</a></label>&nbsp; <label> | </label> &nbsp; <label>
+                              <a th:href="@{searchnpass}">일반회원 비밀번호 찾기</a></label>
+                           </div>
+                           <!-- end of 아이디찾기 -->
 
-	<!-- Footer Section Begin -->
-	<footer class="footer">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-4 col-md-6 col-sm-7">
-					<div class="footer__about">
-						<div class="footer__logo">
-							<a href="./index.html"><img src="img/logo.png" alt=""></a>
-						</div>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-							sed do eiusmod tempor incididunt cilisis.</p>
-						<div class="footer__payment">
-							<a href="#"><img src="img/payment/payment-1.png" alt=""></a>
-							<a href="#"><img src="img/payment/payment-2.png" alt=""></a>
-							<a href="#"><img src="img/payment/payment-3.png" alt=""></a>
-							<a href="#"><img src="img/payment/payment-4.png" alt=""></a>
-							<a href="#"><img src="img/payment/payment-5.png" alt=""></a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-2 col-md-3 col-sm-5">
-					<div class="footer__widget">
-						<h6>Quick links</h6>
-						<ul>
-							<li><a href="#">About</a></li>
-							<li><a href="#">Blogs</a></li>
-							<li><a href="#">Contact</a></li>
-							<li><a href="#">FAQ</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-2 col-md-3 col-sm-4">
-					<div class="footer__widget">
-						<h6>Account</h6>
-						<ul>
-							<li><a href="#">My Account</a></li>
-							<li><a href="#">Orders Tracking</a></li>
-							<li><a href="#">Checkout</a></li>
-							<li><a href="#">Wishlist</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-8 col-sm-8">
-					<div class="footer__newslatter">
-						<h6>NEWSLETTER</h6>
-						<form action="#">
-							<input type="text" placeholder="Email">
-							<button type="submit" class="site-btn">Subscribe</button>
-						</form>
-						<div class="footer__social">
-							<a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i
-								class="fa fa-twitter"></i></a> <a href="#"><i
-								class="fa fa-youtube-play"></i></a> <a href="#"><i
-								class="fa fa-instagram"></i></a> <a href="#"><i
-								class="fa fa-pinterest"></i></a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-12">
-					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-					<div class="footer__copyright__text">
-						<p>
-							Copyright &copy;
-							<script>
-								document.write(new Date().getFullYear());
-							</script>
-							All rights reserved | This template is made with <i
-								class="fa fa-heart" aria-hidden="true"></i> by <a
-								href="https://colorlib.com" target="_blank">Colorlib</a>
-						</p>
-					</div>
-					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-				</div>
-			</div>
-		</div>
-	</footer>
-	<!-- Footer Section End -->
+                           <a>&nbsp;</a>
+                           <a>&nbsp;</a>
+                           <a>&nbsp;</a>
+                           <a>&nbsp;</a>
+                           <a>&nbsp;</a>
+                           <a>&nbsp;</a>
+                           <a>&nbsp;</a>
+                           <a>&nbsp;</a>
+                           <a>&nbsp;</a>
+                           <a>&nbsp;</a>
+                           <a>&nbsp;</a>
+                           
+                           
+                        
+                           <footer class="footer"
+         style="position: absolute; bottom: 0; width: -webkit-fill-available;">
+         <div class="container-fluid">
+            <hr />
+            <div class="row">
+               <nav class="footer-nav">
+                  <ul>
+                     <li><a href="https://www.creative-tim.com" target="_blank">Creative
+                           Tim</a></li>
+                     <li><a href="https://www.creative-tim.com/blog"
+                        target="_blank">Blog</a></li>
+                     <li><a href="https://www.creative-tim.com/license"
+                        target="_blank">Licenses</a></li>
+                  </ul>
+               </nav>
+               <div class="credits ml-auto">
+                  <span class="copyright"> © 2020, made with <i
+                     class="fa fa-heart heart"></i> by Creative Tim
+                  </span>
+               </div>
+            </div>
+         </div>
+      </footer>
+                           
+                        </div>
+                        <!-- end of cardbody -->
+                     </div>
+                  </div>
+               </div>
+               <!-- end of 기준 -->
+            </div>
+         </div>
+      </div>
+      <!-- end of content -->
 
-	<!-- Search Begin -->
-	<div class="search-model">
-		<div class="h-100 d-flex align-items-center justify-content-center">
-			<div class="search-close-switch">+</div>
-			<form class="search-model-form">
-				<input type="text" id="search-input" placeholder="Search here.....">
-			</form>
-		</div>
-	</div>
-	<!-- Search End -->
-
-	<!-- Js Plugins -->
-	<script src="js/jquery-3.3.1.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.magnific-popup.min.js"></script>
-	<script src="js/jquery-ui.min.js"></script>
-	<script src="js/mixitup.min.js"></script>
-	<script src="js/jquery.countdown.min.js"></script>
-	<script src="js/jquery.slicknav.js"></script>
-	<script src="js/owl.carousel.min.js"></script>
-	<script src="js/jquery.nicescroll.min.js"></script>
-	<script src="js/main.js"></script>
+      
+   </div>
+   </div>
+   <!-- end of rapper -->
+   <!--   Core JS Files   -->
+   <script src="./assets/js/core/jquery.min.js"></script>
+   <script src="./assets/js/core/popper.min.js"></script>
+   <script src="./assets/js/core/bootstrap.min.js"></script>
+   <script src="./assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+   <!--  Google Maps Plugin    -->
+   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+   <!-- Chart JS -->
+   <script src="./assets/js/plugins/chartjs.min.js"></script>
+   <!--  Notifications Plugin    -->
+   <script src="./assets/js/plugins/bootstrap-notify.js"></script>
+   <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="./assets/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script>
 </body>
 
 </html>
