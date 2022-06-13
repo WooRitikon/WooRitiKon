@@ -68,7 +68,7 @@
 						<ul>
 							<li class="active"><a href="./index.html">Home</a></li>
 							<li><a th:href="@{/about}">about</a></li>
-							<li><a href="#">shop</a></li>
+							<li><a th:href="@{/plist(ccode=1)}">shop</a></li>
 							<li><a th:href="@{/mypageMain}">my page</a>
 								<ul class="dropdown">
 									<li><a th:href="@{/mypageShoppingList}">my 주문조회</a></li>
@@ -159,7 +159,7 @@
 							<div class="categories__item set-bg"
 								data-setbg="img/categories/notice.jpg">
 								<div class="categories__text">
-									<h4>NOTICE</h4>
+									<a th:href="@{./noticePage}"><h4>NOTICE</h4></a>
 								</div>
 							</div>
 						</div>
@@ -380,11 +380,14 @@
 						<div class="section-title">
 							<h4>새로운 상품들</h4>
 						</div>
-						
+					<!-- 새 상품 출력 -->
 					<th:block th:each="pt : ${product}">
 						<div class="trend__item">
 							<div class="trend__item__pic">
-								<img src="img/trend/ht-1.jpg" alt="">
+								<img th:src="${pt.originimage}" alt="" style="
+   									 height: 90px;
+   									 width: 90px;
+									">
 							</div>
 							<div class="trend__item__text">
 								<h6 th:text="${pt.pname}"></h6>
@@ -408,7 +411,10 @@
 						<th:block th:each="se : ${seller}">
 						<div class="trend__item">
 							<div class="trend__item__pic">
-								<img src="img/trend/ht-1.jpg" alt="">
+									<img th:src="${se.originimage}" alt="" style="
+   									 height: 90px;
+   									 width: 90px;
+									">
 							</div>
 							<div class="trend__item__text">
 								<h6 th:text="${se.bname}"></h6>
@@ -433,7 +439,10 @@
 						<th:block th:each="pr : ${pro}">
 						<div class="trend__item">
 							<div class="trend__item__pic">
-								<img src="img/trend/ht-1.jpg" alt="">
+								<img th:src="${pr.originimage}" alt="" style="
+   									 height: 90px;
+   									 width: 90px;
+									">
 							</div>
 							<div class="trend__item__text">
 								<h6 th:text="${pr.pname}"></h6>

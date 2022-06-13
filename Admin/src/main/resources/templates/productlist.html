@@ -168,9 +168,9 @@
 						<div class="product__item">
 							<div class="product__item__pic">
 								<a th:href="@{/shopProView}"><img
-									src="img/product/food.jpg" alt=""
+									th:src="${se.originimage}" alt=""
 									style="height: 210px; width: 210px;"></a>
-								<div class="product__item__text">
+								<div class="product__item__text" style="margin-right: 45px;">
 									<h5>
 										<a th:text="${se.bname}"></a>
 									</h5>
