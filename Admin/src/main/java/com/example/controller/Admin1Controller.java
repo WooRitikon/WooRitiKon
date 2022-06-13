@@ -19,7 +19,6 @@ import com.example.domain.Product;
 import com.example.domain.Qna;
 import com.example.domain.Qnacomment;
 import com.example.domain.Sellerid;
-
 import com.example.service.CustomerService;
 import com.example.service.FaqService;
 import com.example.service.ProductService;
@@ -227,28 +226,7 @@ public class Admin1Controller {
 	}
 	
 
-	//category 리스트
-	@RequestMapping("getcategory")
-	public void getCategory(Category cg,Model m) {
-		List<Category> list = cgService.getCategory(cg);
-		m.addAttribute("Category",list);
-	}
-	
-	//category 등록
-	@RequestMapping("insertcategory")
-	public String insertcg(Category cg) {
-		cgService.insertcg(cg);
-		
-		return "redirect:getcategory";
-	}
-	
-	//category 삭제
-	@RequestMapping("deletecategory")
-	public String deletecg(Category cg) {
-		cgService.deletecg(cg);
-		
-		return "redirect:getcategory";
-	}
+
 
 }
 
