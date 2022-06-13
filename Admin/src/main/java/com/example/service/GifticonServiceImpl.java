@@ -82,9 +82,9 @@ public class GifticonServiceImpl implements GifticonService {
 		int start = 1;
 		int end = length-3;
 		
-		last.add(result.get(length-1));
-		last.add(result.get(length-2));
 		last.add(result.get(length-3));
+		last.add(result.get(length-2));
+		last.add(result.get(length-1));
 		
 		return last;
 	}
