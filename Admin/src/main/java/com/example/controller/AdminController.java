@@ -19,26 +19,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.example.chating.vo.Room;
-import com.example.domain.Calculate;
 import com.example.domain.Manager;
 import com.example.domain.Notice;
-import com.example.persistence.SalesRepository;
+
 import com.example.service.NoticeService;
-import com.example.service.SalesService;
 
 @Controller
 public class AdminController {
 	static final Logger logger = LoggerFactory.getLogger(AdminController.class);
 	
-	@Autowired
-	private SalesRepository  repo;
 	
 	@Autowired
 	private NoticeService notiservice;
 	
-	@Autowired
-	private SalesService salesservice;
+
 	
 	@RequestMapping("/{step}")
 	public void viewPage(@PathVariable String step) {
@@ -93,17 +87,7 @@ public class AdminController {
 		logger.info("Controller delete:"+vo.getNtitle());
 		return "redirect:getNoticeList";
 	}
-	
-	List<Room> roomList = new ArrayList<Room>();
-	static int roomNumber = 0;
-	
-	@RequestMapping("/chat")
-	public ModelAndView chat() {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("chat");
-		return mv;
-	}
-	
+
 	/**
 	 * 방 페이지
 	 * @return
@@ -113,70 +97,6 @@ public class AdminController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("room");
 		return mv;
-	}
-	
-	/**
-	 * 방 생성하기
-	 * @param params
-	 * @return
-	 */
-	@RequestMapping("/createRoom")
-	public @ResponseBody List<Room> createRoom(@RequestParam HashMap<Object, Object> params){
-		String roomName = (String) params.get("roomName");
-		if(roomName != null && !roomName.trim().equals("")) {
-			Room room = new Room();
-			room.setRoomNumber(++roomNumber);
-			room.setRoomName(roomName);
-			roomList.add(room);
-		}
-		return roomList;
-	}
-	
-	/**
-	 * 방 정보가져오기
-	 * @param params
-	 * @return
-	 */
-	@RequestMapping("/getRoom")
-	public @ResponseBody List<Room> getRoom(@RequestParam HashMap<Object, Object> params){
-		return roomList;
-	}
-	
-	/**
-	 * 채팅방
-	 * @return
-	 */
-	@RequestMapping("/moveChating")
-	public ModelAndView chating(@RequestParam HashMap<Object, Object> params) {
-		ModelAndView mv = new ModelAndView();
-		int roomNumber = Integer.parseInt((String) params.get("roomNumber"));
-		
-		List<Room> new_list = roomList.stream().filter(o->o.getRoomNumber()==roomNumber).collect(Collectors.toList());
-		if(new_list != null && new_list.size() > 0) {
-			mv.addObject("roomName", params.get("roomName"));
-			mv.addObject("roomNumber", params.get("roomNumber"));
-			mv.setViewName("chat");
-		}else {
-			mv.setViewName("room");
-		}
-		return mv;
-	}
-	
-	//매출 전체 조회
-	@RequestMapping("getSales")   
-	public void getSalesList(Model mm) {
-		logger.info("매출검색");
-		Calculate vo = new Calculate();
-		List<Calculate> list = salesservice.getSalesList(vo);
-		mm.addAttribute("salesList", list);
-	}
-	
-	@RequestMapping("index")
-	public void getSales(Model mm) {
-		logger.info("매출검색");
-		Calculate vo = new Calculate();
-		List<Calculate> list = salesservice.getSales(vo);
-		mm.addAttribute("salesList", list);
 	}
 	
 }
