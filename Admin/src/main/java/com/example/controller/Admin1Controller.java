@@ -19,7 +19,6 @@ import com.example.domain.Product;
 import com.example.domain.Qna;
 import com.example.domain.Qnacomment;
 import com.example.domain.Sellerid;
-
 import com.example.service.CustomerService;
 import com.example.service.FaqService;
 import com.example.service.ProductService;

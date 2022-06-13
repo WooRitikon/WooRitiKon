@@ -29,7 +29,7 @@ demo = {
             pointRadius: 0,
             pointHoverRadius: 0,
             borderWidth: 3,
-            data: [300, 310, 316, 322, 330, 326, 333, 345, 338, 354]
+            data: [c]
           },
           {
             borderColor: "#f17e5d",
@@ -126,7 +126,7 @@ demo = {
             pointRadius: 0,
             pointHoverRadius: 0,
             borderWidth: 3,
-            data: [100,200,300,400,500,600,700],
+            data: [2000,3000,2400,5000,6500,4000,5000],
           }
         ]
       },
