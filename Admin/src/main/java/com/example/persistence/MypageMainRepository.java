@@ -13,7 +13,7 @@ public interface MypageMainRepository extends CrudRepository<Normalid, String>{
 	
 	
 	//회원탈퇴
-	@Query(value="UPDATE normalid SET nstate=\"N\" WHERE nid=?1", nativeQuery=true)
+	@Query(value="DELETE FROM normalid WHERE nid=?1", nativeQuery=true)
 	void deleteNormalid(String nid);
 	
 }

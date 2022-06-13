@@ -805,14 +805,14 @@ public class MypageController {
 		 Normalid result = mypageService.getNid(nid);
 		 
 		
-		 if (result == null) {
-			 session.setAttribute("nid", nid);
-			 return "redirect:mypageInfoCancel";
-		 } else {
-			 result.setNpassword(vo.getNpassword());
+		 if (result != null && (vo.getNpassword().equals(result.getNpassword()))) {
 			 mypageMainRepo.deleteNormalid(nid);
 			 session.invalidate();
 			 return "redirect:login";
+			
+		 } else {
+			 session.setAttribute("nid", nid);
+			 return "redirect:mypageInfoCancel";
 		 }
 
 
