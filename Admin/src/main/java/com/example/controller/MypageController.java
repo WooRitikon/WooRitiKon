@@ -224,10 +224,10 @@ public class MypageController {
 			gift1.put("FINALDATE", giftobj[2]);
 			gift1.put("PCODE", giftobj[3]);
 			gift1.put("PPRICE", giftobj[4]);
-			gift1.put("PCATEGORY", giftobj[5]);
-			gift1.put("PNAME", giftobj[6]);
-			gift1.put("PCONTENT", giftobj[7]);
-			gift1.put("GCODE", giftobj[8]);
+			
+			gift1.put("PNAME", giftobj[5]);
+			gift1.put("PCONTENT", giftobj[6]);
+			gift1.put("GCODE", giftobj[7]);
 			
 			giftSelect.add(gift1);
 		}
@@ -616,7 +616,7 @@ public class MypageController {
 	}
 	
 	//찜한 가게 취소 
-	@RequestMapping("/cancelHeart")
+	@RequestMapping("/deleteHeart")
 	public String shopHeartCancel(Like li, HttpServletRequest request) {
 		logger.info("shopHeartCancel controller");
 		HttpSession session = request.getSession();
